@@ -1,6 +1,6 @@
 backend:
   name: github
-  repo: geobtaa-archive/geobtaa-archive.github.io
+  repo: https://github.com/geobtaa-archive/geobtaa-archive.github.io
   branch: main
   base_url: https://decap-auth.geobtaa.workers.dev
   auth_endpoint: /auth
