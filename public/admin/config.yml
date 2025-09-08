@@ -1,13 +1,14 @@
 backend:
   name: github
-  repo: karenmajewicz/karenmajewicz.github.io
+  repo: geobtaa-archive/geobtaa-archive.github.io
   branch: main
   base_url: https://decap-auth.geobtaa.workers.dev
   auth_endpoint: /auth
 
-site_url: https://karenmajewicz.github.io
+site_url: https://geobtaa-archive.github.io
 media_folder: "public/assets/uploads"
 public_folder: "/assets/uploads"
+
 
 collections:
   - name: "blog"
