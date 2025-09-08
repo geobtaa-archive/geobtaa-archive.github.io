@@ -1,0 +1,78 @@
+---
+import Default from '@astrojs/starlight/components/Footer.astro';
+---
+
+<!-- Keep the built-in LastUpdated / Prev–Next / Edit link -->
+<Default><slot /></Default>
+
+<!-- Your full-width blue footer bar -->
+<section class="btaa-footer" aria-label="BTAA-GIN Footer">
+  <div class="btaa-footer__inner">
+    <div class="btaa-footer__col">
+      <h3>Contacts</h3>
+      <ul>
+        <li><a href="https://geo.btaa.org/feedback">Share feedback</a></li>
+        <li><a href="https://mailchi.mp/d146395039e5/coordinates-from-btaa-gin-signup-page">Get Our Newsletter</a></li>
+      </ul>
+
+      <h3>Policies</h3>
+      <ul>
+        <li><a href="/policies/harmful-language/">Harmful Language Statement</a></li>
+        <li><a href="https://btaa.org/privacy">Privacy Statement</a></li>
+        <li><a href="/policies/collection-development/">Collection Development Policy</a></li>
+      </ul>
+    </div>
+
+    <div class="btaa-footer__col">
+      <h3>Member Libraries & Partners</h3>
+      <ul class="btaa-footer__cols-2">
+        <li><a href="https://www.lib.uchicago.edu/">University of Chicago</a></li>
+        <li><a href="https://www.library.illinois.edu/">University of Illinois</a></li>
+        <li><a href="https://libraries.indiana.edu/">Indiana University</a></li>
+        <li><a href="https://www.lib.uiowa.edu/">University of Iowa</a></li>
+        <li><a href="https://www.lib.umd.edu/">University of Maryland</a></li>
+        <li><a href="https://www.lib.umich.edu/">University of Michigan</a></li>
+        <li><a href="https://lib.msu.edu/">Michigan State University</a></li>
+        <li><a href="https://www.lib.umn.edu/">University of Minnesota</a></li>
+        <li><a href="https://libraries.unl.edu/">University of Nebraska-Lincoln</a></li>
+        <li><a href="https://www.library.northwestern.edu/">Northwestern University</a></li>
+        <li><a href="https://library.osu.edu/">The Ohio State University</a></li>
+        <li><a href="https://library.uoregon.edu/">University of Oregon</a></li>
+        <li><a href="https://libraries.psu.edu/">Pennsylvania State University</a></li>
+        <li><a href="https://www.lib.purdue.edu/">Purdue University</a></li>
+        <li><a href="https://www.libraries.rutgers.edu/">Rutgers University</a></li>
+        <li><a href="https://lib.uw.edu/">University of Washington</a></li>
+        <li><a href="https://www.library.wisc.edu/">University of Wisconsin-Madison</a></li>
+        <li><a href="https://btaa.org/">Big Ten Academic Alliance</a></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<style>
+  .btaa-footer {
+    background: var(--btaa-dark-blue);           
+    color: #fff;
+    font-size: .75em;
+    /* width: 100vw;
+    margin-left: calc(50% - 50vw);
+    margin-right: calc(50% - 50vw); */
+    padding: 2rem 0;
+  }
+  .btaa-footer a { color: #fff; text-decoration: none; }
+  .btaa-footer a:focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
+  .btaa-footer h3 { margin: 0 0 .5rem; font-size: 1.1rem; color:#fff !important }
+  .btaa-footer ul { list-style: none; margin: 0 0 1rem; padding: 0; }
+  .btaa-footer__inner {
+    /* max-width: var(--sl-content-width, 72rem); */
+    margin: 0 auto;
+    padding: 0 1rem;
+    display: grid;
+    gap: 2rem;
+  }
+  @media (min-width: 900px) {
+    .btaa-footer__inner { grid-template-columns: 1fr 1fr; }
+  }
+  .btaa-footer__cols-2 { column-count: 2; column-gap: 2rem; }
+  .btaa-footer__cols-2 li { break-inside: avoid; }
+</style>

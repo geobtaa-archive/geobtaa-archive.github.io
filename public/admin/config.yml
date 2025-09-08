@@ -1,0 +1,45 @@
+backend:
+  name: github
+  repo: karenmajewicz/karenmajewicz.github.io
+  branch: main
+  base_url: https://decap-auth.geobtaa.workers.dev
+  auth_endpoint: /auth
+
+site_url: https://karenmajewicz.github.io
+media_folder: "public/assets/uploads"
+public_folder: "/assets/uploads"
+
+collections:
+  - name: "blog"
+    label: "Blog Posts"
+    folder: "src/content/docs/blog"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - label: "Title"
+        name: "title"
+        widget: "string"
+
+      - label: "Excerpt"
+        name: "excerpt"
+        widget: "text"
+
+      - label: "Authors"
+        name: "authors"
+        widget: "list"
+        fields:
+          - label: "Name"
+            name: "name"
+            widget: "string"
+
+      - label: "Tags"
+        name: "tags"
+        widget: "list"
+
+      - label: "Publication Date"
+        name: "date"
+        widget: "datetime"
+
+      - label: "Body"
+        name: "body"
+        widget: "markdown"
