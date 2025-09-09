@@ -4,11 +4,12 @@
   "exclude": ["dist"],
 
   "compilerOptions": {
-    "jsx": "preserve",
-    "baseUrl": ".",
-    "paths": {
-      "@images/*": ["src/assets/images/*"],
-      "@components/*": ["src/components/*"]
-    }
+  "jsx": "preserve",
+  "jsxImportSource": "react",
+  "baseUrl": ".",
+  "paths": {
+    "@images/*": ["src/assets/images/*"],
+    "@components/*": ["src/components/*"]
+          }
   }
 }
