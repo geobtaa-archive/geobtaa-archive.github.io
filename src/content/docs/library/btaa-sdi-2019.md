@@ -17,17 +17,17 @@ Proposal to the BTAA-GDP Strategic Leadership Group 2019
 In 2012, three BTAA map librarians issued a white paper, _A Collaborative Vision for Spatial Scholarship across the CIC_[^1], that described geospatial data as a long term, interdisciplinary need and proposed several collaborative possibilities for managing it.  This paper was a major impetus for the creation of the BTAA Geospatial Data Project (GDP) three years later. The BTAA GDP has accomplished several of the recommendations laid out in the paper, including creating a collective specialized tool for discovering geospatial resources, combining scanned map collections, and encouraging robust communication across the BTAA geospatial community. 
 
 
-!!! info "BTAA GDP project quick facts"
-
-	* 	Number of participating institutions: 12
-	* 	Number of project Task Force members: 22
-	* 	Year the project began: 2015
-	* 	Month the BTAA Geoportal went online: August 2016
-	* 	Number of resources in the geoportal at launch: 2,300
-	* 	Number of resources as of January 2019: 18,195
-	* 	Number of scanned maps: 6,974
-	* 	Number of geospatial datasets: 10,793
-	* 	Number of geospatial web services: 5,298
+:::note[BTAA GDP project quick facts]
+* 	Number of participating institutions: 12
+* 	Number of project Task Force members: 22
+* 	Year the project began: 2015
+* 	Month the BTAA Geoportal went online: August 2016
+* 	Number of resources in the geoportal at launch: 2,300
+* 	Number of resources as of January 2019: 18,195
+* 	Number of scanned maps: 6,974
+* 	Number of geospatial datasets: 10,793
+* 	Number of geospatial web services: 5,298
+:::
 
 
 
@@ -63,9 +63,9 @@ A Spatial Data Infrastructure (SDI) is defined in a GIS dictionary as “A frame
 
 
 
-**About: **The foundation of an SDI is the repository that stores the digital objects. These objects may be reproduced in multiple formats to ensure long term access, and the supporting technology may include preservation services, such as fixity checks and versioning. _non-BTAA example: [Hydra/Samvera at Stanford University](https://www.tandfonline.com/doi/pdf/10.1080/15420353.2015.1041630)_
+**About:** The foundation of an SDI is the repository that stores the digital objects. These objects may be reproduced in multiple formats to ensure long term access, and the supporting technology may include preservation services, such as fixity checks and versioning. _non-BTAA example: [Hydra/Samvera at Stanford University](https://www.tandfonline.com/doi/pdf/10.1080/15420353.2015.1041630)_
 
-**Across the BTAA: **All of the surveyed BTAA institutions host a general data repository that is restricted to content created by university researchers. These repositories are typically used for articles, theses, and supporting data. Although geospatial file formats are accepted to these repositories, they represent a small percentage of the collections.
+**Across the BTAA:** All of the surveyed BTAA institutions host a general data repository that is restricted to content created by university researchers. These repositories are typically used for articles, theses, and supporting data. Although geospatial file formats are accepted to these repositories, they represent a small percentage of the collections.
 
 Most BTAA libraries offer purchased, licensed geospatial data to researchers. Often, this data must be either viewed on site or obtained by contacting a librarian directly. In some cases, university affiliates may be able to access the data from file servers. 
 
@@ -85,7 +85,7 @@ For publicly available state and local data, Indiana University has a dedicated 
 ### 3. Geospatial Web Services
 
 
-**About: **Geospatial web services provide an online connection to a dataset hosted on a server. These services allow users to stream and visualize geospatial data in a web browser or mapping application. Users can also load these services through a Desktop GIS without actually downloading the dataset.  Geospatial web services are widely used by researchers to build online maps quickly without needing to rehost data.[^9]
+**About:** Geospatial web services provide an online connection to a dataset hosted on a server. These services allow users to stream and visualize geospatial data in a web browser or mapping application. Users can also load these services through a Desktop GIS without actually downloading the dataset.  Geospatial web services are widely used by researchers to build online maps quickly without needing to rehost data.[^9]
 
 In order to provide these services, an organization needs to set up a server with a geospatial web service application and load access copies of geospatial datasets into it. _non-BTAA example: [Princeton University’s GeoServer](https://geoserver.princeton.edu/geoserver/web/) (click on Layer Preview, choose OpenLayers option)_
 

@@ -1,8 +1,11 @@
 import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
 import starlightFullViewMode from 'starlight-fullview-mode';
+// import starlightLinksValidator from 'starlight-links-validator'
 import starlightBlog from 'starlight-blog';
 import react from '@astrojs/react';
+
+
 
 export default defineConfig({
   integrations: [
@@ -27,6 +30,7 @@ export default defineConfig({
         starlightBlog({
           title: 'Blog',
         }),
+        // starlightLinksValidator(),
       ],
       sidebar: [
         {
