@@ -1,10 +1,10 @@
 
 export default new Map([
-["src/content/docs/about/guiding-principles.mdx", () => import("astro:content-layer-deferred-module?astro%3Acontent-layer-deferred-module=&fileName=src%2Fcontent%2Fdocs%2Fabout%2Fguiding-principles.mdx&astroContentModuleFlag=true")],
 ["src/content/docs/index.mdx", () => import("astro:content-layer-deferred-module?astro%3Acontent-layer-deferred-module=&fileName=src%2Fcontent%2Fdocs%2Findex.mdx&astroContentModuleFlag=true")],
+["src/content/docs/about/history.mdx", () => import("astro:content-layer-deferred-module?astro%3Acontent-layer-deferred-module=&fileName=src%2Fcontent%2Fdocs%2Fabout%2Fhistory.mdx&astroContentModuleFlag=true")],
 ["src/content/docs/about/about-us.mdx", () => import("astro:content-layer-deferred-module?astro%3Acontent-layer-deferred-module=&fileName=src%2Fcontent%2Fdocs%2Fabout%2Fabout-us.mdx&astroContentModuleFlag=true")],
 ["src/content/docs/about/committees.mdx", () => import("astro:content-layer-deferred-module?astro%3Acontent-layer-deferred-module=&fileName=src%2Fcontent%2Fdocs%2Fabout%2Fcommittees.mdx&astroContentModuleFlag=true")],
-["src/content/docs/about/history.mdx", () => import("astro:content-layer-deferred-module?astro%3Acontent-layer-deferred-module=&fileName=src%2Fcontent%2Fdocs%2Fabout%2Fhistory.mdx&astroContentModuleFlag=true")],
+["src/content/docs/about/guiding-principles.mdx", () => import("astro:content-layer-deferred-module?astro%3Acontent-layer-deferred-module=&fileName=src%2Fcontent%2Fdocs%2Fabout%2Fguiding-principles.mdx&astroContentModuleFlag=true")],
 ["src/content/docs/about/participants.mdx", () => import("astro:content-layer-deferred-module?astro%3Acontent-layer-deferred-module=&fileName=src%2Fcontent%2Fdocs%2Fabout%2Fparticipants.mdx&astroContentModuleFlag=true")],
 ["src/content/docs/blog/2025-08.mdx", () => import("astro:content-layer-deferred-module?astro%3Acontent-layer-deferred-module=&fileName=src%2Fcontent%2Fdocs%2Fblog%2F2025-08.mdx&astroContentModuleFlag=true")],
 ["src/content/docs/conference/index.mdx", () => import("astro:content-layer-deferred-module?astro%3Acontent-layer-deferred-module=&fileName=src%2Fcontent%2Fdocs%2Fconference%2Findex.mdx&astroContentModuleFlag=true")],
@@ -12,9 +12,9 @@ export default new Map([
 ["src/content/docs/library/urban-curation-plan.mdx", () => import("astro:content-layer-deferred-module?astro%3Acontent-layer-deferred-module=&fileName=src%2Fcontent%2Fdocs%2Flibrary%2Furban-curation-plan.mdx&astroContentModuleFlag=true")],
 ["src/content/docs/projects/data-cite.mdx", () => import("astro:content-layer-deferred-module?astro%3Acontent-layer-deferred-module=&fileName=src%2Fcontent%2Fdocs%2Fprojects%2Fdata-cite.mdx&astroContentModuleFlag=true")],
 ["src/content/docs/projects/discovery.mdx", () => import("astro:content-layer-deferred-module?astro%3Acontent-layer-deferred-module=&fileName=src%2Fcontent%2Fdocs%2Fprojects%2Fdiscovery.mdx&astroContentModuleFlag=true")],
-["src/content/docs/projects/geoportal.mdx", () => import("astro:content-layer-deferred-module?astro%3Acontent-layer-deferred-module=&fileName=src%2Fcontent%2Fdocs%2Fprojects%2Fgeoportal.mdx&astroContentModuleFlag=true")],
 ["src/content/docs/projects/geodata-collection.mdx", () => import("astro:content-layer-deferred-module?astro%3Acontent-layer-deferred-module=&fileName=src%2Fcontent%2Fdocs%2Fprojects%2Fgeodata-collection.mdx&astroContentModuleFlag=true")],
-["src/content/docs/projects/scholarship.mdx", () => import("astro:content-layer-deferred-module?astro%3Acontent-layer-deferred-module=&fileName=src%2Fcontent%2Fdocs%2Fprojects%2Fscholarship.mdx&astroContentModuleFlag=true")],
+["src/content/docs/projects/geoportal.mdx", () => import("astro:content-layer-deferred-module?astro%3Acontent-layer-deferred-module=&fileName=src%2Fcontent%2Fdocs%2Fprojects%2Fgeoportal.mdx&astroContentModuleFlag=true")],
 ["src/content/docs/projects/metadata.mdx", () => import("astro:content-layer-deferred-module?astro%3Acontent-layer-deferred-module=&fileName=src%2Fcontent%2Fdocs%2Fprojects%2Fmetadata.mdx&astroContentModuleFlag=true")],
+["src/content/docs/projects/scholarship.mdx", () => import("astro:content-layer-deferred-module?astro%3Acontent-layer-deferred-module=&fileName=src%2Fcontent%2Fdocs%2Fprojects%2Fscholarship.mdx&astroContentModuleFlag=true")],
 ["src/content/docs/projects/tutorials.mdx", () => import("astro:content-layer-deferred-module?astro%3Acontent-layer-deferred-module=&fileName=src%2Fcontent%2Fdocs%2Fprojects%2Ftutorials.mdx&astroContentModuleFlag=true")]]);
 		
