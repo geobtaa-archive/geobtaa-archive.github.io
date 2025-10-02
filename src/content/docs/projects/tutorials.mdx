@@ -5,15 +5,44 @@ tags:
 - guides
 ---
 import { LinkCard } from '@astrojs/starlight/components';
+import { ShowcaseText } from 'starlight-showcases'
 
+<ShowcaseText
+  entries={[
+    {
+      href: 'https://github.com/HiDeoo/starlight-links-validator',
+      title: 'starlight-links-validator',
+      description: 'Check for broken links in your Starlight pages.',
+    },
+  ]}
+/>
 
 
 The BTAA Geospatial Information Network has created a series of tutorials to showcase the practicality of the BTAA Geoportal for teaching and learning about maps, geospatial data, and GIS techniques. These tutorials cover a wide range of activities designed to meet the needs of instructors and students in a wide range of disciplines and levels of competency in geospatial data retrieval, use, and analysis.
 
-<LinkCard title="Browse all tutorials" href="../../blog/tags/tutorials//" />
+<ShowcaseText
+  entries={[
+    {
+      href: '../../library/tutorials/01_types-of-geospatial-information',
+      title: '1. Types of Geospatial Information',
+      description: 'Introduction to the most commonly used types of data in GIS.',
+    },
+    {
+      href: '../../library/tutorials/02_find-maps',
+      title: '2. Find a Map',
+      description: 'How to locate a map for a given topic and use it in a document.',
+    },
+{
+      href: '../../library/tutorials/03_find-geospatial-data',
+      title: '3. Find Geospatial Data',
+      description: 'How to frame a search strategy and perform a search for geospatial data.',
+    },
+
+  ]}
+/>
 
 
-1. [Types of Geospatial Information](../../blog/01_types-of-geospatial-information), by Nicole Kong at Purdue University, introduces students to the most commonly used types of data in GIS. Using a range of visual and diagrammatic examples, it reviews the different data models that GIS professionals typically use to collect and share information, and which are discoverable through geodata portals.
+1. [Types of Geospatial Information](../../library/tutorials/01_types-of-geospatial-information), by Nicole Kong at Purdue University, introduces students to the most commonly used types of data in GIS. Using a range of visual and diagrammatic examples, it reviews the different data models that GIS professionals typically use to collect and share information, and which are discoverable through geodata portals.
 
 2. [Find a Map](../../blog/02_find-maps), by Danny Dotson at Ohio State University, is designed to help students locate a map for a given topic and use it in a document. This tutorial reviews the steps required to locate a relevant map, using the BTAA Geoportal, how to download or copy the scanned map, how to insert the map into a given document, and provides an overview of basic fair use and copyright implications for using these maps.
 

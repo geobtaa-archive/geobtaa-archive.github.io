@@ -21,7 +21,9 @@
     "sharp": "^0.34.2",
     "starlight-blog": "^0.24.1",
     "starlight-fullview-mode": "^0.2.3",
-    "starlight-links-validator": "^0.17.2"
+    "starlight-links-validator": "^0.17.2",
+    "starlight-showcases": "^0.3.0",
+    "starlight-videos": "^0.3.0"
   },
   "devDependencies": {
     "@astrojs/react": "^4.3.1",

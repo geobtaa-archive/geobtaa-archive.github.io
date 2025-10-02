@@ -11,15 +11,16 @@ tags:
 ---
 
 
-!!! Info
+:::note
 
-	:material-arrow-right-box: Purpose: To introduce the most common types of data in GIS.
-	
-	:timer: Estimated time to complete: 30-40 minutes
+**Purpose**: To introduce the most common types of data in GIS.
 
-	:fontawesome-solid-user: Prepared by: Nicole Kong, Associate Professor, GIS Specialist, Purdue University (kongn@purdue.edu). 
+**Estimated time to complete**: 30-40 minutes
 
-	:material-creative-commons: License: Except where otherwise noted, content in this tutorial is licensed under a [Creative Commons Attribution 4.0 International license](https://creativecommons.org/licenses/by/4.0/).
+**Prepared by**: Nicole Kong, Associate Professor, GIS Specialist, Purdue University (kongn@purdue.edu). 
+
+**License**: Except where otherwise noted, content in this tutorial is licensed under a [Creative Commons Attribution 4.0 International license](https://creativecommons.org/licenses/by/4.0/).
+:::
 
 ## Introduction
 

@@ -678,7 +678,7 @@
                         "type": "string"
                       },
                       {
-                        "$ref": "#/definitions/docs/allOf/1/properties/authors/anyOf/1"
+                        "$ref": "#/definitions/docs/allOf/1/allOf/0/properties/authors/anyOf/1"
                       }
                     ]
                   }
@@ -764,11 +764,203 @@
             },
             "featured": {
               "type": "boolean"
-            },
-            "year": {
-              "type": "integer",
-              "minimum": 1800,
-              "maximum": 2100
+            }
+          }
+        },
+        {
+          "type": "object",
+          "properties": {
+            "video": {
+              "anyOf": [
+                {
+                  "type": "object",
+                  "properties": {
+                    "link": {
+                      "type": "string",
+                      "format": "uri"
+                    },
+                    "duration": {
+                      "type": [
+                        "number",
+                        "string"
+                      ]
+                    },
+                    "transcript": {
+                      "type": "string"
+                    },
+                    "difficulty": {
+                      "type": "string"
+                    },
+                    "actions": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "text": {
+                            "type": "string"
+                          },
+                          "link": {
+                            "type": "string"
+                          },
+                          "variant": {
+                            "type": "string",
+                            "enum": [
+                              "primary",
+                              "secondary",
+                              "minimal"
+                            ],
+                            "default": "primary"
+                          },
+                          "icon": {
+                            "type": "string"
+                          },
+                          "iconPlacement": {
+                            "type": "string",
+                            "enum": [
+                              "start",
+                              "end"
+                            ],
+                            "default": "start"
+                          }
+                        },
+                        "required": [
+                          "text",
+                          "link"
+                        ],
+                        "additionalProperties": false
+                      }
+                    },
+                    "type": {
+                      "type": "string",
+                      "const": "video"
+                    },
+                    "description": {
+                      "type": "string"
+                    },
+                    "date": {
+                      "anyOf": [
+                        {
+                          "type": "string",
+                          "format": "date-time"
+                        },
+                        {
+                          "type": "string",
+                          "format": "date"
+                        },
+                        {
+                          "type": "integer",
+                          "format": "unix-time"
+                        }
+                      ]
+                    }
+                  },
+                  "required": [
+                    "link",
+                    "duration",
+                    "type"
+                  ],
+                  "additionalProperties": false
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "link": {
+                      "$ref": "#/definitions/docs/allOf/1/allOf/1/properties/video/anyOf/0/properties/link"
+                    },
+                    "duration": {
+                      "$ref": "#/definitions/docs/allOf/1/allOf/1/properties/video/anyOf/0/properties/duration"
+                    },
+                    "transcript": {
+                      "$ref": "#/definitions/docs/allOf/1/allOf/1/properties/video/anyOf/0/properties/transcript"
+                    },
+                    "difficulty": {
+                      "$ref": "#/definitions/docs/allOf/1/allOf/1/properties/video/anyOf/0/properties/difficulty"
+                    },
+                    "actions": {
+                      "$ref": "#/definitions/docs/allOf/1/allOf/1/properties/video/anyOf/0/properties/actions"
+                    },
+                    "type": {
+                      "type": "string",
+                      "const": "collection-video"
+                    },
+                    "collection": {
+                      "type": "string"
+                    },
+                    "order": {
+                      "type": "number"
+                    }
+                  },
+                  "required": [
+                    "link",
+                    "duration",
+                    "type",
+                    "collection"
+                  ],
+                  "additionalProperties": false
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "type": {
+                      "type": "string",
+                      "const": "collection"
+                    },
+                    "collection": {
+                      "type": "string"
+                    },
+                    "description": {
+                      "type": "string"
+                    },
+                    "date": {
+                      "anyOf": [
+                        {
+                          "type": "string",
+                          "format": "date-time"
+                        },
+                        {
+                          "type": "string",
+                          "format": "date"
+                        },
+                        {
+                          "type": "integer",
+                          "format": "unix-time"
+                        }
+                      ]
+                    }
+                  },
+                  "required": [
+                    "type",
+                    "collection"
+                  ],
+                  "additionalProperties": false
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "type": {
+                      "type": "string",
+                      "const": "videos"
+                    }
+                  },
+                  "required": [
+                    "type"
+                  ],
+                  "additionalProperties": false
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "type": {
+                      "type": "string",
+                      "const": "collections"
+                    }
+                  },
+                  "required": [
+                    "type"
+                  ],
+                  "additionalProperties": false
+                }
+              ]
             }
           }
         }
