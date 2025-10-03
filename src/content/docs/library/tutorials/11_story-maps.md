@@ -9,15 +9,16 @@ tags:
   - Tutorials
 ---
 
-!!! info
+:::note
 
-	:material-arrow-right-box: Purpose: To provide a brief introduction to the capabilities of ArcGIS Story Maps.
-	
-	:timer: Estimated time to complete: variable
+:material-arrow-right-box: Purpose: To provide a brief introduction to the capabilities of ArcGIS Story Maps.
 
-	:fontawesome-solid-user: Prepared by: Ryan Mattke, Map and Geospatial Information Librarian, University of Minnesota (matt0089@umn.edu). 
+:timer: Estimated time to complete: variable
 
-	:material-creative-commons: These slides and the accompanying activities are licensed under a [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/) license.
+:fontawesome-solid-user: Prepared by: Ryan Mattke, Map and Geospatial Information Librarian, University of Minnesota (matt0089@umn.edu). 
+
+:material-creative-commons: These slides and the accompanying activities are licensed under a [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/) license.
+:::
 
 ------------------------------
 

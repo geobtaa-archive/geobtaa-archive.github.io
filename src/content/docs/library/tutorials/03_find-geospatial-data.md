@@ -8,23 +8,24 @@ date: 2021-05-19
 tags:
   - Tutorials
 ---
-!!! Info
 
-	:material-arrow-right-box: Purpose: To help students locate a map for a given topic and use it in a document.
-	
-	:timer: Estimated time to complete: 40-50 minutes
+Purpose: To help students locate a map for a given topic and use it in a document.
 
-	:fontawesome-solid-user: Prepared by: Joshua Sadvari, Geospatial Information Librarian, The Ohio State University (sadvari.1@osu.edu). 
+Estimated time to complete: 40-50 minutes
 
-	:material-creative-commons: License: Except where otherwise noted, content in this tutorial is licensed under a [Creative Commons Attribution 4.0 International license](https://creativecommons.org/licenses/by/4.0/).
+Prepared by: Joshua Sadvari, Geospatial Information Librarian, The Ohio State University (sadvari.1@osu.edu). 
 
-??? Note "Note for Instructors"
+License: Except where otherwise noted, content in this tutorial is licensed under a [Creative Commons Attribution 4.0 International license](https://creativecommons.org/licenses/by/4.0/).
 
-	This introductory tutorial can support class and research projects in any discipline where students are expected to use geospatial data but may be less familiar with how to locate and access potential sources of those data.
 
-	The tutorial is divided into two activities that can be used separately or in conjunction with one another depending on course- or assignment-level learning objectives. These activities may be appropriate for students at both the undergraduate and graduate level.
+:::note[Note for Instructors]
 
-	The tutorial was designed to allow for use in in-person, hybrid, and fully online instructional contexts, and instructors could assign the activities to be completed individually or in small groups depending on course structure and goals.
+This introductory tutorial can support class and research projects in any discipline where students are expected to use geospatial data but may be less familiar with how to locate and access potential sources of those data.
+
+The tutorial is divided into two activities that can be used separately or in conjunction with one another depending on course- or assignment-level learning objectives. These activities may be appropriate for students at both the undergraduate and graduate level.
+
+The tutorial was designed to allow for use in in-person, hybrid, and fully online instructional contexts, and instructors could assign the activities to be completed individually or in small groups depending on course structure and goals.
+:::
 
 ## Learning Objectives
 

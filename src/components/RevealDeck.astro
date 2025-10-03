@@ -1,0 +1,41 @@
+---
+/* Let Vite bundle the CSS */
+import 'reveal.js/dist/reveal.css';
+import 'reveal.js/dist/theme/black.css'; // try: white.css, league.css, night.css, etc.
+
+const { markdown, options = {} } = Astro.props;
+
+// Sensible defaults; you can override via the `options` prop
+const revealOptions = {
+  hash: true,
+  slideNumber: true,
+  progress: true,
+  history: true,
+  transition: 'slide',
+  center: false,
+  ...options,
+};
+
+// Produce a browser-safe JSON string for the data attribute
+const optionsJson = JSON.stringify(revealOptions);
+
+// Get a real URL to the client module (no aliases required; use '/src/...' if @ isn't set)
+import initUrl from '/src/scripts/reveal-init.js?url';
+---
+
+<div class="reveal" data-options={optionsJson}>
+  <div class="slides">
+    <section data-markdown>
+      <textarea data-template>{markdown}</textarea>
+    </section>
+  </div>
+</div>
+
+<!-- Just load the module; it will auto-initialize any .reveal with data-options -->
+<script type="module" src={initUrl}></script>
+
+<style>
+  .reveal { margin: 0 auto; }
+  :global(.sl-container) .reveal { max-width: 100%; }
+  @media (max-width: 720px) { .reveal { font-size: 90%; } }
+</style>

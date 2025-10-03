@@ -8,16 +8,17 @@ date: 2021-08-16
 tags:
   - Tutorials
 ---
-!!! Info
 
-	:material-arrow-right-box: Purpose: how to use ArcGIS Pro to convert data in raster format.
-	
-	:timer: Estimated time to complete: 40-50 minutes
+:::note
 
-	:fontawesome-solid-user: Prepared by: Nicole Kong, Associate Professor, GIS Specialist, Purdue University (kongn@purdue.edu). 
+:material-arrow-right-box: Purpose: how to use ArcGIS Pro to convert data in raster format.
 
-	:material-creative-commons: License: Except where otherwise noted, content in this tutorial is licensed under a [Creative Commons Attribution 4.0 International license](https://creativecommons.org/licenses/by/4.0/).
+:timer: Estimated time to complete: 40-50 minutes
 
+:fontawesome-solid-user: Prepared by: Nicole Kong, Associate Professor, GIS Specialist, Purdue University (kongn@purdue.edu). 
+
+:material-creative-commons: License: Except where otherwise noted, content in this tutorial is licensed under a [Creative Commons Attribution 4.0 International license](https://creativecommons.org/licenses/by/4.0/).
+:::
 ------------------------------
 
 ??? Note "Note for Instructors"

@@ -9,15 +9,16 @@ tags:
   - Tutorials
 ---
 
-!!! Info
+:::note
 
-	:material-arrow-right-box: Purpose: To provides the basic concept of LiDAR dataset and point cloud processing in ArcGIS Pro.
-	
-	:timer: Estimated time to complete: 40-50 minutes
+:material-arrow-right-box: Purpose: To provides the basic concept of LiDAR dataset and point cloud processing in ArcGIS Pro.
 
-    :fontawesome-solid-user: Prepared by: Milan Budhathoki, GISP, Geospatial Librarian, GIS and Spatial Data Center, University of Maryland Libraries (mb17@umd.edu). 
+:timer: Estimated time to complete: 40-50 minutes
 
-    :material-creative-commons: These slides and the accompanying activities are licensed under a [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/) license.
+:fontawesome-solid-user: Prepared by: Milan Budhathoki, GISP, Geospatial Librarian, GIS and Spatial Data Center, University of Maryland Libraries (mb17@umd.edu). 
+
+:material-creative-commons: These slides and the accompanying activities are licensed under a [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/) license.
+:::
 
 ------------------------------
 

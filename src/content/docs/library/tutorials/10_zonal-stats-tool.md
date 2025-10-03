@@ -9,15 +9,16 @@ tags:
   - Tutorials
 ---
 
-!!! Info
+:::note
 
-	:material-arrow-right-box: Purpose: To show users how to create an open-source GUI tool 	to calculate coverage.
-	
-	:timer: Estimated time to complete: 40-50 minutes
+:material-arrow-right-box: Purpose: To show users how to create an open-source GUI tool 	to calculate coverage.
 
-    :fontawesome-solid-user: Prepared by: Jay Bowen, Geographic Information Specialist, University of Iowa (jay-bowen@uiowa.edu). 
+:timer: Estimated time to complete: 40-50 minutes
 
-    :material-creative-commons: These slides and the accompanying activities are licensed under a [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/) license.
+:fontawesome-solid-user: Prepared by: Jay Bowen, Geographic Information Specialist, University of Iowa (jay-bowen@uiowa.edu). 
+
+:material-creative-commons: These slides and the accompanying activities are licensed under a [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/) license.
+:::
 
 ------------------------------
 

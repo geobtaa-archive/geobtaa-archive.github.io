@@ -9,16 +9,17 @@ tags:
   - Tutorials
 ---
 
-!!! Info
+:::note
 
-	:material-arrow-right-box: Purpose: To help students evaluate geospatial information.
+:material-arrow-right-box: Purpose: To help students evaluate geospatial information.
 
-	
-	:timer: Estimated time to complete: 30-40 minutes
 
-	:fontawesome-solid-user: Prepared by: Jay Bowen, GIS Specialist, University of Iowa (jay-bowen@uiowa.edu). 
+:timer: Estimated time to complete: 30-40 minutes
 
-	:material-creative-commons: License: Except where otherwise noted, content in this tutorial is licensed under a [Creative Commons Attribution 4.0 International license](https://creativecommons.org/licenses/by/4.0/).
+:fontawesome-solid-user: Prepared by: Jay Bowen, GIS Specialist, University of Iowa (jay-bowen@uiowa.edu). 
+
+:material-creative-commons: License: Except where otherwise noted, content in this tutorial is licensed under a [Creative Commons Attribution 4.0 International license](https://creativecommons.org/licenses/by/4.0/).
+:::
 
 
 ??? Note "Note for Instructors"
