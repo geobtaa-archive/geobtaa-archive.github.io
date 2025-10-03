@@ -64,6 +64,8 @@ import __ASTRO_IMAGE_IMPORT_2cK6df from "@images/2023-12-monthly-users.png?astro
 import __ASTRO_IMAGE_IMPORT_1ydDdF from "@images/records-2024-01.png?astroContentImageFlag=&importer=src%2Fcontent%2Fdocs%2Fblog%2F2023-12.md";
 import __ASTRO_IMAGE_IMPORT_ZtFkIa from "@images/2024-01-monthly-users.png?astroContentImageFlag=&importer=src%2Fcontent%2Fdocs%2Fblog%2F2024-01.md";
 import __ASTRO_IMAGE_IMPORT_Z1XDpBy from "@images/records-2024-02.png?astroContentImageFlag=&importer=src%2Fcontent%2Fdocs%2Fblog%2F2024-01.md";
+import __ASTRO_IMAGE_IMPORT_2cK6df from "@images/2023-12-monthly-users.png?astroContentImageFlag=&importer=src%2Fcontent%2Fdocs%2Fblog%2F2023-12.md";
+import __ASTRO_IMAGE_IMPORT_1ydDdF from "@images/records-2024-01.png?astroContentImageFlag=&importer=src%2Fcontent%2Fdocs%2Fblog%2F2023-12.md";
 import __ASTRO_IMAGE_IMPORT_ZAsbMY from "@images/northwestern.jpg?astroContentImageFlag=&importer=src%2Fcontent%2Fdocs%2Fblog%2F2024-02.md";
 import __ASTRO_IMAGE_IMPORT_ZuGYmI from "@images/2024-02-monthly-users.png?astroContentImageFlag=&importer=src%2Fcontent%2Fdocs%2Fblog%2F2024-02.md";
 import __ASTRO_IMAGE_IMPORT_ZvID1h from "@images/2024-03-monthly-users.png?astroContentImageFlag=&importer=src%2Fcontent%2Fdocs%2Fblog%2F2024-03.md";
@@ -82,6 +84,8 @@ import __ASTRO_IMAGE_IMPORT_2f8e3P from "@images/wilson-colleen.jpeg?astroConten
 import __ASTRO_IMAGE_IMPORT_ZYtPaS from "@images/2024-10-monthly-users.png?astroContentImageFlag=&importer=src%2Fcontent%2Fdocs%2Fblog%2F2024-10.md";
 import __ASTRO_IMAGE_IMPORT_BRjOa from "@images/100000-crop.gif?astroContentImageFlag=&importer=src%2Fcontent%2Fdocs%2Fblog%2F2024-11.md";
 import __ASTRO_IMAGE_IMPORT_Z10vtOr from "@images/2024-11-monthly-users.png?astroContentImageFlag=&importer=src%2Fcontent%2Fdocs%2Fblog%2F2024-11.md";
+import __ASTRO_IMAGE_IMPORT_Zs0IjO from "@images/filling-the-growing-gap.png?astroContentImageFlag=&importer=src%2Fcontent%2Fdocs%2Fblog%2F2024-09.md";
+import __ASTRO_IMAGE_IMPORT_ZBSwTC from "@images/2024-09-monthly-users.png?astroContentImageFlag=&importer=src%2Fcontent%2Fdocs%2Fblog%2F2024-09.md";
 import __ASTRO_IMAGE_IMPORT_dMqbJ from "@images/wash-oregon.png?astroContentImageFlag=&importer=src%2Fcontent%2Fdocs%2Fblog%2F2024-12.md";
 import __ASTRO_IMAGE_IMPORT_Z11x8t0 from "@images/2024-12-monthly-users.png?astroContentImageFlag=&importer=src%2Fcontent%2Fdocs%2Fblog%2F2024-12.md";
 import __ASTRO_IMAGE_IMPORT_ZkVIue from "@images/BigTenConference.png?astroContentImageFlag=&importer=src%2Fcontent%2Fdocs%2Fblog%2F2025-01.md";

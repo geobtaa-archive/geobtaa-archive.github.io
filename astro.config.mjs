@@ -1,15 +1,19 @@
 import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
+import starlightVideos from 'starlight-videos'
 import starlightFullViewMode from 'starlight-fullview-mode';
+// import starlightLinksValidator from 'starlight-links-validator'
 import starlightBlog from 'starlight-blog';
 import react from '@astrojs/react';
+
+
 
 export default defineConfig({
   integrations: [
     starlight({
       title: 'BTAA-GIN',
       logo: {
-        src: '/public/btaa-gin-logo.png',
+        src: '/src/assets/images/btaa-gin-logo.svg',
         alt: 'BTAA-GIN',
         replacesTitle: true,
       },
@@ -22,11 +26,11 @@ export default defineConfig({
       },
       plugins: [
         starlightFullViewMode({
-          // Configuration options go here.
         }),
         starlightBlog({
           title: 'Blog',
         }),
+        // starlightLinksValidator(),
       ],
       sidebar: [
         {

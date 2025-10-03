@@ -179,8 +179,8 @@ We added new fields to our metadata application profile for more thorough docume
 
 ### **New Spatial/Technical Fields**
 
-| Label | URI | Description | Source/alignment | Example |
-| :---- | :---- | :---- | :---- | :---- |
+| Label | URI      | Description | Source/alignment | Example |
+| :---- | :-------- | :---- | :---- | :---- |
 | **Conforms To** | `b1g_dct_conformsTo_sm` | The coordinate reference system expressed as a resolveable URI.   | This field is from Dublin Core. Our usage aligns with the DCAT-3 profile | Minnesota--Itasca County. (2025). *Forest Inventory \[Minnesota--Itasca County\] {2025}*. BTAA-GIN. (dataset) [https://geodev.btaa.org/catalog/btaa\_a42e393b-287e-401c-9c16-64e36dbd6ff5](https://geodev.btaa.org/catalog/btaa_a42e393b-287e-401c-9c16-64e36dbd6ff5) |
 | **Spatial Resolution in Meters** | `b1g_dcat_spatialResolutionInMeters_sm` | The resolution of a raster dataset  | This is a custom DCAT-3 field | Indiana. Geological Survey. (2015). *Aquifer sensitivity in shallow aquifers \[Indiana\] {2015}*. BTAA-GIN. (dataset) [https://geodev.btaa.org/catalog/btaa-0d1f5c0e-f93f-4889-be34-16104f9c6927](https://geodev.btaa.org/catalog/btaa-0d1f5c0e-f93f-4889-be34-16104f9c6927) |
 | **Spatial Resolution as Text** | `b1g_geodcat_spatialResolutionAsText_sm` | A description of the resolution for any resource. Can be a scale, distance measure, or other free text.  | This is from GeoDCAT, a geospatial profile of DCAT | Indiana. Geological Survey. (2002). *County Boundaries \[Indiana\] {2002}*. BTAA-GIN. (dataset) [https://geodev.btaa.org/catalog/btaa-6b8461b9-040c-4a7c-b09b-fde0c886c7f2](https://geodev.btaa.org/catalog/btaa-6b8461b9-040c-4a7c-b09b-fde0c886c7f2) |
@@ -243,15 +243,15 @@ As we expand our geodata collection and storage capabilities, creating derivativ
 
 ### 2. PMTiles
 
-#### *What Are PMTiles?*
+#### What Are PMTiles?
 
 PMTiles is a single-file archive format designed for storing pyramids of tiled geospatial data. The format supports datasets addressed by Z/X/Y coordinates, including vector tiles, imagery, and remote sensing data. PMTiles archives can be hosted on platforms like Amazon S3, where they are accessed via HTTP range requests. This enables low-cost, zero-maintenance web mapping applications by minimizing the overhead of traditional web servers.
 
-#### *Why Use PMTiles?* 
+#### Why Use PMTiles?
 
 PMTiles allows us to create web-friendly datasets that can be embedded into web maps without requiring users to download the data. Unlike traditional geospatial web servers like GeoServer or ArcGIS, PMTiles simplifies deployment and management.
 
-#### *Current Limitations* 
+#### Current Limitations 
 
 While GeoBlacklight can display PMTiles as overlays, features such as styled layers or querying datasets are not yet supported. These enhancements are part of GeoBlacklight’s future development roadmap.
 
@@ -261,15 +261,15 @@ While GeoBlacklight can display PMTiles as overlays, features such as styled lay
 
 ### 3. Cloud Optimized GeoTIFFs (COGs)
 
-#### *What Are COGs?*
+#### What Are COGs?
 
 A Cloud Optimized GeoTIFF (COG) is an enhanced version of the standard GeoTIFF format. It is internally organized to optimize data access in cloud environments, leveraging features like tiling, overviews, and streaming capabilities. Clients can retrieve only the parts of a file they need using HTTP range requests, which improves performance and reduces bandwidth.
 
-#### *Why Use COGs?* 
+#### Why Use COGs?
 
 COGs serve the same purpose as PMTiles for raster datasets, enabling browser-based visualization without the need for a dedicated web server. They are ideal for high-resolution imagery and other large raster files.
 
-#### *Key Features*
+#### Key Features
 
 * Backward compatibility: All COG files are valid GeoTIFFs.  
 * Open standard: Developed by the Open Geospatial Consortium (OGC), the COG specification is free to use and implement.
@@ -300,7 +300,7 @@ While this approach has improved accessibility, many of our data dictionaries re
 
 We developed several Python scripts to enhance metadata and data processing capabilities. These tools support the collection, documentation, and curation of geospatial datasets, aligning with geospatial metadata standards and improving user experience.
 
-### 1\. Extract Technical Metadata
+### 1. Extract Technical Metadata
 
 * Modules Used: `geopandas`, `pandas`, `rasterio`, `shapely`  
 * Recipe: [Extract Technical Metadata](https://github.com/geobtaa/harvesting-guide/blob/main/recipes/R-16_extract/R-16_extract-geopandas.ipynb)
@@ -435,14 +435,14 @@ To streamline the management of access links (referred to as "References" in Geo
 
 #### **How It Works**
 
-#### *Option 1: Manual Entry*
+#### Option 1: Manual Entry
 
 1. From the item page, click **“Distributions.”**  
 2. Navigate to the **External – Document Distributions** section.  
 3. Enter the reference type and URL.  
 4. Click **“Create Download URL.”**
 
-#### *Option 2: Batch Upload*
+#### Option 2: Batch Upload
 
 1. Prepare a CSV with the following columns:  
    * `friendlier_id`: ID of the main record.  
@@ -485,13 +485,13 @@ To streamline the management of access links (referred to as "References" in Geo
 
 Data dictionaries are essential for documenting field names, types, and values. Previously, these were only stored as static files (e.g., XML, CSV). With the enhancements to GBL Admin, data dictionaries can now be managed in a relational database, offering flexibility and improved displays.
 
-#### **Benefits**
+#### Benefits
 
 * **Editable and Dynamic**: Data dictionaries can be updated in the database as new information becomes available.  
 * **Enhanced Presentation**: Information can be displayed dynamically on item pages.  
 * **Export Options**: Users can export the data dictionary in a structured format.
 
-#### **How It Works**
+#### How It Works
 
 1. Prepare a CSV with the following headers:  
    * `friendlier_id`: ID of the parent record.  
@@ -511,17 +511,17 @@ Once the data dictionary has been created, administrators can add, edit, or dele
 
 This is an initial framework for the steps needed to process datasets for inclusion in the collection.
 
-1\. **Metadata harvest**: Use the [BTAA-GIN Harvesting Guide recipes](https://github.com/geobtaa/harvesting-guide/tree/main/recipes) to parse metadata from APIs, individual files, and HTML sites.
+1\. Metadata harvest: Use the [BTAA-GIN Harvesting Guide recipes](https://github.com/geobtaa/harvesting-guide/tree/main/recipes) to parse metadata from APIs, individual files, and HTML sites.
 
-2\. **Download data**: Download datasets manually or with a batch download tool like [WGET](https://en.wikipedia.org/wiki/Wget)
+2\. Download data: Download datasets manually or with a batch download tool like [WGET](https://en.wikipedia.org/wiki/Wget)
 
-3\. **Extract technical metadata**: Use the new [extraction scripts](https://github.com/geobtaa/harvesting-guide/tree/main/recipes/R-16_extract) for spatial and technical metadata
+3\. Extract technical metadata: Use the new [extraction scripts](https://github.com/geobtaa/harvesting-guide/tree/main/recipes/R-16_extract) for spatial and technical metadata
 
-4\. **Merge metadata**: Merge the metadata output from step 1 and step 3\. Review and clean the values as needed.
+4\. Merge metadata: Merge the metadata output from step 1 and step 3\. Review and clean the values as needed.
 
-5\. **Generate derivatives**: Use the new [generator scripts](https://github.com/geobtaa/harvesting-guide/tree/main/recipes/R-16_extract) to create thumbnails, PMTiles, and/or COGs
+5\. Generate derivatives: Use the new [generator scripts](https://github.com/geobtaa/harvesting-guide/tree/main/recipes/R-16_extract) to create thumbnails, PMTiles, and/or COGs
 
-6\. **Upload packages**: Upload the metadata, datasets, and derivatives to GBL Admin.
+6\. Upload packages: Upload the metadata, datasets, and derivatives to GBL Admin.
 
 ## Pilot Collection Inventory
 
@@ -587,48 +587,56 @@ The Geodata Collection Roadmap includes five overlapping phases.
 
 ### Phase 2: Groundwork (2024–2025)
 
-* **2A. Setup (Q1–Q2 2024\)**  
-     * Form Pilot Working Group.  
-     * Establish S3 storage and basic ingest tools.  
-     * Create and test sample datasets.  
-     * Publish the Geodata Collection Implementation Plan.  
+#### 2A. Setup (Q1–Q2 2024\)
+
+* Form Pilot Working Group.  
+* Establish S3 storage and basic ingest tools.  
+* Create and test sample datasets.  
+* Publish the Geodata Collection Implementation Plan.  
     
-* **2B. Pilot (Q3 2024–Q1 2025\)**  
-     * Build a pilot collection and test workflows.  
-     * Enhance metadata and technology tools.  
-     * Onboard new hire for Program & Outreach Coordinator.  
-     * Publish a final report on pilot activities.
+#### 2B. Pilot (Q3 2024–Q1 2025\)  
+
+* Build a pilot collection and test workflows.  
+* Enhance metadata and technology tools.  
+* Onboard new hire for Program & Outreach Coordinator.  
+* Publish a final report on pilot activities.
 
 ### Phase 3: Foundation (2025–2026)
 
-* **3A. Partnerships & Technology (Q1–Q3 2025\)**  
-     * Begin partnerships with initial data providers.  
-     * Develop workflows and data agreements.  
-     * Redesign Geoportal interface for downloads and metadata.  
-     
-* **3B. Collection & Curation Plan (Q3 2025–Q1 2026\)**  
-     * Collect and curate datasets from partners.  
-     * Test batch ingest functionality.  
-     * Publish Curation Plan Version 1\.
+#### 3A. Partnerships & Technology (Q1–Q3 2025\)
+
+* Begin partnerships with initial data providers.  
+* Develop workflows and data agreements.  
+* Redesign Geoportal interface for downloads and metadata.  
+
+#### 3B. Collection & Curation Plan (Q3 2025–Q1 2026\)
+
+* Collect and curate datasets from partners.  
+* Test batch ingest functionality.  
+* Publish Curation Plan Version 1\.
 
 ### Phase 4: Framework (2026)
 
-* **4A. Expand (Q1–Q4 2026\)**  
-     * Expand partnerships and collections.  
-     * Incorporate additional and multipart formats  
+#### 4A. Expand (Q1–Q4 2026\)
 
-* **4B. Curate (Q1–Q4 2026\)**  
-     * Establish regular cycles for collection.  
-     * Implement additional batch processing techniques  
-     * Publish Curation Plan Version 2\.
+* Expand partnerships and collections.  
+* Incorporate additional and multipart formats  
+
+#### 4B. Curate (Q1–Q4 2026\)
+
+* Establish regular cycles for collection.  
+* Implement additional batch processing techniques  
+* Publish Curation Plan Version 2\.
 
 ### Phase 5: Lantern (2026-27)
 
-* **5A. Outreach (Q1–Q4 2026\)**  
-     * Launch outreach and communication strategies.  
-     * Present at conferences and host webinars.  
-     * Highlight project benefits through materials.  
-* **5B. Evaluation**  
-     * Gather stakeholder feedback.  
-     * Assess impact and refine workflows.  
-     * Evaluate long-term sustainability.
+#### 5A. Outreach (Q1–Q4 2026\)
+
+* Launch outreach and communication strategies.  
+* Present at conferences and host webinars.  
+* Highlight project benefits through materials.
+
+#### 5B. Evaluation  
+* Gather stakeholder feedback.  
+* Assess impact and refine workflows.  
+* Evaluate long-term sustainability.
