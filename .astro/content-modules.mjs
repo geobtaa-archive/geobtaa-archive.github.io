@@ -19,5 +19,6 @@ export default new Map([
 ["src/content/docs/projects/metadata.mdx", () => import("astro:content-layer-deferred-module?astro%3Acontent-layer-deferred-module=&fileName=src%2Fcontent%2Fdocs%2Fprojects%2Fmetadata.mdx&astroContentModuleFlag=true")],
 ["src/content/docs/projects/scholarship.mdx", () => import("astro:content-layer-deferred-module?astro%3Acontent-layer-deferred-module=&fileName=src%2Fcontent%2Fdocs%2Fprojects%2Fscholarship.mdx&astroContentModuleFlag=true")],
 ["src/content/docs/projects/tutorials.mdx", () => import("astro:content-layer-deferred-module?astro%3Acontent-layer-deferred-module=&fileName=src%2Fcontent%2Fdocs%2Fprojects%2Ftutorials.mdx&astroContentModuleFlag=true")],
-["src/content/docs/library/tutorials/01_types-of-geospatial-information.mdx", () => import("astro:content-layer-deferred-module?astro%3Acontent-layer-deferred-module=&fileName=src%2Fcontent%2Fdocs%2Flibrary%2Ftutorials%2F01_types-of-geospatial-information.mdx&astroContentModuleFlag=true")]]);
+["src/content/docs/library/tutorials/01_types-of-geospatial-information.mdx", () => import("astro:content-layer-deferred-module?astro%3Acontent-layer-deferred-module=&fileName=src%2Fcontent%2Fdocs%2Flibrary%2Ftutorials%2F01_types-of-geospatial-information.mdx&astroContentModuleFlag=true")],
+["src/content/docs/library/tutorials/02_find-maps.mdx", () => import("astro:content-layer-deferred-module?astro%3Acontent-layer-deferred-module=&fileName=src%2Fcontent%2Fdocs%2Flibrary%2Ftutorials%2F02_find-maps.mdx&astroContentModuleFlag=true")]]);
 		
