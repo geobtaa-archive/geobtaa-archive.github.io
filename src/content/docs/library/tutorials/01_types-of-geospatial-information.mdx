@@ -14,19 +14,31 @@ import Slideshow from '/src/components/Slideshow.astro';
 import { Card, CardGrid } from '@astrojs/starlight/components';
 import { ShowcaseImage } from 'starlight-showcases'
 import TwoThirdsLayout from '/src/components/TwoThirdsLayout.astro';
+import CoverSlide from '/src/components/CoverSlide.astro';
+import MetadataBlock from '/src/components/MetadataBlock.astro';
 
 <Slideshow>
 
+<CoverSlide>
+  <span slot="title">Types of Geospatial Information</span>
+  <span slot="subtitle">This tutorial is designed to introduce you different types of geospatial information that are usually used in GIS and can be found from geospatial data portals such as the BTAA Geoportal.</span>
+</CoverSlide>
+
+---
+
 ## Overview
 
-**Purpose**: This tutorial is designed to introduce you different types of geospatial information that are usually used in GIS and can be found from geospatial data portals such as the BTAA Geoportal.
-
-**Estimated time to complete**: 30-40 minutes
-
-**Prepared by**: Nicole Kong, Associate Professor, GIS Specialist, Purdue University (kongn@purdue.edu). 
-
-**License**: Except where otherwise noted, content in this tutorial is licensed under a [Creative Commons Attribution 4.0 International license](https://creativecommons.org/licenses/by/4.0/).
-
+<MetadataBlock>
+  <Fragment slot="author">
+    Nicole Kong, Associate Professor, GIS Specialist, Purdue University (kongn@purdue.edu)
+  </Fragment>
+  <Fragment slot="time">
+    30-40 minutes
+  </Fragment>
+  <Fragment slot="license">
+    Except where otherwise noted, content in this tutorial is licensed under a <a href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International license</a>.
+  </Fragment>
+  </MetadataBlock>
 
 ---
 
