@@ -119,7 +119,7 @@
       slides.forEach((slide, i) => {
         slide.classList.toggle('active', i === index);
       });
-      if(counter) counter.textContent = `Slide ${index + 1} of ${slides.length}`;
+      if(counter) counter.textContent = `Page ${index + 1} of ${slides.length}`;
       if(prevBtn) prevBtn.disabled = index === 0;
       if(nextBtn) nextBtn.disabled = index === slides.length - 1;
     }
