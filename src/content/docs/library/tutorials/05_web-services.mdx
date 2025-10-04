@@ -11,7 +11,6 @@ tags:
 ---
 import Slideshow from '/src/components/Slideshow.astro';
 import { Card, CardGrid } from '@astrojs/starlight/components';
-import { ShowcaseImage } from 'starlight-showcases'
 import TwoThirdsLayout from '/src/components/TwoThirdsLayout.astro';
 import ThreeColumnLayout from '/src/components/ThreeColumnLayout.astro';
 import { Steps } from '@astrojs/starlight/components';
@@ -140,8 +139,6 @@ Now that you have access to a web service, you will want to know how to use it i
       <OneThirdLayout>
       ![Add an ArcGIS FeatureServer Layer in QGIS](@images/qgis-add-layer.jpg)
       </OneThirdLayout>
-         
-   
    
 2. In the window that opens, click “New” to establish a new connection between QGIS and the web service.
       <OneThirdLayout>
@@ -186,16 +183,19 @@ For this exercise, we will use ArcGIS Pro.
       ![ArcGIS Pro Insert Tab](@images/arcgis-pro-insert.png)
       *ArcGIS Pro Insert Tab*
     </OneThirdLayout>
+
 2. Click “New ArcGIS Server.”	
     <OneThirdLayout>
 	   ![ArcGIS Pro Connections](@images/arcgis-pro-connections.png)
       *ArcGIS Pro Connections. In these options, you will also notice options for other types of web services. You can experiment with adding these later.*
     </OneThirdLayout>
+
 3. Paste the URL obtained from the geoportal into the empty box next to Server URL and click “OK.”
     <OneThirdLayout>
 	   ![ArcGIS Pro Add Connection](@images/arcgis-pro-add-connection.png)
       *ArcGIS Pro Add Connection*
     </OneThirdLayout>
+
 4. In the Catalog window, open “Project,” expand “Servers,” and expand the service you just connected.
     <OneThirdLayout>
    ![ArcGIS Pro Project Tab](@images/arcgis-pro-project-tab.png)
@@ -242,7 +242,6 @@ Make sure to select “An ArcGIS Server Web Service” for this data. You will a
 
    ![ArcGIS Online](@images/arcgis-online-content.png)*ArcGIS Online Add Layer. ArcGIS Online will automatically add the data to your map window. You will notice that there is a high density of similar symbols, but you now have data from a web service in your map window!*
 	
-	
 3. Look at the attribute table and play around with editing the symbology based on one of the fields. There is a lot of interesting info!
 
 	
@@ -272,7 +271,9 @@ For this exercise, we will use ArcGIS Desktop.
    ![ArcGIS Desktop](@images/arcgis-desktop-4.png)*ArcGIS Desktop*
 	
 5. In the Catalog window, expand the service you just connected. Expand “OneStop.”
+
 6. Drag and drop “QueryEnvFacs” into your map window. Add a basemap if you have not done so.
+
 7. In the Table of Contents, maximize “OneStop/QueryEnvFacs, find “Leaking Underground Storage Tanks” and tick the box next to it.
     
    ![ArcGIS Desktop](@images/arcgis-desktop-5.png)*ArcGIS Desktop*

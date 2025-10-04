@@ -5,19 +5,53 @@ authors:
     name: Milan Budhathoki
     title: University of Maryland
 date: 2021-08-16
+tableOfContents: false
 tags:
   - Tutorials
+---
+import Slideshow from '/src/components/Slideshow.astro';
+import { Card, CardGrid } from '@astrojs/starlight/components';
+import TwoThirdsLayout from '/src/components/TwoThirdsLayout.astro';
+import ThreeColumnLayout from '/src/components/ThreeColumnLayout.astro';
+import { Steps } from '@astrojs/starlight/components';
+import { ShowcaseText } from 'starlight-showcases';
+import CoverSlide from '/src/components/CoverSlide.astro';
+import MetadataBlock from '/src/components/MetadataBlock.astro';
+import QuestionAside from '/src/components/QuestionAside.astro';
+import { Image } from 'astro:assets';
+import OneThirdLayout from '/src/components/OneThirdLayout.astro';
+
+<Slideshow>
+<CoverSlide>
+  <span slot="title"></span>
+  <span slot="subtitle"></span>
+</CoverSlide>
+
+## About This Tutorial
+
+<MetadataBlock>
+  <Fragment slot="author">
+
+  </Fragment>
+  <Fragment slot="time">
+
+  </Fragment>
+  <Fragment slot="license">
+    Except where otherwise noted, content in this tutorial is licensed under a <a href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International license</a>.
+  </Fragment>
+ 
+</MetadataBlock>
 ---
 
 :::note
 
-:material-arrow-right-box: Purpose: To provides the basic concept of LiDAR dataset and point cloud processing in ArcGIS Pro.
+Purpose: To provides the basic concept of LiDAR dataset and point cloud processing in ArcGIS Pro.
 
-:timer: Estimated time to complete: 40-50 minutes
+Estimated time to complete: 40-50 minutes
 
-:fontawesome-solid-user: Prepared by: Milan Budhathoki, GISP, Geospatial Librarian, GIS and Spatial Data Center, University of Maryland Libraries (mb17@umd.edu). 
+Prepared by: Milan Budhathoki, GISP, Geospatial Librarian, GIS and Spatial Data Center, University of Maryland Libraries (mb17@umd.edu). 
 
-:material-creative-commons: These slides and the accompanying activities are licensed under a [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/) license.
+These slides and the accompanying activities are licensed under a [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/) license.
 :::
 
 ------------------------------
@@ -32,31 +66,31 @@ tags:
 
 Light Detection And Ranging (LiDAR) is an active remote sensing technique that uses pulsed laser energy to collect very high resolution and accurate elevation data across landscapes. LiDAR data can be collected from space, airborne sensors, stationary and mobile platforms.
 
-<figure markdown>
+<OneThirdLayout>
 
-![Media Options](@images/lidar-intro.png)<figcaption>Airborne and Stationary LiDAR Collection</figcaption>
+![Media Options](@images/lidar-intro.png)*Airborne and Stationary LiDAR Collection*
 
-</figure>
+</OneThirdLayout>
 
 **LiDAR Pulse Return**
 
 Depending upon the target object, the point cloud contains data points for scan hits and classified returns (Single Return- bare ground and Multiple Return-tree canopy).
 
-<figure markdown>
+<OneThirdLayout>
 
-![Media Options](@images/pulse-return.png)<figcaption>LiDAR Pulse Return, Credit: NEON</figcaption>
+![Media Options](@images/pulse-return.png)*LiDAR Pulse Return, Credit: NEON*
 
-</figure>
+</OneThirdLayout>
 
 **LiDAR Point Cloud**
 
 A LiDAR generated point cloud is a collection of points that stores 3D (XYZ) information along with other attributes (i.e classification, intensity, return number).
 
-<figure markdown>
+<OneThirdLayout>
 
-![Media Options](@images/point-cloud.png)<figcaption>LiDAR Point Cloud Showing Building and Trees</figcaption>
+![Media Options](@images/point-cloud.png)*LiDAR Point Cloud Showing Building and Trees*
 
-</figure>
+</OneThirdLayout>
 
 ## Download LiDAR Point Cloud
 
@@ -72,11 +106,11 @@ A LiDAR generated point cloud is a collection of points that stores 3D (XYZ) inf
 
 6.  Click on the "More info" hyperlinked text will download the LiDAR point cloud for the selected tile area.
 
-<figure markdown>
+<OneThirdLayout>
 
-![Media Options](@images/washington-monument-grid.png)<figcaption>Select the Washington Monument Grid</figcaption>
+![Media Options](@images/washington-monument-grid.png)*Select the Washington Monument Grid*
 
-</figure>
+</OneThirdLayout>
 
 ## Loading LiDAR Data in ArcGIS Pro
 
@@ -86,21 +120,21 @@ A LiDAR generated point cloud is a collection of points that stores 3D (XYZ) inf
 
 2.  Add the downloaded .las dataset (i.e, 2015.las) in the 2D map. By default the las point clouds are rendered and symbolized based on elevation.
 
-<figure markdown>
+<OneThirdLayout>
 
-![Media Options](@images/las-2d.png)<figcaption>.las File in a 2D Map</figcaption>
+![Media Options](@images/las-2d.png)*.las File in a 2D Map*
 
-</figure>
+</OneThirdLayout>
 
 **Setting up 2D and 3D map view**
 
 1. Under the Insert menu bar, click to add New Local Scene then load the same .las dataset in 3D map window. The 3D map rendering gives a better view of the LiDAR point cloud with respect to the ground reality.
 
-<figure markdown>
+<OneThirdLayout>
 
-![Media Options](@images/las-3d.png)<figcaption>.las File in a 3D Map</figcaption>
+![Media Options](@images/las-3d.png)*.las File in a 3D Map*
 
-</figure>
+</OneThirdLayout>
 
 2. Now, let’s synchronize two map windows so the LiDAR data can be viewed side by side on both 2D and 3D scene.
 
@@ -108,11 +142,11 @@ A LiDAR generated point cloud is a collection of points that stores 3D (XYZ) inf
 Center and Scale. Now, dock the Scene window right to the Map
  window so that you can see both map frames as below:
 
-<figure markdown>
+<OneThirdLayout>
 
-![Media Options](@images/side-by-side.png)<figcaption>Side by Side in ArcPro</figcaption>
+![Media Options](@images/side-by-side.png)*Side by Side in ArcPro*
 
-</figure>
+</OneThirdLayout>
 
 **Symbolize Point Cloud**
 
@@ -120,11 +154,11 @@ Center and Scale. Now, dock the Scene window right to the Map
 
 2. Likewise, change the symbology for the 2015.ls layer in the Scene window. There are 20 plus classes that are represented by the point clouds. Your map windows may look like below:
 
-<figure markdown>
+<OneThirdLayout>
 
-![Media Options](@images/symbolize-point-cloud.png)<figcaption>Change the Symbology</figcaption>
+![Media Options](@images/symbolize-point-cloud.png)*Change the Symbology*
 
-</figure>
+</OneThirdLayout>
 
 **Filter Point Cloud**
 
@@ -134,11 +168,11 @@ Let’s filter the point cloud dataset that only represents vegetation and build
 
 2. Change the **Basemap** to Dark Gray Canvas so that the filtered features are stand out well.
 
-<figure markdown>
+<OneThirdLayout>
 
-![Media Options](@images/filter-point-cloud.png)<figcaption>Filtering for Trees and Buildings</figcaption>
+![Media Options](@images/filter-point-cloud.png)*Filtering for Trees and Buildings*
 
-</figure>
+</OneThirdLayout>
 
 ## Creating DEM and DSM from LiDAR
 
@@ -150,11 +184,11 @@ Let’s filter the point cloud dataset that only represents vegetation and build
 
     CHM (Canopy Height Model ): not an elevation but height or distance between the ground and top of the object (i.e, tree, building etc) 
 
-<figure markdown>
+<OneThirdLayout>
 
-![Media Options](@images/dem-dsm-chm.png)<figcaption>DEM, DSM, and CHM</figcaption>
+![Media Options](@images/dem-dsm-chm.png)*DEM, DSM, and CHM*
 
-</figure>
+</OneThirdLayout>
 
 **Creating DEM**
 
@@ -164,19 +198,19 @@ Let’s filter the point cloud dataset that only represents vegetation and build
 
 3. Open **LAS Dataset to Raster** geoprocessing tool then set up the parameters as shown in the image on the right and **Run** the tool.
 
-<figure markdown>
+<OneThirdLayout>
 
-![Media Options](@images/las-to-raster.png)<figcaption>LAS Dataset To Raster Tool</figcaption>
+![Media Options](@images/las-to-raster.png)*LAS Dataset To Raster Tool*
 
-</figure>
+</OneThirdLayout>
 
 New DEM which is named **WM_DEM** will be added to the map. Under the layer **Symbology** change the Color scheme to **Elevation #1** or any multipart color scheme to show elevation gradient. 
 
-<figure markdown>
+<OneThirdLayout>
 
-![Media Options](@images/wash-mon-dem.png)<figcaption>Washington Monument DEM</figcaption>
+![Media Options](@images/wash-mon-dem.png)*Washington Monument DEM*
 
-</figure>
+</OneThirdLayout>
 
 **Creating DSM**
 
@@ -186,16 +220,18 @@ New DEM which is named **WM_DEM** will be added to the map. Under the layer **Sy
 
 3. Open **LAS Dataset to Raster** geoprocessing tool then set up the parameters as shown in the image on the right and Run the tool.
 
-<figure markdown>
+<OneThirdLayout>
 
-![Media Options](@images/las-to-raster-max.png)<figcaption>Set Cell Assignment to Maximum</figcaption>
+![Media Options](@images/las-to-raster-max.png)*Set Cell Assignment to Maximum*
 
-</figure>
+</OneThirdLayout>
 
 The new DSM which is named **WM_DSM** will be added to the map. Under the layer **Symbology** change the Color scheme to **Elevation #1** or any multipart color scheme to show elevation gradient. 
 
-<figure markdown>
+<OneThirdLayout>
 
-![Media Options](@images/output-dsm.png)<figcaption>The Resulting DSM</figcaption>
+![Media Options](@images/output-dsm.png)*The Resulting DSM*
 
-</figure>
+</OneThirdLayout>
+
+</Slideshow>

@@ -5,19 +5,53 @@ authors:
   name: Jay Bowen
   title: University of Iowa
 date: 2021-06-09
+tableOfContents: false
 tags:
   - Tutorials
+---
+import Slideshow from '/src/components/Slideshow.astro';
+import { Card, CardGrid } from '@astrojs/starlight/components';
+import TwoThirdsLayout from '/src/components/TwoThirdsLayout.astro';
+import ThreeColumnLayout from '/src/components/ThreeColumnLayout.astro';
+import { Steps } from '@astrojs/starlight/components';
+import { ShowcaseText } from 'starlight-showcases';
+import CoverSlide from '/src/components/CoverSlide.astro';
+import MetadataBlock from '/src/components/MetadataBlock.astro';
+import QuestionAside from '/src/components/QuestionAside.astro';
+import { Image } from 'astro:assets';
+import OneThirdLayout from '/src/components/OneThirdLayout.astro';
+
+<Slideshow>
+<CoverSlide>
+  <span slot="title"></span>
+  <span slot="subtitle"></span>
+</CoverSlide>
+
+## About This Tutorial
+
+<MetadataBlock>
+  <Fragment slot="author">
+
+  </Fragment>
+  <Fragment slot="time">
+
+  </Fragment>
+  <Fragment slot="license">
+    Except where otherwise noted, content in this tutorial is licensed under a <a href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International license</a>.
+  </Fragment>
+ 
+</MetadataBlock>
 ---
 
 :::note
 
-:material-arrow-right-box: Purpose: To show users how to create an open-source GUI tool 	to calculate coverage.
+Purpose: To show users how to create an open-source GUI tool 	to calculate coverage.
 
-:timer: Estimated time to complete: 40-50 minutes
+Estimated time to complete: 40-50 minutes
 
-:fontawesome-solid-user: Prepared by: Jay Bowen, Geographic Information Specialist, University of Iowa (jay-bowen@uiowa.edu). 
+Prepared by: Jay Bowen, Geographic Information Specialist, University of Iowa (jay-bowen@uiowa.edu). 
 
-:material-creative-commons: These slides and the accompanying activities are licensed under a [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/) license.
+These slides and the accompanying activities are licensed under a [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/) license.
 :::
 
 ------------------------------
@@ -89,11 +123,11 @@ mkdir Desktop\zonal_statistics && mkdir Desktop\zonal_statistics\data && curl ht
 
 -   This will create a folder on your desktop called "zonal_statistics" and another folder called "data" within the desktop "zonal_statistics" folder. It will also download the Jupyter Notebook .ipynb file with all of the python code.
 
-<figure markdown>
+<OneThirdLayout>
 
-![Media Options](@images/directory-structure.png)<figcaption>Directory Structure</figcaption>
+![Media Options](@images/directory-structure.png)*Directory Structure*
 
-</figure>
+</OneThirdLayout>
 
 ## Gather and Prepare Data
 
@@ -103,21 +137,21 @@ mkdir Desktop\zonal_statistics && mkdir Desktop\zonal_statistics\data && curl ht
 
 -   Choose and open the [result](https://geo.btaa.org/catalog/2265abfa-0513-4a83-87a7-38304384d736) and click the "Original Raster Dataset" button at the right side of the page
 
-<figure markdown>
+<OneThirdLayout>
 
-![Media Options](@images/high-res-lc.png)<figcaption>Original Raster Dataset</figcaption>
+![Media Options](@images/high-res-lc.png)*Original Raster Dataset*
 
-</figure>
+</OneThirdLayout>
 
 -   From the list of counties, choose "Johnson"
 
 -   Download, unzip, and save the folder inside the "Desktop/zonal_statistics/data" folder you just created
 
-<figure markdown>
+<OneThirdLayout>
 
-![Media Options](@images/johnson-zip.png)<figcaption>Download, Unzip, & Save</figcaption>
+![Media Options](@images/johnson-zip.png)*Download, Unzip, & Save*
 
-</figure>
+</OneThirdLayout>
 
 -   Return to Terminal or Command Prompt and type the following code to download the Iowa City boundary files to your data folder:
 
@@ -127,11 +161,11 @@ curl https://github.com/jebowe3/zonalstats_jupyternotebook/raw/main/IowaCity_Sha
 
 -   Unzip this folder so that you have access to the shapefile within it
 
-<figure markdown>
+<OneThirdLayout>
 
-![Media Options](@images/unzipped-folder.png)<figcaption>Unzip Iowa_City_Poly.zip</figcaption>
+![Media Options](@images/unzipped-folder.png)*Unzip Iowa_City_Poly.zip*
 
-</figure>
+</OneThirdLayout>
 
 ## Download Necessary Programs
 
@@ -151,11 +185,11 @@ curl https://github.com/jebowe3/zonalstats_jupyternotebook/raw/main/IowaCity_Sha
      
      We tested this tutorial with Python 3.8 and Python 3.7.16. Newer Python packages may not work with the code presented here.
 
-<figure markdown>
+<OneThirdLayout>
 
-![Media Options](@images/anaconda-nav.png)<figcaption>Create an Environment in Anaconda</figcaption>
+![Media Options](@images/anaconda-nav.png)*Create an Environment in Anaconda*
 
-</figure>
+</OneThirdLayout>
 
 -   In Anaconda, return to "Home"
 
@@ -165,31 +199,31 @@ curl https://github.com/jebowe3/zonalstats_jupyternotebook/raw/main/IowaCity_Sha
 
 -   After installation, click "Launch"
 
-<figure markdown>
+<OneThirdLayout>
 
-![Media Options](@images/launch-jupyter.png)<figcaption>Launch Jupyter Notebook</figcaption>
+![Media Options](@images/launch-jupyter.png)*Launch Jupyter Notebook*
 
-</figure>
+</OneThirdLayout>
 
 -   Inside Jupyter Notebook, navigate to "Desktop/zonal_statistics"
 
 -   Click on the "ZonalStatistics.ipynb" file
 
-<figure markdown>
+<OneThirdLayout>
 
-![Media Options](@images/ipynb-file.png)<figcaption>Open ZonalStatistics.ipynb</figcaption>
+![Media Options](@images/ipynb-file.png)*Open ZonalStatistics.ipynb*
 
-</figure>
+</OneThirdLayout>
 
 -   You have already downloaded the sample data, so skip the first cell
 
 -   Run the cell under "Install Required Packages" to ensure that you have all of the necessary Python modules to run the code
 
-<figure markdown>
+<OneThirdLayout>
 
-![Media Options](@images/install-packages.png)<figcaption>Install Required Packages</figcaption>
+![Media Options](@images/install-packages.png)*Install Required Packages*
 
-</figure>
+</OneThirdLayout>
 
 -   Now, test the modules by running the cell under "Import Modules"
 
@@ -201,21 +235,21 @@ curl https://github.com/jebowe3/zonalstats_jupyternotebook/raw/main/IowaCity_Sha
 
 -   Here, City.shp is the Iowa City boundary, HRLC_2009_52 is the land cover of Johnson County. The land cover classes corresponding to tree canopy are 3 - 6, inclusive...
 
-<figure markdown>
+<OneThirdLayout>
 
-![Media Options](@images/input-form.png)<figcaption>GUI Input Form</figcaption>
+![Media Options](@images/input-form.png)*GUI Input Form*
 
-</figure>
+</OneThirdLayout>
 
 ## Explanation of the Code
 
 -   If you look inside the metadata xml file that comes with the land cover raster, you will see which classes correspond to which land covers. In this exercise, we are isolating tree coverage (values 3 to 6).
 
-<figure markdown>
+<OneThirdLayout>
 
-![Media Options](@images/lc-classes.png)<figcaption>Land Cover Metadata</figcaption>
+![Media Options](@images/lc-classes.png)*Land Cover Metadata*
 
-</figure>
+</OneThirdLayout>
 
 -   Now, while we wait for the code to run, let's take a more detailed look at what it is doing...
 
@@ -392,26 +426,28 @@ lines = ["AOI covered by selected raster classes: " + str(round(mean[0]*100,2))+
 tk.messagebox.showinfo("Zonal Statistics Summary", "\n".join(lines))
 ```
 
-<figure markdown>
+<OneThirdLayout>
 
-![Media Options](@images/progress-output.png)<figcaption>Progress Notes</figcaption>
+![Media Options](@images/progress-output.png)*Progress Notes*
 
-</figure>
+</OneThirdLayout>
 
 After processing finishes, it will produce a text box providing information about how much of the polygon is covered by the selected range of classes.
 
-<figure markdown>
+<OneThirdLayout>
 
-![Media Options](@images/zonal-stats-summary.png)<figcaption>Zonal Statistics Summary</figcaption>
+![Media Options](@images/zonal-stats-summary.png)*Zonal Statistics Summary*
 
-</figure>
+</OneThirdLayout>
 
 The tool will also output a reprojected raster file (raster2_reproject) that isolates your selected raster class range.
 
 In the screenshot, you can see the results, isolating the tree canopy classes from the input raster.
 
-<figure markdown>
+<OneThirdLayout>
 
-![Media Options](@images/ic-tree-canopy.png)<figcaption>Iowa City Tree Canopy Raster</figcaption>
+![Media Options](@images/ic-tree-canopy.png)*Iowa City Tree Canopy Raster*
 
-</figure>
+</OneThirdLayout>
+
+</Slideshow>
