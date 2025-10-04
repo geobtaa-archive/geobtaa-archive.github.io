@@ -9,20 +9,34 @@ tableOfContents: false
 tags:
   - Tutorials
 ---
+import Slideshow from '/src/components/Slideshow.astro';
+import { Card, CardGrid } from '@astrojs/starlight/components';
+import TwoThirdsLayout from '/src/components/TwoThirdsLayout.astro';
+import ThreeColumnLayout from '/src/components/ThreeColumnLayout.astro';
+import { Steps } from '@astrojs/starlight/components';
+import { ShowcaseText } from 'starlight-showcases';
+import CoverSlide from '/src/components/CoverSlide.astro';
+import MetadataBlock from '/src/components/MetadataBlock.astro';
+import QuestionAside from '/src/components/QuestionAside.astro';
+import OneThirdLayout from '/src/components/OneThirdLayout.astro';
+import CenterLayout from '/src/components/CenterLayout.astro';
+import { ShowcaseImage } from 'starlight-showcases';
+
 <Slideshow>
 <CoverSlide>
-  <span slot="title"></span>
-  <span slot="subtitle"></span>
+  <span slot="title">Story Maps</span>
+  <span slot="subtitle">This tutorial is designed as a brief introduction to the capabilities of ArcGIS Story Maps.</span>
 </CoverSlide>
 
+---
 ## About This Tutorial
 
 <MetadataBlock>
   <Fragment slot="author">
-
+  Ryan Mattke, Map and Geospatial Information Librarian, University of Minnesota (matt0089@umn.edu)
   </Fragment>
   <Fragment slot="time">
-
+  variable
   </Fragment>
   <Fragment slot="license">
     Except where otherwise noted, content in this tutorial is licensed under a <a href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International license</a>.
@@ -31,155 +45,145 @@ tags:
 </MetadataBlock>
 ---
 
-:::note
-
-Purpose: To provide a brief introduction to the capabilities of ArcGIS Story Maps.
-
-Estimated time to complete: variable
-
-Prepared by: Ryan Mattke, Map and Geospatial Information Librarian, University of Minnesota (matt0089@umn.edu). 
-
-These slides and the accompanying activities are licensed under a [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/) license.
-:::
-
-------------------------------
-
 
 ## Introduction
 
-Story Maps are an application within ArcGIS Online which allows you to integrate web maps with text, images, and other multimedia content.
+<TwoThirdsLayout>
+  <div slot="left">
+  Story Maps are an application within ArcGIS Online which allows you to integrate web maps with text, images, and other multimedia content.
 
-Story Maps allow you to:
+  Story Maps allow you to:
 
--   Put your web maps in context
+  - Put your web maps in context
+  - Compare web maps and data sets
+  - Experiment!
 
--   Compare web maps and data sets
-
--   Experiment!
-
-!!! tip
-
-	Click on any of the images in this tutorial to zoom in.
-
-<OneThirdLayout>
-
+</div>
+<div slot="right">
 ![Explore Stories](@images/explore-stories.png)*[Explore Stories](https://www.esri.com/en-us/arcgis/products/arcgis-storymaps/stories)*
-
-</OneThirdLayout>
+</div>
+</TwoThirdsLayout>
+---
 
 ## Basics
 
-The first step is to log on to ArcGIS Online, go to your Content section, and click Create then Story Maps.
+<TwoThirdsLayout>
+  <div slot="left">
+  ![Create Story Map](@images/start-story.png)*Create Story Map*
+  </div>
+  <div slot="right">
+  The first step is to log on to ArcGIS Online, go to your Content section, and click Create then Story Maps.
+  </div>
+</TwoThirdsLayout>
+---
 
-<OneThirdLayout>
+<TwoThirdsLayout>
+  <div slot="left">
+  ![Title and Content](@images/title-content.png)*Adding Title and Content*
+  </div>
+  <div slot="right">
+  - Give your story a title and a subtitle and/or an introduction.
+  
+  - Add cover image or video (upper right).
+  
+  - Click the “+” symbol to add content to the story map.
+  </div>
+</TwoThirdsLayout>
 
-![Create Story Map](@images/start-story.png)*Create Story Map*
+---
 
-</OneThirdLayout>
+<TwoThirdsLayout>
+  <div slot="left">
+  ![Credits](@images/credits.png)*Adding Credits*
+  </div>
+  <div slot="right">
+  Be sure to take advantage of the options (at the bottom/end of the story map) to add credits and content attribution.
+  </div>
+</TwoThirdsLayout>
 
-Give your story a title and a subtitle and/or an introduction.
+---
 
-Add cover image or video (upper right).
+<TwoThirdsLayout>
+  <div slot="right">
+  ![Content Options](@images/content-options.png)*Content Options*
+  </div>
+  <div slot="left">
+  Basic options for content:
+  - Text ‒ Options include heading, subheading, paragraph, large paragraph, bulleted list, numbered list, and quote
+  
+  - Button ‒ To highlight a link with text
+  
+  - Separator ‒ Insert a horizontal line
+  </div>
+</TwoThirdsLayout>
+---
 
-Click the “+” symbol to add content to the story map.
+<TwoThirdsLayout>
+  <div slot="left">
+  Media options for content:
 
-<OneThirdLayout>
+  -   Map ‒ Insert a web map or web app from ArcGIS Online
+  
+  -   Image ‒ Upload or link to a jpg, png, gif, or svg file
+  
+  -   Image Gallery ‒ Insert a gallery of up to 12 images
+  
+  -   Video ‒ Upload or link to video content
+  
+  -   Audio ‒ Upload or link to audio content
+  
+  -   Embed ‒ Embed using iframe code or a web url; this could be a website, or even another story map
+  
+  -   Swipe ‒ Compare two web maps or images
+  </div>
+  <div slot="right">
+  ![Media Options](@images/media-options.png)*Media Options*
+  </div>
+</TwoThirdsLayout>
 
-![Title and Content](@images/title-content.png)*Adding Title and Content*
-
-</OneThirdLayout>
-
-Be sure to take advantage of the options (at the bottom/end of the story map) to add credits and content attribution.
-
-<OneThirdLayout>
-
-![Credits](@images/credits.png)*Adding Credits*
-
-</OneThirdLayout>
-
-Basic options for content:
-
--   Text ‒ Options include heading, subheading, paragraph, , large paragraph, bulleted list, numbered list, and quote
-
--   Button ‒ To highlight a link with text
-
--   Separator ‒ Insert a horizontal line
-
-<OneThirdLayout>
-
-![Content Options](@images/content-options.png)*Content Options*
-
-</OneThirdLayout>
-
-Media options for content:
-
--   Map ‒ Insert a web map or web app from ArcGIS Online
-
--   Image ‒ Upload or link to a jpg, png, gif, or svg file
-
--   Image Gallery ‒ Insert a gallery of up to 12 images
-
--   Video ‒ Upload or link to video content
-
--   Audio ‒ Upload or link to audio content
-
--   Embed ‒ Embed using iframe code or a web url; this could be a website, or even another story map
-
--   Swipe ‒ Compare two web maps or images
-
-<OneThirdLayout>
-
-![Media Options](@images/media-options.png)*Media Options*
-
-</OneThirdLayout>
-
-Immersive options for content:
-
--   Slideshow ‒ Full screen, media-focused layout
-
--   Sidecar ‒ Stationary text/media panel with a scrolling narrative panel that can include web maps
-
--   Map tour ‒ Showcase a set of locations
+---
 
 ## Intermediate
 
-Once you have the basics down, try something a little more fancy... 
+<TwoThirdsLayout>
+  <div slot="left">
+  Once you have the basics down, try something a little more fancy... 
+  Immersive options for content:
+  -   Slideshow ‒ Full screen, media-focused layout
+  
+  -   Sidecar ‒ Stationary text/media panel with a scrolling narrative panel that can include web maps
+  
+  -   Map tour ‒ Showcase a set of locations
+  </div>
+  <div slot="right">
+  ![Immersive Options](@images/immersive.png)*Immersive Options*
+  </div>
+</TwoThirdsLayout>
 
-Immersive options for content:
-
--   Slideshow ‒ Full screen, media-focused layout
-
--   Sidecar ‒ Stationary text/media panel with a scrolling narrative panel that can include web maps
-
--   Map tour ‒ Showcase a set of locations
-
-<OneThirdLayout>
-
-![Immersive Options](@images/immersive.png)*Immersive Options*
-
-</OneThirdLayout>
+---
 
 ## Explore
 
-[Example Story Map from the Big Ten Academic Alliance Geospatial Data Project](https://storymaps.arcgis.com/stories/4c3e1c4e72764a43914862193574c028)
+[Example Story Map from the Big Ten Academic Alliance Geospatial Data Project](https://storymaps.arcgis.com/stories/4c3e1c4e72764a43914862193574c028) with the following features:
 
-<OneThirdLayout>
+<ShowcaseImage
+  entries={[
+    {
+      thumbnail: import('/src/assets/images/compare-maps.png'),
+      title: 'Compare maps',
+    },
+    {
+      thumbnail: import('/src/assets/images/open-data-status.png'),
+      title: 'Embedded web map',
+    },
+    {
+      thumbnail: import('/src/assets/images/compare-images.png'),
+      title: 'Compare images',
+    },
+  ]}
+/>
 
-![Compare Maps](@images/compare-maps.png)*Compare Maps*
-
-</OneThirdLayout>
-
-<OneThirdLayout>
-
-![Open Data Status](@images/open-data-status.png)*Open Data Status*
-
-</OneThirdLayout>
-
-<OneThirdLayout>
-
-![Compare Images](@images/compare-images.png)*Compare Images*
-
-</OneThirdLayout>
+---
 
 ## Resources
 

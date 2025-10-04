@@ -18,54 +18,38 @@ import { ShowcaseText } from 'starlight-showcases';
 import CoverSlide from '/src/components/CoverSlide.astro';
 import MetadataBlock from '/src/components/MetadataBlock.astro';
 import QuestionAside from '/src/components/QuestionAside.astro';
-import { Image } from 'astro:assets';
 import OneThirdLayout from '/src/components/OneThirdLayout.astro';
+import CenterLayout from '/src/components/CenterLayout.astro';
+import { Code } from '@astrojs/starlight/components';
+
 
 <Slideshow>
 <CoverSlide>
-  <span slot="title"></span>
-  <span slot="subtitle"></span>
+  <span slot="title">Build a Zonal Stats Tool with Python and Jupyter Notebook </span>
+  <span slot="subtitle">This tutorial is meant to show users how to create an open-source GUI tool that accepts a raster file and a polygon shapefile as inputs and calculates the coverage of a given range of raster classes within the shapefile polygon.</span>
 </CoverSlide>
 
+---
 ## About This Tutorial
 
 <MetadataBlock>
   <Fragment slot="author">
-
+	Jay Bowen, Geographic Information Specialist, University of Iowa
   </Fragment>
   <Fragment slot="time">
-
+	40-50 minutes
   </Fragment>
   <Fragment slot="license">
     Except where otherwise noted, content in this tutorial is licensed under a <a href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International license</a>.
   </Fragment>
- 
-</MetadataBlock>
----
-
-:::note
-
-Purpose: To show users how to create an open-source GUI tool 	to calculate coverage.
-
-Estimated time to complete: 40-50 minutes
-
-Prepared by: Jay Bowen, Geographic Information Specialist, University of Iowa (jay-bowen@uiowa.edu). 
-
-These slides and the accompanying activities are licensed under a [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/) license.
-:::
-
-------------------------------
-
-??? Note "Note for Instructors"
-
-    This tutorial is intended for both MacOS and Windows GIS users with a cursory understanding of how to use python scripts, regardless of whether they are graduate, undergraduate, or faculty/staff users. These users may wish to create easy to use free-standing analytical tools that they can run without desktop GIS software, but are unsure of how to write a script to create GUI-driven tools. 
+      This tutorial is intended for both MacOS and Windows GIS users with a cursory understanding of how to use python scripts, regardless of whether they are graduate, undergraduate, or faculty/staff users. These users may wish to create easy to use free-standing analytical tools that they can run without desktop GIS software, but are unsure of how to write a script to create GUI-driven tools. 
 
     This tutorial is meant to show users how to create an open-source GUI tool that accepts a raster file and a polygon shapefile as inputs and calculates the coverage of a given range of raster classes within the shapefile polygon. 
 
     The tutorial was designed for self-guided independent learning.
-
-------------------------------
-
+ 
+</MetadataBlock>
+---
 
 ## Introduction
 
@@ -75,9 +59,11 @@ Usually, people calculate this by turning to the ArcGIS tool suite, or by runnin
 
 In this example, you will begin with a land cover raster for the State of Iowa and a shapefile of Iowa City. The tutorial will walk through the installation and use of open-source Python packages in Jupyter Notebook and Anaconda-Navigator to calculate the percentage of Iowa City covered by tree canopy (represented by classes 3, 4, 5, and 6 in the raster data). 
 
-??? Note "Note"
+:::note
+This code is not meant to be run in IDLE or the ArcGIS Python Window.
+:::
 
-    **This code is not meant to be run in IDLE or the ArcGIS Python Window.**
+---
 
 ## Learning Objectives
 
@@ -89,143 +75,146 @@ Students will:
 
 3.  Implement these packages with Python scripting using Jupyter Notebook in Anaconda-Navigator to calculate zonal statistics for a range of raster classes within an area of interest defined by a shapefile polygon (% of Iowa City covered by tree canopy).
 
+---
+
 **Don’t have time to download and install Anaconda-Navigator and Jupyter Notebook?**
 
 -   That's fine! You can run the entire tutorial in [this Binder site for Jupyter Notebook](https://notebooks.gesis.org/binder/v2/gh/ui-libraries/Zonal_Statistics_Tool_JupyterNotebook/HEAD). Just follow the embedded link and click on the "ZonalStatistics_withWidgets.ipynb" file.
 
 -   If you decide to use the Binder tutorial, you may close out of this presentation.
 
-??? Note "Note" 
-    
-    The Binder tutorial replaces the tkinter GUI with ipywidgets in order to handle user inputs within Binder over the web.
+:::note
+The Binder tutorial replaces the tkinter GUI with ipywidgets in order to handle user inputs within Binder over the web.
+:::
+
+---
 
 ## Prepare Directory Structure
 
--   Open Terminal on Mac, or Command Prompt on Windows.
+<Steps>
 
--   If you are using Windows Command Prompt on an institutional or office PC and it defaults to a drive other than the C drive and your user name (such as H:\>), input the following to point it to the correct place on the C drive (replace "johnsmith" with your own user name) and press enter:
+1. Open Terminal on Mac, or Command Prompt on Windows.
 
-```
-	cd /d C:\Users\johnsmith
-```
+2. If you are using Windows Command Prompt on an institutional or office PC and it defaults to a drive other than the C drive and your user name (such as H:\>), input the following to point it to the correct place on the C drive (replace "johnsmith" with your own user name) and press enter:
 
--   In Mac Terminal,  input the following and leave Terminal open:
+	```
+		cd /d C:\Users\johnsmith
+	```
 
-```
-mkdir Desktop/zonal_statistics && mkdir Desktop/zonal_statistics/data && curl https://raw.githubusercontent.com/jebowe3/zonalstats_jupyternotebook/main/ZonalStatistics.ipynb -L -o Desktop/zonal_statistics/ZonalStatistics.ipynb
-```
+3. In Mac Terminal,  input the following and leave Terminal open:
 
--   In Windows Command Prompt, type the following and leave Command Prompt open:
+	```
+	mkdir Desktop/zonal_statistics && mkdir Desktop/zonal_statistics/data && curl https://raw.githubusercontent.com/jebowe3/zonalstats_jupyternotebook/main/ZonalStatistics.ipynb -L -o Desktop/zonal_statistics/ZonalStatistics.ipynb
+	```
 
-```
-mkdir Desktop\zonal_statistics && mkdir Desktop\zonal_statistics\data && curl https://raw.githubusercontent.com/jebowe3/zonalstats_jupyternotebook/main/ZonalStatistics.ipynb -L -o Desktop/zonal_statistics/ZonalStatistics.ipynb
-```
+4. In Windows Command Prompt, type the following and leave Command Prompt open:
 
--   This will create a folder on your desktop called "zonal_statistics" and another folder called "data" within the desktop "zonal_statistics" folder. It will also download the Jupyter Notebook .ipynb file with all of the python code.
+	```
+	mkdir Desktop\zonal_statistics && mkdir Desktop\zonal_statistics\data && curl https://raw.githubusercontent.com/jebowe3/zonalstats_jupyternotebook/main/ZonalStatistics.ipynb -L -o Desktop/zonal_statistics/ZonalStatistics.ipynb
+	```
 
-<OneThirdLayout>
+5. This will create a folder on your desktop called "zonal_statistics" and another folder called "data" within the desktop "zonal_statistics" folder. It will also download the Jupyter Notebook .ipynb file with all of the python code.
 
+</Steps>
+
+<CenterLayout>
 ![Media Options](@images/directory-structure.png)*Directory Structure*
+</CenterLayout>
 
-</OneThirdLayout>
+---
 
 ## Gather and Prepare Data
 
--   Open the [BTAA Geoportal](https://geo.btaa.org/)
+<Steps>
 
--   In the search bar, type "High Resolution Land Cover of Iowa in 2009 Counties: Iowa"
+1. Open the [BTAA Geoportal](https://geo.btaa.org/)
 
--   Choose and open the [result](https://geo.btaa.org/catalog/2265abfa-0513-4a83-87a7-38304384d736) and click the "Original Raster Dataset" button at the right side of the page
+2. In the search bar, type "High Resolution Land Cover of Iowa in 2009 Counties: Iowa"
 
-<OneThirdLayout>
+3. Choose and open the [result](https://geo.btaa.org/catalog/2265abfa-0513-4a83-87a7-38304384d736) and click the "Original Raster Dataset" button at the right side of the page
 
-![Media Options](@images/high-res-lc.png)*Original Raster Dataset*
+	<OneThirdLayout>
+	![Media Options](@images/high-res-lc.png)*Original Raster Dataset*
+	</OneThirdLayout>
 
-</OneThirdLayout>
+4. From the list of counties, choose "Johnson"
 
--   From the list of counties, choose "Johnson"
+5. Download, unzip, and save the folder inside the "Desktop/zonal_statistics/data" folder you just created
 
--   Download, unzip, and save the folder inside the "Desktop/zonal_statistics/data" folder you just created
+	<OneThirdLayout>
+	![Media Options](@images/johnson-zip.png)*Download, Unzip, & Save*
+	</OneThirdLayout>
 
-<OneThirdLayout>
+6. Return to Terminal or Command Prompt and type the following code to download the Iowa City boundary files to your data folder:
 
-![Media Options](@images/johnson-zip.png)*Download, Unzip, & Save*
+	```curl
+	curl https://github.com/jebowe3/zonalstats_jupyternotebook/raw/main/IowaCity_Shapefile.zip -L -o Desktop/zonal_statistics/data/Iowa_City_Poly.zip
+	```
 
-</OneThirdLayout>
+7. Unzip this folder so that you have access to the shapefile within it
 
--   Return to Terminal or Command Prompt and type the following code to download the Iowa City boundary files to your data folder:
+	<OneThirdLayout>
+	![Media Options](@images/unzipped-folder.png)*Unzip Iowa_City_Poly.zip*
+	</OneThirdLayout>
 
-```
-curl https://github.com/jebowe3/zonalstats_jupyternotebook/raw/main/IowaCity_Shapefile.zip -L -o Desktop/zonal_statistics/data/Iowa_City_Poly.zip
-```
-
--   Unzip this folder so that you have access to the shapefile within it
-
-<OneThirdLayout>
-
-![Media Options](@images/unzipped-folder.png)*Unzip Iowa_City_Poly.zip*
-
-</OneThirdLayout>
+</Steps>
+---
 
 ## Download Necessary Programs
 
--   Download the latest edition of Anaconda-Navigator
+<Steps>
 
--   [MacOS](https://www.anaconda.com/products/individual#macos)
+1. Download the latest edition of Anaconda-Navigator
+	- [MacOS](https://www.anaconda.com/products/individual#macos)
+	- [Windows](https://www.anaconda.com/products/individual#windows)
 
--   [Windows](https://www.anaconda.com/products/individual#windows)
+2. Open Anaconda-Navigator and select "Environments"
 
--   Open Anaconda-Navigator and select "Environments"
+3. Click the "Create" button and name the new environment "giscience"
 
--   Click the "Create" button and name the new environment "giscience"
+4. Create this environment with a Python package
 
--   Create this environment with a Python package
+	:::note
+	We tested this tutorial with Python 3.8 and Python 3.7.16. Newer Python packages may not work with the code presented here.
+	:::
 
-??? Note
-     
-     We tested this tutorial with Python 3.8 and Python 3.7.16. Newer Python packages may not work with the code presented here.
+	<OneThirdLayout>
+	![Media Options](@images/anaconda-nav.png)*Create an Environment in Anaconda*
+	</OneThirdLayout>
 
-<OneThirdLayout>
+5. In Anaconda, return to "Home"
 
-![Media Options](@images/anaconda-nav.png)*Create an Environment in Anaconda*
+6. Make sure the header reads "Applications on giscience"
 
-</OneThirdLayout>
+7. Find Jupyter Notebook and click "Install"
 
--   In Anaconda, return to "Home"
+8. After installation, click "Launch"
 
--   Make sure the header reads "Applications on giscience"
+	<OneThirdLayout>
+	![Media Options](@images/launch-jupyter.png)*Launch Jupyter Notebook*
+	</OneThirdLayout>
 
--   Find Jupyter Notebook and click "Install"
+9. Inside Jupyter Notebook, navigate to "Desktop/zonal_statistics"
 
--   After installation, click "Launch"
+10. Click on the "ZonalStatistics.ipynb" file
 
-<OneThirdLayout>
+	<OneThirdLayout>
+	![Media Options](@images/ipynb-file.png)*Open ZonalStatistics.ipynb*
+	</OneThirdLayout>
 
-![Media Options](@images/launch-jupyter.png)*Launch Jupyter Notebook*
+11. You have already downloaded the sample data, so skip the first cell
 
-</OneThirdLayout>
+12. Run the cell under "Install Required Packages" to ensure that you have all of the necessary Python modules to run the code
 
--   Inside Jupyter Notebook, navigate to "Desktop/zonal_statistics"
+	<OneThirdLayout>
+	![Media Options](@images/install-packages.png)*Install Required Packages*
+	</OneThirdLayout>
 
--   Click on the "ZonalStatistics.ipynb" file
+13. Now, test the modules by running the cell under "Import Modules"
 
-<OneThirdLayout>
+</Steps>
 
-![Media Options](@images/ipynb-file.png)*Open ZonalStatistics.ipynb*
-
-</OneThirdLayout>
-
--   You have already downloaded the sample data, so skip the first cell
-
--   Run the cell under "Install Required Packages" to ensure that you have all of the necessary Python modules to run the code
-
-<OneThirdLayout>
-
-![Media Options](@images/install-packages.png)*Install Required Packages*
-
-</OneThirdLayout>
-
--   Now, test the modules by running the cell under "Import Modules"
+---
 
 ## Run the Python Code
 
@@ -236,24 +225,22 @@ curl https://github.com/jebowe3/zonalstats_jupyternotebook/raw/main/IowaCity_Sha
 -   Here, City.shp is the Iowa City boundary, HRLC_2009_52 is the land cover of Johnson County. The land cover classes corresponding to tree canopy are 3 - 6, inclusive...
 
 <OneThirdLayout>
-
 ![Media Options](@images/input-form.png)*GUI Input Form*
-
 </OneThirdLayout>
+
+---
 
 ## Explanation of the Code
 
 -   If you look inside the metadata xml file that comes with the land cover raster, you will see which classes correspond to which land covers. In this exercise, we are isolating tree coverage (values 3 to 6).
 
-<OneThirdLayout>
-
-![Media Options](@images/lc-classes.png)*Land Cover Metadata*
-
-</OneThirdLayout>
+	<OneThirdLayout>
+	![Media Options](@images/lc-classes.png)*Land Cover Metadata*
+	</OneThirdLayout>
 
 -   Now, while we wait for the code to run, let's take a more detailed look at what it is doing...
 
-```
+```python
 import os
 import tkinter as tk
 from tkinter.filedialog import askdirectory
@@ -270,9 +257,10 @@ from rasterstats import zonal_stats
 
 The script above imports the packages that Python will need to make the tool run. The os module allows the script to interact with the operating system. Tkinter is a GUI package that allows you to build a dialog box / input form for the tool. The osgeo package offers open source libraries, like gdal and ogr, for working with geospatial data. The numpy library allows for mathematical computations, while rasterio and rasterstats allow you easy manipulation and analysis of raster data.
 
+---
 Also, you should notice how these lines of code interact with the code below to link the defined inputs to the GUI widgets. Notice that you have some control over the placement and appearance of these elements within the GUI. You can also edit the text.
 
-```
+```python
 	##  GUI Widgets
 	##  G-1. Shapefile Selection
 	##  1-Label
@@ -289,9 +277,11 @@ Also, you should notice how these lines of code interact with the code below to 
 	button_1.grid(row=0, column=3, padx=5, pady=5, sticky="E")
 ```
 
+---
+
 Let’s look at what happens after you click “OK”. The code below defines the form inputs with some more memorable names. It also ensures that the raster class inputs are parsed as numeric values, rather than as strings.
 
-```
+```python
 	##  Set input variables
 	input_zone_polygon = var_1.get()
 	input_value_raster = var_2.get()
@@ -302,10 +292,11 @@ Let’s look at what happens after you click “OK”. The code below defines th
 	low_class_int = int(low_class_str)
 	high_class_int = int(high_class_str)
 ```
+---
 
 A few lines below, you will see some code that defines the path to the raster file. Beneath this, is some code that isolates the file extension. Following this is a conditional test to isolate and define the driver, which we can use to create the new reclassified raster.
 
-```
+```python
 	## Get the directory path of the input raster
 	ras_dir_path = os.path.dirname(input_value_raster)
 	
@@ -322,9 +313,10 @@ A few lines below, you will see some code that defines the path to the raster fi
 	driver = gdal.GetDriverByName(drive)
 ```
 
+---
 The code below takes the input raster file and reassigns a binary classification based on the range the user defines in the dialog box. If the classes are higher or lower than the input range, these will be redefined as 0. If the classes match the desired range, they will be redefined as 1. Then, the code creates a new file called “raster2” in the same directory as the input raster and sets the projection.
 
-```
+```python
 	file = gdal.Open(input_value_raster)
 	band = file.GetRasterBand(1)
 	
@@ -355,10 +347,11 @@ The code below takes the input raster file and reassigns a binary classification
 	file2.SetGeoTransform(file.GetGeoTransform())
 	file2.SetProjection(file.GetProjection())
 ```
+---
 
 The following block of code assigns the newly defined classes to each pixel in the “raster2” file by reading the input pixel values as an array and assigning new values based on a translation of classification breaks from the input “classification_values” [0, 3, 7] to the output “classification_output_values” [0, 1, 0]. Thus, any value less than 3 or greater than or equal to 7 is reclassified as 0, while anything greater than or equal to 3 and less than 7 is reclassified as 1.
 
-```
+```python
 print('Reassigning raster values...please wait...')
 for i in range(0, ysize, y_block_size):
      if i + y_block_size < ysize:
@@ -384,10 +377,10 @@ for i in range(0, ysize, y_block_size):
 
 file2 = None 
 ```
-
+---
 Next, the script identifies the projection of the input shapefile and reprojects the “raster2” file to match the projection of the shapefile. The reprojected raster is then saved as “raster2_reproject” in the same directory as the input raster. This process is important because both the polygon and raster need to be in matching projections for the computation of zonal statistics.
 
-```
+```python
 # Get the EPSG code of the input shapefile
 shp_driver = ogr.GetDriverByName('ESRI Shapefile')
 dataset = shp_driver.Open(input_zone_polygon)
@@ -402,10 +395,10 @@ output_raster = ras_dir_path + '/raster2_reproject' + file_ext
 warp = gdal.Warp(output_raster,input_raster,dstSRS='EPSG:'+str(shp_epsg))
 warp = None
 ```
-
+---
 The following lines perform the zonal stats analysis and display the percent coverage of the input polygon by the selected raster classes, along with some supporting statistics in a message window that appears on the user’s screen after the analysis is complete.
 
-```
+```python
 zs = zonal_stats(input_zone_polygon,output_raster,stats=['min', 'max', 'mean', 'count', 'sum'])
 
 ## Hide the tkinter root box
@@ -426,28 +419,27 @@ lines = ["AOI covered by selected raster classes: " + str(round(mean[0]*100,2))+
 tk.messagebox.showinfo("Zonal Statistics Summary", "\n".join(lines))
 ```
 
-<OneThirdLayout>
-
+<CenterLayout>
 ![Media Options](@images/progress-output.png)*Progress Notes*
+</CenterLayout>
 
-</OneThirdLayout>
+---
+## Results
 
 After processing finishes, it will produce a text box providing information about how much of the polygon is covered by the selected range of classes.
 
 <OneThirdLayout>
-
 ![Media Options](@images/zonal-stats-summary.png)*Zonal Statistics Summary*
-
 </OneThirdLayout>
 
 The tool will also output a reprojected raster file (raster2_reproject) that isolates your selected raster class range.
 
+---
+
 In the screenshot, you can see the results, isolating the tree canopy classes from the input raster.
 
 <OneThirdLayout>
-
 ![Media Options](@images/ic-tree-canopy.png)*Iowa City Tree Canopy Raster*
-
 </OneThirdLayout>
 
 </Slideshow>
