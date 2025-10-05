@@ -28,15 +28,6 @@ font-family: var(--font-family-heading);
 
 }
 
-h1, h2, h3, h4, h5, h6 {
-font-weight: 100;
-}
-
-.level-h2 {
-    font-size: 1.2;
-    font-weight: 100;
-}
-
 body {
 font-family: var(--font-family-body);
 font-size: 1rem;
@@ -47,8 +38,8 @@ background: var(--sl-color-bg);
 
 /* Scaled heading sizes */
 main h1 { font-size: 1.8rem; }
-main h2 { font-size: 1.5rem; }
-main h3 { font-size: 1.2rem; }
+main h2 { font-size: 1.5rem; font-weight:100;}
+main h3 { font-size: 1.2rem; font-weight:100;}
 main h4 { font-size: 1.1rem; }
 main h5 { font-size: 1.0rem; }
 main h6 { font-size: 1.0rem; }
