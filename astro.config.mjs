@@ -50,7 +50,11 @@ export default defineConfig({
       },
       {
         label: 'Big Ten GIS Conference',
-        link: '/conference/',
+        items: [
+        'conference',
+        'conference/map-gallery',
+        ]
+        
       },
       {
         label: 'Document Library',

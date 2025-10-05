@@ -1,8 +1,6 @@
 ---
 title: Workgroups
 description: 'Our current and sunsetted workgroups'
-sidebar:
-  order: 5
 ---
 
 Committees periodically charge short term Working Groups to complete specific projects or tasks.
