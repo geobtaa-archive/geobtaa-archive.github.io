@@ -4,6 +4,20 @@ description: 'Our mission, values, and vision'
 sidebar:
   order: 4
 ---
+import coverUrl from '/src/assets/images/cover.png';
+import logoUrl from '/src/assets/images/btaa-gin-logo.svg';
+
+ {/* Slim hero that echoes the homepage */}
+  <section
+    class="about-hero"
+    style={`--about-bg: url(${coverUrl.src});`}
+    aria-labelledby="about-hero-title"
+  >
+    <img src={logoUrl} alt="" class="about-hero__logo" decoding="async" loading="eager" />
+    <h1 id="about-hero-title" class="sr-only">About the Big Ten Academic Alliance Geospatial Information Network</h1>
+    <p class="about-hero__tagline">We support the geospatial research community and foster connections among geospatial library professionals.</p>
+  </section>
+
 
 ## Our Mission
 
