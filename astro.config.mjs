@@ -34,9 +34,9 @@ export default defineConfig({
       sidebar: [
       { label: 'Geospatial Information Network',
         items: [
-          { label: 'About', autogenerate: { directory: 'about' } },
-          { label: 'Projects', autogenerate: { directory: 'projects' } },
-          {label: 'Scholarship',
+          { label: 'About', collapsed: true, autogenerate: { directory: 'about' } },
+          { label: 'Projects', collapsed: true, autogenerate: { directory: 'projects' } },
+          {label: 'Scholarship', collapsed: true, 
               items: [
                 { label: 'Document Library', link: '/library/' },
                 { label: 'Publications', link: '/scholarship/publications/' },
@@ -46,8 +46,8 @@ export default defineConfig({
       },
       { label: 'Community',
         items: [
-        { label: 'User Resources', autogenerate: { directory: 'user-resources' } },
-        { label: 'Big Ten Conference',
+        { label: 'User Resources', collapsed: true, autogenerate: { directory: 'user-resources' } },
+        { label: 'Big Ten Conference', collapsed: true, 
             items: [
                 { label: 'About', link: '/conference/' },
                 { label: 'Map Gallery', link: '/conference/map-gallery/' },
