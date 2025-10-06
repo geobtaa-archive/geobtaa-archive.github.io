@@ -45,6 +45,29 @@ const uid = `institutions-map-${Math.random().toString(36).slice(2)}`;
   :global(.leaflet-container .leaflet-tile) { border: 0 !important; box-shadow: none !important; outline: none !important; }
 
   :global(.leaflet-pane > svg path) { vector-effect: non-scaling-stroke; }
+
+  :global(.acc-zoom) {
+      display: grid;
+      gap: 6px;
+      padding: 6px;
+      background: rgba(255,255,255,.9);
+      border: 1px solid #ccc;
+      border-radius: 8px;
+    }
+  :global(.acc-zoom-btn) {
+    width: 34px; height: 34px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    background: #fff;
+    font-size: 18px; line-height: 1;
+    cursor: pointer;
+    }
+  :global(.acc-zoom-btn:focus-visible) {
+    outline: 2px solid #0066ff;
+    outline-offset: 2px;
+    }
+
+
 </style>
 
 <div class="map-shell not-content">
@@ -79,7 +102,47 @@ const uid = `institutions-map-${Math.random().toString(36).slice(2)}`;
     }
     if (!el) return;
 
-    const map = L.map(el, { zoomControl: true, attributionControl: true, preferCanvas: true });
+    const map = L.map(el, { zoomControl: false, attributionControl: true, preferCanvas: true });
+
+  // Accessible custom zoom control
+  const AccessibleZoom = L.Control.extend({
+    options: { position: 'topleft' },
+    onAdd: function () {
+      const container = L.DomUtil.create('div', 'acc-zoom');
+      container.setAttribute('role', 'group');
+      container.setAttribute('aria-label', 'Map zoom controls');
+
+      const zin = L.DomUtil.create('button', 'acc-zoom-btn', container);
+      zin.type = 'button';
+      zin.title = 'Zoom in';
+      zin.setAttribute('aria-label', 'Zoom in');
+      zin.textContent = '+';
+      zin.addEventListener('click', () => map.zoomIn());
+
+      const zout = L.DomUtil.create('button', 'acc-zoom-btn', container);
+      zout.type = 'button';
+      zout.title = 'Zoom out';
+      zout.setAttribute('aria-label', 'Zoom out');
+      zout.textContent = '–';
+      zout.addEventListener('click', () => map.zoomOut());
+
+      // Prevent map drag/scroll conflicts when interacting with the control
+      L.DomEvent.disableClickPropagation(container);
+      L.DomEvent.disableScrollPropagation(container);
+
+      // Keyboard handling (Enter/Space)
+      const onKey = (fn) => (e) => {
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); fn(); }
+      };
+      zin.addEventListener('keydown', onKey(() => map.zoomIn()));
+      zout.addEventListener('keydown', onKey(() => map.zoomOut()));
+
+      return container;
+    }
+  });
+  map.addControl(new AccessibleZoom());
+
+
 
     // Create a pane for polygons UNDER markers but ABOVE tiles
     map.createPane("polys");
