@@ -1,0 +1,280 @@
+---
+import coverImage from "../assets/images/cover.png";
+import logoUrl from "../assets/images/btaa-gin-logo.svg";
+
+const features = [
+  {
+    title: 'Open-Source Software',
+    body: 'Tools and services that power discovery and long-term access.',
+    href: '/projects/development/',
+  },
+  {
+    title: 'Geodata Collection',
+    body: 'Preserving datasets across member institutions with durable storage.',
+    href: '/projects/geodata-collection/',
+  },
+  {
+    title: 'Geospatial Metadata',
+    body: 'Standards, profiles, and pipelines for reusable open data.',
+    href: '/projects/metadata/',
+  },
+  {
+    title: 'Community Network',
+    body: 'Workgroups, shared practices, and peer support across the Big Ten.',
+    href: '/projects/workgroups/',
+  },
+];
+
+const highlights = [
+  {
+    eyebrow: 'Featured Publication',
+    title: 'Ephemeral Geodata: An Impending Digital Dark Age',
+    href: '/scholarship/publications/',
+    desc: 'Why libraries should steward at-risk geospatial datasets.',
+  },
+  {
+    eyebrow: 'Document Library',
+    title: 'Policies, Reports, and Guidance',
+    href: '/library/',
+    desc: 'A curated library of BTAA-GIN docs and related resources.',
+  },
+  {
+    eyebrow: 'Map Gallery',
+    title: 'Big Ten Map Gallery',
+    href: '/conference/map-gallery/',
+    desc: 'Highlights from member collections—historical and contemporary.',
+  },
+];
+---
+
+<main class="home">
+  <!-- HERO (image background) -->
+  <section
+    class="hero"
+    aria-labelledby="home-hero"
+    style={`--hero-bg: url(${coverImage.src});`}
+  >
+    <div class="hero__overlay" aria-hidden="true"></div>
+    <div class="hero__inner">
+      <!-- Visible logo; keep a hidden H1 for SEO/AT -->
+      <img
+        src={logoUrl.src || logoUrl}
+        alt=""
+        class="hero__logo"
+        decoding="async"
+        loading="eager"
+      />
+      <h1 id="home-hero" class="sr-only">Big Ten Academic Alliance Geospatial Information Network</h1>
+
+      <p class="hero__tagline">
+        Connecting libraries, researchers, and open data.
+      </p>
+      <div class="hero__cta">
+        <a class="btn btn--primary" href="https://geo.btaa.org">Explore the Geoportal</a>
+        <a class="btn btn--ghost" href="https://mailchi.mp/d146395039e5/coordinates-from-btaa-gin-signup-page">
+          Subscribe to <em>Coordinates</em>
+        </a>
+      </div>
+      <ul class="hero__quick">
+        <li><a href="/about/about-us/">About the BTAA-GIN</a></li>
+        <li><a href="/about/participants/">Team Members</a></li>
+        <li><a href="/user-resources/data-cite/">Data Citation Generator</a></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- WHAT WE DO -->
+  <section class="section" aria-labelledby="what-we-do">
+    <div class="wrap">
+      <h2 id="what-we-do" class="section__title">What we do</h2>
+      <div class="grid grid--features">
+        {features.map((f) => (
+          <a class="card card--feature" href={f.href}>
+            <h3>{f.title}</h3>
+            <p>{f.body}</p>
+            <span class="card__more" aria-hidden="true">Learn more →</span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- HIGHLIGHTS -->
+  <section class="section section--muted" aria-labelledby="highlights">
+    <div class="wrap">
+      <h2 id="highlights" class="section__title">Highlights</h2>
+      <div class="grid grid--highlights">
+        {highlights.map((h) => (
+          <a class="card card--highlight" href={h.href}>
+            <span class="eyebrow">{h.eyebrow}</span>
+            <h3>{h.title}</h3>
+            <p>{h.desc}</p>
+            <span class="card__more" aria-hidden="true">Open →</span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta" aria-labelledby="get-involved">
+    <div class="wrap cta__inner">
+      <div>
+        <h2 id="get-involved">Get involved</h2>
+        <p>Join a workgroup, contribute software, or help shape shared metadata practices.</p>
+      </div>
+      <div class="cta__buttons">
+        <a class="btn btn--primary" href="/projects/workgroups/">Join a Workgroup</a>
+        <a class="btn btn--ghost" href="/projects/development/">Contribute on Projects</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<style>
+  /* ===== Brand palette ===== */
+  :root {
+    --btaa-dark-blue: #003C5B;
+    --btaa-med-blue:  #005E8E;
+    --btaa-blue:      #0088CE;
+    --btaa-black:     #000000;
+    --btaa-gray:      #939598;
+    --btaa-light-gray:#F2F2F2;
+    --btaa-light-blue: rgba(0, 136, 206, 0.10);
+    --btaa-white:     #FFFFFF;
+    --btaa-green:     #2e7d32;
+  }
+
+  .home { min-height: 100%; }
+  .wrap { max-width: 1100px; margin-inline: auto; padding: 0 1rem; }
+
+  /* ===== Accessibility utility ===== */
+  .sr-only {
+    position: absolute;
+    width: 1px; height: 1px;
+    padding: 0; margin: -1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0); clip-path: inset(50%);
+    white-space: nowrap; border: 0;
+  }
+
+  /* ===== HERO (image background + overlay) ===== */
+  .hero {
+    position: relative;
+    padding: clamp(4rem, 7vw, 7rem) 1rem;
+    text-align: center;
+    color: var(--btaa-white);
+    background-image: var(--hero-bg);
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    isolation: isolate;
+  }
+
+  .hero__overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 60, 91, 0..5); /* overlay tint for contrast */
+    box-shadow: inset 0 0 180px rgba(0,0,0,0.35); /* vignette */
+    z-index: -1;
+  }
+
+  .hero__inner { max-width: 1100px; margin-inline: auto; }
+
+  /* Logo sizing — adjusts smoothly across breakpoints */
+  .hero__logo {
+    height: clamp(200px, 8vw, 200px);
+    width: auto;
+    display: inline-block;
+    margin-bottom: 0.9rem;
+    filter: drop-shadow(0 2px 12px rgba(0,0,0,0.35));
+  }
+
+  .hero__tagline {
+    font-size: 1.2rem;
+    color: rgba(255,255,255,0.92);
+    margin: 0 auto 2rem; max-width: 52ch;
+  }
+  .hero__cta { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-bottom: 1rem; }
+  .hero__quick { list-style: none; padding: 0; display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; font-size: .95rem; }
+  .hero__quick a { color: var(--btaa-white); text-decoration: underline; text-decoration-color: rgba(255,255,255,0.45); }
+  .hero__quick a:hover { text-decoration-color: rgba(255,255,255,0.9); }
+
+  /* ===== Sections ===== */
+  .section { padding: clamp(2rem, 4vw, 3rem) 0; }
+  .section--muted {
+    background: var(--btaa-light-gray);
+    border-block: 1px solid rgba(0,0,0,.05);
+  }
+  .section__title {
+    margin: 0 0 1.25rem;
+    color: var(--btaa-dark-blue);
+    font-size: clamp(1.4rem, 2.4vw, 1.8rem);
+  }
+
+  /* ===== Grids ===== */
+  .grid { display: grid; gap: 1rem; }
+  .grid--features { grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
+  .grid--highlights { grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
+
+  /* ===== Cards ===== */
+  .card {
+    background: var(--sl-color-bg);
+    border: 1px solid color-mix(in srgb, var(--btaa-dark-blue) 8%, transparent);
+    border-radius: 14px;
+    padding: 1.1rem 1.1rem 1rem;
+    box-shadow: 0 1px 0 rgba(0,0,0,.02), 0 8px 24px -18px rgba(0,0,0,.25);
+    text-decoration: none; color: var(--sl-color-text);
+    transition: transform .15s ease, box-shadow .15s ease, border-color .15s ease;
+  }
+  .card:hover {
+    transform: translateY(-2px);
+    border-color: color-mix(in srgb, var(--btaa-blue) 18%, transparent);
+    box-shadow: 0 1px 0 rgba(0,0,0,.03), 0 18px 38px -20px rgba(0,0,0,.35);
+  }
+  .card h3 { margin: 0 0 .35rem; font-size: 1.05rem; color: var(--btaa-dark-blue); }
+  .card p { margin: 0 0 .75rem; color: color-mix(in srgb, var(--btaa-black) 78%, var(--btaa-gray)); }
+  .card__more { font-size: .9rem; color: var(--btaa-med-blue); }
+  .eyebrow {
+    display: inline-block; font-size: .78rem; letter-spacing: .02em; text-transform: uppercase;
+    color: color-mix(in srgb, var(--btaa-black) 60%, var(--btaa-gray)); margin-bottom: .35rem;
+  }
+
+  /* ===== Buttons ===== */
+  .btn {
+    --btn-bg: var(--btaa-blue);
+    --btn-ink: var(--btaa-white);
+    display: inline-flex; align-items: center; justify-content: center; gap: .5rem;
+    padding: .65rem 1.05rem; border-radius: 999px; font-weight: 600; text-decoration: none;
+    border: 1px solid transparent; color: var(--btn-ink); background: var(--btn-bg);
+    transition: transform .15s ease, box-shadow .15s ease, background .15s ease, border-color .15s ease;
+    box-shadow: 0 1px 0 rgba(0,0,0,.02), 0 10px 24px -18px rgba(0,0,0,.35);
+  }
+  .btn:hover { transform: translateY(-1px); background: var(--btaa-med-blue); }
+  .btn--ghost {
+    background: transparent;
+    border: 1px solid rgba(255,255,255,0.7);
+    color: var(--btaa-white);
+    box-shadow: none;
+  }
+  .btn--ghost:hover { background: rgba(255,255,255,0.15); }
+
+  /* ===== CTA band ===== */
+  .cta {
+    padding: clamp(2rem, 4vw, 3rem) 0;
+    background:
+      linear-gradient(180deg, color-mix(in srgb, var(--btaa-light-blue) 45%, transparent), transparent),
+      radial-gradient(900px 300px at 80% 0%, color-mix(in srgb, var(--btaa-blue) 15%, transparent), transparent),
+      var(--btaa-light-gray);
+    border-top: 1px solid rgba(0,0,0,.05);
+  }
+  .cta__inner { display: grid; grid-template-columns: 1.2fr auto; gap: 1rem; align-items: center; }
+  .cta h2 { margin: 0 0 .4rem; color: var(--btaa-dark-blue); }
+  .cta p { margin: 0; color: color-mix(in srgb, var(--btaa-black) 75%, var(--btaa-gray)); }
+  .cta__buttons { display: flex; gap: .75rem; flex-wrap: wrap; justify-self: end; }
+
+  @media (max-width: 720px) {
+    .cta__inner { grid-template-columns: 1fr; }
+    .cta__buttons { justify-self: start; }
+  }
+</style>
