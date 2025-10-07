@@ -7,7 +7,7 @@ export interface Props {
   src?: string;
 }
 
-const { src = "../tables/teamMembers-2025.csv" } = Astro.props;
+const { src = "/src/tables/teamMembers-2025.csv" } = Astro.props;
 
 // Read + parse CSV
 const fileUrl = new URL(src, import.meta.url);
