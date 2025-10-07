@@ -6,7 +6,8 @@ sidebar:
 tableOfContents: true
 ---
 import { Card, CardGrid } from '@astrojs/starlight/components';
-import { Aside } from '@astrojs/starlight/components';
+
+import TwoThirdsLayout from '/src/components/TwoThirdsLayout.astro';
 
 
 ## Program Committees 2025-27 Term
@@ -14,14 +15,19 @@ import { Aside } from '@astrojs/starlight/components';
 
 {/* ![Program Committees Donut](@images/matrix-committees.png) */}
 
+<TwoThirdsLayout>
+
 Our 4 program committees work independently and collaborate on overlapping issues.
 
-<CardGrid>
+<div slot = "left">
+### Community Engagement Committee
 
-<Card title="Community Engagement">
 *Connecting with the public*
 
 The mission of the Community Engagement Committee is to promote and enhance the visibility and utilization of the BTAA Geoportal, as well as public and shared geospatial data and technology, among GIN (Geospatial Information Network) members and Geoportal users. Our committee is committed to fostering inclusivity and promoting diversity and equity in geospatial resources. We achieve this by expanding the community of Geoportal users through the inclusion and promotion of new and existing resources.
+</div>
+<div slot = "right">
+#### Members
 
 * Tara Anthony, Co-Chair
 * Rob Shepard, Co-Chair
@@ -31,23 +37,53 @@ The mission of the Community Engagement Committee is to promote and enhance the 
 * Kathleen Weessies
 * Brendan Whyte
 * Colleen Wilson
-</Card>
+</div>
+</TwoThirdsLayout>
 
- <Card title="Coordination">
+<hr/>
+
+<TwoThirdsLayout>
+
+<div slot = "left">
+
+### Coordination Committee
 *Organizing our program*
 
 The Coordination Committee is responsible for coordinating the work of the other committees, ensuring communication between committees, defining and tracking annual program goals, and overall strategic planning.
 
+</div>
+
+<div slot = "right">
+
+#### Members
 * Ryan Mattke (Chair)
 * Karen Majewicz
 * Colleen Wilson
 * Rotating members of other committees
-</Card>
 
-<Card title="Knowledge">
+</div>
+
+</TwoThirdsLayout>
+
+<hr/>
+
+
+<TwoThirdsLayout>
+
+<div slot = "left">
+
+### Knowledge Committee
+
 *Enhancing our professional community*
 
 The Knowledge Committee will identify and implement strategies for knowledge sharing internally among BTAA Geospatial Information Network members and externally with the broader map and geospatial librarian community. We will do this by establishing research agendas, coordinating research, and reporting/publishing on topics relevant to the geospatial librarian field and the BTAA-GIN. 
+
+
+</div>
+
+<div slot = "right">
+
+#### Members
 
 * Laura McElfresh, Co-Chair
 * Innocensia Owuor, Co-Chair
@@ -59,14 +95,30 @@ The Knowledge Committee will identify and implement strategies for knowledge sha
 * Kathy Stroud
 * Amanda Tickner
 * Wenjie Wang
-</Card>
+
+</div>
+
+</TwoThirdsLayout>
+
+<hr/>
 
 
-<Card title="Technology">
+<TwoThirdsLayout>
+
+<div slot = "left">
+
+### Technology Committee
 
 *Building the Geoportal*
 
 The TECH Committee strives to enhance the BTAA Geoportal to improve the discoverability, accessibility, and usability of geospatial information. This enhancement is achieved through continual research, guidance, and contributions in metadata creation, interface design, and application development.
+
+
+</div>
+
+<div slot = "right">
+
+#### Members
 
 * Melinda Kernik, Co-Chair
 * Jaime Martindale, Co-Chair
@@ -77,9 +129,11 @@ The TECH Committee strives to enhance the BTAA Geoportal to improve the discover
 * Ronda Sewald
 * Eric Larson (ex-officio)
 * Karen Majewicz (ex-officio)
-</Card>
 
-</CardGrid>
+</div>
+
+</TwoThirdsLayout>
+
 
 ## Oversight Committee 2025-27 Term
 
@@ -92,14 +146,11 @@ Our Executive Committee represents the strategic and financial interests of part
 * Claire Stewart - Dean of Libraries and University Librarian, University of Illinois
 * Jody Gray - Associate University Librarian for Research, University of Minnesota
 * Cody Hanson - IT Director, University of Minnesota Libraries
-* Maurice York - Director of Library Initiatives, Big Ten Academic Alliance
-* Ryan Mattke - Program Director, Big Ten Academic Alliance Geospatial Information Network
+* Maurice York - Vice President for Library Programs, BTAA
+* Ryan Mattke - Program Director, BTAA Information Network
 
 </Card>
 
-{/* <Aside type="note"> 
-Browse our [monthly project updates](../../updates) to find about about recent activites.
-</Aside> */}
 
 
 
