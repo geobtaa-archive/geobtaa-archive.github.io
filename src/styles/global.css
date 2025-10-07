@@ -296,3 +296,33 @@ input[type="checkbox"]:checked::after {
 .pillar__list a:hover{
   text-decoration-color: var(--btaa-blue);
 }
+
+
+/* APA-style publication block for Markdown paragraphs */
+.apa-block {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin: 1.5rem 0;
+}
+
+.apa-block p {
+  margin: 0 0 0.8rem 0;     /* space between citations */
+  text-indent: -1.5rem;      /* hanging indent effect */
+  padding-left: 1.5rem;
+}
+
+/* Optional: subtle divider between entries */
+.apa-block p:not(:last-child) {
+  border-bottom: 1px dotted var(--sl-color-hairline, #ccc);
+  padding-bottom: 0.5rem;
+}
+
+/* Optional: link styling */
+.apa-block a {
+  color: var(--sl-color-text-accent, #3366cc);
+  text-decoration: none;
+}
+
+.apa-block a:hover {
+  text-decoration: underline;
+}
