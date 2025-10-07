@@ -4,17 +4,27 @@ description: 'The partner institutions and team members'
 sidebar:
   order: 3
 ---
+import { Card, CardGrid } from '@astrojs/starlight/components';
+
 import CsvTable from '/src/components/CsvTable.astro';
+import TeamMembersFilterTable from '/src/components/FilterTable.astro';
 
 ## Team Members
 
+
+
 Our Team Members form the core of BTAA-GIN, each contributing unique skills and perspectives. Their collective expertise covers a wide range of areas, including geospatial science, data management, and metadata, as well as map cataloging and cartographic history. They also contribute valuable insights into social justice and web accessibility, alongside technical skills in software development and user-friendly interface design.
 
-<CsvTable src="src/tables/teamMembers-2025.csv" />
+<TeamMembersFilterTable src="../tables/teamMembers-2025.csv" />
+
 
 ## University of Minnesota Operations Staff
 
 The University of Minnesota serves as the administrative and technical hub of the BTAA-GIN.
+
+<CardGrid>
+
+<Card>
 
 ### Core Staff
 
@@ -23,12 +33,17 @@ The University of Minnesota serves as the administrative and technical hub of th
 * Karen Majewicz - Associate Director: Technology & Data Curation
 * Eric Larson - Lead Application Developer
 * Cleo Young - Geospatial Metadata Technician
+</Card>
+<Card>
 
 ### IT and Web Development Support
 
 * Cody Hanson- IT Director - Administrative Lead
 * Michael Berkowski - Web Developer
 * Mark Engelmann - Web Analytics
+</Card>
+
+</CardGrid>
 
 ## Alumni
 

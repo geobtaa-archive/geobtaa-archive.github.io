@@ -81,8 +81,12 @@ try {
   }
   th, td {
     border: 1px solid var(--sl-color-hairline);
-    padding: 0.75rem 1rem;
+    padding: 0.75rem;
     text-align: left;
+    font-size: 0.75rem;
+    overflow: hidden;
+ 
+    
   }
   thead {
     background-color: var(--sl-color-accent-low);
@@ -98,4 +102,30 @@ try {
   [data-theme='dark'] tbody tr:nth-child(odd) {
     background-color: rgba(255, 255, 255, 0.05);
   }
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.table th, .table td {
+  padding: 0.25rem 0.5rem;
+  vertical-align: top;
+  border-bottom: 1px solid var(--sl-color-hairline);
+}
+.table td:nth-child(1) {
+  font-weight: 600;
+  white-space: nowrap;
+}
+.table td:nth-child(2) {
+  width: 40%;
+  word-break: break-word;
+}
+.table td:nth-child(3) {
+  width: 30%;
+  color: var(--sl-color-text-secondary);
+}
+
+
+
+
+
 </style>
