@@ -40,6 +40,7 @@ export default defineConfig({
               items: [
                 { label: 'Document Library', link: '/library/' },
                 { label: 'Publications', link: '/scholarship/publications/' },
+                { label: 'Presentations', link: '/scholarship/presentations/' },
               ],
           },  
         ],
