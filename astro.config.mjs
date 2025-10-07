@@ -38,10 +38,10 @@ export default defineConfig({
           { label: 'Projects', collapsed: true, autogenerate: { directory: 'projects' } },
           {label: 'Scholarship', collapsed: true, 
               items: [
-                { label: 'Document Library', link: '/library/' },
-                { label: 'Publications', link: '/scholarship/publications/' },
                 { label: 'Presentations', link: '/scholarship/presentations/' },
                 { label: 'Posters', link: '/scholarship/posters/' },
+                { label: 'Publications', link: '/scholarship/publications/' },
+                { label: 'Document Library', link: '/library/' },
               ],
           },  
         ],
