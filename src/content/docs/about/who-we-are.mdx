@@ -7,7 +7,7 @@ sidebar:
 import { Card, CardGrid } from '@astrojs/starlight/components';
 
 import CsvTable from '/src/components/CsvTable.astro';
-import TeamMembersFilterTable from '/src/components/FilterTable.astro';
+import FilterTable from '/src/components/FilterTable.astro';
 
 ## Team Members
 
@@ -15,8 +15,15 @@ import TeamMembersFilterTable from '/src/components/FilterTable.astro';
 
 Our Team Members form the core of BTAA-GIN, each contributing unique skills and perspectives. Their collective expertise covers a wide range of areas, including geospatial science, data management, and metadata, as well as map cataloging and cartographic history. They also contribute valuable insights into social justice and web accessibility, alongside technical skills in software development and user-friendly interface design.
 
-<TeamMembersFilterTable src="../tables/teamMembers-2025.csv" />
-
+<FilterTable
+  src="../tables/teamMembers-2025.csv"
+  columns={[
+    { key: "First Name", width: "10%", filter: "text", wrap: "nowrap" },
+    { key: "Last Name",  width: "10%", filter: "text"},
+    { key: "Job Title",  width: "40%", filter: "text"},
+    { key: "Institution",width: "40%", filter: "datalist" }
+  ]}
+/>
 
 ## University of Minnesota Operations Staff
 
@@ -46,7 +53,7 @@ The University of Minnesota serves as the administrative and technical hub of th
 </CardGrid>
 
 ## Alumni
-
+<Card>
 ### Project Sponsor Alumni
 
 * Wendy Lougee, University Librarian and McKnight Presidential Professor - University of Minnesota  (2015-2020)
@@ -56,13 +63,17 @@ The University of Minnesota serves as the administrative and technical hub of th
 * Kirsten Clark, Director, Access and Information Services - University of Minnesota (sponsor 2019-2021)
 * Claire Stewart, Associate University Librarian for Research & Learning - University of Minnesota (sponsor 2015-201
 * Barbara Dewey, Dean of University Libraries & Scholarly Communications - Penn State (2020)
+</Card>
 
+<CardGrid>
+<Card>
 ### University of Minnesota Staff Alumni
 
 * Kevin Dyke - Spatial Curator and Geoportal developer
 * Michael Johnson - Web Analytics
 * Paul Bramscher - Linux Systems Administrator and Software Administrator
-
+</Card>
+<Card>
 ### Graduate Research Assistant Alumni
 
 * Owen Connolly - (2023-2024)
@@ -72,6 +83,10 @@ The University of Minnesota serves as the administrative and technical hub of th
 * Emily Ruetz (2018-2020)
 * Andrew Smith (2017-2019)
 * Lewei Hi (2017)
+
+</Card>
+</CardGrid>
+
 
 ### Team Member Alumni
 

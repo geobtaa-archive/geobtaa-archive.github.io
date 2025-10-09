@@ -2,86 +2,151 @@
 import fs from "fs";
 import { csvParse } from "d3-dsv";
 
-export interface Props {
-  /** Path to your CSV, relative to THIS file (or absolute with new URL) */
-  src?: string;
+export interface Column {
+  /** Must match the CSV header text exactly, e.g., "First Name" */
+  key: string;
+  label?: string;               // defaults to key
+  width?: string;               // e.g., "20%" or "18ch"
+  filter?: "text" | "datalist" | false;
+  clampLines?: number;
+  wrap?: "normal" | "nowrap";
 }
 
-const { src = "/src/tables/teamMembers-2025.csv" } = Astro.props;
+export interface Props {
+  src?: string;                  // OR pass preloaded data
+  data?: Record<string, any>[];
+  /** If provided, map CSV header -> display/lookup key (rarely needed now) */
+  headerMap?: Record<string, string>;
+  /** Optional: pass explicit columns; if omitted, inferred from CSV headers */
+  columns?: Column[];
+  id?: string;                   // unique suffix for multiple tables
+  striped?: boolean;
+}
 
-// Read + parse CSV
-const fileUrl = new URL(src, import.meta.url);
-const csvText = fs.readFileSync(fileUrl, "utf8");
-const rows = csvParse(csvText);
+const {
+  src,
+  data: dataProp,
+  headerMap = {},
+  columns: columnsProp,
+  id = "ft",
+  striped = true,
+} = Astro.props;
 
-// normalize headers → snake_case so we can handle “First Name”, etc.
-const normKey = (k: string) =>
-  k.trim().toLowerCase().replace(/\s+/g, "_").replace(/[^\w]/g, "_");
+// 1) Load rows
+let rawRows: Record<string, any>[] = [];
+if (dataProp) {
+  rawRows = dataProp;
+} else if (src) {
+  const fileUrl = new URL(src, import.meta.url);
+  const csvText = fs.readFileSync(fileUrl, "utf8");
+  rawRows = csvParse(csvText); // keys are the CSV headers exactly as written
+}
 
-const data = rows.map((r) => {
-  const m: Record<string, string> = {};
-  for (const [k, v] of Object.entries(r)) m[normKey(k)] = (v ?? "").trim();
-  return {
-    first_name: m.first_name ?? m.firstname ?? "",
-    last_name: m.last_name ?? m.lastname ?? "",
-    job_title: m.job_title ?? m.title ?? "",
-    institution: m.institution ?? "",
-  };
+// 2) Apply optional headerMap (usually not needed now)
+const rows = rawRows.map((r) => {
+  if (!headerMap || Object.keys(headerMap).length === 0) return r;
+  const out: Record<string, any> = {};
+  for (const [k, v] of Object.entries(r)) {
+    const mapped = headerMap[k] ?? k;
+    out[mapped] = (v ?? "").toString().trim();
+  }
+  return out;
 });
 
-// Build a unique, sorted list of institutions for a helpful datalist
-const instSet = new Set<string>();
-for (const d of data) if (d.institution) instSet.add(d.institution);
-const institutions = Array.from(instSet).sort((a, b) => a.localeCompare(b));
+// 3) Infer columns from headers if none provided
+const csvHeaders = rows.length ? Object.keys(rows[0]) : [];
+const columns: Column[] =
+  columnsProp && columnsProp.length
+    ? columnsProp
+    : csvHeaders.map((h) => ({ key: h, label: h }));
+
+// 4) Build datalist options for any "datalist" filters
+const datalistOptions: Record<string, string[]> = {};
+for (const col of columns) {
+  if (col.filter === "datalist") {
+    const set = new Set<string>();
+    rows.forEach((row) => {
+      const val = (row[col.key] ?? "").toString().trim();
+      if (val) set.add(val);
+    });
+    datalistOptions[col.key] = Array.from(set).sort((a, b) =>
+      a.localeCompare(b)
+    );
+  }
+}
+
+// 5) Helpers: safe IDs for inputs, classes for cells
+const safeId = (s: string) =>
+  s.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "") || "col";
+
+const cellClass = (col: Column) => {
+  const parts = ["cell"];
+  if (col.wrap === "nowrap") parts.push("nowrap");
+  if (typeof col.clampLines === "number") parts.push(`clamp-${col.clampLines}`);
+  return parts.join(" ");
+};
 ---
 
-<div class="table-wrap">
+<div class="table-wrap" data-id={id}>
   <div class="table-tools">
-    <div class="count" id="tm-count" aria-live="polite">
-      Showing {data.length} of {data.length}
+    <div class="count" id={`${id}-count`} aria-live="polite">
+      Showing {rows.length} of {rows.length}
     </div>
-    <button class="reset" id="tm-reset" type="button">Reset filters</button>
+    <button class="reset" id={`${id}-reset`} type="button">Reset filters</button>
   </div>
 
-  <table class="people-table" id="tm-table">
+  <table class={`people-table ${striped ? 'striped' : ''}`} id={`${id}-table`}>
     <thead>
       <!-- filter row -->
       <tr class="filters">
-        <th>
-          <label class="visually-hidden" for="f-first">Filter first name</label>
-          <input id="f-first" data-col="first_name" type="text" placeholder="Filter…" />
-        </th>
-        <th>
-          <label class="visually-hidden" for="f-last">Filter last name</label>
-          <input id="f-last" data-col="last_name" type="text" placeholder="Filter…" />
-        </th>
-        <th class="wide">
-          <label class="visually-hidden" for="f-title">Filter job title</label>
-          <input id="f-title" data-col="job_title" type="text" placeholder="Filter…" />
-        </th>
-        <th>
-          <label class="visually-hidden" for="f-inst">Filter institution</label>
-          <input id="f-inst" list="inst-list" data-col="institution" type="text" placeholder="Filter…" />
-          <datalist id="inst-list">
-            {institutions.map((inst) => <option value={inst}></option>)}
-          </datalist>
-        </th>
+        {columns.map((col, idx) => {
+          const sid = `${id}-f-${safeId(col.key)}-${idx}`;
+          return (
+            <th style={col.width ? `width:${col.width}` : undefined}>
+              {col.filter !== false ? (
+                col.filter === "datalist" ? (
+                  <>
+                    <label class="visually-hidden" for={sid}>Filter {col.label ?? col.key}</label>
+                    <input id={sid} data-col={col.key} type="text" placeholder="Filter…" list={`${id}-list-${safeId(col.key)}-${idx}`} />
+                    <datalist id={`${id}-list-${safeId(col.key)}-${idx}`}>
+                      {(datalistOptions[col.key] ?? []).map((opt) => <option value={opt}></option>)}
+                    </datalist>
+                  </>
+                ) : (
+                  <>
+                    <label class="visually-hidden" for={sid}>Filter {col.label ?? col.key}</label>
+                    <input id={sid} data-col={col.key} type="text" placeholder="Filter…" />
+                  </>
+                )
+              ) : null}
+            </th>
+          );
+        })}
       </tr>
+
       <!-- header row -->
-      <tr>
-        <th scope="col">First&nbsp;Name</th>
-        <th scope="col">Last&nbsp;Name</th>
-        <th scope="col" class="wide">Job&nbsp;Title</th>
-        <th scope="col">Institution</th>
+      <tr class="head">
+        {columns.map((col) => (
+          <th scope="col" style={col.width ? `width:${col.width}` : undefined}>
+            {col.label ?? col.key}
+          </th>
+        ))}
       </tr>
     </thead>
+
     <tbody>
-      {data.map((p) => (
+      {rows.map((row) => (
         <tr>
-          <td data-key="first_name">{p.first_name}</td>
-          <td data-key="last_name">{p.last_name}</td>
-          <td data-key="job_title">{p.job_title}</td>
-          <td data-key="institution">{p.institution}</td>
+          {columns.map((col) => (
+            <td
+              data-key={col.key}               /* uses header text as-is */
+              class={cellClass(col)}
+              style={col.width ? `width:${col.width}` : undefined}
+              title={(row[col.key] ?? "").toString()}
+            >
+              {(row[col.key] ?? "").toString()}
+            </td>
+          ))}
         </tr>
       ))}
     </tbody>
@@ -89,188 +154,122 @@ const institutions = Array.from(instSet).sort((a, b) => a.localeCompare(b));
 </div>
 
 <script>
-  // Lightweight, per-column filtering (case-insensitive, substring)
-  (() => {
-    const table = document.getElementById('tm-table');
-    if (!table) return;
+(() => {
+  const wrap = document.querySelector('.table-wrap[data-id]');
+  if (!wrap) return;
+  const id = wrap.getAttribute('data-id');
+  const table = document.getElementById(id + '-table');
+  if (!table) return;
 
-    const inputs = table.querySelectorAll('thead .filters input');
-    const rows = Array.from(table.querySelectorAll('tbody tr'));
-    const countEl = document.getElementById('tm-count');
-    const resetBtn = document.getElementById('tm-reset');
+  const inputs = table.querySelectorAll('thead .filters input');
+  const rows = Array.from(table.querySelectorAll('tbody tr'));
+  const countEl = document.getElementById(id + '-count');
+  const resetBtn = document.getElementById(id + '-reset');
 
-    const normalize = (s) => (s || '').toString().toLowerCase();
+  const normalize = (s) => (s || '').toString().toLowerCase();
 
-    const filter = () => {
-      // Build active filters
-      const filters = {};
-      inputs.forEach((inp) => {
-        const val = normalize(inp.value);
-        if (val) filters[inp.dataset.col] = val;
-      });
-
-      let visible = 0;
-      rows.forEach((tr) => {
-        // For each active filter, check the matching cell
-        let keep = true;
-        for (const [col, needle] of Object.entries(filters)) {
-          const cell = tr.querySelector(`[data-key="${col}"]`);
-          const hay = normalize(cell?.textContent || '');
-          if (!hay.includes(needle)) { keep = false; break; }
-        }
-        tr.style.display = keep ? '' : 'none';
-        if (keep) visible++;
-      });
-
-      if (countEl) countEl.textContent = `Showing ${visible} of ${rows.length}`;
-    };
-
-    // Debounce for nicer typing
-    let t;
+  const filter = () => {
+    const filters = {};
     inputs.forEach((inp) => {
-      inp.addEventListener('input', () => {
-        clearTimeout(t);
-        t = setTimeout(filter, 80);
-      });
+      const val = normalize(inp.value);
+      if (val) filters[inp.dataset.col] = val; // dataset.col holds the ORIGINAL header text
     });
 
-    if (resetBtn) {
-      resetBtn.addEventListener('click', () => {
-        inputs.forEach((i) => (i.value = ''));
-        filter();
-      });
-    }
-  })();
+    let visible = 0;
+    rows.forEach((tr) => {
+      let keep = true;
+      for (const [col, needle] of Object.entries(filters)) {
+        // Match by original header text stored in data-key
+        const cell = tr.querySelector(`[data-key="${CSS.escape(col)}"]`);
+        const hay = normalize(cell?.textContent || '');
+        if (!hay.includes(needle)) { keep = false; break; }
+      }
+      tr.style.display = keep ? '' : 'none';
+      if (keep) visible++;
+    });
+
+    if (countEl) countEl.textContent = `Showing ${visible} of ${rows.length}`;
+  };
+
+  let t;
+  inputs.forEach((inp) => {
+    inp.addEventListener('input', () => {
+      clearTimeout(t);
+      t = setTimeout(filter, 80);
+    });
+  });
+
+  if (resetBtn) {
+    resetBtn.addEventListener('click', () => {
+      inputs.forEach((i) => (i.value = ''));
+      filter();
+    });
+  }
+})();
 </script>
 
 <style>
 .table-wrap {
   margin-block: 1rem 1.5rem;
-  overflow-x: auto; /* mobile safety */
+  overflow-x: auto;
   background: var(--sl-color-bg);
   border: 1px solid var(--sl-color-hairline);
   border-radius: 0.75rem;
 }
 
 .table-tools {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: .5rem;
+  display: flex; justify-content: space-between; align-items: center; gap: .5rem;
   padding: .5rem .75rem;
   border-bottom: 1px solid var(--sl-color-hairline);
   background: var(--sl-color-bg-alt);
-  border-top-left-radius: .75rem;
-  border-top-right-radius: .75rem;
+  border-top-left-radius: .75rem; border-top-right-radius: .75rem;
 }
-
 .count { font-size: 0.875rem; color: var(--sl-color-text-secondary); }
-
 .reset {
-  font: inherit;
-  padding: .25rem .5rem;
-  border-radius: .5rem;
-  border: 1px solid var(--sl-color-hairline);
-  background: transparent;
-  cursor: pointer;
+  font: inherit; padding: .25rem .5rem; border-radius: .5rem;
+  border: 1px solid var(--sl-color-hairline); background: transparent; cursor: pointer;
 }
 .reset:hover { background: var(--sl-color-bg); }
 
 .people-table {
   width: 100%;
   border-collapse: collapse;
-  table-layout: fixed; /* keeps columns steady */
+  table-layout: fixed;
 }
-
-.people-table th:nth-child(1),
-.people-table td:nth-child(1) { width: 16%; } /* First name */
-.people-table th:nth-child(2),
-.people-table td:nth-child(2) { width: 18%; } /* Last name */
-.people-table th:nth-child(3),
-.people-table td:nth-child(3) { width: 46%; } /* Job title */
-.people-table th:nth-child(4),
-.people-table td:nth-child(4) { width: 20%; } /* Institution */
-
-.people-table thead th {
-  position: sticky;
-  top: 0;
-  z-index: 1;
-}
-
-.people-table th,
-.people-table td {
+.people-table thead th { position: sticky; top: 0; background: var(--sl-color-bg); z-index: 1; }
+.people-table thead .head { background: var(--sl-color-bg-alt); }
+.people-table th, .people-table td {
   padding: .45rem .6rem;
-  border-bottom: 1px solid var(--btaa-light-gray);
-  vertical-align: middle;
+  border-bottom: 1px solid var(--sl-color-hairline);
+  vertical-align: top;
   line-height: 1.25;
-  font-size: 0.85rem;
+  font-size: 0.95rem;
 }
 
-
+.people-table thead .filters th { background: var(--sl-color-bg-alt); border-bottom-color: var(--sl-color-hairline); }
 .people-table thead .filters input {
-  width: 100%;
-  padding: .35rem .45rem;
-  font: inherit;
-  border: 1px solid var(--sl-color-hairline);
-  border-radius: .4rem;
+  width: 100%; padding: .35rem .45rem; font: inherit;
+  border: 1px solid var(--sl-color-hairline); border-radius: .4rem; background: var(--sl-color-bg);
 }
 
-.people-table td:nth-child(1),
-.people-table td:nth-child(2) {
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  overflow: hidden;
-}
-
-.people-table th.wide,
-.people-table td.wide,
-.people-table td:nth-child(3) {
-  /* Job title column: allow wrapping but stay compact */
-  word-break: break-word;
-  hyphens: auto;
-}
-
-/* === Table Header Styling === */
-.people-table thead tr:last-child { /* the actual header row below the filters */
-  background-color: var(--btaa-med-blue); /* slightly tinted header background */
-}
-
-.people-table thead th {
-  font-weight: 600;
-  color: var(--btaa-white);
-  /* border-bottom: 2px solid var(--sl-color-hairline); */
-  padding-top: 0.5rem;
-  padding-bottom: 0.5rem;
-}
-
-/* === Alternating Row Colors === */
-.people-table tbody tr:nth-child(odd) {
-  background-color: var(--sl-color-bg); /* default background */
-}
-
-.people-table tbody tr:nth-child(even) {
-  background-color: var(--sl-color-accent-muted); /* slightly lighter/darker tint */
-}
-
-/* Optional: row hover highlight */
+.people-table.striped tbody tr:nth-child(even) { background: var(--sl-color-bg-alt); }
+.people-table.striped tbody tr:nth-child(odd)  { background: var(--sl-color-bg); }
 .people-table tbody tr:hover {
-  background-color: color-mix(in srgb, var(--sl-color-primary) 10%, var(--sl-color-bg));
+  background: color-mix(in srgb, var(--sl-color-primary) 10%, var(--sl-color-bg));
   transition: background-color 0.15s ease;
 }
 
-/* Optional: subtle left border to make each row feel compact */
-/* .people-table td {
-  border-left: 1px solid var(--sl-color-hairline);
+/* Wrapping & clamping */
+.cell { white-space: normal; word-wrap: break-word; overflow-wrap: break-word; hyphens: auto; }
+.cell.nowrap { white-space: nowrap; text-overflow: ellipsis; overflow: hidden; }
+.cell.clamp-2, .cell.clamp-3, .cell.clamp-4 {
+  display: -webkit-box; -webkit-box-orient: vertical; overflow: hidden;
 }
-.people-table td:first-child {
-  border-left: none;
-} */
-
-
+.cell.clamp-2 { -webkit-line-clamp: 2; }
+.cell.clamp-3 { -webkit-line-clamp: 3; }
+.cell.clamp-4 { -webkit-line-clamp: 4; }
 .visually-hidden {
   position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
   overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
 }
-
-
 </style>
