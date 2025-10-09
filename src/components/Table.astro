@@ -1,0 +1,215 @@
+---
+import { promises as fs } from "fs";
+import path from "path";
+import Papa from "papaparse";
+
+export interface Column {
+  key: string;
+  label?: string;
+  width?: string;
+  filter?: "text" | "datalist" | false;
+  clampLines?: number;
+  wrap?: "normal" | "nowrap";
+}
+
+export interface Props {
+  // Load strategies (pick one):
+  src?: string;            // e.g., "src/tables/team.csv" (project-root relative)
+  rawCsv?: string;         // e.g., import '...csv?raw'
+  data?: Record<string, any>[];  // already parsed
+
+  // Behavior & display:
+  columns?: Column[];      // if omitted, inferred from CSV headers
+  filters?: boolean;       // ← toggle: filter row + script (default false)
+  id?: string;             // table instance id
+  striped?: boolean;       // zebra rows (default true)
+}
+
+const {
+  src, rawCsv, data: dataProp, columns: columnsProp,
+  filters = false, id = "tbl", striped = true
+} = Astro.props;
+
+// ---- Load & parse rows ----
+let rows: Record<string, any>[] = [];
+if (Array.isArray(dataProp) && dataProp.length) {
+  rows = dataProp;
+} else if (typeof rawCsv === "string") {
+  const parsed = Papa.parse<Record<string, string>>(rawCsv, { header: true, skipEmptyLines: true });
+  rows = (parsed.data ?? []).map((r) => Object.fromEntries(Object.entries(r).map(([k, v]) => [k, (v ?? "").toString().trim()])));
+} else if (typeof src === "string" && src.length) {
+  const csvPath = path.resolve(process.cwd(), src);
+  const csvContent = await fs.readFile(csvPath, "utf-8");
+  const parsed = Papa.parse<Record<string, string>>(csvContent, { header: true, skipEmptyLines: true });
+  rows = (parsed.data ?? []).map((r) => Object.fromEntries(Object.entries(r).map(([k, v]) => [k, (v ?? "").toString().trim()])));
+} else {
+  rows = [];
+}
+
+// ---- Columns ----
+const csvHeaders = rows.length ? Object.keys(rows[0]) : [];
+const columns: Column[] = (columnsProp && columnsProp.length)
+  ? columnsProp
+  : csvHeaders.map((h) => ({ key: h, label: h }));
+
+// ---- Datalist options (only if filters on) ----
+const datalistOptions: Record<string, string[]> = {};
+if (filters) {
+  for (const col of columns) {
+    if (col.filter === "datalist") {
+      const set = new Set<string>();
+      rows.forEach((r) => { const v = (r[col.key] ?? "").toString().trim(); if (v) set.add(v); });
+      datalistOptions[col.key] = Array.from(set).sort((a, b) => a.localeCompare(b));
+    }
+  }
+}
+
+const cellClass = (col: Column) => {
+  const parts = ["cell"];
+  if (col.wrap === "nowrap") parts.push("nowrap");
+  if (typeof col.clampLines === "number") parts.push(`clamp-${col.clampLines}`);
+  return parts.join(" ");
+};
+---
+
+
+<div class="table-wrap not-content" data-id={id}>
+  {filters && (
+    <div class="table-tools">
+      <div class="count" id={`${id}-count`} aria-live="polite">
+        Showing {rows.length} of {rows.length}
+      </div>
+      <button class="reset" id={`${id}-reset`} type="button">Reset filters</button>
+    </div>
+  )}
+
+  <table class={`table ${striped ? 'striped' : ''}`} id={`${id}-table`}>
+    <thead>
+      {filters && (
+        <tr class="filters">
+          {columns.map((col) => (
+            <th style={col.width ? `width:${col.width}` : undefined}>
+              {col.filter !== false ? (
+                col.filter === "datalist" ? (
+                  <>
+                    <label class="visually-hidden" for={`${id}-f-${col.key}`}>Filter {col.label ?? col.key}</label>
+                    <input
+                      id={`${id}-f-${col.key}`}
+                      data-col={col.key}
+                      type="text"
+                      placeholder="Filter…"
+                      list={`${id}-list-${col.key}`}
+                    />
+                    <datalist id={`${id}-list-${col.key}`}>
+                      {(datalistOptions[col.key] ?? []).map((opt) => (
+                        <option value={opt}></option>
+                      ))}
+                    </datalist>
+                  </>
+                ) : (
+                  <>
+                    <label class="visually-hidden" for={`${id}-f-${col.key}`}>Filter {col.label ?? col.key}</label>
+                    <input
+                      id={`${id}-f-${col.key}`}
+                      data-col={col.key}
+                      type="text"
+                      placeholder="Filter…"
+                    />
+                  </>
+                )
+              ) : null}
+            </th>
+          ))}
+        </tr>
+      )}
+
+      <tr class="head">
+        {columns.map((col) => (
+          <th scope="col" style={col.width ? `width:${col.width}` : undefined}>
+            {col.label ?? col.key}
+          </th>
+        ))}
+      </tr>
+    </thead>
+
+    <tbody>
+      {rows.map((r) => (
+        <tr>
+          {columns.map((col) => (
+            <td
+              data-key={col.key}
+              class={(() => {
+                const parts = ["cell"];
+                if (col.wrap === "nowrap") parts.push("nowrap");
+                if (typeof col.clampLines === "number") parts.push(`clamp-${col.clampLines}`);
+                return parts.join(" ");
+              })()}
+              style={col.width ? `width:${col.width}` : undefined}
+              title={(r[col.key] ?? "").toString()}
+            >
+              {(r[col.key] ?? "").toString()}
+            </td>
+          ))}
+        </tr>
+      ))}
+    </tbody>
+  </table>
+
+  {rows.length === 0 && (
+    <p class="table-empty" aria-live="polite">No rows to display.</p>
+  )}
+</div>
+
+{filters && (
+  <script>
+    (() => {
+      const wrap = document.querySelector('.table-wrap[data-id]');
+      if (!wrap) return;
+      const id = wrap.getAttribute('data-id');
+      const table = document.getElementById(id + '-table');
+      if (!table) return;
+
+      const inputs = table.querySelectorAll('thead .filters input');
+      const rows = Array.from(table.querySelectorAll('tbody tr'));
+      const countEl = document.getElementById(id + '-count');
+      const resetBtn = document.getElementById(id + '-reset');
+      const normalize = (s) => (s || '').toString().toLowerCase();
+
+      const runFilter = () => {
+        const filters = {};
+        inputs.forEach((inp) => {
+          const val = normalize(inp.value);
+          if (val) filters[inp.dataset.col] = val;
+        });
+
+        let visible = 0;
+        rows.forEach((tr) => {
+          let keep = true;
+          for (const [col, needle] of Object.entries(filters)) {
+            const cell = tr.querySelector(`[data-key="${CSS.escape(col)}"]`);
+            const hay = normalize(cell?.textContent || '');
+            if (!hay.includes(needle)) { keep = false; break; }
+          }
+          tr.style.display = keep ? '' : 'none';
+          if (keep) visible++;
+        });
+
+        if (countEl) countEl.textContent = `Showing ${visible} of ${rows.length}`;
+      };
+
+      let t;
+      inputs.forEach((inp) => {
+        inp.addEventListener('input', () => {
+          clearTimeout(t);
+          t = setTimeout(runFilter, 80);
+        });
+      });
+      if (resetBtn) {
+        resetBtn.addEventListener('click', () => {
+          inputs.forEach((i) => (i.value = ''));
+          runFilter();
+        });
+      }
+    })();
+  </script>
+)}

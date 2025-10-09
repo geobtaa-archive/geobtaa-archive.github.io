@@ -19,7 +19,7 @@ export default defineConfig({
         alt: 'BTAA-GIN',
         replacesTitle: true,
       },
-      customCss: ['./src/styles/global.css'],
+      customCss: ['./src/styles/global.css', './src/styles/tables.css' ],
       components: {
         Footer: './src/components/FooterWithBar.astro',
       },

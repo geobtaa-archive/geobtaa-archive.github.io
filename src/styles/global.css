@@ -14,7 +14,7 @@
 --btaa-black:     #000000;
 --btaa-gray:      #939598;
 --btaa-light-gray: #F2F2F2;
---btaa-light-blue: rgba(0, 136, 206, 0.10);
+--btaa-light-blue: rgba(0, 137, 206, 0.045);
 --btaa-white:     #FFFFFF;   
 --btaa-green: #2e7d32;
 
@@ -75,7 +75,7 @@ p.title {
 --sl-color-hairline:    rgba(0, 60, 91, 0.15);
 --sl-color-bg-nav:      var(--btaa-med-blue);
 --sl-social-icons: var(--btaa-white);
---sl-rows: var(--btaa-light-gray);
+--sl-rows: var(--btaa-light-blue);
 
 /* Headings */
 main h1, main h2, main h3, main h4, main h5, main h6 {
@@ -106,7 +106,7 @@ color: #FFFFFF;
 /* --sl-color-bg-nav:      var(--btaa-dark-blue); */
 --sl-color-accent-high: var(--btaa-white);
 --sl-color-accent-muted: var(--btaa-gray);
---sl-rows: #17181c;
+--sl-rows: #23262f;
 
 .starlight-aside__title {
 color: var(--btaa-white);
@@ -327,4 +327,59 @@ input[type="checkbox"]:checked::after {
 
 .apa-block a:hover {
   text-decoration: underline;
+}
+
+
+
+/* Accordion styling */
+.collapsible {
+  margin-block: 0.75rem 1.25rem;
+  border: 1px solid var(--sl-color-hairline);
+  border-radius: 0.75rem;
+  background: var(--sl-color-bg);
+}
+
+/* Summary bar */
+.collapsible > summary {
+  cursor: pointer;
+  list-style: none;          /* hide default marker in some browsers */
+  padding: 0.6rem 0.9rem;
+  font-weight: 600;
+  display: flex; align-items: center; gap: .5rem;
+  position: relative;
+}
+
+/* Custom chevron */
+.collapsible > summary::after {
+  content: "▸";
+  margin-left: auto;
+  transition: transform .15s ease;
+}
+.collapsible[open] > summary::after {
+  transform: rotate(90deg);
+}
+
+/* Optional hint */
+.collapsible .hint {
+  font-weight: 400;
+  font-size: 0.85em;
+  color: var(--sl-color-text-secondary);
+}
+
+/* When open, unify with the table container */
+.collapsible[open] .table-wrap {
+  border: 0;                 /* avoid double borders */
+  border-top: 1px solid var(--sl-color-hairline);
+  border-radius: 0 0 0.75rem 0.75rem;
+}
+
+/* Improve focus ring on summary for a11y */
+.collapsible > summary:focus-visible {
+  outline: 2px solid var(--sl-color-primary);
+  outline-offset: 2px;
+}
+
+/* Dark mode tweaks if needed */
+[data-theme="dark"] .collapsible {
+  background: var(--sl-color-bg);
 }

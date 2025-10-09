@@ -4,91 +4,64 @@ description: 'The partner institutions and team members'
 sidebar:
   order: 3
 ---
-import { Card, CardGrid } from '@astrojs/starlight/components';
 
-import CsvTable from '/src/components/CsvTable.astro';
-import FilterTable from '/src/components/FilterTable.astro';
-import team from '/src/tables/teamMembers-2025.csv?raw'; 
+import { Card, CardGrid } from '@astrojs/starlight/components';
+import { ShowcaseProfile } from 'starlight-showcases'
+import Table from '/src/components/Table.astro';
+
 
 ## Team Members
 
-
-
 Our Team Members form the core of BTAA-GIN, each contributing unique skills and perspectives. Their collective expertise covers a wide range of areas, including geospatial science, data management, and metadata, as well as map cataloging and cartographic history. They also contribute valuable insights into social justice and web accessibility, alongside technical skills in software development and user-friendly interface design.
 
-<FilterTable
-  rawCsv={team}
+<Table
+  src="src/tables/teamMembers-2025.csv"
+  filters
   columns={[
-    { key: "First Name", width: "10%", filter: "text",  wrap: "nowrap" },
-    { key: "Last Name",  width: "10%", filter: "text" },
-    { key: "Job Title",  width: "40%", filter: "text"},
-    { key: "Institution",width: "40%", filter: "datalist" }
+    { key: "First Name",  width: "15%", filter: "text"},
+    { key: "Last Name",   width: "15%", filter: "text",  wrap: "nowrap" },
+    { key: "Title",   width: "40%", filter: "text" },
+    { key: "Affiliation", width: "30%", filter: "datalist" }
   ]}
 />
+
 
 ## University of Minnesota Operations Staff
 
 The University of Minnesota serves as the administrative and technical hub of the BTAA-GIN.
 
-<CardGrid>
 
-<Card>
+<Table
+  src="src/tables/umn-staff.csv"
+  columns={[
+    { key: "First Name",  width: "10%", filter: "text"},
+    { key: "Last Name",   width: "10%", filter: "text",  wrap: "nowrap" },
+    { key: "Title",   width: "40%", filter: "text" },
+    { key: "BTAA-GIN Role",   width: "40%", filter: "text" },
+  ]}
+/>
 
-### Core Staff
-
-* Ryan Mattke - Program Director
-* Colleen Wilson - Associate Director: Program & Outreach Coordination
-* Karen Majewicz - Associate Director: Technology & Data Curation
-* Eric Larson - Lead Application Developer
-* Cleo Young - Geospatial Metadata Technician
-</Card>
-<Card>
-
-### IT and Web Development Support
-
-* Cody Hanson- IT Director - Administrative Lead
-* Michael Berkowski - Web Developer
-* Mark Engelmann - Web Analytics
-</Card>
-
-</CardGrid>
 
 ## Alumni
-<Card>
-### Project Sponsor Alumni
 
-* Wendy Lougee, University Librarian and McKnight Presidential Professor - University of Minnesota  (2015-2020)
-* James Hilton, University Librarian and Dean of Libraries - University of Michigan
-* Kim Armstrong, BTAA CLI Big Ten Academic Alliance Director Library Initiatives
-* John Butler, Associate University Librarian for Data & Technology - University of Minnesota (sponsor 2015-2021)
-* Kirsten Clark, Director, Access and Information Services - University of Minnesota (sponsor 2019-2021)
-* Claire Stewart, Associate University Librarian for Research & Learning - University of Minnesota (sponsor 2015-201
-* Barbara Dewey, Dean of University Libraries & Scholarly Communications - Penn State (2020)
-</Card>
+<details class="collapsible" data-accordion>
+  <summary>
+    Alumni (click to expand)
+    <span class="hint">Press Enter/Space to toggle</span>
+  </summary>
 
-<CardGrid>
-<Card>
-### University of Minnesota Staff Alumni
-
-* Kevin Dyke - Spatial Curator and Geoportal developer
-* Michael Johnson - Web Analytics
-* Paul Bramscher - Linux Systems Administrator and Software Administrator
-</Card>
-<Card>
-### Graduate Research Assistant Alumni
-
-* Owen Connolly - (2023-2024)
-* Alexander Danielson - (2022-2023)
-* Ziying (Gene) Cheng - (2020-2022)
-* Yijing (Zoey) Zhou - (2020-2021)
-* Emily Ruetz (2018-2020)
-* Andrew Smith (2017-2019)
-* Lewei Hi (2017)
-
-</Card>
-</CardGrid>
+<Table src="src/tables/alumni.csv"
+  columns={[
+    { key: "First Name",  width: "10%", filter: "text"},
+    { key: "Last Name",   width: "10%", filter: "text" },
+    { key: "Title",   width: "40%", filter: "text" },
+    { key: "Affiliation", width: "20%", filter: "datalist" },
+    { key: "BTAA-GIN Role", width: "20%", filter: "datalist" }
+  ]}
+/>
+</details>
 
 
-### Team Member Alumni
 
-<CsvTable src="src/tables/team-alumni.csv" />
+
+
