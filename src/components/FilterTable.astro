@@ -1,81 +1,76 @@
 ---
-import fs from "fs";
 import { csvParse } from "d3-dsv";
 
+/** Column config for rendering & filters */
 export interface Column {
   /** Must match the CSV header text exactly, e.g., "First Name" */
   key: string;
-  label?: string;               // defaults to key
-  width?: string;               // e.g., "20%" or "18ch"
+  /** Visible header label (defaults to key) */
+  label?: string;
+  /** e.g., "20%" or "18ch" */
+  width?: string;
+  /** "text" (free text), "datalist" (dropdown of unique values), or false (no filter) */
   filter?: "text" | "datalist" | false;
+  /** Clamp long content to N lines (2/3/4). Omit to show full text. */
   clampLines?: number;
+  /** "normal" (wrap) or "nowrap" (truncate with ellipsis) */
   wrap?: "normal" | "nowrap";
 }
 
+/** Props for the component */
 export interface Props {
-  src?: string;                  // OR pass preloaded data
+  /** Preferred for Option B: import CSV as text in MDX → rawCsv={teamCsv} */
+  rawCsv?: string;
+  /** OR pass already-parsed rows (array of objects) */
   data?: Record<string, any>[];
-  /** If provided, map CSV header -> display/lookup key (rarely needed now) */
-  headerMap?: Record<string, string>;
-  /** Optional: pass explicit columns; if omitted, inferred from CSV headers */
+  /** Optional: explicit column config; if omitted, inferred from CSV headers */
   columns?: Column[];
-  id?: string;                   // unique suffix for multiple tables
+  /** Unique suffix if multiple tables are on one page */
+  id?: string;
+  /** Enable zebra striping and header background (default true) */
   striped?: boolean;
 }
 
 const {
-  src,
+  rawCsv,
   data: dataProp,
-  headerMap = {},
   columns: columnsProp,
   id = "ft",
   striped = true,
 } = Astro.props;
 
-// 1) Load rows
-let rawRows: Record<string, any>[] = [];
-if (dataProp) {
-  rawRows = dataProp;
-} else if (src) {
-  const fileUrl = new URL(src, import.meta.url);
-  const csvText = fs.readFileSync(fileUrl, "utf8");
-  rawRows = csvParse(csvText); // keys are the CSV headers exactly as written
+/* ---- Load & parse rows (server-side) ----
+   Priority: data (already parsed) → rawCsv (text) → [] */
+let rows: Record<string, any>[] = [];
+if (Array.isArray(dataProp) && dataProp.length) {
+  rows = dataProp;
+} else if (typeof rawCsv === "string") {
+  rows = csvParse(rawCsv); // robust to commas-in-quotes, spaces, etc.
+} else {
+  rows = [];
 }
 
-// 2) Apply optional headerMap (usually not needed now)
-const rows = rawRows.map((r) => {
-  if (!headerMap || Object.keys(headerMap).length === 0) return r;
-  const out: Record<string, any> = {};
-  for (const [k, v] of Object.entries(r)) {
-    const mapped = headerMap[k] ?? k;
-    out[mapped] = (v ?? "").toString().trim();
-  }
-  return out;
-});
-
-// 3) Infer columns from headers if none provided
+/* ---- Infer columns from CSV headers if none provided ---- */
 const csvHeaders = rows.length ? Object.keys(rows[0]) : [];
 const columns: Column[] =
   columnsProp && columnsProp.length
     ? columnsProp
     : csvHeaders.map((h) => ({ key: h, label: h }));
 
-// 4) Build datalist options for any "datalist" filters
+/* ---- Build datalist options for any column using "datalist" ---- */
 const datalistOptions: Record<string, string[]> = {};
 for (const col of columns) {
   if (col.filter === "datalist") {
-    const set = new Set<string>();
-    rows.forEach((row) => {
-      const val = (row[col.key] ?? "").toString().trim();
-      if (val) set.add(val);
-    });
-    datalistOptions[col.key] = Array.from(set).sort((a, b) =>
-      a.localeCompare(b)
-    );
+    const uniq = new Set<string>();
+    for (const r of rows) {
+      const v = (r[col.key] ?? "").toString().trim();
+      if (v) uniq.add(v);
+    }
+    datalistOptions[col.key] = Array.from(uniq).sort((a, b) => a.localeCompare(b));
   }
 }
 
-// 5) Helpers: safe IDs for inputs, classes for cells
+/* ---- Helpers ---- */
 const safeId = (s: string) =>
   s.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "") || "col";
 
@@ -86,6 +81,7 @@ const cellClass = (col: Column) => {
   return parts.join(" ");
 };
 ---
+
 
 <div class="table-wrap" data-id={id}>
   <div class="table-tools">
