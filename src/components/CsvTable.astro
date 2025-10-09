@@ -12,7 +12,6 @@ export interface Props {
 const { src } = Astro.props;
 
 // Construct the absolute path to the CSV file.
-// This path is now relative to the project root (e.g., "src/data/my-file.csv").
 const csvPath = path.resolve(process.cwd(), src);
 
 let headers: string[] = [];
@@ -72,18 +71,20 @@ try {
     overflow-x: auto; /* Allows table to be scrolled horizontally on small screens */
     margin-block: 2rem;
     width: 100%;
+    font-family: "Inter", "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 0.75rem;
+    line-height: 1.35;
+    letter-spacing: 0.01em;
   }
   table {
     width: 100%;
     border-collapse: collapse;
     border: 1px solid var(--sl-color-hairline);
-    font-size: 0.95rem;
   }
   th, td {
     border: 1px solid var(--sl-color-hairline);
-    padding: 0.75rem;
+    padding: 0.8rem;
     text-align: left;
-    font-size: 0.75rem;
     overflow: hidden;
  
     

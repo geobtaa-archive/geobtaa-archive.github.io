@@ -1,37 +1,34 @@
 ---
-import { csvParse } from "d3-dsv";
+import { promises as fs } from "fs";
+import path from "path";
+import Papa from "papaparse";
 
-/** Column config for rendering & filters */
+/** Column config */
 export interface Column {
-  /** Must match the CSV header text exactly, e.g., "First Name" */
   key: string;
-  /** Visible header label (defaults to key) */
   label?: string;
-  /** e.g., "20%" or "18ch" */
   width?: string;
-  /** "text" (free text), "datalist" (dropdown of unique values), or false (no filter) */
   filter?: "text" | "datalist" | false;
-  /** Clamp long content to N lines (2/3/4). Omit to show full text. */
   clampLines?: number;
-  /** "normal" (wrap) or "nowrap" (truncate with ellipsis) */
   wrap?: "normal" | "nowrap";
 }
 
-/** Props for the component */
+/** Props */
 export interface Props {
-  /** Preferred for Option B: import CSV as text in MDX → rawCsv={teamCsv} */
+  /** Preferred: root-relative path like "src/tables/your.csv" */
+  src?: string;
+  /** OR pass CSV text that was imported with ?raw */
   rawCsv?: string;
-  /** OR pass already-parsed rows (array of objects) */
+  /** OR already-parsed rows */
   data?: Record<string, any>[];
-  /** Optional: explicit column config; if omitted, inferred from CSV headers */
+  /** Optional explicit columns; otherwise inferred from CSV headers */
   columns?: Column[];
-  /** Unique suffix if multiple tables are on one page */
   id?: string;
-  /** Enable zebra striping and header background (default true) */
   striped?: boolean;
 }
 
 const {
+  src,
   rawCsv,
   data: dataProp,
   columns: columnsProp,
@@ -39,25 +36,48 @@ const {
   striped = true,
 } = Astro.props;
 
-/* ---- Load & parse rows (server-side) ----
-   Priority: data (already parsed) → rawCsv (text) → [] */
+/* ---------- Load & parse rows (build-time) ---------- */
 let rows: Record<string, any>[] = [];
+
 if (Array.isArray(dataProp) && dataProp.length) {
+  // Already-parsed data from MDX
   rows = dataProp;
 } else if (typeof rawCsv === "string") {
-  rows = csvParse(rawCsv); // robust to commas-in-quotes, spaces, etc.
+  // CSV text provided (e.g., import '...csv?raw')
+  const parsed = Papa.parse<Record<string, string>>(rawCsv, {
+    header: true,
+    skipEmptyLines: true,
+  });
+  rows = (parsed.data ?? []).map((r) => {
+    const out: Record<string, string> = {};
+    for (const [k, v] of Object.entries(r)) out[k] = (v ?? "").toString().trim();
+    return out;
+  });
+} else if (typeof src === "string" && src.length) {
+  // Read from disk using project root (matches your working CsvTable.astro)
+  const csvPath = path.resolve(process.cwd(), src);
+  const csvContent = await fs.readFile(csvPath, "utf-8");
+  const parsed = Papa.parse<Record<string, string>>(csvContent, {
+    header: true,
+    skipEmptyLines: true,
+  });
+  rows = (parsed.data ?? []).map((r) => {
+    const out: Record<string, string> = {};
+    for (const [k, v] of Object.entries(r)) out[k] = (v ?? "").toString().trim();
+    return out;
+  });
 } else {
   rows = [];
 }
 
-/* ---- Infer columns from CSV headers if none provided ---- */
+/* ---------- Infer columns if not provided ---------- */
 const csvHeaders = rows.length ? Object.keys(rows[0]) : [];
 const columns: Column[] =
   columnsProp && columnsProp.length
     ? columnsProp
     : csvHeaders.map((h) => ({ key: h, label: h }));
 
-/* ---- Build datalist options for any column using "datalist" ---- */
+/* ---------- Build datalist options ---------- */
 const datalistOptions: Record<string, string[]> = {};
 for (const col of columns) {
   if (col.filter === "datalist") {
@@ -70,7 +90,7 @@ for (const col of columns) {
   }
 }
 
-/* ---- Helpers ---- */
+/* ---------- Helpers ---------- */
 const safeId = (s: string) =>
   s.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "") || "col";
 
@@ -210,7 +230,6 @@ const cellClass = (col: Column) => {
   overflow-x: auto;
   background: var(--sl-color-bg);
   border: 1px solid var(--sl-color-hairline);
-  border-radius: 0.75rem;
 }
 
 .table-tools {
@@ -238,8 +257,10 @@ const cellClass = (col: Column) => {
   padding: .45rem .6rem;
   border-bottom: 1px solid var(--sl-color-hairline);
   vertical-align: top;
-  line-height: 1.25;
-  font-size: 0.95rem;
+  font-family: "Inter", "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 0.8rem;
+  line-height: 1.35;
+  letter-spacing: 0.01em;
 }
 
 .people-table thead .filters th { background: var(--sl-color-bg-alt); border-bottom-color: var(--sl-color-hairline); }
@@ -254,6 +275,15 @@ const cellClass = (col: Column) => {
   background: color-mix(in srgb, var(--sl-color-primary) 10%, var(--sl-color-bg));
   transition: background-color 0.15s ease;
 }
+
+
+/* Optional: make header slightly stronger */
+.people-table th {
+  font-weight: 600;
+  text-transform: none;
+  letter-spacing: 0;
+}
+
 
 /* Wrapping & clamping */
 .cell { white-space: normal; word-wrap: break-word; overflow-wrap: break-word; hyphens: auto; }
