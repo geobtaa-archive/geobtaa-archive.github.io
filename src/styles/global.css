@@ -75,6 +75,7 @@ p.title {
 --sl-color-hairline:    rgba(0, 60, 91, 0.15);
 --sl-color-bg-nav:      var(--btaa-med-blue);
 --sl-social-icons: var(--btaa-white);
+--sl-rows: var(--btaa-light-gray);
 
 /* Headings */
 main h1, main h2, main h3, main h4, main h5, main h6 {
@@ -105,6 +106,7 @@ color: #FFFFFF;
 /* --sl-color-bg-nav:      var(--btaa-dark-blue); */
 --sl-color-accent-high: var(--btaa-white);
 --sl-color-accent-muted: var(--btaa-gray);
+--sl-rows: #17181c;
 
 .starlight-aside__title {
 color: var(--btaa-white);
@@ -204,7 +206,7 @@ input[type="checkbox"]:checked::after {
     border-color: color-mix(in srgb, var(--btaa-blue) 18%, transparent);
     box-shadow: 0 1px 0 rgba(0,0,0,.03), 0 18px 38px -20px rgba(0,0,0,.4);
   }
-  .card h3{ margin:.1rem 0 .35rem; font-size:1.02rem; color: var(--btaa-dark-blue); }
+  .card h3{ margin:.1rem 0 .35rem; font-size:1.02rem;}
   .card p{ margin:0 0 .6rem; color: color-mix(in srgb, var(--sl-color-text) 82%, #6b7280); }
   .card__more{ font-size:.9rem; color: var(--btaa-blue); }
 
