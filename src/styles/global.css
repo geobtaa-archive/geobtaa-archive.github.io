@@ -25,8 +25,8 @@
 /* Headings */
 main h1, main h2, main h3, main h4, main h5, main h6 {
 font-family: var(--font-family-heading);
-
 }
+
 
 body {
 font-family: var(--font-family-body);
@@ -36,17 +36,8 @@ color: var(--sl-color-text);
 background: var(--sl-color-bg);
 }
 
-/* Scaled heading sizes */
-main h1 { font-size: 1.8rem; }
-main h2 { font-size: 1.5rem; font-weight:100;}
-main h3 { font-size: 1.2rem; font-weight:100;}
-main h4 { font-size: 1.1rem; }
-main h5 { font-size: 1.0rem; }
-main h6 { font-size: 1.0rem; }
-
 /* Inline icon helper */
 .sl-markdown-content .inline-icon { display: inline; }
-
 }
 
 p.title {
@@ -77,10 +68,7 @@ p.title {
 --sl-social-icons: var(--btaa-white);
 --sl-rows: var(--btaa-light-blue);
 
-/* Headings */
-main h1, main h2, main h3, main h4, main h5, main h6 {
-color: var(--sl-color-headings, var(--btaa-dark-blue));
-}
+
 
 #starlight__on-this-page--mobile {
   background-color: var(--btaa-white);
@@ -123,6 +111,11 @@ color: var(--btaa-white);
 /* Remove the default bullet from list items containing checkboxes */
 li:has(input[type="checkbox"]) {
   list-style-type: none; /* no bullet */
+}
+
+.sl-markdown-content ul li,
+.sl-markdown-content ol li {
+  margin-bottom: 1rem;
 }
 
 /* Style the checkbox itself */
@@ -382,4 +375,27 @@ input[type="checkbox"]:checked::after {
 /* Dark mode tweaks if needed */
 [data-theme="dark"] .collapsible {
   background: var(--sl-color-bg);
+}
+
+
+/* Default lists remain unchanged */
+
+/* Compact list style for denser layouts */
+.compact-list {
+  font-size: 0.9rem;       /* slightly smaller font */
+  line-height: 1.1;        /* tighter line spacing */
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+  padding-left: 1.2em;     /* smaller indentation */
+}
+
+.compact-list li {
+  margin-bottom: 1em;   /* tighter spacing between bullets */
+}
+
+/* Optional: fine-tune nested lists */
+.compact-list ul,
+.compact-list ol {
+  margin-top: 0.3em;
+  margin-bottom: 0.3em;
 }
