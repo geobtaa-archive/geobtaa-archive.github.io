@@ -199,7 +199,7 @@ input[type="checkbox"]:checked::after {
     border-color: color-mix(in srgb, var(--btaa-blue) 18%, transparent);
     box-shadow: 0 1px 0 rgba(0,0,0,.03), 0 18px 38px -20px rgba(0,0,0,.4);
   }
-  .card h3{ margin:.1rem 0 .35rem; font-size:1.02rem;}
+  .card h3{ margin:.1rem 0 .35rem;}
   .card p{ margin:0 0 .6rem; color: color-mix(in srgb, var(--sl-color-text) 82%, #6b7280); }
   .card__more{ font-size:.9rem; color: var(--btaa-blue); }
 
@@ -398,4 +398,12 @@ input[type="checkbox"]:checked::after {
 .compact-list ol {
   margin-top: 0.3em;
   margin-bottom: 0.3em;
+}
+
+.compact-list-extra {
+  font-size: 0.9rem;       /* slightly smaller font */
+  line-height: 1;        /* tighter line spacing */
+  margin-top: 0.75em;
+  margin-bottom: 0.5em;
+  padding-left: 1em;     /* smaller indentation */
 }
