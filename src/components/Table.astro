@@ -10,6 +10,7 @@ export interface Column {
   filter?: "text" | "datalist" | false;
   clampLines?: number;
   wrap?: "normal" | "nowrap";
+  render?: "text" | "markdown" | "autolink" | "html";
 }
 
 export interface Props {
@@ -69,6 +70,40 @@ const cellClass = (col: Column) => {
   if (col.wrap === "nowrap") parts.push("nowrap");
   if (typeof col.clampLines === "number") parts.push(`clamp-${col.clampLines}`);
   return parts.join(" ");
+};
+
+
+const renderCellHTML = (val: unknown, col: Column) => {
+  const s = (val ?? "").toString().trim();
+  if (!s) return "";
+
+  // 1) Markdown [label](url) — allow relative (./, ../, /foo) and absolute (http/https)
+  const mdLinked = s.replace(
+    /\[([^\]]+)\]\(([^)\s]+)\)/g, // capture any non-space until ')'
+    (_m, label: string, href: string) => {
+      const safeHref = href.replace(/"/g, "&quot;");
+      const isAbsolute = /^https?:\/\//i.test(safeHref);
+      const target = isAbsolute ? ' target="_blank" rel="noopener noreferrer"' : "";
+      return `<a href="${safeHref}"${target}>${label}</a>`;
+    }
+  );
+
+  // 2) Autolink raw absolute URLs (http/https) only
+  const urlified = mdLinked.replace(
+    /(^|[\s(])((https?:\/\/)[^\s)]+)(?=$|[\s)])/g,
+    (_m, pre: string, url: string) =>
+      `${pre}<a href="${url}" target="_blank" rel="noopener noreferrer">${url}</a>`
+  );
+
+  // 3) If the column is explicitly "html", allow <a> tags and escape other tags
+  if (col.render === "html") {
+    return urlified
+      .replace(/<(?!\/?a(?:\s|>))/gi, "&lt;") // escape non-<a> tags
+      .replace(/on\w+="[^"]*"/gi, "");       // strip event handlers on <a>
+  }
+
+  // For "markdown" and "autolink" we already transformed above
+  return urlified;
 };
 ---
 
@@ -135,21 +170,28 @@ const cellClass = (col: Column) => {
     <tbody>
       {rows.map((r) => (
         <tr>
-          {columns.map((col) => (
+          {columns.map((col) => {
+          const raw = (r[col.key] ?? "").toString();
+          const html = col.render && col.render !== "text" ? renderCellHTML(raw, col) : "";
+          return col.render && col.render !== "text" ? (
             <td
               data-key={col.key}
-              class={(() => {
-                const parts = ["cell"];
-                if (col.wrap === "nowrap") parts.push("nowrap");
-                if (typeof col.clampLines === "number") parts.push(`clamp-${col.clampLines}`);
-                return parts.join(" ");
-              })()}
+              class={cellClass(col)}
               style={col.width ? `width:${col.width}` : undefined}
-              title={(r[col.key] ?? "").toString()}
+              title={raw}
+              set:html={html}   /* <-- use directive directly */
+            />
+          ) : (
+            <td
+              data-key={col.key}
+              class={cellClass(col)}
+              style={col.width ? `width:${col.width}` : undefined}
+              title={raw}
             >
-              {(r[col.key] ?? "").toString()}
+              {raw}
             </td>
-          ))}
+          );
+        })}
         </tr>
       ))}
     </tbody>

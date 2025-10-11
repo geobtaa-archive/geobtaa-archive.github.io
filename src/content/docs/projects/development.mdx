@@ -4,14 +4,75 @@ description: 'Development of open source software for geospatial'
 sidebar:
   order: 1
 ---
+import { Card, CardGrid } from '@astrojs/starlight/components';
 
+## BTAA-GIN Local Projects
 
-## BTAA Geoportal
+<CardGrid>
 
-Our flagship project is a search portal that connects users to digital geospatial resources, including GIS datasets, web services, and digitized historical maps from multiple data clearinghouses and library catalogs. 
+  <Card title = "BTAA Geoportal">
 
-## GBL Admin
+  ![](@images/geoportal-homepage.png)
 
-## Fast API
+  Our flagship project is a search portal that connects users to digital geospatial resources, including GIS datasets, web services, and digitized historical maps from multiple data clearinghouses and library catalogs. 
 
-etc.
+  [Visit the Geoportal](https://geo.btaa.org)
+
+  [Read more about the Geoportal's key features and testimonials](geoportal.md).
+  </Card>
+
+  <Card title = "GBL Admin">
+
+  ![](@images/gbl-admin.png) 
+
+  A GeoBlacklight plugin that provides a complex web-form for editing documents and an CSV-based import/export workflow for OpenGeoMetadata's Aardvark schema.
+
+  [GitHub repo](https://github.com/geobtaa/geoblacklight_admin)
+
+  [Watch a demo video](https://www.youtube.com/watch?v=lWjcr-Ow228).
+  </Card>
+
+</CardGrid>
+
+## Current Initiatives
+<CardGrid>
+
+<Card title = "Geodata Collection">
+![](@images/geodata-collection.png)
+The BTAA-GIN has launched an initiative to collect, store, and distribute open geodata. 
+[Read more about the initiative](geodata-collection.md)
+</Card>
+
+<Card title = "Strategic Technology Plan (2025-6)">    
+      
+![](@images/strategic-tech-plan.png)
+This initiative involves upgrading, modernizing, and modularizing our technology stack. 
+[Read more about the initiative](tech-plan-2025.md)
+    
+</Card>
+</CardGrid>
+
+## Geospatial Library Community Projects
+
+<CardGrid>
+<Card title = "GeoBlacklight">
+![](@images/geoblacklight-logo.png)
+We contribute code and documentation to the open source geospatial application, GeoBlacklight
+
+[Read about the GeoBlacklight community](https://geoblacklight.org)
+
+[View the open-source code](https://github.com/geoblacklight/geoblacklight).
+</Card>
+
+<Card title = "OpenGeoMetadata">
+    
+![](@images/ogm-logo.png)
+
+We contribute metadata analysis, metadata files, and documentation to the OpenGeoMetadata project.
+
+[Learn about the OGM Aardvark metadata schema](https://opengeometadata.org)
+
+[ Browse metadata files](https://github.com/opengeometadata).
+
+</Card>
+</CardGrid>
