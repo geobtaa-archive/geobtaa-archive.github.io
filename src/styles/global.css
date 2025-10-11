@@ -62,11 +62,12 @@ p.title {
 --sl-color-accent-muted: var(--btaa-white);
 --sl-color-accent-low:  rgba(0, 136, 206, 0.20);
 --sl-color-accent:      var(--btaa-med-blue);
-/* --sl-color-accent-high: var(--btaa-dark-blue); */
+--sl-color-accent-high: var(--btaa-dark-blue);
 --sl-color-hairline:    rgba(0, 60, 91, 0.15);
 --sl-color-bg-nav:      var(--btaa-med-blue);
 --sl-social-icons: var(--btaa-white);
 --sl-rows: var(--btaa-light-blue);
+--sl-rows-text: var(--btaa-med-blue);
 
 
 
@@ -93,7 +94,9 @@ color: #FFFFFF;
 :root[data-theme="dark"] {
 /* --sl-color-bg-nav:      var(--btaa-dark-blue); */
 --sl-color-accent-high: var(--btaa-white);
+--sl-color-accent: var(--btaa-white);
 --sl-color-accent-muted: var(--btaa-gray);
+--sl-rows-text: var(--btaa-blue);
 --sl-rows: #23262f;
 
 .starlight-aside__title {

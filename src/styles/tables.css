@@ -10,7 +10,7 @@
   margin-block: 1rem 1.5rem;
   overflow-x: auto;                    /* only when needed */
   background: var(--sl-color-bg);
-  border: 1px solid var(--sl-color-hairline);
+  border: 0px solid var(--sl-color-hairline);
   border-radius: 0.5rem;
 }
 
@@ -33,7 +33,7 @@
   max-width: 100%;
   border-collapse: collapse;
   table-layout: fixed;                 /* enforce wrapping & widths */
-  font-family: "Inter", "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 0.875rem;                 /* ~14px */
   line-height: 1.35;
   letter-spacing: 0.01em;
@@ -42,14 +42,28 @@
 /* Cells */
 .table th,
 .table td {
-  padding: 0.45rem 0.6rem;
-  border-bottom: 1px solid var(--sl-color-hairline);
+  padding: 0.45rem 0.75rem;
+  border-bottom: 1px dotted var(--sl-color-hairline, #ccc);
   vertical-align: middle;
   text-align: left; 
   white-space: normal;                 /* allow wrapping */
   word-wrap: break-word;
   overflow-wrap: break-word;
   hyphens: auto;
+}
+
+.table td a {
+  color: var(--sl-rows-text);
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.table td a:link {
+  text-decoration: none;
+}
+
+.table td a:hover {
+  text-decoration: underline;
 }
 
 /* Sticky header + styled header row */
@@ -78,13 +92,13 @@
   background: var(--sl-color-bg);
 }
 
-Zebra striping & hover
+/* Zebra striping & hover
 .table.striped tbody tr:nth-child(even) { background: var(--sl-color-bg); }
 .table.striped tbody tr:nth-child(odd)  { background: var(--sl-rows); }
 .table tbody tr:hover {
   background: color-mix(in srgb, var(--sl-color-primary) 10%, var(--sl-color-bg));
   transition: background-color 0.15s ease;
-}
+} */
 
 /* Helpers for cell behavior */
 .cell { /* default already wraps via base cell rules */ }
@@ -117,3 +131,4 @@ Zebra striping & hover
 .table--compact td {
   padding: 0.3rem 0.45rem;
 }
+
