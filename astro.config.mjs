@@ -32,31 +32,24 @@ export default defineConfig({
       ], // Closes plugins[]
       
       sidebar: [
-      { label: 'Geospatial Information Network',
-        items: [
-          { label: 'About', collapsed: true, autogenerate: { directory: 'about' } },
-          { label: 'Projects', collapsed: true, autogenerate: { directory: 'projects' } },
-          {label: 'Scholarship', collapsed: true, 
-              items: [
-                { label: 'Presentations', link: '/scholarship/presentations/' },
-                { label: 'Posters', link: '/scholarship/posters/' },
-                { label: 'Publications', link: '/scholarship/publications/' },
-                { label: 'Document Library', link: '/library/' },
-              ],
-          },  
-        ],
-      },
-      { label: 'Community',
-        items: [
+        { label: 'About', collapsed: true, autogenerate: { directory: 'about' } },
+        { label: 'Our Work', collapsed: true, autogenerate: { directory: 'projects' } },
+        { label: 'Scholarship', collapsed: true, 
+            items: [
+              { label: 'Presentations', link: '/scholarship/presentations/' },
+              { label: 'Posters', link: '/scholarship/posters/' },
+              { label: 'Publications', link: '/scholarship/publications/' },
+              { label: 'Document Library', link: '/library/' },
+            ],
+        },  
         { label: 'User Resources', collapsed: true, autogenerate: { directory: 'user-resources' } },
         { label: 'Big Ten Conference', collapsed: true, 
             items: [
                 { label: 'About', link: '/conference/' },
                 { label: 'Map Gallery', link: '/conference/map-gallery/' },
               ],
+
         },
-        ]
-      },
 
     ]
     }), // Closes starlight()
