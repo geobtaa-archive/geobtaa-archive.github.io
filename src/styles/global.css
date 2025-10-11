@@ -27,6 +27,34 @@ main h1, main h2, main h3, main h4, main h5, main h6 {
 font-family: var(--font-family-heading);
 }
 
+main h2 {
+  font-size: 1.6rem;
+  font-weight: 700;
+  border-bottom: 2px solid var(--sl-color-primary);
+  padding-bottom: 0.25rem;
+  margin-top: 2.5rem;
+  color: var(--sl-color-headings);
+}
+
+main h3 {
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin-top: 1.5rem;
+  color: var(--sl-color-primary);
+  color: var(--sl-color-headings);
+}
+
+main h4 {
+  font-size: 1rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  margin-top: 1rem;
+  color: var(--sl-color-text-accent);
+}
+
+
+
+
 
 body {
 font-family: var(--font-family-body);
@@ -58,6 +86,7 @@ p.title {
 :root[data-theme="light"] {
 --sl-color-bg:          var(--btaa-white);
 --sl-color-text:        var(--btaa-black);
+--sl-color-headings: var(--btaa-dark-blue);
 --sl-color-text-muted:  var(--btaa-gray);
 --sl-color-accent-muted: var(--btaa-white);
 --sl-color-accent-low:  rgba(0, 136, 206, 0.20);
@@ -96,6 +125,7 @@ color: #FFFFFF;
 --sl-color-accent-high: var(--btaa-white);
 --sl-color-accent: var(--btaa-white);
 --sl-color-accent-muted: var(--btaa-gray);
+--sl-color-headings: var(--btaa-white);
 --sl-rows-text: var(--btaa-blue);
 --sl-rows: #23262f;
 
@@ -409,4 +439,17 @@ input[type="checkbox"]:checked::after {
   margin-top: 0.75em;
   margin-bottom: 0.5em;
   padding-left: 1em;     /* smaller indentation */
+}
+
+.resource-card {
+  background: var(--sl-color-bg-alt);
+  border-left: 4px solid var(--sl-color-accent);
+  padding: 1rem 1.5rem;
+  /* margin: 1.5rem 0; */
+  margin-left: 3rem;
+  margin-bottom: 3rem;
+  border-radius: var(--radius-lg);
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
 }
