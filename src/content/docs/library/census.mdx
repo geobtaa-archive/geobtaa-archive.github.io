@@ -5,7 +5,6 @@ tags:
 - guides
 ---
 
-import { LinkButton } from '@astrojs/starlight/components';
 import { LinkCard } from '@astrojs/starlight/components';
 import Table from '/src/components/Table.astro';
 
@@ -74,7 +73,7 @@ The IPUMS National Historic Geographic Information System (NHGIS) provides acces
 
 There are no mapping capabilities in this tool, but datasets are designed to be smoothly integrated into GIS software.
 
-#### IPUMS NHGIS Use cases
+#### Use cases
 
 <div class = "compact-list">
 * Getting a large number of variables for use in a statistics program, including margins of error
@@ -109,35 +108,57 @@ Social Explorer is a useful mapping interface for exploring current and historic
 <LinkCard title="Browse Social Expolorer" description="Social Explore data descriptions in the BTAA Geoportal" href="https://geo.btaa.org/catalog/999-0001" />
 
 </div>
-
-### [SimplyAnalytics](https://geo.btaa.org/catalog/999-0004)
+<div class = "resource-card">
+### SimplyAnalytics
 
 SimplyAnalytics has a business and marketing focus - with resources that contain many government and private datasets beyond the U.S. Census. Use this resource if you would like to combine census data with business or economic data. This interface will pro-rate indicators into smaller geographies than how the data were gathered, which is problematic in a rigorous statistical analysis.
 
-SimplyAnalytics use case
+#### Use cases
 	
 Download a ready-to-go shapefile with variables already joined, especially if including non-Census derived variables
 
-### [PolicyMap](https://geo.btaa.org/catalog/999-0003)
+<LinkCard title="Browse SimplyAnalytics" description="SimplyAnalytics data descriptions in the BTAA Geoportal" href="https://geo.btaa.org/catalog/999-0004" />
+
+
+</div>
+<div class = "resource-card">
+
+### PolicyMap
 
 PolicyMap is a community-focused resource which contains many public and private datasets beyond the U.S. Census. Because census datasets are available elsewhere, use PolicyMap when you are interested in the additional social science data. It also has a location identifier functionality which will identify the census tract number wherever you click on the map.
 
-PolicyMap use cases:
+#### Use cases
 
+<div class = "compact-list">
 - Easily make a Multi Layer Map, where you pick several data layers and find the places where they overlap, e.g. areas with a certain level of poverty, with food deserts, and low access to vehicles
 - Narrow down a study area or use interactive tool to compare areas
 - Combining census data with other unique social science data (e.g. supermarket access, quality of life indicators)
 - Mapping tool, not a data export tool
 
+</div>
+
+<LinkCard title="Browse PolicyMap" description="PolicyMap data descriptions in the BTAA Geoportal" href="https://geo.btaa.org/catalog/999-0003" />
+</div>
+
+
+<div class = "resource-card">
+
 ### [Living Atlas](https://geo.btaa.org/catalog/99-1200-001)
 
 If you are making maps using a subscription version of ArcGIS and only need recent census variables, the Living Atlas provides easy access to census data. The census layers feature multiple geographies that become visible as you zoom and well-formatted pop-ups.
 
-Living Atlas use cases:
-	
+#### Use cases
+
+<div class = "compact-list">
 - Easily integrate with other layers in ArcGIS Online or ArcGIS Pro, but only has states, counties, and tracts
 - Good pop-up information if you are building a web map or StoryMap
-- If you’re working in ArcGIS Online or ArcGIS Pro, easy to check if these layers are sufficient for your project
+- If you are working in ArcGIS Online or ArcGIS Pro, easy to check if these layers are sufficient for your project
+</div>
+
+<LinkCard title="Browse Living Atlas" description="Living Atlas data descriptions in the BTAA Geoportal" href="https://geo.btaa.org/catalog/99-1200-001" />
+</div>
+
+
 
 ## Other sources of census data
 
