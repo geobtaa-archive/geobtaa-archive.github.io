@@ -43,5 +43,7 @@ export default new Map([
 ["src/content/docs/library/tutorials/09_create-elevation-surface-models.mdx", () => import("astro:content-layer-deferred-module?astro%3Acontent-layer-deferred-module=&fileName=src%2Fcontent%2Fdocs%2Flibrary%2Ftutorials%2F09_create-elevation-surface-models.mdx&astroContentModuleFlag=true")],
 ["src/content/docs/library/tutorials/10_zonal-stats-tool.mdx", () => import("astro:content-layer-deferred-module?astro%3Acontent-layer-deferred-module=&fileName=src%2Fcontent%2Fdocs%2Flibrary%2Ftutorials%2F10_zonal-stats-tool.mdx&astroContentModuleFlag=true")],
 ["src/content/docs/library/fire-insurance.mdx", () => import("astro:content-layer-deferred-module?astro%3Acontent-layer-deferred-module=&fileName=src%2Fcontent%2Fdocs%2Flibrary%2Ffire-insurance.mdx&astroContentModuleFlag=true")],
-["src/content/docs/library/fire-insurance2.mdx", () => import("astro:content-layer-deferred-module?astro%3Acontent-layer-deferred-module=&fileName=src%2Fcontent%2Fdocs%2Flibrary%2Ffire-insurance2.mdx&astroContentModuleFlag=true")]]);
+["src/content/docs/library/fire-insurance2.mdx", () => import("astro:content-layer-deferred-module?astro%3Acontent-layer-deferred-module=&fileName=src%2Fcontent%2Fdocs%2Flibrary%2Ffire-insurance2.mdx&astroContentModuleFlag=true")],
+["src/content/docs/library/cite-data.mdx", () => import("astro:content-layer-deferred-module?astro%3Acontent-layer-deferred-module=&fileName=src%2Fcontent%2Fdocs%2Flibrary%2Fcite-data.mdx&astroContentModuleFlag=true")],
+["src/content/docs/library/plss.mdx", () => import("astro:content-layer-deferred-module?astro%3Acontent-layer-deferred-module=&fileName=src%2Fcontent%2Fdocs%2Flibrary%2Fplss.mdx&astroContentModuleFlag=true")]]);
 		
