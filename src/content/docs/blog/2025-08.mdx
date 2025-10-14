@@ -2,7 +2,6 @@
 title: August 2025 Program Update
 date: 2025-09-04
 excerpt: Welcome to Our New GIN Members! We’re excited to welcome three new members to the Big Ten Academic Alliance Geospatial Information Network.
-postType: program-update
 cover:
   alt: Nestel, Whyte, and Rohl headshots
   image: ../../../assets/images/nestel-whyte-rohl.png
@@ -11,15 +10,16 @@ tags:
 
 ---
 
-import ProgramUpdate from 'src/components/ProgramUpdate.astro';
+
 import CenterLayout from 'src/components/CenterLayout.astro';
+import TwoThirdsLayout from 'src/components/TwoThirdsLayout.astro';
 import { Card, CardGrid } from '@astrojs/starlight/components';
 
-<ProgramUpdate>
+
 
 ## Welcome to Our New GIN Members!
 
-We’re excited to welcome three new members to the **Big Ten Academic Alliance Geospatial Information Network**.
+We’re excited to welcome three new members to the Big Ten Academic Alliance Geospatial Information Network.
 
 **Chelsea Nestel**, GIS Librarian at the University of Oregon, brings expertise in cartography, geospatial education, and design. With a PhD from UW–Madison, Chelsea offers workshops, consultations, and contributes actively to international cartographic communities.
 
@@ -76,56 +76,32 @@ Conducted a literature review in preparation for research and publication.
 
 ## BTAA Geoportal
 
-<CenterLayout>
+### This Month by the Numbers
+
+<TwoThirdsLayout>
+<div slot = "left">
 ![Unique visitors by month](@images/2025-08-monthly-users.png)
 *Unique visitors by month.*
-</CenterLayout>
+</div>
 
-### This Month by the Numbers
-<CardGrid class="kpi-grid">
-  <Card class="kpi-card">
-    <p class="kpi-label">Visitors</p>
-    <p class="kpi-value">6,097 </p>
-  </Card>
+<div slot = "right">
+<div class = "compact-list">
+- Visitors: 6,097
+- Visits: 7,067
+- Downloads: 442
+- Visits with download: 6.25%
+- Outlinks: 1,790
+- Visits with outlink: 25.33%
+- Num. searches: 1,365
+- Search keywords: 467
+</div>
+</div>
+</TwoThirdsLayout>
 
-  <Card class="kpi-card">
-    <p class="kpi-label">Visits</p>
-    <p class="kpi-value">7,067 </p>
-  </Card>
-
-  <Card class="kpi-card">
-    <p class="kpi-label">Downloads</p>
-    <p class="kpi-value">442</p>
-  </Card>
-
-  <Card class="kpi-card">
-    <p class="kpi-label">Outlinks</p>
-    <p class="kpi-value">1,790 </p>
-  </Card>
-
-  <Card class="kpi-card">
-    <p class="kpi-label">Visits with download</p>
-    <p class="kpi-value">6.25%</p>
-  </Card>
-
-  <Card class="kpi-card">
-    <p class="kpi-label">Visits with outlink</p>
-    <p class="kpi-value">25.33%</p>
-  </Card>
-
-  <Card class="kpi-card">
-    <p class="kpi-label">Number of searches</p>
-    <p class="kpi-value">1,365</p>
-  </Card>
-
-  <Card class="kpi-card">
-    <p class="kpi-label">Search keywords</p>
-    <p class="kpi-value">467</p>
-  </Card>
-</CardGrid>
+<hr/>
 
 ### Top internal keyword searches
-<ul class="chip-list">
+<ul class="chip-list not-content">
   <li>Sanborn</li>
   <li>Yemen</li>
   <li>Georgia USA</li>
@@ -168,4 +144,3 @@ Total records as of September 1, 2025: **109,345**
 [Read the most recent development report for more details](https://docs.google.com/document/d/1e9DiZ--1qOdbxT9ukTxidUteCMcVUPV03jgFWmuf5oU/edit?usp=sharing)
 :::
 
-</ProgramUpdate>
