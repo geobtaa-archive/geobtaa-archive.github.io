@@ -1,41 +1,35 @@
 ---
 title: August 2025 Program Update
+layout: 'src/components/ProgramUpdate.astro'
 date: 2025-09-04
-excerpt: Welcome to Our New GIN Members! We’re excited to welcome three new members to the Big Ten Academic Alliance Geospatial Information Network.
+excerpt: Welcome to Our New GIN Members! We are excited to welcome three new members to the Big Ten Academic Alliance Geospatial Information Network.
 authors:
     - name: BTAA-GIN Staff
 cover:
   alt: Nestel, Whyte, and Rohl headshots
-  image: ../../../assets/images/nestel-whyte-rohl.png
+  image: "@images/nestel-whyte-rohl.png"
+  caption: "Left: Chelsea Nestel, GIS Librarian at the University of Oregon; Center: Brendan Whyte, Map Curator, University of Chicago; Right: Anna Rohl, Map Curator, University of Michigan."
 tags:
   - Program Updates
-
 ---
 
-
-import CenterLayout from 'src/components/CenterLayout.astro';
-import TwoThirdsLayout from 'src/components/TwoThirdsLayout.astro';
-import { Card, CardGrid } from '@astrojs/starlight/components';
+import { TwoThirdsLayout, ChipList, Card, CardGrid } from 'src/components/ProgramUpdate.astro';
 
 
-
+<div class="monthly-highlight">
 ## Welcome to Our New GIN Members!
 
-We’re excited to welcome three new members to the Big Ten Academic Alliance Geospatial Information Network.
+We are excited to welcome three new members to the Big Ten Academic Alliance Geospatial Information Network.
 
 **Chelsea Nestel**, GIS Librarian at the University of Oregon, brings expertise in cartography, geospatial education, and design. With a PhD from UW–Madison, Chelsea offers workshops, consultations, and contributes actively to international cartographic communities.
 
 **Brendan Whyte** joins the University of Chicago as Map Curator and Head of the Map Collection. Formerly with the National Library of Australia, Brendan supports campus-wide use of maps in research and instruction, promoting geospatial thinking across disciplines.
 
-**Anna Rohl** is the new Map Curator at the University of Michigan’s Clark Library. She supports collection development, research, instruction, and public outreach, drawing on her background in history and library science.
+**Anna Rohl** is the new Map Curator at the University of Michigan's Clark Library. She supports collection development, research, instruction, and public outreach, drawing on her background in history and library science.
 
 Please join us in welcoming Anna, Chelsea, and Brendan to the GIN community!
 
-<CenterLayout>
-![New members](@images/nestel-whyte-rohl.png)
-*Left: Chelsea Nestel, GIS Librarian at the University of Oregon; Center: Brendan Whyte, Map Curator, University of Chicago; Right: Anna Rohl, Map Curator, University of Michigan.*
-</CenterLayout>
----
+</div>
 
 ### Committees
 
@@ -59,6 +53,7 @@ Please join us in welcoming Anna, Chelsea, and Brendan to the GIN community!
 
 ### Workgroups
 
+<Card>
 
 #### Geodata Collection Workgroup
 
@@ -74,7 +69,7 @@ Please join us in welcoming Anna, Chelsea, and Brendan to the GIN community!
 
 Conducted a literature review in preparation for research and publication.
 
----
+</Card>
 
 ## BTAA Geoportal
 
@@ -100,18 +95,17 @@ Conducted a literature review in preparation for research and publication.
 </div>
 </TwoThirdsLayout>
 
-<hr/>
-
 ### Top internal keyword searches
-<ul class="chip-list not-content">
-  <li>Sanborn</li>
-  <li>Yemen</li>
-  <li>Georgia USA</li>
-  <li>Aerial photos</li>
-  <li>South Carolina USA</li>
-  <li>Conservation</li>
-  <li>Pennsylvania</li>
-</ul>
+
+<ChipList class="not-content">
+- Sanborn
+- Yemen
+- Georgia USA
+- Aerial photos
+- South Carolina USA
+- Conservation
+- Pennsylvania
+</ChipList>
 
 :::tip[More stats]
 See full statistics on our [Analytics Dashboard](https://tableau.umn.edu/t/UL/views/BTAAGeoportalusageMatomo/Monthlycharts?%3Aembed=y&%3AisGuestRedirectFromVizportal=y)
@@ -121,7 +115,7 @@ See full statistics on our [Analytics Dashboard](https://tableau.umn.edu/t/UL/vi
 
 ## Collections
 
-Total records as of September 1, 2025: **109,345**
+<p class="records-total">Total records as of September 1, 2025: **109,345**</p>
 
 ### Harvesting Activities
 

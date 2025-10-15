@@ -1,19 +1,20 @@
 ---
 title: July 2025 Program Update
+layout: 'src/components/ProgramUpdate.astro'
 date: 2025-08-01
 excerpt: Introducing Our New Strategic Technology Plan.
 authors:
     - name: BTAA-GIN Staff
 tags:
   - Program Updates
+cover:
+  image: "@images/techplan2025.png"
+  alt: Overview diagram of proposed BTAA-GIN technology stack
+  caption: Overview of the proposed BTAA-GIN technology stack.
 ---
+import { TwoThirdsLayout, ChipList, Card, CardGrid } from 'src/components/ProgramUpdate.astro';
 
-import CenterLayout from 'src/components/CenterLayout.astro';
-import ChipList from 'src/components/ChipList.astro';
-import TwoThirdsLayout from 'src/components/TwoThirdsLayout.astro';
-import { Card, CardGrid } from '@astrojs/starlight/components';
-
-
+<div class="monthly-highlight">
 ## Introducing Our New Strategic Technology Plan
 
 As the [BTAA Geoportal](https://geo.btaa.org/) continues to grow, so do the demands on our technology. With the recent expansion of the Big Ten and the addition of new geospatial resources from the West Coast, we saw an opportunity to pursue a more modern and flexible approach to managing our collections. The result is a Strategic Technology Plan for building a stack that is modular, resilient, and future-ready.
@@ -22,14 +23,9 @@ The centerpiece of this new approach is a central metadata API that will make it
 
 We are moving away from a single, monolithic geoportal application toward a modular framework built on open-source Python tools. This structure lets us update individual components more easily and empowers us to prioritize data over tools, collaborate across institutions, and build infrastructure that adapts as our needs evolve.
 
-Our [2025–26 roadmap](https://gin.btaa.org/technology/tech-plan-2025) outlines four projects that bring this plan to life. Development is underway with a full rollout targeted for mid-2026, and we look forward to sharing updates along the way.
+Our [2025-26 roadmap](https://gin.btaa.org/technology/tech-plan-2025) outlines four projects that bring this plan to life. Development is underway with a full rollout targeted for mid-2026, and we look forward to sharing updates along the way.
 
-<CenterLayout>
-![Overview diagram of proposed BTAA-GIN technology stack](@images/techplan2025.png)
-*Overview of the proposed BTAA-GIN technology stack.*
-</CenterLayout>
-
----
+</div>
 
 ## Program Activities
 
@@ -55,6 +51,7 @@ Our [2025–26 roadmap](https://gin.btaa.org/technology/tech-plan-2025) outlines
 
 ### Workgroups
 
+<Card>
 #### Geodata Collection Workgroup
 
 - Aligned on the Urban Base Layers initiative, identifying seven foundational city-scale datasets shared across major metro areas in Big Ten states.
@@ -67,8 +64,8 @@ Our [2025–26 roadmap](https://gin.btaa.org/technology/tech-plan-2025) outlines
 #### Geospatial Data Citation Workgroup
 
 Did not meet.
+</Card>
 
----
 
 ## BTAA Geoportal
 
@@ -94,7 +91,7 @@ Did not meet.
 </div>
 </TwoThirdsLayout>
 
-<hr/>
+
 
 ### Top Google searches leading to the Geoportal
 
@@ -135,7 +132,7 @@ See full statistics on our [Analytics Dashboard](https://tableau.umn.edu/t/UL/vi
 
 ## Collections
 
-Total records as of August 1, 2025: **107,805**
+<p class="records-total">Total records as of August 1, 2025: **107,805**</p>
 
 ### Harvesting Activities
 
@@ -166,8 +163,3 @@ Total records as of August 1, 2025: **107,805**
 [Read the most recent development report for more details](https://docs.google.com/document/d/19sSRPXlRzI-dF-fMAbF44S1NBFgVYX23F-gS6-Ikuqc/edit?usp=sharing)
 :::
 
----
-
-## Priority Projects Update
-
-[Refer to our Priority Projects board](https://github.com/orgs/geobtaa/projects/22/views/6).
