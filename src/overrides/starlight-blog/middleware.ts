@@ -169,7 +169,7 @@ async function getBlogSidebar(context: APIContext): Promise<StarlightRouteData['
 
   const authors = await getAllAuthors(locale)
 
-  if (authors.size > 1) {
+  if (authors.size > 0) {
     sidebar.push(
       makeSidebarGroup(
         t('starlightBlog.sidebar.authors'),

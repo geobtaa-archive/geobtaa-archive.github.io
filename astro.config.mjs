@@ -61,7 +61,7 @@ export default defineConfig({
         starlightImageZoom({
           selector: 'img[src*="/src/assets/images/"], figure img',
         }),
-        starlightBlog({ title: 'News & Updates', recentPostCount: 5, navigation: 'header-start' }),
+        starlightBlog({ title: 'News & Updates', recentPostCount: 5 }),
         starlightFullViewMode(),
       ], // Closes plugins[]
       
