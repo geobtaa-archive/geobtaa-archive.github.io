@@ -467,3 +467,12 @@ input[type="checkbox"]:checked::after {
   font-size:.9rem;
 
 }
+
+
+.sl-markdown-content iframe.slide-embed {
+  width: min(100%, 960px);
+  aspect-ratio: 16 / 9;
+  /* ensure a reasonable minimum on small screens */
+  min-height: 360px;
+  border: 0;
+}
