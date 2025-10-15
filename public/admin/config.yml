@@ -9,7 +9,6 @@ site_url: https://geobtaa-archive.github.io
 media_folder: "public/assets/uploads"
 public_folder: "/assets/uploads"
 
-
 collections:
   - name: "blog"
     label: "Blog Posts"

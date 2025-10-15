@@ -1,6 +1,6 @@
 import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
-import starlightVideos from 'starlight-videos'
+// import starlightVideos from 'starlight-videos'
 import starlightFullViewMode from 'starlight-fullview-mode';
 // import starlightLinksValidator from 'starlight-links-validator'
 import starlightBlog from 'starlight-blog';
@@ -50,7 +50,6 @@ export default defineConfig({
               ],
 
         },
-
     ]
     }), // Closes starlight()
     

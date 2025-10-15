@@ -453,3 +453,26 @@ input[type="checkbox"]:checked::after {
   flex-direction: column;
   gap: 0.75rem;
 }
+
+/* ---------- Chip list ---------- */
+.chip-list {
+  display:flex; flex-wrap:wrap; gap:.75rem;
+  list-style:none; padding-left:0; margin:.6rem 0 0;
+}
+.chip-list > li {
+  border:1px solid var(--sl-color-hairline);
+  border-radius:999px;
+  background: var(--sl-rows);
+  padding:.5rem 3rem;
+  font-size:.9rem;
+
+}
+
+
+.sl-markdown-content iframe.slide-embed {
+  width: min(100%, 960px);
+  aspect-ratio: 16 / 9;
+  /* ensure a reasonable minimum on small screens */
+  min-height: 360px;
+  border: 0;
+}
