@@ -1,4 +1,4 @@
-Task (links to GitHub issue),Number Added,Number unpublished,Geoportal link,Labels
+Task,Records added,Records retired,Geoportal link,Labels
 [05a-01 December 2023](https://github.com/geobtaa/metadata/issues/389),9,0,https://geo.btaa.org/catalog/05a-01,reharvest
 [2023-12-05 Scan ArcGIS Hubs](https://github.com/geobtaa/metadata/issues/492),272,2000,https://geo.btaa.org/?search_field=all_fields&q=%22ArcGIS+Hub%22,reharvest
 [2023-12-19 Scan ArcGIS Hubs](https://github.com/geobtaa/metadata/issues/505),109,0,https://geo.btaa.org/?search_field=all_fields&q=%22ArcGIS+Hub%22,reharvest

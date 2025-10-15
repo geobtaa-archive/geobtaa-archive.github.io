@@ -1,4 +1,4 @@
-Task,Description,Number Added,Number unpublished,Geoportal Link
+Task,Description,Records added,Records retired,Geoportal Link
 [15d-01 maps and atlases](https://github.com/geobtaa/metadata/issues/550),New maps from Northwestern U.,251,0,https://geo.btaa.org/?f%5Bdct_isPartOf_sm%5D%5B%5D=15d-01
 [12d-04 Feb 12 2024](https://github.com/geobtaa/metadata/issues/546),Additional datasets from U. Chicago's CAMEL,187,0,https://geo.btaa.org/?f%5Bb1g_geom_import_id_ssi%5D%5B%5D=93&publication_state=%2A
 [12d-05 Catalog layers](https://github.com/geobtaa/metadata/issues/560),New datasets from U. Chicago's Geoda,73,0,https://geo.btaa.org/?f%5Bdct_isPartOf_sm%5D%5B%5D=12d-05

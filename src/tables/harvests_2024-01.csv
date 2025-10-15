@@ -1,4 +1,4 @@
-Task (links to GitHub issue),Number Added,Number unpublished,Geoportal link,Labels
+Task,Records added,Records retired,Geoportal link,Labels
 [12-04 first ingest to prod](https://github.com/geobtaa/metadata/issues/528),8605,0,https://geo.btaa.org/catalog/12d-04,"New records, New website"
 [99-1400 reharvest Q1 2024](https://github.com/geobtaa/metadata/issues/526),6699,767,https://geo.btaa.org/catalog/99-1400,reharvest
 [2024-01-21 ArcGIS Harvest](https://github.com/geobtaa/metadata/issues/529),320,94,https://geo.btaa.org/?search_field=all_fields&q=arcgis+hubs,reharvest
