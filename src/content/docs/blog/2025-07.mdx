@@ -1,140 +1,146 @@
 ---
 title: July 2025 Program Update
+date: 2025-08-01
 excerpt: Introducing Our New Strategic Technology Plan.
 authors:
     - name: BTAA-GIN Staff
 tags:
   - Program Updates
-date: 2025-08-01
 ---
 
-import { Card , CardGrid} from '@astrojs/starlight/components';
+import CenterLayout from 'src/components/CenterLayout.astro';
+import ChipList from 'src/components/ChipList.astro';
+import TwoThirdsLayout from 'src/components/TwoThirdsLayout.astro';
+import { Card, CardGrid } from '@astrojs/starlight/components';
+
 
 ## Introducing Our New Strategic Technology Plan
 
+As the [BTAA Geoportal](https://geo.btaa.org/) continues to grow, so do the demands on our technology. With the recent expansion of the Big Ten and the addition of new geospatial resources from the West Coast, we saw an opportunity to pursue a more modern and flexible approach to managing our collections. The result is a Strategic Technology Plan for building a stack that is modular, resilient, and future-ready.
+
+The centerpiece of this new approach is a central metadata API that will make it simpler to access and reuse our geospatial records. The API will support multiple discovery portals and access points, and it already powers a QGIS discovery plugin that is in active development.
+
+We are moving away from a single, monolithic geoportal application toward a modular framework built on open-source Python tools. This structure lets us update individual components more easily and empowers us to prioritize data over tools, collaborate across institutions, and build infrastructure that adapts as our needs evolve.
+
+Our [2025–26 roadmap](https://gin.btaa.org/technology/tech-plan-2025) outlines four projects that bring this plan to life. Development is underway with a full rollout targeted for mid-2026, and we look forward to sharing updates along the way.
+
+<CenterLayout>
 ![Overview diagram of proposed BTAA-GIN technology stack](@images/techplan2025.png)
+*Overview of the proposed BTAA-GIN technology stack.*
+</CenterLayout>
 
-As the [BTAA Geoportal](https://geo.btaa.org/) continues to grow, so do the demands on our technology. With the recent expansion of the Big Ten and the addition of new geospatial resources from the West Coast, we saw an opportunity to explore more modern and flexible ways to manage our collections. The result is a new Strategic Technology Plan: a roadmap for building a technology stack that is modular, resilient, and future-ready.
-
-The most exciting feature of this new approach is a central metadata API. This feature will make it easier than ever to access and reuse our geospatial records. The API will support multiple discovery portals and access points, and we are even using it to develop a QGIS data discovery plugin!
-
- As part of this shift, we are moving away from a large, all-in-one geoportal application toward a more flexible, modular framework built on open-source Python tools. This new structure makes it easier to update individual components and empowers us to think bigger: to prioritize data over tools, to collaborate better across institutions, and to build infrastructure that can adapt and grow over time. 
-
-Our [2025-26 roadmap](https://gin.btaa.org/technology/tech-plan-2025) encompasses four projects that will put this plan into action. Development is already underway, with full rollout planned by mid-2026. Stay tuned as we share updates!
-
-
+---
 
 ## Program Activities
 
 ### Committees
 
 <CardGrid>
-<Card title="TECHnology">
-Did not meet as all committee work was wrapped in June.
-</Card>
+  <Card title="Community Engagement">
+    Held a working meeting to review and note updates to the Geoportal tutorials.
+  </Card>
 
-<Card title="Community Engagement">
-Held a working meeting to review and note updates to the Geoportal tutorials.
-</Card>
+  <Card title="Coordination">
+    The July Coordinating Committee and Program Team meetings were canceled due to vacations.
+  </Card>
 
-<Card title="Knowledge">
- Did not meet as all committee work was wrapped in June.
- </Card>
+  <Card title="Knowledge">
+    Did not meet; all committee work wrapped in June.
+  </Card>
 
-<Card title="Coordination">
-The July Coordinating Committee and Program Team meeting were canceled due to vacations.
-</Card>
+  <Card title="TECHnology">
+    Did not meet; all committee work wrapped in June.
+  </Card>
 </CardGrid>
 
 ### Workgroups
 
-<Card title="Geodata Collection Workgroup">
-* Aligned on the Urban Base Layers initiative, identifying seven foundational city-scale datasets shared across major metro areas in Big Ten states—a focused strategy that supports both high-quality curation and regional scalability.
-* Confirmed Minneapolis as the first data provider partner to approach, paving the way for partnership-based data collection and future collaboration with additional cities.
-</Card>
+#### Geodata Collection Workgroup
 
-<Card title="Service Model Collaboration Workgroup">
-Work on the final report continued asynchronously with the plan of finalizing the report in time to share at the August program team meeting.
-</Card>
+- Aligned on the Urban Base Layers initiative, identifying seven foundational city-scale datasets shared across major metro areas in Big Ten states.
+- Confirmed Minneapolis as the first data provider partner to approach, paving the way for collaboration with additional cities.
 
-<Card title="Geospatial Data Citation Workgroup">
-Did not meet
-</Card>
+#### Service Model Collaboration Workgroup
 
+- Continued asynchronous work on the final report to finalize it for the August Program Team meeting.
 
-## BTAA Geoportal 
+#### Geospatial Data Citation Workgroup
 
+Did not meet.
 
-### Analytics Statistics
-<CardGrid>
+---
 
-<Card title="This month by the numbers">
+## BTAA Geoportal
 
-* Visitors: 10,164
-* Visits: 10,995
-* Downloads: 10,758
-* Visits with download: 5.5%
-* Outlinks: 1,975
-* Visits with outlink: 17.96%
-* Num. searches: 1,724
-* Search keywords: 470
-</Card>
+### This Month by the Numbers
 
-<Card title="Unique visitors by month">
+<TwoThirdsLayout>
+<div slot="left">
+![Unique visitors by month](@images/2025-07-monthly-users.png)
+*Unique visitors by month.*
+</div>
 
-![](@images/2025-07-monthly-users.png)
+<div slot="right">
+<div class="compact-list">
+- Visitors: 10,164
+- Visits: 10,995
+- Downloads: 10,758
+- Visits with download: 5.50%
+- Outlinks: 1,975
+- Visits with outlink: 17.96%
+- Num. searches: 1,724
+- Search keywords: 470
+</div>
+</div>
+</TwoThirdsLayout>
 
-</Card>
-</CardGrid>
+<hr/>
 
+### Top Google searches leading to the Geoportal
+
+<ChipList class="not-content">
+- kuwait sex
+- btaa geoportal
+- sanborn maps
+- oakland county mi parcel search
+- franklin county ohio school district map
+- franklin county line map
+- fire insurance maps california
+- geoportal
+- purdue campus map
+- oakland county parcel viewer
+- nj wetlands map
+</ChipList>
+
+### Top internal keyword searches
+
+<ChipList class="not-content">
+- PLSS
+- Geology
+- Sanborn
+- ArcGIS hubs
+- Address
+- Parks
+- Parcel
+- La Habra
+- Turkey
+- Puerto Rico
+</ChipList>
 
 :::tip[More stats]
 See full statistics on our [Analytics Dashboard](https://tableau.umn.edu/t/UL/views/BTAAGeoportalusageMatomo/Monthlycharts?%3Aembed=y&%3AisGuestRedirectFromVizportal=y)
 :::
 
+---
 
-**What Users are Looking for**
+## Collections
 
-<CardGrid>
-
-<Card title="Top Google searches leading to the Geoportal">	
-1. kuwait sex
-2. btaa geoportal
-3. sanborn maps
-4. oakland county mi parcel search
-5. franklin county ohio school district map
-6. franklin county line map
-7. fire insurance maps california
-8. geoportal
-9. purdue campus map
-10. oakland county parcel viewer
-11. nj wetlands map
-</Card>
-
-<Card title="Top internal keyword searches">
-1. PLSS
-2. Geology
-3. Sanborn
-4. ArcGIS hubs
-5. Address
-6. Parks
-7. Parcel
-8. La habra
-9. Turkey
-10. Puerto Rico
-</Card>
-
-</CardGrid>
-
-
-### Collections
-
-**Total records as of August 1, 2025:** ==107,805== 
+Total records as of August 1, 2025: **107,805**
 
 ### Harvesting Activities
 
-| Title| Records added | Records retired |
-| :---- | ----- | ----- |
+| Title | Records Added | Records Retired |
+|:--|--:|--:|
 | 2025-07-01 Scan ArcGIS Hubs | 92 | 108 |
 | 2025-07-22 Scan ArcGIS Hubs | 53 | 109 |
 | edu.wisc new WI DOT scanned maps | 42 | 0 |
@@ -144,24 +150,24 @@ See full statistics on our [Analytics Dashboard](https://tableau.umn.edu/t/UL/vi
 | MN GeoCommons 05a-01 July 2025 | 2 | 0 |
 | CKAN scan Q3 2025 | 0 | 0 |
 | Socrata Harvest Q3 2025 | 0 | 0 |
-| Total | 1174 | 217  |
+| **Total** | **1,174** | **217** |
 
+---
 
-### Web Development
+## Web Development
 
 **New Features or Enhancements**
 
-* **Strengthened Geoportal Stability & Performance** Implemented a bot mitigation solution using Cloudflare Turnstile and Samvera tools, dramatically improving site reliability and reducing server load following disruptive bot traffic spikes.
-* **Advanced OpenGeoMetadata API Development** Published a comprehensive draft specification for a new geospatial API designed to support BTAA and broader discovery efforts, laying the groundwork for future adoption across the OpenGeoMetadata community.
-* **Explored Budget-Friendly Hosting Solutions** Successfully tested Kamal deployment on a low-cost physical server, offering a promising option for hosting BTAA’s GeoData API with minimal infrastructure overhead.
+- **Strengthened Geoportal stability and performance.** Implemented a bot mitigation solution using Cloudflare Turnstile and Samvera tools to stabilize uptime during disruptive traffic spikes.
+- **Advanced OpenGeoMetadata API development.** Published a draft specification for a new geospatial API that supports BTAA and broader discovery efforts, laying groundwork for broader adoption.
+- **Explored budget-friendly hosting solutions.** Tested Kamal deployment on a low-cost physical server as a promising option for hosting the GeoData API with minimal overhead.
 
-
-:::tip[More development details]
+:::note[More development details]
 [Read the most recent development report for more details](https://docs.google.com/document/d/19sSRPXlRzI-dF-fMAbF44S1NBFgVYX23F-gS6-Ikuqc/edit?usp=sharing)
 :::
+
+---
 
 ## Priority Projects Update
 
 [Refer to our Priority Projects board](https://github.com/orgs/geobtaa/projects/22/views/6).
-
-
