@@ -1,4 +1,6 @@
 import { defineConfig } from 'astro/config';
+import { readFileSync } from 'node:fs';
+import { fileURLToPath } from 'node:url';
 import starlight from '@astrojs/starlight';
 // import starlightVideos from 'starlight-videos'
 import starlightFullViewMode from 'starlight-fullview-mode';
@@ -8,6 +10,38 @@ import react from '@astrojs/react';
 import starlightImageZoom from 'starlight-image-zoom'
 // import starlightSidebarTopics from 'starlight-sidebar-topics'
 import icon from 'astro-icon';
+
+function starlightBlogOverrides() {
+  const overrides = [
+    {
+      target: fileURLToPath(new URL('./node_modules/starlight-blog/components/Preview.astro', import.meta.url)),
+      replacement: fileURLToPath(new URL('./src/components/blog/Preview.astro', import.meta.url)),
+    },
+    {
+      target: fileURLToPath(new URL('./node_modules/starlight-blog/middleware.ts', import.meta.url)),
+      replacement: fileURLToPath(new URL('./src/overrides/starlight-blog/middleware.ts', import.meta.url)),
+    },
+  ].map(({ target, replacement }) => ({
+    target: target.replace(/\\/g, '/'),
+    replacement: replacement.replace(/\\/g, '/'),
+  }));
+
+  return {
+    name: 'starlight-blog-overrides',
+    enforce: 'pre',
+    load(id) {
+      const [filepath] = id.split('?');
+      if (!filepath) return null;
+
+      const normalized = filepath.replace(/\\/g, '/');
+      const match = overrides.find((entry) => entry.target === normalized);
+      if (!match) return null;
+
+      this.addWatchFile(match.replacement);
+      return readFileSync(match.replacement, 'utf-8');
+    },
+  };
+}
 
 export default defineConfig({
   integrations: [
@@ -27,7 +61,7 @@ export default defineConfig({
         starlightImageZoom({
           selector: 'img[src*="/src/assets/images/"], figure img',
         }),
-        starlightBlog({ title: 'News & Updates' }),
+        starlightBlog({ title: 'News & Updates', recentPostCount: 5, navigation: 'header-start' }),
         starlightFullViewMode(),
       ], // Closes plugins[]
       
@@ -58,6 +92,10 @@ export default defineConfig({
     icon(),
 
   ], // Closes integrations[]
+
+  vite: {
+    plugins: [starlightBlogOverrides()],
+  },
 
 }); // Closes defineConfig()
 
