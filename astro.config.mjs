@@ -20,6 +20,7 @@ export default defineConfig({
       components: {
         Footer: './src/components/FooterWithBar.astro',
         Sidebar: './src/components/SidebarWithFilters.astro',
+        PageTitle: './src/components/PageTitleWithMeta.astro',
       },
       plugins: [
         starlightImageZoom({

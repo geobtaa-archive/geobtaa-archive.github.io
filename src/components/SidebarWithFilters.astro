@@ -11,7 +11,6 @@ const isBlogIndex = pathname === '/blog/' || pathname === '/blog';
 
 let filterProps:
   | {
-      sortOrder: 'newest' | 'oldest';
       tags: string[];
       authors: string[];
       years: number[];
@@ -25,7 +24,6 @@ if (isBlogIndex) {
   const { tags, authors, years } = await loadBlogContent();
   const params = Astro.url.searchParams;
   filterProps = {
-    sortOrder: params.get('sort') === 'oldest' ? 'oldest' : 'newest',
     tags,
     authors,
     years,
@@ -41,7 +39,7 @@ if (isBlogIndex) {
   {filterProps && (
     <div class="blog-sidebar">
       <div class="blog-sidebar__header">
-        <h2 class="blog-sidebar__title">Filter posts</h2>
+        <h2 class="blog-sidebar__title">Filter results</h2>
         <button type="button" class="blog-sidebar__reset" data-blog-reset>
           Clear filters
         </button>

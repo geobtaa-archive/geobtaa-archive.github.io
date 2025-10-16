@@ -1,6 +1,5 @@
 ---
 interface Props {
-  sortOrder: 'newest' | 'oldest';
   tags: string[];
   authors: string[];
   years: number[];
@@ -10,7 +9,6 @@ interface Props {
 }
 
 const {
-  sortOrder,
   tags,
   authors,
   years,
@@ -326,16 +324,17 @@ const {
       updateView(selection);
     });
 
-    const resetButton = form.querySelector('[data-blog-reset]');
-    if (resetButton instanceof HTMLButtonElement) {
-      resetButton.addEventListener('click', () => {
+    const resetButtons = document.querySelectorAll('[data-blog-reset]');
+    resetButtons.forEach((button) => {
+      if (!(button instanceof HTMLButtonElement)) return;
+      button.addEventListener('click', () => {
         form.reset();
         /** @type {Selection} */
         const defaultSelection = { tags: [], authors: [], years: [], sort: 'newest' };
         populateFormFromSelection(defaultSelection);
         updateView(defaultSelection);
       });
-    }
+    });
   });
 </script>
 
@@ -431,7 +430,4 @@ const {
     accent-color: var(--sl-color-primary);
   }
 
-  .filter-panel__reset {
-    display: none;
-  }
 </style>
