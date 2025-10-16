@@ -11,6 +11,7 @@
     "optimize-gallery": "node optimize-gallery.mjs"
   },
   "dependencies": {
+    "@astrojs/check": "^0.9.4",
     "@astrojs/markdoc": "^0.15.5",
     "@astrojs/starlight": "^0.35.2",
     "@astrojs/starlight-markdoc": "^0.5.0",
@@ -38,7 +39,8 @@
     "starlight-sidebar-topics": "^0.6.1",
     "starlight-theme-rapide": "^0.5.1",
     "starlight-videos": "^0.3.0",
-    "starlight-view-modes": "^0.11.0"
+    "starlight-view-modes": "^0.11.0",
+    "typescript": "^5.9.3"
   },
   "devDependencies": {
     "@astrojs/react": "^4.3.1",

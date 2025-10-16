@@ -1,0 +1,179 @@
+---
+interface Props {
+  sortOrder: 'newest' | 'oldest';
+  tags: string[];
+  authors: string[];
+  years: number[];
+  selectedTags: string[];
+  selectedAuthors: string[];
+  selectedYears: string[];
+}
+
+const {
+  sortOrder,
+  tags,
+  authors,
+  years,
+  selectedTags,
+  selectedAuthors,
+  selectedYears,
+} = Astro.props as Props;
+---
+
+<form id="blog-filters" method="get" class="filter-panel">
+  <div class="filter-panel__row">
+    <fieldset class="filter-panel__group">
+      <legend class="filter-panel__legend">Sort</legend>
+      <label class="filter-panel__option">
+        <input
+          type="radio"
+          name="sort"
+          value="newest"
+          checked={sortOrder === 'newest'}
+        />
+        Newest first
+      </label>
+      <label class="filter-panel__option">
+        <input
+          type="radio"
+          name="sort"
+          value="oldest"
+          checked={sortOrder === 'oldest'}
+        />
+        Oldest first
+      </label>
+    </fieldset>
+
+    {(tags.length > 0 || authors.length > 0 || years.length > 0) && (
+      <a class="filter-panel__reset" href="/blog/">
+        Clear filters
+      </a>
+    )}
+  </div>
+
+  {tags.length > 0 && (
+    <fieldset class="filter-panel__group">
+      <legend class="filter-panel__legend">Tags</legend>
+      <div class="filter-panel__options">
+        {tags.map((tag) => (
+          <label class="filter-panel__option">
+            <input
+              type="checkbox"
+              name="tag"
+              value={tag}
+              checked={selectedTags.includes(tag)}
+            />
+            {tag}
+          </label>
+        ))}
+      </div>
+    </fieldset>
+  )}
+
+  {authors.length > 0 && (
+    <fieldset class="filter-panel__group">
+      <legend class="filter-panel__legend">Authors</legend>
+      <div class="filter-panel__options">
+        {authors.map((author) => (
+          <label class="filter-panel__option">
+            <input
+              type="checkbox"
+              name="author"
+              value={author}
+              checked={selectedAuthors.includes(author)}
+            />
+            {author}
+          </label>
+        ))}
+      </div>
+    </fieldset>
+  )}
+
+  {years.length > 0 && (
+    <fieldset class="filter-panel__group">
+      <legend class="filter-panel__legend">Years</legend>
+      <div class="filter-panel__options filter-panel__options--inline">
+        {years.map((year) => (
+          <label class="filter-panel__option">
+            <input
+              type="checkbox"
+              name="year"
+              value={String(year)}
+              checked={selectedYears.includes(String(year))}
+            />
+            {year}
+          </label>
+        ))}
+      </div>
+    </fieldset>
+  )}
+</form>
+
+<script>
+  const form = document.getElementById('blog-filters');
+  if (form instanceof HTMLFormElement) {
+    form.addEventListener('change', (event) => {
+      const target = event.target;
+      if (target instanceof HTMLInputElement || target instanceof HTMLSelectElement) {
+        form.requestSubmit ? form.requestSubmit() : form.submit();
+      }
+    });
+  }
+</script>
+
+<style>
+  .filter-panel {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1rem;
+    border: 1px solid var(--sl-color-hairline);
+    border-radius: 0.75rem;
+    background: var(--sl-color-bg-soft);
+  }
+
+  .filter-panel__row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .filter-panel__group {
+    border: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .filter-panel__legend {
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+  }
+
+  .filter-panel__options {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 0.4rem 1rem;
+  }
+
+  .filter-panel__options--inline {
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  }
+
+  .filter-panel__option {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.95rem;
+    color: var(--sl-color-text);
+  }
+
+  .filter-panel__option input {
+    accent-color: var(--sl-color-primary);
+  }
+
+  .filter-panel__reset {
+    font-size: 0.9rem;
+  }
+</style>

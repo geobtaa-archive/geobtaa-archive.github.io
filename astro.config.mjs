@@ -1,7 +1,6 @@
 import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
 import starlightFullViewMode from 'starlight-fullview-mode';
-import starlightBlog from 'starlight-blog';
 import react from '@astrojs/react';
 import starlightImageZoom from 'starlight-image-zoom'
 import icon from 'astro-icon';
@@ -25,7 +24,6 @@ export default defineConfig({
         starlightImageZoom({
           selector: 'img[src*="/src/assets/images/"], figure img',
         }),
-        starlightBlog({ title: 'News & Updates', recentPostCount: 5 }),
         starlightFullViewMode( {leftSidebarEnabled: false} ),
       ], // Closes plugins[]
       
@@ -37,7 +35,7 @@ export default defineConfig({
               { label: 'Presentations', link: '/scholarship/presentations/' },
               { label: 'Posters', link: '/scholarship/posters/' },
               { label: 'Publications', link: '/scholarship/publications/' },
-              { label: 'Document Library', link: '/library/' },
+              // { label: 'Document Library', link: '/library/' },
             ],
         },  
         { label: 'User Resources', collapsed: true, autogenerate: { directory: 'user-resources' } },

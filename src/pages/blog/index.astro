@@ -1,0 +1,221 @@
+---
+import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro';
+import AnchorHeading from '@astrojs/starlight/components/AnchorHeading.astro';
+import { getCollection, type CollectionEntry } from 'astro:content';
+import ContentGrid from '../../components/ContentGrid.astro';
+import FilterPanel from '../../components/FilterPanel.astro';
+
+type NormalizedItem = {
+  url: string;
+  category: 'post' | 'update';
+  title: string;
+  excerpt: string;
+  tags: string[];
+  authors: string[];
+  published?: Date;
+  year?: number;
+  cover?: {
+    image: string;
+    alt: string;
+  };
+};
+
+const entries = (await getCollection('docs', ({ id, data }) => {
+  const inScope = id.startsWith('posts/') || id.startsWith('updates/');
+  return inScope && data?.draft !== true;
+})) as CollectionEntry<'docs'>[];
+
+const localImageModules = import.meta.glob('../../assets/images/**/*', {
+  eager: true,
+  import: 'default',
+});
+
+const resolveCoverImage = (image: unknown): string | undefined => {
+  if (!image) return undefined;
+  if (image instanceof URL) {
+    return image.toString();
+  }
+  if (typeof image === 'object' && image !== null && 'src' in image) {
+    const src = (image as { src?: unknown }).src;
+    if (typeof src === 'string') {
+      return src;
+    }
+    if (src instanceof URL) {
+      return src.toString();
+    }
+  }
+  if (typeof image !== 'string') {
+    return undefined;
+  }
+  if (image.startsWith('@images/')) {
+    const path = image.slice('@images/'.length);
+    const key = `../../assets/images/${path}`;
+    const resolved = localImageModules[key];
+    if (typeof resolved === 'string') {
+      return resolved;
+    }
+  }
+  return image;
+};
+
+const extractCover = (cover: unknown) => {
+  if (!cover || typeof cover !== 'object') return undefined;
+  const record = cover as Record<string, unknown>;
+
+  if ('image' in record) {
+    const image = resolveCoverImage(record.image);
+    if (!image) return undefined;
+    const alt = typeof record.alt === 'string' ? record.alt : '';
+    return { image, alt };
+  }
+
+  if ('light' in record) {
+    const lightImage = resolveCoverImage(record.light);
+    if (!lightImage) return undefined;
+    const alt = typeof record.alt === 'string' ? record.alt : '';
+    return { image: lightImage, alt };
+  }
+
+  return undefined;
+};
+
+const normalizeDate = (value: unknown) => {
+  if (!value) return undefined;
+  if (value instanceof Date) return value;
+  const parsed = new Date(String(value));
+  return Number.isNaN(parsed.valueOf()) ? undefined : parsed;
+};
+
+const allItems: NormalizedItem[] = entries.map((entry) => {
+  const data = entry.data as Record<string, unknown>;
+  const published = normalizeDate((data as { date?: unknown }).date);
+  const year = published?.getFullYear();
+  const tagsRaw = (data as { tags?: unknown }).tags;
+  const tags = Array.isArray(tagsRaw) ? tagsRaw.map((tag) => String(tag)) : [];
+  const authorsRaw = (data as { authors?: unknown }).authors;
+  const authors = Array.isArray(authorsRaw)
+    ? authorsRaw
+        .map((author: unknown) => {
+          if (typeof author === 'string') return author;
+          if (author && typeof author === 'object' && 'name' in author && typeof author.name === 'string') {
+            return author.name;
+          }
+          return null;
+        })
+        .filter(Boolean) as string[]
+    : [];
+  const cover = extractCover((data as { cover?: unknown }).cover);
+  const category: 'post' | 'update' = entry.id.startsWith('updates/') ? 'update' : 'post';
+  const url = `/${entry.id.replace(/\/index$/, '')}/`;
+  const titleValue = (data as { title?: unknown }).title;
+  const title =
+    typeof titleValue === 'string'
+      ? titleValue
+      : entry.id.split('/').pop()?.replace(/-/g, ' ') ?? entry.id;
+  const excerptValue = (data as { excerpt?: unknown }).excerpt;
+  const descriptionValue = (data as { description?: unknown }).description;
+  const excerpt =
+    typeof excerptValue === 'string'
+      ? excerptValue
+      : typeof descriptionValue === 'string'
+        ? descriptionValue
+        : '';
+
+  return {
+    url,
+    category,
+    title,
+    excerpt,
+    tags,
+    authors,
+    published,
+    year,
+    cover,
+  };
+});
+
+const params = Astro.url.searchParams;
+const selectedTags = new Set(params.getAll('tag'));
+const selectedAuthors = new Set(params.getAll('author'));
+const selectedYears = new Set(params.getAll('year'));
+const sortOrder = params.get('sort') === 'oldest' ? 'oldest' : 'newest';
+
+const matchesFilters = (item: (typeof allItems)[number]) => {
+  const tagMatch =
+    selectedTags.size === 0 ||
+    Array.from(selectedTags).every((tag) => item.tags.includes(tag));
+  const authorMatch =
+    selectedAuthors.size === 0 ||
+    Array.from(selectedAuthors).every((author) => item.authors.includes(author));
+  const yearMatch =
+    selectedYears.size === 0 ||
+    (item.year !== undefined && selectedYears.has(String(item.year)));
+  return tagMatch && authorMatch && yearMatch;
+};
+
+const filteredItems = allItems.filter((item) => matchesFilters(item));
+
+filteredItems.sort((a, b) => {
+  const aTime = a.published?.getTime() ?? 0;
+  const bTime = b.published?.getTime() ?? 0;
+  return sortOrder === 'oldest' ? aTime - bTime : bTime - aTime;
+});
+
+const allTags = Array.from(
+  new Set(allItems.flatMap((item) => item.tags))
+).sort((a, b) => a.localeCompare(b));
+
+const allAuthors = Array.from(
+  new Set(allItems.flatMap((item) => item.authors))
+).sort((a, b) => a.localeCompare(b));
+
+const allYears = Array.from(
+  new Set(allItems.map((item) => item.year).filter(Boolean) as number[])
+).sort((a, b) => b - a);
+
+const itemsForGrid = filteredItems.map(({ year, ...item }) => item);
+---
+
+<StarlightPage
+  frontmatter={{
+    title: 'Blog & Updates',
+    description: 'Browse recent highlights and program updates from the BTAA-GIN.',
+    tableOfContents: false,
+    prev: false,
+    next: false
+  }}
+>
+  <div class="sl-container">
+    <AnchorHeading id="blog-updates" level={2}>
+      Latest Highlights & Updates
+    </AnchorHeading>
+    <p class="intro">
+      Explore featured stories, collection highlights, and program updates. Use the filters to narrow by tags, authors, or publication year, and switch the sort order to see the latest or oldest items first.
+    </p>
+
+    <FilterPanel
+      sortOrder={sortOrder}
+      tags={allTags}
+      authors={allAuthors}
+      years={allYears}
+      selectedTags={Array.from(selectedTags)}
+      selectedAuthors={Array.from(selectedAuthors)}
+      selectedYears={Array.from(selectedYears)}
+    />
+
+    <ContentGrid items={itemsForGrid} />
+  </div>
+</StarlightPage>
+
+<style>
+  .sl-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .intro {
+    margin: 0;
+    color: var(--sl-color-text-muted);
+  }
+</style>
