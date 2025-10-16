@@ -6,8 +6,10 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const blogDir = path.resolve(__dirname, '../src/content/docs/blog');
-const layoutLine = `layout: 'src/components/ProgramUpdate.astro'`;
-const importLine = `import { TwoThirdsLayout, ChipList, Card, CardGrid } from 'src/components/ProgramUpdate.astro';`;
+const layoutLine = ``;
+const importLine = `import TwoThirdsLayout from 'src/components/TwoThirdsLayout.astro';
+import ChipList from 'src/components/ChipList.astro';
+import { Card, CardGrid } from '@astrojs/starlight/components';`;
 
 function collectBlogFiles(dir) {
   const entries = fs.readdirSync(dir, { withFileTypes: true });

@@ -1,6 +1,6 @@
 ---
 title: January 2025 Program Update
-layout: 'src/components/ProgramUpdate.astro'
+
 excerpt: 'We are excited to announce the Big Ten GIS Conference, a free virtual conference happening on April 11, 2025! This annual event brings together researchers, educators, students, and GIS professionals to present their work, exchange ideas, and explore the latest advancements in geospatial research and tools.'
 authors:
     - name: BTAA-GIN Staff
@@ -12,7 +12,9 @@ cover:
   alt: Big Ten Conference Map
   caption: Big Ten Conference Map
 ---
-import { TwoThirdsLayout, ChipList, Card, CardGrid } from 'src/components/ProgramUpdate.astro';
+import TwoThirdsLayout from 'src/components/TwoThirdsLayout.astro';
+import ChipList from 'src/components/ChipList.astro';
+import { Card, CardGrid } from '@astrojs/starlight/components';
 
 <div class="monthly-highlight">
 

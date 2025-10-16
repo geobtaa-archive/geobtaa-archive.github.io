@@ -1,6 +1,6 @@
 ---
 title: November 2024 Program Update
-layout: 'src/components/ProgramUpdate.astro'
+
 excerpt: 'The BTAA-GIN Geoportal has reached an impressive milestone: over 100,000 geospatial resources, with a large percentage of this growth happening in the past year alone!'
 authors:
     - name: BTAA-GIN Staff
@@ -12,7 +12,9 @@ cover:
   alt: 100000 Records
   caption: 100000 Records
 ---
-import { TwoThirdsLayout, ChipList, Card, CardGrid } from 'src/components/ProgramUpdate.astro';
+import TwoThirdsLayout from 'src/components/TwoThirdsLayout.astro';
+import ChipList from 'src/components/ChipList.astro';
+import { Card, CardGrid } from '@astrojs/starlight/components';
 import Table from '/src/components/Table.astro';
 
 <div class="monthly-highlight">

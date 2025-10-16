@@ -1,6 +1,6 @@
 ---
 title: August 2024 Program Update
-layout: 'src/components/ProgramUpdate.astro'
+
 excerpt: This year, the BTAA-GIN has adopted a new Priority Projects model to streamline our work and focus on the most impactful goals. We began by collecting 17 project suggestions, which we prioritized using a matrix that considered factors such as project ownership, volunteer availability, DEIA relevance, time commitment, and difficulty.
 authors:
     - name: BTAA-GIN Staff
@@ -12,7 +12,9 @@ cover:
   alt: Allmaps
   caption: Allmaps
 ---
-import { TwoThirdsLayout, ChipList, Card, CardGrid } from 'src/components/ProgramUpdate.astro';
+import TwoThirdsLayout from 'src/components/TwoThirdsLayout.astro';
+import ChipList from 'src/components/ChipList.astro';
+import { Card, CardGrid } from '@astrojs/starlight/components';
 import Table from '/src/components/Table.astro';
 
 <div class="monthly-highlight">

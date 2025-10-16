@@ -1,6 +1,6 @@
 ---
 title: February 2024 Program Update
-layout: 'src/components/ProgramUpdate.astro'
+
 excerpt: We are pleased to announce that Northwestern University has become a member of the Big Ten Academic Alliance Geospatial Information Network (BTAA-GIN). This addition to our network signifies a notable development in our efforts to enhance the collective resources and expertise available to our members.
 authors:
     - name: BTAA-GIN Staff
@@ -12,7 +12,9 @@ cover:
   alt: Northwestern University
   caption: Northwestern University
 ---
-import { TwoThirdsLayout, ChipList, Card, CardGrid } from 'src/components/ProgramUpdate.astro';
+import TwoThirdsLayout from 'src/components/TwoThirdsLayout.astro';
+import ChipList from 'src/components/ChipList.astro';
+import { Card, CardGrid } from '@astrojs/starlight/components';
 import Table from '/src/components/Table.astro';
 
 <div class="monthly-highlight">

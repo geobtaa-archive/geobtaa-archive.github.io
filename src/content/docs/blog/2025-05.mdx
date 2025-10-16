@@ -1,6 +1,6 @@
 ---
 title: May 2025 Program Update
-layout: 'src/components/ProgramUpdate.astro'
+
 excerpt: At the 2025 Association of College and Research Libraries (ACRL) Conference in Minneapolis, BTAA-GIN members Ryan Mattke, Karen Majewicz, and Amanda Tickner presented a poster highlighting the program’s evolution and the social infrastructure that underpins its long-term success.
 authors:
     - name: BTAA-GIN Staff
@@ -12,7 +12,9 @@ cover:
   alt: Poster presented at ACRL 2025, Sustaining a Spatial Collaboration by Mattke, Majewicz, and Tickner
   caption: Poster presented at ACRL 2025, Sustaining a Spatial Collaboration by Mattke, Majewicz, and Tickner
 ---
-import { TwoThirdsLayout, ChipList, Card, CardGrid } from 'src/components/ProgramUpdate.astro';
+import TwoThirdsLayout from 'src/components/TwoThirdsLayout.astro';
+import ChipList from 'src/components/ChipList.astro';
+import { Card, CardGrid } from '@astrojs/starlight/components';
 
 <div class="monthly-highlight">
 
