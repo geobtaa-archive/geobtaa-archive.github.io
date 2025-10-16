@@ -1,0 +1,115 @@
+---
+import MobileMenuFooter from '@astrojs/starlight/components/MobileMenuFooter.astro';
+import SidebarPersister from '@astrojs/starlight/components/SidebarPersister.astro';
+import SidebarSublist from '@astrojs/starlight/components/SidebarSublist.astro';
+import FilterPanel from './FilterPanel.astro';
+import { loadBlogContent } from '../utils/blogContent';
+
+const { sidebar } = Astro.locals.starlightRoute;
+const pathname = Astro.url.pathname;
+const isBlogIndex = pathname === '/blog/' || pathname === '/blog';
+
+let filterProps:
+  | {
+      sortOrder: 'newest' | 'oldest';
+      tags: string[];
+      authors: string[];
+      years: number[];
+      selectedTags: string[];
+      selectedAuthors: string[];
+      selectedYears: string[];
+    }
+  | null = null;
+
+if (isBlogIndex) {
+  const { tags, authors, years } = await loadBlogContent();
+  const params = Astro.url.searchParams;
+  filterProps = {
+    sortOrder: params.get('sort') === 'oldest' ? 'oldest' : 'newest',
+    tags,
+    authors,
+    years,
+    selectedTags: params.getAll('tag'),
+    selectedAuthors: params.getAll('author'),
+    selectedYears: params.getAll('year'),
+  };
+}
+---
+
+<SidebarPersister>
+  <SidebarSublist sublist={sidebar} />
+  {filterProps && (
+    <div class="blog-sidebar">
+      <div class="blog-sidebar__header">
+        <h2 class="blog-sidebar__title">Filter posts</h2>
+        <button type="button" class="blog-sidebar__reset" data-blog-reset>
+          Clear filters
+        </button>
+      </div>
+      <FilterPanel {...filterProps} />
+    </div>
+  )}
+</SidebarPersister>
+
+<div class="md:sl-hidden">
+  <MobileMenuFooter />
+</div>
+
+<style>
+  .blog-sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    padding: 0.75rem;
+    border-radius: 0.75rem;
+    border: 1px solid var(--sl-color-hairline);
+    background: rgba(255, 255, 255, 0.05);
+    margin-top: 1rem;
+  }
+
+  .blog-sidebar__title {
+    margin: 0;
+    font-size: 0.9rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--sl-color-text-accent);
+  }
+  
+  .blog-sidebar__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+  }
+
+  .blog-sidebar__reset {
+    border: 1px solid var(--sl-color-hairline);
+    border-radius: 999px;
+    background: var(--sl-color-bg);
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 0.3rem 0.9rem;
+    color: var(--sl-color-link);
+    cursor: pointer;
+    transition: background 150ms ease, color 150ms ease, border-color 150ms ease;
+  }
+
+  .blog-sidebar__reset:hover,
+  .blog-sidebar__reset:focus-visible {
+    background: var(--sl-color-bg-soft);
+    border-color: var(--sl-color-primary);
+    color: var(--sl-color-primary);
+    outline: none;
+  }
+
+  @media (min-width: 960px) {
+    .blog-sidebar {
+      position: sticky;
+      top: calc(var(--sl-nav-height, 3.5rem) + 1rem);
+      max-height: calc(100vh - var(--sl-nav-height, 3.5rem) - 2rem);
+      overflow: auto;
+      margin-top: 1.5rem;
+    }
+  }
+</style>

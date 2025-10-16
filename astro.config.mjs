@@ -19,12 +19,13 @@ export default defineConfig({
       customCss: ['./src/styles/global.css', './src/styles/tables.css' ],
       components: {
         Footer: './src/components/FooterWithBar.astro',
+        Sidebar: './src/components/SidebarWithFilters.astro',
       },
       plugins: [
         starlightImageZoom({
           selector: 'img[src*="/src/assets/images/"], figure img',
         }),
-        starlightFullViewMode( {leftSidebarEnabled: false} ),
+        starlightFullViewMode(),
       ], // Closes plugins[]
       
       sidebar: [
@@ -46,6 +47,7 @@ export default defineConfig({
               ],
 
         },
+         { label: 'Blog', link: '/blog/' },
     ]
     }), // Closes starlight()
     
