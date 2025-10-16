@@ -1,6 +1,6 @@
 ---
 title: September 2025 Program Update
-layout: 'src/components/ProgramUpdate.astro'
+
 date: 2025-10-06
 excerpt: We’ve launched a new series of video tutorials demonstrating common BTAA Geoportal search strategies
 authors:
@@ -12,7 +12,9 @@ cover:
   image: "@images/geoportal-videos.png"
 
 ---
-import { TwoThirdsLayout, ChipList, Card, CardGrid } from 'src/components/ProgramUpdate.astro';
+import TwoThirdsLayout from 'src/components/TwoThirdsLayout.astro';
+import ChipList from 'src/components/ChipList.astro';
+import { Card, CardGrid } from '@astrojs/starlight/components';
 import { ShowcaseYouTube } from 'starlight-showcases'
 
 <div class="monthly-highlight">

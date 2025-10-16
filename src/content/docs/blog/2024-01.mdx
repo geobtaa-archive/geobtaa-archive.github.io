@@ -1,6 +1,6 @@
 ---
 title: January 2024 Program Update
-layout: 'src/components/ProgramUpdate.astro'
+
 excerpt: New records from University of Chicago institute
 authors:
     - name: BTAA-GIN Staff
@@ -12,7 +12,9 @@ cover:
   alt: Thumbnails of a few georeferenced items from the CAMEL collection.
   caption: Thumbnails of a few georeferenced items from the CAMEL collection.
 ---
-import { TwoThirdsLayout, ChipList, Card, CardGrid } from 'src/components/ProgramUpdate.astro';
+import TwoThirdsLayout from 'src/components/TwoThirdsLayout.astro';
+import ChipList from 'src/components/ChipList.astro';
+import { Card, CardGrid } from '@astrojs/starlight/components';
 import Table from '/src/components/Table.astro';
 
 <div class="monthly-highlight">

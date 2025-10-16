@@ -1,6 +1,6 @@
 ---
 title: September 2024 Program Update
-layout: 'src/components/ProgramUpdate.astro'
+
 excerpt: 'A new article titled Ephemeral Geodata: An Impending Digital Dark Age, co-authored by four BTAA-GIN Team Members, was recently published in the *Journal of Map & Geography Libraries*. The authors explore a long-standing challenge for our program, framing the lack of public geodata archives as a "ooming digital dark age.'
 authors:
     - name: BTAA-GIN Staff
@@ -12,7 +12,9 @@ cover:
   alt: Bar chart of maps and dataset over time
   caption: Filling the growing gap by collecting annual snapshots. This stepped temporal bar chart shows geospatial resources with the subject “Roads” for BTAA library-held maps, datasets available in data clearinghouses across the BTAA states, and the University of Wisconsin-Madison's Robinson Map Library collections as of April 202- (Illustration from the cited article.
 ---
-import { TwoThirdsLayout, ChipList, Card, CardGrid } from 'src/components/ProgramUpdate.astro';
+import TwoThirdsLayout from 'src/components/TwoThirdsLayout.astro';
+import ChipList from 'src/components/ChipList.astro';
+import { Card, CardGrid } from '@astrojs/starlight/components';
 import Table from '/src/components/Table.astro';
 
 <div class="monthly-highlight">

@@ -1,6 +1,6 @@
 ---
 title: March 2024 Program Update
-layout: 'src/components/ProgramUpdate.astro'
+
 excerpt: We had the honor of being invited by Yale University Libraries to present our expertise in GeoBlacklight, OpenGeoMetadata, and the BTAA Geoportal to their Associate University Librarians. Our overview included development requirements, metadata strategies, collaboration successes, and our recommended priorities.
 authors:
     - name: BTAA-GIN Staff
@@ -8,7 +8,9 @@ tags:
   - Program Updates
 date: 2024-04-02
 ---
-import { TwoThirdsLayout, ChipList, Card, CardGrid } from 'src/components/ProgramUpdate.astro';
+import TwoThirdsLayout from 'src/components/TwoThirdsLayout.astro';
+import ChipList from 'src/components/ChipList.astro';
+import { Card, CardGrid } from '@astrojs/starlight/components';
 import Table from '/src/components/Table.astro';
 
 <div class="monthly-highlight">

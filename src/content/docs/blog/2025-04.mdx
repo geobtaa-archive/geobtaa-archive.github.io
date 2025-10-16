@@ -1,6 +1,6 @@
 ---
 title: April 2025 Program Update
-layout: 'src/components/ProgramUpdate.astro'
+
 excerpt: The fifth annual Big Ten GIS Conference, held virtually on April 11, 2025, marked a milestone for BTAA-GIN. With 664 registrants from 230+ institutions, the event tripled registration from the previous year and drew participants from academia, libraries, government, and research communities.
 authors:
     - name: BTAA-GIN Staff
@@ -12,7 +12,9 @@ cover:
   alt: Big Ten GIS Conference registrants and attendees
   caption: Big Ten GIS Conference registrants and attendees
 ---
-import { TwoThirdsLayout, ChipList, Card, CardGrid } from 'src/components/ProgramUpdate.astro';
+import TwoThirdsLayout from 'src/components/TwoThirdsLayout.astro';
+import ChipList from 'src/components/ChipList.astro';
+import { Card, CardGrid } from '@astrojs/starlight/components';
 
 <div class="monthly-highlight">
 

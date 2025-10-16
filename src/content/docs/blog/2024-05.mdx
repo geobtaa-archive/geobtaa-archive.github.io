@@ -1,6 +1,6 @@
 ---
 title: May 2024 Program Update
-layout: 'src/components/ProgramUpdate.astro'
+
 excerpt: Allmaps Georeferencing Plugin - The BTAA Geoportal now features a plugin that integrates the Allmaps georeferencing platform for scanned maps hosted via IIIF. For maps that have already been georeferenced, users will find a second tab on the item page that displays the map over a basemap. For maps not yet georeferenced, users can use a widget in the sidebar to open the map in the Allmaps interface.
 authors:
     - name: BTAA-GIN Staff
@@ -12,7 +12,9 @@ cover:
   alt: Allmaps
   caption: Allmaps plugin
 ---
-import { TwoThirdsLayout, ChipList, Card, CardGrid } from 'src/components/ProgramUpdate.astro';
+import TwoThirdsLayout from 'src/components/TwoThirdsLayout.astro';
+import ChipList from 'src/components/ChipList.astro';
+import { Card, CardGrid } from '@astrojs/starlight/components';
 import Table from '/src/components/Table.astro';
 
 <div class="monthly-highlight">

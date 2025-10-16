@@ -476,3 +476,66 @@ input[type="checkbox"]:checked::after {
   min-height: 360px;
   border: 0;
 }
+
+
+
+.monthly-highlight {
+  position: relative;
+  padding: 1.75rem 2rem;
+  border-radius: var(--radius-lg);
+  background: color-mix(in srgb, var(--sl-color-accent-high) 12%, transparent);
+  border: 1px solid color-mix(in srgb, var(--sl-color-accent) 30%, transparent);
+  box-shadow: 0 12px 32px -18px rgba(0, 0, 0, 0.15);
+  display: grid;
+  gap: 1rem;
+}
+
+.monthly-highlight::before {
+  content: '★ Monthly Highlight';
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: color-mix(in srgb, var(--sl-color-accent) 80%, white 20%);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.monthly-highlight :where(p, ul, ol) {
+  margin: 0;
+}
+
+.monthly-highlight :where(ul, ol) {
+  padding-left: 1.2rem;
+}
+
+.monthly-highlight :where(h2)::before {
+  content: '';
+  margin-right: 0rem;
+  color: color-mix(in srgb, var(--sl-color-accent) 85%, white 15%);
+}
+
+.records-total {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.7rem 1.4rem;
+  border-radius: 999px;
+  font-weight: 650;
+  background: color-mix(in srgb, var(--sl-color-accent-high) 22%, transparent);
+  border: 1px solid color-mix(in srgb, var(--sl-color-accent) 40%, transparent);
+  color: color-mix(in srgb, var(--sl-color-accent) 88%, var(--sl-color-text) 12%);
+  text-align: center;
+  font-size: 1.08rem;
+}
+
+.records-total::before {
+  content: '◎';
+  font-size: 1.1rem;
+}
+
+.records-total strong {
+  font-size: 1.12em;
+}

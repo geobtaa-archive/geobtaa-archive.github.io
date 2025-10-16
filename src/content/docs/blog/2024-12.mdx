@@ -1,6 +1,6 @@
 ---
 title: December 2024 Program Update
-layout: 'src/components/ProgramUpdate.astro'
+
 excerpt: We are thrilled to welcome the University of Oregon and the University of Washington to the Big Ten Academic Alliance Geospatial Information Network (BTAA-GIN). Their addition marks an exciting step forward in our mission to enhance the resources and expertise available to our members and the broader geospatial research community.
 authors:
     - name: BTAA-GIN Staff
@@ -12,7 +12,9 @@ cover:
   alt: Washington and Oregon
   caption: Washington and Oregon
 ---
-import { TwoThirdsLayout, ChipList, Card, CardGrid } from 'src/components/ProgramUpdate.astro';
+import TwoThirdsLayout from 'src/components/TwoThirdsLayout.astro';
+import ChipList from 'src/components/ChipList.astro';
+import { Card, CardGrid } from '@astrojs/starlight/components';
 
 <div class="monthly-highlight">
 

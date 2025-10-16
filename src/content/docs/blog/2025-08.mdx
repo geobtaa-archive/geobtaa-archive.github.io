@@ -1,6 +1,6 @@
 ---
 title: August 2025 Program Update
-layout: 'src/components/ProgramUpdate.astro'
+
 date: 2025-09-04
 excerpt: Welcome to Our New GIN Members! We are excited to welcome three new members to the Big Ten Academic Alliance Geospatial Information Network.
 authors:
@@ -13,7 +13,9 @@ tags:
   - Program Updates
 ---
 
-import { TwoThirdsLayout, ChipList, Card, CardGrid } from 'src/components/ProgramUpdate.astro';
+import TwoThirdsLayout from 'src/components/TwoThirdsLayout.astro';
+import ChipList from 'src/components/ChipList.astro';
+import { Card, CardGrid } from '@astrojs/starlight/components';
 
 
 <div class="monthly-highlight">

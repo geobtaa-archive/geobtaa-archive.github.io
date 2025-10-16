@@ -1,6 +1,6 @@
 ---
 title: March 2025 Program Update
-layout: 'src/components/ProgramUpdate.astro'
+
 excerpt: The BTAA-GIN FAST for Subject Terms Workgroup explored using FAST (Faceted Application of Subject Terminology) to improve search and discovery in the BTAA Geoportal. FAST, adapted from Library of Congress Subject Headings (LCSH), offers a more streamlined and accessible way to tag metadata.
 authors:
     - name: BTAA-GIN Staff
@@ -12,7 +12,10 @@ cover:
   alt: BTAA in FAST
   caption: Big Ten Academic Alliance in the OCLC FAST interface
 ---
-import { TwoThirdsLayout, ChipList, Card, CardGrid } from 'src/components/ProgramUpdate.astro';
+
+import TwoThirdsLayout from 'src/components/TwoThirdsLayout.astro';
+import ChipList from 'src/components/ChipList.astro';
+import { Card, CardGrid } from '@astrojs/starlight/components';
 
 <div class="monthly-highlight">
 

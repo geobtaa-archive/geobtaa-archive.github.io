@@ -1,6 +1,6 @@
 ---
 title: Program Update Template
-layout: 'src/components/ProgramUpdate.astro'
+
 draft: true
 date: 2025-01-01
 excerpt: >
@@ -13,7 +13,9 @@ cover:
   caption: Optional caption text for the cover image.
 ---
 
-import { TwoThirdsLayout, ChipList, Card, CardGrid } from 'src/components/ProgramUpdate.astro';
+import TwoThirdsLayout from 'src/components/TwoThirdsLayout.astro';
+import ChipList from 'src/components/ChipList.astro';
+import { Card, CardGrid } from '@astrojs/starlight/components';
 
 <div class="monthly-highlight">
 ## Monthly Highlight: Title Goes Here

@@ -1,6 +1,6 @@
 ---
 title: October 2024 Program Update
-layout: 'src/components/ProgramUpdate.astro'
+
 excerpt: We are happy to announce that Colleen Wilson has joined the Big Ten Academic Alliance's Geospatial Information Network as our new Associate Director of Program Management and Outreach Coordination. In this newly created role, Colleen will play a vital part in stakeholder engagement and work to strengthen connections within our diverse geospatial data community. Her leadership will be instrumental in driving outreach initiatives, coordinating program goals, and managing team activities.
 authors:
     - name: BTAA-GIN Staff
@@ -12,7 +12,9 @@ cover:
   alt: Photograph of Colleen Wilson*
   caption: Photograph of Colleen Wilson*
 ---
-import { TwoThirdsLayout, ChipList, Card, CardGrid } from 'src/components/ProgramUpdate.astro';
+import TwoThirdsLayout from 'src/components/TwoThirdsLayout.astro';
+import ChipList from 'src/components/ChipList.astro';
+import { Card, CardGrid } from '@astrojs/starlight/components';
 import Table from '/src/components/Table.astro';
 
 <div class="monthly-highlight">

@@ -1,6 +1,6 @@
 ---
 title: July 2025 Program Update
-layout: 'src/components/ProgramUpdate.astro'
+
 date: 2025-08-01
 excerpt: Introducing Our New Strategic Technology Plan.
 authors:
@@ -12,7 +12,9 @@ cover:
   alt: Overview diagram of proposed BTAA-GIN technology stack
   caption: Overview of the proposed BTAA-GIN technology stack.
 ---
-import { TwoThirdsLayout, ChipList, Card, CardGrid } from 'src/components/ProgramUpdate.astro';
+import TwoThirdsLayout from 'src/components/TwoThirdsLayout.astro';
+import ChipList from 'src/components/ChipList.astro';
+import { Card, CardGrid } from '@astrojs/starlight/components';
 
 <div class="monthly-highlight">
 ## Introducing Our New Strategic Technology Plan

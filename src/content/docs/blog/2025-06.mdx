@@ -6,14 +6,16 @@ authors:
 tags:
   - Program Updates
 date: 2025-07-03
-layout: 'src/components/ProgramUpdate.astro'
+
 cover:
   image: "@images/geo4libcamp2025.png"
   alt: Geo4LibCamp Participants
   caption: Geo4LibCamp 2025 attendees in Minneapolis
 ---
 
-import { TwoThirdsLayout, ChipList, Card, CardGrid } from 'src/components/ProgramUpdate.astro';
+import TwoThirdsLayout from 'src/components/TwoThirdsLayout.astro';
+import ChipList from 'src/components/ChipList.astro';
+import { Card, CardGrid } from '@astrojs/starlight/components';
 
 <div class="monthly-highlight">
 ## Geo4LibCamp 2025

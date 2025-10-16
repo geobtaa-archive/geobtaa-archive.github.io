@@ -1,6 +1,6 @@
 ---
 title: February 2025 Program Update
-layout: 'src/components/ProgramUpdate.astro'
+
 excerpt: The BTAA-GIN Geodata Pilot Workgroup has successfully completed its current phase, establishing the technical and metadata infrastructure for a scalable geospatial repository. Over the past year (Q1 2024–Q1 2025), the workgroup focused on building a framework for data curation, refining metadata standards, and improving workflow automation.
 authors:
     - name: BTAA-GIN Staff
@@ -12,7 +12,9 @@ cover:
   alt: Lantern logo
   caption: Geodata Collection Strategic Plan
 ---
-import { TwoThirdsLayout, ChipList, Card, CardGrid } from 'src/components/ProgramUpdate.astro';
+import TwoThirdsLayout from 'src/components/TwoThirdsLayout.astro';
+import ChipList from 'src/components/ChipList.astro';
+import { Card, CardGrid } from '@astrojs/starlight/components';
 
 <div class="monthly-highlight">
 
