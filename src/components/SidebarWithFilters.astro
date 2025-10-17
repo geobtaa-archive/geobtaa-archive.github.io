@@ -4,10 +4,30 @@ import SidebarPersister from '@astrojs/starlight/components/SidebarPersister.ast
 import SidebarSublist from '@astrojs/starlight/components/SidebarSublist.astro';
 import FilterPanel from './FilterPanel.astro';
 import { loadBlogContent } from '../utils/blogContent';
+import {
+  deriveGroupFromPath,
+  SIDEBAR_LABEL_GROUPS,
+  PRIMARY_NAV_OPTIONS,
+} from '../../navigation.config';
 
 const { sidebar } = Astro.locals.starlightRoute;
 const pathname = Astro.url.pathname;
 const isBlogIndex = pathname === '/blog/' || pathname === '/blog';
+
+const activeNavGroup = deriveGroupFromPath(pathname);
+
+const getEntryGroup = (entry: typeof sidebar[number]): string | undefined => {
+  const mapped = SIDEBAR_LABEL_GROUPS.get(entry.label);
+  if (mapped) return mapped;
+  if (entry.type === 'link' && entry.href.startsWith('/blog')) return 'blog';
+  return undefined;
+};
+
+const filteredSidebar = sidebar.filter((entry) => {
+  const entryGroup = getEntryGroup(entry);
+  if (!entryGroup) return true;
+  return entryGroup === activeNavGroup;
+});
 
 let filterProps:
   | {
@@ -35,8 +55,21 @@ if (isBlogIndex) {
 ---
 
 <SidebarPersister>
-  <SidebarSublist sublist={sidebar} />
-  {filterProps && (
+  <nav class="top-nav top-nav--drawer sl-flex md:sl-hidden" aria-label="Primary navigation">
+    {PRIMARY_NAV_OPTIONS.map(({ label, group, target }) => (
+      <a
+        class="top-nav__item"
+        href={target}
+        data-nav-group={group}
+        data-active={activeNavGroup === group ? 'true' : 'false'}
+        aria-current={activeNavGroup === group ? 'page' : undefined}
+      >
+        {label}
+      </a>
+    ))}
+  </nav>
+  <SidebarSublist sublist={filteredSidebar} />
+  {filterProps && activeNavGroup === 'blog' && (
     <div class="blog-sidebar">
       <div class="blog-sidebar__header">
         <h2 class="blog-sidebar__title">Filter posts</h2>
