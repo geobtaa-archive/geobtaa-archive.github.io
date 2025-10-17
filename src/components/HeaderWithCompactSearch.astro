@@ -32,7 +32,7 @@ const activeNavGroup: NavGroupId = deriveGroupFromPath(Astro.url.pathname);
             class="top-nav__item"
             href={target}
             data-nav-group={group}
-            data-active={activeNavGroup === group ? 'true' : 'false'}
+            data-active={activeNavGroup === group ? 'true' : undefined}
             aria-current={activeNavGroup === group ? 'page' : undefined}
           >
             {label}
@@ -60,26 +60,26 @@ const activeNavGroup: NavGroupId = deriveGroupFromPath(Astro.url.pathname);
 <style>
   @layer starlight.core {
     .header {
-    display: flex;
-    gap: var(--sl-nav-gap);
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: nowrap;
-    height: 100%;
-  }
+      display: flex;
+      gap: var(--sl-nav-gap);
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: nowrap;
+      height: 100%;
+    }
 
-  .title-group {
-    display: flex;
-    align-items: center;
-    gap: 1.5rem;
-    min-width: 0;
-  }
+    .title-group {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      min-width: 0;
+    }
 
-  .title-wrapper {
-    overflow: clip;
-    padding: 0.25rem;
-    margin: -0.25rem;
-    min-width: 0;
+    .title-wrapper {
+      overflow: clip;
+      padding: 0.25rem;
+      margin: -0.25rem;
+      min-width: 0;
     }
 
     .header-actions {
@@ -142,7 +142,7 @@ const activeNavGroup: NavGroupId = deriveGroupFromPath(Astro.url.pathname);
 
       .search-container {
         flex: 0 0 auto;
-        width: min(10rem, 100%);
+        width: min(14rem, 100%);
       }
     }
   }
@@ -167,10 +167,8 @@ const activeNavGroup: NavGroupId = deriveGroupFromPath(Astro.url.pathname);
     justify-content: center;
     font-size: 1rem;
     font-weight: 700;
-    font-family: 'Work Sans','Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     letter-spacing: 0.08em;
     text-transform: uppercase;
-    text-decoration: none;
     color: var(--top-nav-item-color);
     cursor: pointer;
     position: relative;

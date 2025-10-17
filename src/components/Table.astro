@@ -3,6 +3,7 @@ import { promises as fs } from "fs";
 import path from "path";
 import Papa from "papaparse";
 
+
 export interface Column {
   key: string;
   label?: string;
@@ -179,7 +180,7 @@ const renderCellHTML = (val: unknown, col: Column) => {
               class={cellClass(col)}
               style={col.width ? `width:${col.width}` : undefined}
               title={raw}
-              set:html={html}   /* <-- use directive directly */
+              set:html={html}
             />
           ) : (
             <td
@@ -205,31 +206,33 @@ const renderCellHTML = (val: unknown, col: Column) => {
 {filters && (
   <script>
     (() => {
-      const wrap = document.querySelector('.table-wrap[data-id]');
+      const wrap = document.querySelector<HTMLDivElement>('.table-wrap[data-id]');
       if (!wrap) return;
       const id = wrap.getAttribute('data-id');
-      const table = document.getElementById(id + '-table');
-      if (!table) return;
+      if (!id) return;
+      const table = document.getElementById(`${id}-table`);
+      if (!(table instanceof HTMLTableElement)) return;
 
-      const inputs = table.querySelectorAll('thead .filters input');
-      const rows = Array.from(table.querySelectorAll('tbody tr'));
-      const countEl = document.getElementById(id + '-count');
-      const resetBtn = document.getElementById(id + '-reset');
-      const normalize = (s) => (s || '').toString().toLowerCase();
+      const inputs = Array.from(table.querySelectorAll<HTMLInputElement>('thead .filters input'));
+      const rows = Array.from(table.querySelectorAll<HTMLTableRowElement>('tbody tr'));
+      const countEl = document.getElementById(`${id}-count`);
+      const resetBtn = document.getElementById(`${id}-reset`);
+      const normalize = (s: string | null | undefined) => (s ?? '').toString().toLowerCase();
 
       const runFilter = () => {
-        const filters = {};
+        const filters: Record<string, string> = {};
         inputs.forEach((inp) => {
           const val = normalize(inp.value);
-          if (val) filters[inp.dataset.col] = val;
+          const colKey = inp.dataset.col;
+          if (colKey && val) filters[colKey] = val;
         });
 
         let visible = 0;
         rows.forEach((tr) => {
           let keep = true;
           for (const [col, needle] of Object.entries(filters)) {
-            const cell = tr.querySelector(`[data-key="${CSS.escape(col)}"]`);
-            const hay = normalize(cell?.textContent || '');
+            const cell = tr.querySelector<HTMLElement>(`[data-key="${CSS.escape(col)}"]`);
+            const hay = normalize(cell?.textContent);
             if (!hay.includes(needle)) { keep = false; break; }
           }
           tr.style.display = keep ? '' : 'none';
@@ -239,16 +242,18 @@ const renderCellHTML = (val: unknown, col: Column) => {
         if (countEl) countEl.textContent = `Showing ${visible} of ${rows.length}`;
       };
 
-      let t;
+      let t: ReturnType<typeof setTimeout> | undefined;
       inputs.forEach((inp) => {
         inp.addEventListener('input', () => {
-          clearTimeout(t);
+          if (t) clearTimeout(t);
           t = setTimeout(runFilter, 80);
         });
       });
-      if (resetBtn) {
+      if (resetBtn instanceof HTMLButtonElement) {
         resetBtn.addEventListener('click', () => {
-          inputs.forEach((i) => (i.value = ''));
+          inputs.forEach((input) => {
+            input.value = '';
+          });
           runFilter();
         });
       }

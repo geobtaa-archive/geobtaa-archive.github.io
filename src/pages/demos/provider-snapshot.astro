@@ -1,5 +1,5 @@
 ---
-import ProviderSnapshot from "../../components/ProviderSnapshot.jsx";
+import ProviderSnapshotComponent from "../../components/ProviderSnapshot";
 const API_BASE = "https://lib-btaageoapi-dev-app-01.oit.umn.edu/api/v1";
 const SEED = [
 "University of Minnesota",
@@ -31,7 +31,7 @@ const SEED = [
 <h2 class="text-2xl font-semibold">OpenGeoMetadata: Provider snapshot</h2>
 <p class="opacity-80">Counts by <code>schema_provider_s</code> using a fixed provider list.</p>
 
-<ProviderSnapshot
+<ProviderSnapshotComponent
 client:load
 apiBase={API_BASE}
 seedProviders={SEED}

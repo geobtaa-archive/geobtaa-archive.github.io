@@ -1,25 +1,32 @@
-// File: src/components/ProviderSnapshot.jsx
+// File: src/components/ProviderSnapshot.tsx
 // Cleaner version with robust retry logic and parser-friendly string concatenation.
 
 import { useEffect, useMemo, useState } from "react";
 
-async function sleep(ms) { return new Promise((r) => setTimeout(r, ms)); }
+async function sleep(ms: number) {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+}
 
-async function getJSON(url, { retries = 3, backoff = 400 } = {}) {
+interface GetJSONOptions {
+  retries?: number;
+  backoff?: number;
+}
+
+async function getJSON(url: string, { retries = 3, backoff = 400 }: GetJSONOptions = {}) {
   let attempt = 0;
-  let lastErr;
+  let lastErr: unknown;
   while (attempt <= retries) {
     try {
-      const r = await fetch(url, { mode: 'cors', cache: 'no-store' });
+      const r = await fetch(url, { mode: "cors", cache: "no-store" });
       if (!r.ok) {
         // Retry on 429/5xx
         if (r.status === 429 || (r.status >= 500 && r.status < 600)) {
-          throw new Error(r.status + ' ' + r.statusText);
+          throw new Error(r.status + " " + r.statusText);
         }
         // Non-retryable
-        throw new Error(r.status + ' ' + r.statusText);
+        throw new Error(r.status + " " + r.statusText);
       }
-      return await r.json();
+      return (await r.json()) as any;
     } catch (e) {
       lastErr = e;
       attempt += 1;
@@ -27,7 +34,23 @@ async function getJSON(url, { retries = 3, backoff = 400 } = {}) {
       await sleep(backoff * Math.pow(2, attempt - 1));
     }
   }
-  throw lastErr ?? new Error('Load failed');
+  throw lastErr ?? new Error("Load failed");
+}
+
+type Bucket = { key: string; count: number };
+type DebugLogEntry = { name: string; url: string; count?: number; error?: string };
+
+interface ProviderSnapshotProps {
+  apiBase?: string;
+  discoverPages?: number;
+  perPage?: number;
+  seedProviders?: string[];
+  concurrent?: number;
+  showTop?: number;
+  debug?: boolean;
+  autoStart?: boolean;
+  delayMs?: number;
+  retries?: number;
 }
 
 export default function ProviderSnapshot({
@@ -41,42 +64,45 @@ export default function ProviderSnapshot({
   autoStart = true,
   delayMs = 150,
   retries = 3,
-}) {
-  const [phase, setPhase] = useState("idle");
-  const [providers, setProviders] = useState([]);
-  const [buckets, setBuckets] = useState([]);
-  const [error, setError] = useState(null);
-  const [debugLogs, setDebugLogs] = useState([]);
+}: ProviderSnapshotProps) {
+  const [phase, setPhase] = useState<"idle" | "discover" | "count" | "ready" | "error">("idle");
+  const [providers, setProviders] = useState<string[]>([]);
+  const [buckets, setBuckets] = useState<Bucket[]>([]);
+  const [error, setError] = useState<string | null>(null);
+  const [debugLogs, setDebugLogs] = useState<DebugLogEntry[]>([]);
   const [running, setRunning] = useState(false);
 
   const base = apiBase.replace(/\/$/, "");
 
   useEffect(() => {
-    if (autoStart && !running && phase === "idle") runSnapshot();
+    if (autoStart && !running && phase === "idle") {
+      void runSnapshot();
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [autoStart]);
 
-  async function runSnapshot() {
+  const runSnapshot = async () => {
     try {
       setRunning(true);
       setError(null);
       setBuckets([]);
       setDebugLogs([]);
 
-      let names = seedProviders && seedProviders.length ? [...new Set(seedProviders)] : [];
+      let names: string[] =
+        seedProviders && seedProviders.length ? [...new Set(seedProviders)] : [];
       if (!names.length) {
         setPhase("discover");
-        const seen = new Set();
+        const seen = new Set<string>();
         for (let page = 1; page <= discoverPages; page++) {
           const u = new URL(`${base}/search`);
           u.searchParams.set("q", "*:*");
           u.searchParams.set("page", String(page));
           u.searchParams.set("per_page", String(perPage));
           const data = await getJSON(u.toString(), { retries });
-          const docs = data?.data ?? [];
+          const docs = (data?.data ?? []) as Array<Record<string, any>>;
           for (const rec of docs) {
             const prov = rec?.attributes?.schema_provider_s;
-            if (prov) seen.add(prov);
+            if (typeof prov === "string" && prov) seen.add(prov);
           }
           if (docs.length < perPage) break;
         }
@@ -88,12 +114,10 @@ export default function ProviderSnapshot({
 
       setPhase("count");
       let i = 0;
-      const results = [];
-      const logs = [];
-      let cancelled = false;
-
-      async function worker() {
-        while (!cancelled && i < names.length) {
+      const results: Bucket[] = [];
+      const logs: DebugLogEntry[] = [];
+      const worker = async () => {
+        while (i < names.length) {
           const name = names[i++];
           const u = new URL(`${base}/search`);
           u.searchParams.set("q", "*:*");
@@ -102,66 +126,94 @@ export default function ProviderSnapshot({
           const urlStr = u.toString();
           try {
             const data = await getJSON(urlStr, { retries });
-            const count = data?.meta?.totalCount ?? 0;
+            const count = Number(data?.meta?.totalCount ?? 0);
             if (debug && logs.length < 20) logs.push({ name, url: urlStr, count });
             if (count > 0) results.push({ key: name, count });
           } catch (e) {
-            if (debug && logs.length < 20) logs.push({ name, url: urlStr, error: e?.message || String(e) });
+            const message = e instanceof Error ? e.message : String(e);
+            if (debug && logs.length < 20) logs.push({ name, url: urlStr, error: message });
           }
           if (delayMs > 0) await sleep(delayMs);
         }
-      }
+      };
 
-      const workers = Array.from({ length: Math.max(1, concurrent) }, worker);
+      const workers = Array.from({ length: Math.max(1, concurrent) }, () => worker());
       await Promise.all(workers);
       results.sort((a, b) => b.count - a.count);
       setBuckets(results);
       if (debug) setDebugLogs(logs);
       setPhase("ready");
     } catch (e) {
-      setError(e?.message || String(e));
+      const message = e instanceof Error ? e.message : String(e);
+      setError(message);
       setPhase("error");
     } finally {
       setRunning(false);
     }
-  }
+  };
 
-  const totalShown = useMemo(() => buckets.reduce((acc, b) => acc + b.count, 0), [buckets]);
+  const totalShown = useMemo(
+    () => buckets.reduce((acc, bucket) => acc + bucket.count, 0),
+    [buckets],
+  );
   const topN = useMemo(() => buckets.slice(0, showTop), [buckets, showTop]);
-  const max = topN[0]?.count || 1;
+  const max = topN[0]?.count ?? 1;
 
   return (
     <div className="rounded-2xl border p-4 space-y-4">
       <div className="flex flex-wrap items-center gap-3 justify-between">
         <div>
           <h3 className="text-lg font-semibold">Provider snapshot</h3>
-          <p className="text-sm opacity-70">Distinct providers: {buckets.length || providers.length || "?"} · Top {showTop} total: {totalShown.toLocaleString()}</p>
+          <p className="text-sm opacity-70">
+            Distinct providers: {buckets.length || providers.length || "?"} · Top {showTop} total:{" "}
+            {totalShown.toLocaleString()}
+          </p>
         </div>
         <div className="flex items-center gap-2">
           {!running && (
-            <button className="px-3 py-1.5 rounded-lg border text-sm" onClick={runSnapshot}>Run snapshot</button>
+            <button
+              className="px-3 py-1.5 rounded-lg border text-sm"
+              onClick={() => {
+                void runSnapshot();
+              }}
+            >
+              Run snapshot
+            </button>
           )}
           {running && (
-            <button className="px-3 py-1.5 rounded-lg border text-sm" onClick={() => setRunning(false)}>Stop</button>
+            <button className="px-3 py-1.5 rounded-lg border text-sm" onClick={() => setRunning(false)}>
+              Stop
+            </button>
           )}
         </div>
       </div>
 
-      {phase === "idle" && <p className="text-sm">Click <strong>Run snapshot</strong> to discover providers and compute counts.</p>}
+      {phase === "idle" && (
+        <p className="text-sm">
+          Click <strong>Run snapshot</strong> to discover providers and compute counts.
+        </p>
+      )}
       {phase === "discover" && <p className="text-sm">Discovering providers...</p>}
       {phase === "count" && <p className="text-sm">Counting items per provider...</p>}
 
       {phase === "ready" && (
         <ul className="space-y-2">
-          {topN.map((b) => (
-            <li key={b.key} className="grid grid-cols-12 gap-2 items-center">
-              <div className="col-span-5 truncate" title={b.key}>{b.key}</div>
+          {topN.map((bucket) => (
+            <li key={bucket.key} className="grid grid-cols-12 gap-2 items-center">
+              <div className="col-span-5 truncate" title={bucket.key}>
+                {bucket.key}
+              </div>
               <div className="col-span-6">
                 <div className="h-2 w-full bg-gray-200 rounded">
-                  <div className="h-2 rounded" style={{ width: `${(b.count / max) * 100}%` }} />
+                  <div
+                    className="h-2 rounded"
+                    style={{ width: `${Math.min(100, (bucket.count / max) * 100)}%` }}
+                  />
                 </div>
               </div>
-              <div className="col-span-1 text-right tabular-nums">{b.count.toLocaleString()}</div>
+              <div className="col-span-1 text-right tabular-nums">
+                {bucket.count.toLocaleString()}
+              </div>
             </li>
           ))}
         </ul>

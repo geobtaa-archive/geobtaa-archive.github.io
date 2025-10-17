@@ -5,8 +5,11 @@ import react from '@astrojs/react';
 import starlightImageZoom from 'starlight-image-zoom';
 import icon from 'astro-icon';
 import { NAV_GROUPS, type NavSidebarEntry } from './navigation.config';
+import type { StarlightUserConfig } from '@astrojs/starlight/types';
 
-const mapSidebarEntry = (entry: NavSidebarEntry) => {
+type SidebarItem = NonNullable<StarlightUserConfig['sidebar']>[number];
+
+const mapSidebarEntry = (entry: NavSidebarEntry): SidebarItem => {
   switch (entry.kind) {
     case 'autogenerate':
       return {
@@ -18,7 +21,7 @@ const mapSidebarEntry = (entry: NavSidebarEntry) => {
       return {
         label: entry.label,
         collapsed: entry.collapsed ?? true,
-        items: entry.items,
+        items: Array.from(entry.items, (item) => ({ label: item.label, link: item.link })),
       };
     case 'link':
       return {
@@ -28,7 +31,9 @@ const mapSidebarEntry = (entry: NavSidebarEntry) => {
   }
 };
 
-const starlightSidebar = NAV_GROUPS.flatMap((group) => group.sidebar.map(mapSidebarEntry));
+const starlightSidebar: StarlightUserConfig['sidebar'] = NAV_GROUPS.flatMap((group) =>
+  group.sidebar.map(mapSidebarEntry),
+);
 
 export default defineConfig({
   integrations: [
@@ -47,9 +52,7 @@ export default defineConfig({
         PageTitle: './src/components/PageTitleWithMeta.astro',
       },
       plugins: [
-        starlightImageZoom({
-          selector: 'img[src*="/src/assets/images/"], figure img',
-        }),
+        starlightImageZoom(),
         starlightFullViewMode(),
       ],
       sidebar: starlightSidebar,

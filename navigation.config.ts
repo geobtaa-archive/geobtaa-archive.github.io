@@ -11,7 +11,7 @@ export interface NavSidebarGroup {
   kind: 'group';
   label: string;
   collapsed?: boolean;
-  items: ReadonlyArray<{ label: string; link: string }>;
+  items: Array<{ label: string; link: string }>;
 }
 
 export interface NavSidebarLink {
@@ -29,7 +29,7 @@ export interface NavGroup {
   sidebar: ReadonlyArray<NavSidebarEntry>;
 }
 
-export const NAV_GROUPS: ReadonlyArray<NavGroup> = [
+export const NAV_GROUPS = [
   {
     id: 'gin',
     label: 'GIN',
@@ -52,7 +52,7 @@ export const NAV_GROUPS: ReadonlyArray<NavGroup> = [
   },
   {
     id: 'community',
-    label: 'Resources',
+    label: 'Community',
     landing: '/user-resources/geoportal/',
     sidebar: [
       { kind: 'autogenerate', label: 'User Resources', directory: 'user-resources', collapsed: true },
@@ -73,25 +73,16 @@ export const NAV_GROUPS: ReadonlyArray<NavGroup> = [
     landing: '/blog/',
     sidebar: [{ kind: 'link', label: 'Blog', link: '/blog/' }],
   },
-] as const;
+] satisfies ReadonlyArray<NavGroup>;
 
 export const PRIMARY_NAV_OPTIONS = NAV_GROUPS.map(({ id, label, landing }) => ({
   group: id,
   label,
   target: landing,
-})) as ReadonlyArray<{ group: NavGroupId; label: string; target: string }>;
+})) satisfies ReadonlyArray<{ group: NavGroupId; label: string; target: string }>;
 
 export const SIDEBAR_LABEL_GROUPS = new Map<string, NavGroupId>(
-  NAV_GROUPS.flatMap(({ id, sidebar }) =>
-    sidebar.map((item) => {
-      switch (item.kind) {
-        case 'autogenerate':
-        case 'group':
-        case 'link':
-          return [item.label, id] as const;
-      }
-    }),
-  ),
+  NAV_GROUPS.flatMap(({ id, sidebar }) => sidebar.map((item) => [item.label, id] as const)),
 );
 
 export const deriveGroupFromPath = (path: string): NavGroupId => {

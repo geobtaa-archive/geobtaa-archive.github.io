@@ -2,11 +2,6 @@
 
 [![Built with Starlight](https://astro.badg.es/v2/built-with-starlight/tiny.svg)](https://starlight.astro.build)
 
-```
-npm create astro@latest -- --template starlight
-```
-
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
 
 ## 🚀 Project Structure
 
@@ -20,7 +15,8 @@ Inside of your Astro + Starlight project, you'll see the following folders and f
 │   ├── content/
 │   │   └── docs/
 │   └── content.config.ts
-├── astro.config.mjs
+├── astro.config.ts
+├── navigation.config.ts
 ├── package.json
 └── tsconfig.json
 ```
@@ -43,6 +39,24 @@ All commands are run from the root of the project, from a terminal:
 | `npm run preview`         | Preview your build locally, before deploying     |
 | `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
 | `npm run astro -- --help` | Get help using the Astro CLI                     |
+
+## 🔄 Updating Navigation
+
+All primary navigation (desktop tabs, mobile drawer, and sidebar groupings) is defined in one place:
+
+- `navigation.config.ts` — each entry in `NAV_GROUPS` describes a top-level section (`id`, `label`, `landing` page, and the sidebar items that belong to the group). Update this file when you add or remove a section.
+- `astro.config.ts` consumes `NAV_GROUPS` to build Starlight’s sidebar automatically; no manual edits needed here unless you change config structure.
+- UI components (`src/components/HeaderWithCompactSearch.astro` and `src/components/SidebarWithFilters.astro`) import the same data, so they reflect changes instantly.
+
+Typical update flow:
+
+1. Add your new docs pages under `src/content/docs/…`.
+2. Edit `navigation.config.ts`:
+   - Add or update a `NAV_GROUPS` entry.
+   - Use `kind: 'autogenerate'` to point at a docs directory, or `kind: 'group'` / `kind: 'link'` for manual lists.
+3. Run `npm run astro -- check` and `npm run dev` to verify the header tabs, mobile drawer, and sidebar all show the new structure.
+
+Need a quick reference? Leave a comment near your new `NAV_GROUPS` entry noting the related content directory.
 
 ## 👀 Want to learn more?
 
