@@ -10,7 +10,6 @@ date: 2024-02-06
 cover:
   image: "@images/camel.png"
   alt: Thumbnails of a few georeferenced items from the CAMEL collection.
-  caption: Thumbnails of a few georeferenced items from the CAMEL collection.
 ---
 import TwoThirdsLayout from 'src/components/TwoThirdsLayout.astro';
 import ChipList from 'src/components/ChipList.astro';
@@ -21,7 +20,17 @@ import Table from '/src/components/Table.astro';
 
 ## Monthly Highlight: New records from University of Chicago institute
 
+<TwoThirdsLayout>
+<div slot = "left">
 We added one of our largest set of records this month: [8,605 records from the Center for Ancient Middle Eastern Landscapes, Institute for the Study of Ancient Cultures, University of Chicago](https://geo.btaa.org/catalog/12d-04) ("CAMEL").  This unique collection contains a mix of gereferenced maps and satellite imagery of the evolving Middle Eastern landscape.
+</div>
+<div slot = "right">
+![Map and dataset images](@images/camel.png)
+*Thumbnails of a few georeferenced items from the CAMEL collection.*
+</div>
+
+
+</TwoThirdsLayout>
 
 This milestone represents several months of work. University of Chicago staff began meeting with the BTAA-GIN Product Manager in the summer of 2023 to prepare their metadata and workflows.  After several rounds of iterative testing, we were able to ingest the CAMEL records in January 202- The U. Chicago staff did a great job of programmatically producing metadata in the [GeoBTAA Aardvark metadata profile,](https://gin.btaa.org/metadata/geobtaa-metadata-application-profile/) and we are able to load their records without needing to perform any augmentation or edits.
 
@@ -125,9 +134,8 @@ Development primarily focused on deferred maintenance and technology stack upgra
 We also participated in the GeoBlacklight Community Sprint, which began at the end of January. Our goals are to modernize the applications JavaScript libraries, and overhaul the documentation site.
 
 :::tip[More development details]
-Read the full January [Development Tasks](https://docs.google.com/document/d/1bUyozcaEkA6OQEc9EE5PSiiHnpxw07EVpbUh1T-EHXs/edit?usp=sharing) report for more details.
+Read the full January [Development Tasks](https://docs.google.com/document/d/e/2PACX-1vSKz3o67zfC7ysQFBgLO1gDmXpxkUwb74Yn-8N1EjJZ_kaVAxUEU46a3d2-ARlcDR9TneuyqpicAd6U/pub) report for more details.
 :::
----
 
 ## Next Steps
 
@@ -136,4 +144,5 @@ The next steps on our [Program Roadmap 2023-2024](https://github.com/orgs/geobta
 - **Governance**:  Develop a priority projects matrix
 - **Public documentation**: Teach the Team Members how to write in Markdown and contribute to our new website.
 - **Asset management**: Create a Technology Roadmap that includes Geoportal maintenance as well as the new features required by our Geodata Collection Strategic Plan.
+
 
