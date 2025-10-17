@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 
 // Types
 type Author = {
@@ -157,7 +157,11 @@ export default function DataCitation() {
           el.value = text;
           document.body.appendChild(el);
           el.select();
-          document.execCommand("copy");
+          const legacyDoc = document as unknown as Record<string, unknown>;
+          const exec = legacyDoc["execCommand"] as ((this: Document, commandId: string) => boolean) | undefined;
+          if (typeof exec === "function") {
+            exec.call(document, "copy");
+          }
           el.remove();
         }
         setCopied(true);
