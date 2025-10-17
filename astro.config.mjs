@@ -37,7 +37,7 @@ export default defineConfig({
               { label: 'Presentations', link: '/scholarship/presentations/' },
               { label: 'Posters', link: '/scholarship/posters/' },
               { label: 'Publications', link: '/scholarship/publications/' },
-              // { label: 'Document Library', link: '/library/' },
+              { label: 'Document Library', link: '/library/' },
             ],
         },  
         { label: 'User Resources', collapsed: true, autogenerate: { directory: 'user-resources' } },
