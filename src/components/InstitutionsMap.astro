@@ -175,7 +175,7 @@ const uid = `institutions-map-${Math.random().toString(36).slice(2)}`;
     if (!res.ok) throw new Error(`Fetch failed ${res.status} for ${dataUrl}`);
     const geo = await res.json();
 
-    const pointsLayer = L.geoJSON(geo, {
+    L.geoJSON(geo, {
       pointToLayer: (feature, latlng) => {
         const id = (feature?.properties?.id ?? "").toString() || "•";
         const name = feature?.properties?.name ?? id;
