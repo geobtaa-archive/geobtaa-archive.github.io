@@ -18,6 +18,10 @@
 --btaa-white:     #FFFFFF;   
 --btaa-green: #2e7d32;
 
+/* Navigation sizing */
+--sl-nav-height: 5rem;
+--sl-nav-pad-y: 0rem;
+
 /* Brand Fonts */
 --font-family-heading: "Work Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
 --font-family-body:    "Lora", "Times New Roman", Times, serif;

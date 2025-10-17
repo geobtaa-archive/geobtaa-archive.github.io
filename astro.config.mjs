@@ -6,6 +6,7 @@ import starlightImageZoom from 'starlight-image-zoom'
 import icon from 'astro-icon';
 
 
+
 export default defineConfig({
   integrations: [
   
@@ -19,6 +20,7 @@ export default defineConfig({
       customCss: ['./src/styles/global.css', './src/styles/tables.css' ],
       components: {
         Footer: './src/components/FooterWithBar.astro',
+        Header: './src/components/HeaderWithCompactSearch.astro',
         Sidebar: './src/components/SidebarWithFilters.astro',
         PageTitle: './src/components/PageTitleWithMeta.astro',
       },
@@ -27,6 +29,7 @@ export default defineConfig({
           selector: 'img[src*="/src/assets/images/"], figure img',
         }),
         starlightFullViewMode(),
+        
       ], // Closes plugins[]
       
       sidebar: [
