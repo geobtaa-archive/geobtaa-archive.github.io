@@ -678,7 +678,7 @@
                         "type": "string"
                       },
                       {
-                        "$ref": "#/definitions/docs/allOf/1/allOf/0/properties/authors/anyOf/1"
+                        "$ref": "#/definitions/docs/allOf/1/allOf/0/allOf/0/properties/authors/anyOf/1"
                       }
                     ]
                   }
@@ -865,19 +865,19 @@
                   "type": "object",
                   "properties": {
                     "link": {
-                      "$ref": "#/definitions/docs/allOf/1/allOf/1/properties/video/anyOf/0/properties/link"
+                      "$ref": "#/definitions/docs/allOf/1/allOf/0/allOf/1/properties/video/anyOf/0/properties/link"
                     },
                     "duration": {
-                      "$ref": "#/definitions/docs/allOf/1/allOf/1/properties/video/anyOf/0/properties/duration"
+                      "$ref": "#/definitions/docs/allOf/1/allOf/0/allOf/1/properties/video/anyOf/0/properties/duration"
                     },
                     "transcript": {
-                      "$ref": "#/definitions/docs/allOf/1/allOf/1/properties/video/anyOf/0/properties/transcript"
+                      "$ref": "#/definitions/docs/allOf/1/allOf/0/allOf/1/properties/video/anyOf/0/properties/transcript"
                     },
                     "difficulty": {
-                      "$ref": "#/definitions/docs/allOf/1/allOf/1/properties/video/anyOf/0/properties/difficulty"
+                      "$ref": "#/definitions/docs/allOf/1/allOf/0/allOf/1/properties/video/anyOf/0/properties/difficulty"
                     },
                     "actions": {
-                      "$ref": "#/definitions/docs/allOf/1/allOf/1/properties/video/anyOf/0/properties/actions"
+                      "$ref": "#/definitions/docs/allOf/1/allOf/0/allOf/1/properties/video/anyOf/0/properties/actions"
                     },
                     "type": {
                       "type": "string",
@@ -961,6 +961,16 @@
                   "additionalProperties": false
                 }
               ]
+            }
+          }
+        },
+        {
+          "type": "object",
+          "properties": {
+            "year": {
+              "type": "integer",
+              "minimum": 1800,
+              "maximum": 2100
             }
           }
         }

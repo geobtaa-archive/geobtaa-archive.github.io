@@ -1,18 +1,8 @@
 ---
 import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro';
-import AnchorHeading from '@astrojs/starlight/components/AnchorHeading.astro';
-import { getCollection } from 'astro:content';
+import { loadLibraryContent } from '../../utils/libraryContent';
 
-// Fetch & prepare docs under docs/library/**
-const all = (await getCollection('docs', ({ id }) => id.startsWith('library/')))
-  .filter((e) => e?.data?.draft !== true && e?.data?.sidebar?.hidden !== true)
-  .sort((a, b) => (b.data?.year ?? 0) - (a.data?.year ?? 0));
-
-const PAGE_SIZE = 50;
-const page = Math.max(1, Number(Astro.url.searchParams.get('page') || 1));
-const totalPages = Math.max(1, Math.ceil(all.length / PAGE_SIZE));
-const start = (page - 1) * PAGE_SIZE;
-const paged = all.slice(start, start + PAGE_SIZE);
+const { items } = await loadLibraryContent();
 ---
 
 <StarlightPage
@@ -21,71 +11,133 @@ const paged = all.slice(start, start + PAGE_SIZE);
     description: 'All program documents in the library',
     tableOfContents: false,
     prev: false,
-    next: false
+    next: false,
   }}
 >
-  <div class="sl-container">
-    <p>Browse our full library of program charters, reports, and user reference guides.</code></p>
+  <div class="library-content">
+    <p class="library-intro">
+      Browse our full library of program charters, reports, tutorials, and reference guides. Use the filters to narrow by topic, author, publication year, or keyword.
+    </p>
 
-    <input
-      type="search"
-      placeholder="Filter by title…"
-      id="filter"
-      style="width:100%; padding:0.6rem 0.8rem; margin:1rem 0; border:1px solid var(--sl-color-hairline); border-radius:8px;"
-    />
-
-    <ul id="doclist" style="list-style:none; padding:0; margin:0;">
-      {paged.map((entry) => {
-  const url = `/${entry.id.replace(/\/index$/, '')}/`;
-  const t = entry.data?.title ?? entry.id.split('/').pop();
-  const summary = entry.data?.description ?? '';
-  const year = entry.data?.year;
-  return (
-    <li style="padding:0.75rem 0; border-bottom:1px solid var(--sl-color-hairline);">
-      <a href={url} class="sl-link" style="font-weight:600;">{t}</a>
-      {year && <span style="margin-left:0.5rem; color:var(--sl-color-text-muted);">({year})</span>}
-      {summary && (
-        <div style="margin-top:0.25rem; color:var(--sl-color-text-muted); font-size:0.95rem;">
-          {summary}
-        </div>
-      )}
-    </li>
-  );
-})}
+    <ul class="library-list" data-library-grid>
+      {items.map((item) => (
+        <li
+          class="library-list__item"
+          data-library-card
+          data-tags={JSON.stringify(item.tags)}
+          data-authors={JSON.stringify(item.authors)}
+          data-year={item.year ? String(item.year) : ''}
+          data-date={String(item.dateValue)}
+          data-index={String(item.order)}
+          data-search={item.searchIndex}
+        >
+          <a href={item.url} class="library-list__link">{item.title}</a>
+          <div class="library-list__meta">
+            {item.year && <span class="library-list__year">{item.year}</span>}
+            {item.authors.length > 0 && (
+              <span class="library-list__authors">By {item.authors.join(', ')}</span>
+            )}
+          </div>
+          {item.summary && (
+            <div class="library-list__summary">
+              {item.summary}
+            </div>
+          )}
+          {item.tags.length > 0 && (
+            <ul class="library-list__tags not-content">
+              {item.tags.map((tag) => (
+                <li>{tag}</li>
+              ))}
+            </ul>
+          )}
+        </li>
+      ))}
     </ul>
 
-    {totalPages > 1 && (
-      <nav style="display:flex; gap:0.5rem; margin-top:1rem; flex-wrap:wrap;">
-        {Array.from({ length: totalPages }, (_, i) => {
-          const p = i + 1;
-          const href = p === 1 ? '/library/' : `/library/?page=${p}`;
-          const isCurrent = p === page;
-          return (
-            <a
-              href={href}
-              aria-current={isCurrent ? 'page' : undefined}
-              style={`padding:0.4rem 0.7rem; border:1px solid var(--sl-color-hairline); border-radius:6px; text-decoration:none; ${
-                isCurrent ? 'background:var(--sl-color-bg-soft); font-weight:600;' : ''
-              }`}
-            >
-              {p}
-            </a>
-          );
-        })}
-      </nav>
-    )}
+    <div class="library-empty" data-library-empty hidden>
+      <p>No documents match the current filters. Try adjusting your selection.</p>
+    </div>
   </div>
-
-  <script>
-    const input = document.getElementById('filter');
-    const list = document.getElementById('doclist');
-    const items = Array.from(list.querySelectorAll('li'));
-    input?.addEventListener('input', (e) => {
-      const q = e.target.value.toLowerCase();
-      items.forEach((li) => {
-        const text = li.textContent.toLowerCase();
-        li.style.display = text.includes(q) ? '' : 'none';
-      });
-    });
-  </script>
 </StarlightPage>
+
+<style>
+  .library-content {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .library-intro {
+    margin: 0;
+    color: var(--sl-color-text-muted);
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+
+  .library-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+  }
+
+  .library-list__item {
+    padding-bottom: 1.1rem;
+    border-bottom: 1px solid var(--sl-color-hairline);
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .library-list__link {
+    font-weight: 600;
+    font-size: 1.05rem;
+    text-decoration: none;
+  }
+
+  .library-list__link:hover,
+  .library-list__link:focus-visible {
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+  }
+
+  .library-list__meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+    color: var(--sl-color-text-muted);
+  }
+
+  .library-list__summary {
+    color: var(--sl-color-text-muted);
+    font-size: 0.95rem;
+    line-height: 1.55;
+  }
+
+  .library-list__tags {
+    display: inline-flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    font-size: 0.85rem;
+    color: var(--sl-color-text-muted);
+  }
+
+  .library-list__tags li {
+    padding: 0.1rem 0.5rem;
+    border-radius: 999px;
+    border: 1px solid var(--sl-color-hairline);
+  }
+
+  .library-empty {
+    padding: 1.5rem;
+    text-align: center;
+    border: 1px dashed var(--sl-color-hairline);
+    border-radius: 0.75rem;
+  }
+</style>
