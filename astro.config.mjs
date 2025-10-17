@@ -1,7 +1,6 @@
 import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
 import starlightFullViewMode from 'starlight-fullview-mode';
-import starlightBlog from 'starlight-blog';
 import react from '@astrojs/react';
 import starlightImageZoom from 'starlight-image-zoom'
 import icon from 'astro-icon';
@@ -20,13 +19,14 @@ export default defineConfig({
       customCss: ['./src/styles/global.css', './src/styles/tables.css' ],
       components: {
         Footer: './src/components/FooterWithBar.astro',
+        Sidebar: './src/components/SidebarWithFilters.astro',
+        PageTitle: './src/components/PageTitleWithMeta.astro',
       },
       plugins: [
         starlightImageZoom({
           selector: 'img[src*="/src/assets/images/"], figure img',
         }),
-        starlightBlog({ title: 'News & Updates', recentPostCount: 5 }),
-        starlightFullViewMode( {leftSidebarEnabled: false} ),
+        starlightFullViewMode(),
       ], // Closes plugins[]
       
       sidebar: [
@@ -48,6 +48,7 @@ export default defineConfig({
               ],
 
         },
+         { label: 'Blog', link: '/blog/' },
     ]
     }), // Closes starlight()
     

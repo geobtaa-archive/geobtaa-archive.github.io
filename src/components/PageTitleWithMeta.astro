@@ -1,0 +1,69 @@
+---
+import ArticleMeta from './ArticleMeta.astro';
+
+const PAGE_TITLE_ID = 'page-title';
+
+const route = Astro.locals.starlightRoute;
+const entry = route.entry;
+const data = entry.data as Record<string, unknown>;
+
+const id = entry.id ?? '';
+const showMeta = id.startsWith('posts/') || id.startsWith('updates/');
+
+const normalizeAuthors = (raw: unknown): string[] => {
+  if (!Array.isArray(raw)) return [];
+  return raw
+    .map((author) => {
+      if (typeof author === 'string') return author.trim();
+      if (author && typeof author === 'object' && 'name' in author && typeof author.name === 'string') {
+        return author.name.trim();
+      }
+      return '';
+    })
+    .filter((name) => name.length > 0);
+};
+
+const normalizeTags = (raw: unknown): string[] => {
+  if (!Array.isArray(raw)) return [];
+  return raw
+    .map((tag) => String(tag).trim())
+    .filter((tag) => tag.length > 0);
+};
+
+const toDate = (value: unknown): Date | undefined => {
+  if (!value) return undefined;
+  const date = new Date(String(value));
+  return Number.isNaN(date.valueOf()) ? undefined : date;
+};
+
+const authors = showMeta ? normalizeAuthors(data.authors) : [];
+const published = showMeta ? toDate(data.date) : undefined;
+const tags = showMeta ? normalizeTags(data.tags) : [];
+---
+
+<div class="page-title">
+  <h1 id={PAGE_TITLE_ID}>{entry.data.title}</h1>
+  {showMeta && <ArticleMeta authors={authors} date={published} tags={tags} />}
+</div>
+
+<style>
+  @layer starlight.core {
+    .page-title {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .page-title h1 {
+      margin-top: 1rem;
+      font-size: var(--sl-text-h1);
+      line-height: var(--sl-line-height-headings);
+      font-weight: 600;
+      color: var(--sl-color-white);
+    }
+
+    .page-title :global(.article-meta) {
+      margin-top: 0.5rem;
+    }
+  }
+</style>

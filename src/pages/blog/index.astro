@@ -1,0 +1,51 @@
+---
+import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro';
+import AnchorHeading from '@astrojs/starlight/components/AnchorHeading.astro';
+import ContentGrid from '../../components/ContentGrid.astro';
+import { loadBlogContent } from '../../utils/blogContent';
+
+const { items: allItems } = await loadBlogContent();
+
+const params = Astro.url.searchParams;
+const sortOrder = params.get('sort') === 'oldest' ? 'oldest' : 'newest';
+
+const sortedItems = [...allItems].sort((a, b) => {
+  const aTime = a.published?.getTime() ?? 0;
+  const bTime = b.published?.getTime() ?? 0;
+  return sortOrder === 'oldest' ? aTime - bTime : bTime - aTime;
+});
+---
+
+<StarlightPage
+  frontmatter={{
+    title: 'Blog & Updates',
+    description: 'Browse recent highlights and program updates from the BTAA-GIN.',
+    tableOfContents: false,
+    prev: false,
+    next: false
+  }}
+>
+  <div class="sl-container">
+    <AnchorHeading id="blog-updates" level={2}>
+      Latest Highlights & Updates
+    </AnchorHeading>
+    <p class="intro">
+      Explore featured stories, collection highlights, and program updates. Use the filters to narrow by tags, authors, or publication year, and switch the sort order to see the latest or oldest items first.
+    </p>
+
+    <ContentGrid items={sortedItems} />
+  </div>
+</StarlightPage>
+
+<style>
+  .sl-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .intro {
+    margin: 0;
+    color: var(--sl-color-text-muted);
+  }
+</style>
