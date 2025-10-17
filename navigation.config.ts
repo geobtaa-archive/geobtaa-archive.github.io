@@ -86,7 +86,16 @@ export const SIDEBAR_LABEL_GROUPS = new Map<string, NavGroupId>(
 );
 
 export const deriveGroupFromPath = (path: string): NavGroupId => {
-  if (path.startsWith('/blog')) return 'blog';
-  if (path.startsWith('/user-resources') || path.startsWith('/conference')) return 'community';
+  const normalized = path.toLowerCase();
+  if (
+    normalized.startsWith('/blog') ||
+    normalized.startsWith('/posts') ||
+    normalized.startsWith('/updates')
+  ) {
+    return 'blog';
+  }
+  if (normalized.startsWith('/user-resources') || normalized.startsWith('/conference')) {
+    return 'community';
+  }
   return 'gin';
 };
