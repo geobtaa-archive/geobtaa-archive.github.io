@@ -4,6 +4,7 @@ import SidebarPersister from '@astrojs/starlight/components/SidebarPersister.ast
 import SidebarSublist from '@astrojs/starlight/components/SidebarSublist.astro';
 import FilterPanel from './FilterPanel.astro';
 import { loadBlogContent } from '../utils/blogContent';
+import { loadLibraryContent } from '../utils/libraryContent';
 import {
   deriveGroupFromPath,
   SIDEBAR_LABEL_GROUPS,
@@ -13,6 +14,7 @@ import {
 const { sidebar } = Astro.locals.starlightRoute;
 const pathname = Astro.url.pathname;
 const isBlogIndex = pathname === '/blog/' || pathname === '/blog';
+const isLibraryIndex = pathname === '/library/' || pathname === '/library';
 
 const activeNavGroup = deriveGroupFromPath(pathname);
 
@@ -29,27 +31,65 @@ const filteredSidebar = sidebar.filter((entry) => {
   return entryGroup === activeNavGroup;
 });
 
-let filterProps:
-  | {
-      tags: string[];
-      authors: string[];
-      years: number[];
-      selectedTags: string[];
-      selectedAuthors: string[];
-      selectedYears: string[];
-    }
-  | null = null;
+type SidebarFilterConfig = {
+  heading: string;
+  resetLabel: string;
+  context: string;
+  props: {
+    tags: string[];
+    authors: string[];
+    years: string[];
+    selectedTags: string[];
+    selectedAuthors: string[];
+    selectedYears: string[];
+    context?: string;
+    query?: string;
+    searchLabel?: string;
+    searchPlaceholder?: string;
+    authorsEnabled?: boolean;
+    tagsLabel?: string;
+  };
+};
+
+let sidebarFilter: SidebarFilterConfig | null = null;
 
 if (isBlogIndex) {
   const { tags, authors, years } = await loadBlogContent();
   const params = Astro.url.searchParams;
-  filterProps = {
-    tags,
-    authors,
-    years,
-    selectedTags: params.getAll('tag'),
-    selectedAuthors: params.getAll('author'),
-    selectedYears: params.getAll('year'),
+  sidebarFilter = {
+    heading: 'Filter posts',
+    resetLabel: 'Clear filters',
+    context: 'blog',
+    props: {
+      tags,
+      authors,
+      years: years.map((year) => String(year)),
+      selectedTags: params.getAll('tag'),
+      selectedAuthors: params.getAll('author'),
+      selectedYears: params.getAll('year'),
+      context: 'blog',
+    },
+  };
+}
+
+if (isLibraryIndex) {
+  const { tags, authors, years } = await loadLibraryContent();
+  const params = Astro.url.searchParams;
+  sidebarFilter = {
+    heading: 'Filter documents',
+    resetLabel: 'Clear filters',
+    context: 'library',
+    props: {
+      tags,
+      authors: [],
+      years: years.map((year) => String(year)),
+      selectedTags: params.getAll('tag'),
+      selectedAuthors: [],
+      selectedYears: params.getAll('year'),
+      context: 'library',
+      authorsEnabled: false,
+      tagsLabel: 'Type',
+    },
   };
 }
 ---
@@ -69,15 +109,19 @@ if (isBlogIndex) {
     ))}
   </nav>
   <SidebarSublist sublist={filteredSidebar} />
-  {filterProps && activeNavGroup === 'blog' && (
-    <div class="blog-sidebar">
-      <div class="blog-sidebar__header">
-        <h2 class="blog-sidebar__title">Filter posts</h2>
-        <button type="button" class="blog-sidebar__reset" data-blog-reset>
-          Clear filters
+  {sidebarFilter && (
+    <div class="filter-sidebar">
+      <div class="filter-sidebar__header">
+        <h2 class="filter-sidebar__title">{sidebarFilter.heading}</h2>
+        <button
+          type="button"
+          class="filter-sidebar__reset"
+          data-filter-reset={sidebarFilter.context}
+        >
+          {sidebarFilter.resetLabel}
         </button>
       </div>
-      <FilterPanel {...filterProps} />
+      <FilterPanel {...sidebarFilter.props} />
     </div>
   )}
 </SidebarPersister>
@@ -87,7 +131,7 @@ if (isBlogIndex) {
 </div>
 
 <style>
-  .blog-sidebar {
+  .filter-sidebar {
     display: flex;
     flex-direction: column;
     gap: 0.75rem;
@@ -98,7 +142,7 @@ if (isBlogIndex) {
     margin-top: 1rem;
   }
 
-  .blog-sidebar__title {
+  .filter-sidebar__title {
     margin: 0;
     font-size: 0.9rem;
     font-weight: 600;
@@ -107,14 +151,14 @@ if (isBlogIndex) {
     color: var(--sl-color-text-accent);
   }
   
-  .blog-sidebar__header {
+  .filter-sidebar__header {
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 0.5rem;
   }
 
-  .blog-sidebar__reset {
+  .filter-sidebar__reset {
     border: 1px solid var(--sl-color-hairline);
     border-radius: 999px;
     background: var(--sl-color-bg);
@@ -126,8 +170,8 @@ if (isBlogIndex) {
     transition: background 150ms ease, color 150ms ease, border-color 150ms ease;
   }
 
-  .blog-sidebar__reset:hover,
-  .blog-sidebar__reset:focus-visible {
+  .filter-sidebar__reset:hover,
+  .filter-sidebar__reset:focus-visible {
     background: var(--sl-color-bg-soft);
     border-color: var(--sl-color-primary);
     color: var(--sl-color-primary);
@@ -135,7 +179,7 @@ if (isBlogIndex) {
   }
 
   @media (min-width: 960px) {
-    .blog-sidebar {
+    .filter-sidebar {
       position: sticky;
       top: calc(var(--sl-nav-height, 3.5rem) + 1rem);
       max-height: calc(100vh - var(--sl-nav-height, 3.5rem) - 2rem);
