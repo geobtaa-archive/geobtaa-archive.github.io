@@ -30,7 +30,6 @@
     "react-dom": "^19.1.1",
     "reveal.js": "^5.2.1",
     "sharp": "^0.34.2",
-    "starlight-blog": "^0.24.2",
     "starlight-fullview-mode": "^0.2.3",
     "starlight-image-zoom": "^0.13.1",
     "starlight-links-validator": "^0.17.2",
