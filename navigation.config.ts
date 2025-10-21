@@ -56,6 +56,7 @@ export const NAV_GROUPS = [
     landing: '/user-resources/geoportal/',
     sidebar: [
       { kind: 'autogenerate', label: 'User Resources', directory: 'user-resources', collapsed: true },
+      { kind: 'link', label: 'Tutorials', link: '/tutorials/' },
       {
         kind: 'group',
         label: 'Big Ten Conference',
@@ -94,7 +95,7 @@ export const deriveGroupFromPath = (path: string): NavGroupId => {
   ) {
     return 'blog';
   }
-  if (normalized.startsWith('/user-resources') || normalized.startsWith('/conference')) {
+  if (normalized.startsWith('/user-resources') || normalized.startsWith('/conference') || normalized.startsWith('/tutorials')|| normalized.startsWith('/guides')) {
     return 'community';
   }
   return 'gin';
