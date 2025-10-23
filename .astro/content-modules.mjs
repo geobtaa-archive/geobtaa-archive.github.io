@@ -180,5 +180,6 @@ export default new Map([
 ["src/content/docs/library/user-personas.mdx", () => import("astro:content-layer-deferred-module?astro%3Acontent-layer-deferred-module=&fileName=src%2Fcontent%2Fdocs%2Flibrary%2Fuser-personas.mdx&astroContentModuleFlag=true")],
 ["src/content/docs/library/continuation_2017.mdx", () => import("astro:content-layer-deferred-module?astro%3Acontent-layer-deferred-module=&fileName=src%2Fcontent%2Fdocs%2Flibrary%2Fcontinuation_2017.mdx&astroContentModuleFlag=true")],
 ["src/content/docs/library/impactReport_2020-05.mdx", () => import("astro:content-layer-deferred-module?astro%3Acontent-layer-deferred-module=&fileName=src%2Fcontent%2Fdocs%2Flibrary%2FimpactReport_2020-05.mdx&astroContentModuleFlag=true")],
-["src/content/docs/library/geodata-collection-strategic-plan.mdx", () => import("astro:content-layer-deferred-module?astro%3Acontent-layer-deferred-module=&fileName=src%2Fcontent%2Fdocs%2Flibrary%2Fgeodata-collection-strategic-plan.mdx&astroContentModuleFlag=true")]]);
+["src/content/docs/library/geodata-collection-strategic-plan.mdx", () => import("astro:content-layer-deferred-module?astro%3Acontent-layer-deferred-module=&fileName=src%2Fcontent%2Fdocs%2Flibrary%2Fgeodata-collection-strategic-plan.mdx&astroContentModuleFlag=true")],
+["src/content/docs/library/curation-priorities.mdx", () => import("astro:content-layer-deferred-module?astro%3Acontent-layer-deferred-module=&fileName=src%2Fcontent%2Fdocs%2Flibrary%2Fcuration-priorities.mdx&astroContentModuleFlag=true")]]);
 		
