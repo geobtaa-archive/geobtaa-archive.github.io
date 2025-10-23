@@ -1,27 +1,20 @@
 ---
 title: Licensed Data Implementation Working Group Final Report
 description: Decisions, recommendations, and activities by the Licensed Data Implementation Working Group
+authors:
+   - name: Licensed Data Implementation Working Group
 year: 2020
-tags:
+date: 2020-12-10
+tags: 
   - reports
 ---
 
-December 2020
-
-Authors:
-
-* Caroline Kayko
-* Karen Majewicz
-* Ryan Mattke (Lead)
-* Kathleen Weessies
 
 The Licensed Data Working Group examined five licensed dataset types from six vendors that are held by most or all of the institutions participating in the BTAA Geoportal Project.[^1] Our purpose was to assess the advisability and best practices for incorporating records into the Geoportal. Establishing the ‘best’ approach for these complex resources is not easy due to their dissimilarity, the varied nature of their interfaces, and the different providers that supply access to these datasets.
-
 
 ## Structural Questions
 
 We started from easiest to add (Landscan) and progressed to most difficult (SimplyAnalytics). With one exception, none of the products we studied allows the geoportal to link out to individual data points within their interfaces but rather force us to link only to the front page of each resource. We debated whether to describe a single geoportal record that linked to the whole resource, or if we ought to populate the geoportal with multiple records per product to capture the variety of data points available within each. We further weighed pros and cons of linking to the resource itself or to a library catalog record for each institution. We decided to link to the library catalog record itself since that is the most stable link and the least likely to change and require an update. We chose to create parent collections for each entire resource and multiple child records per parent to describe individual data points. 
-
 
 ## Structuring Records
 
@@ -33,13 +26,11 @@ Depending on the structure of the licensed data source and what is most logical 
 * by state (fire insurance maps)
 * by topic category as defined by the vendor (Social Explorer, SimplyAnalytics and Policymap)
 
-
 ## Considerations
 
 Any dataset that already exists in the geoportal is disqualified from being added as a record, especially if it exists in a “better” form. We give preference to original data over derived data products. For example, Social Explorer provides raw census data, while  SimplyAnalytics offers census data that has been reconfigured by a third party vendor.  We also set aside some datasets of uncertain origin, such as SimplyAnalytics’ five-year population projections. 
 
 We also determined that some records are too complicated to add based on the data structure (for instance PolicyMap, see below), and we may just add a parent record and direct the user to the resource itself.
-
 
 ### Landscan
 
@@ -97,41 +88,38 @@ We needed to make enhancements to the metadata and the geoportal interface to in
 ### Metadata Fields
 
 
-1. Mediator (dct_mediator_sm): 
+1. Mediator (`dct_mediator_sm)`: 
     1. Purpose: Allow users to select their institution when searching for restricted records
     2. Format: a multi-valued text field that contains the names of each institution that has access to the record
-2. Access (b1g_access_s): 
+2. Access (`b1g_access_s)`: 
     3. Purpose: Provides links to each institution
     4. Format: This is a single-valued text field that contains a stringified hash of key-value pairs.
-3. Access Rights (dct_accessRights_sm)
+3. Access Rights (`dct_accessRights_sm`)
     5. Purpose: To clarify that these are restricted records and provide external links for more information
     6. Format: This is a multi-valued text field that can contain plain text and hyperlinks
 
 ### Metadata Values
 
-1. Provenance (dct_provenance_s): The licensed data pilot demonstrated that our prior convention of using short labels for institutions (i.e. Minnesota) was confusing for users. We changed this practice to write out full institution names (i.e. University of Minnesota) in both the Provenance and Mediator fields.
-2. Date Issued (dct_issued_s): We removed the Date Issued field from all licensed records. Including this date was confusing as it conflicted with temporal coverages.
-3. Type (dct_type_sm):  The licensed databases require users to query, filter, and combine data within the application. To differentiate these databases from the rest of the BTAA collections, they are given the value “Interactive Resource” in the Type field. This aligns with the [Dublin Core controlled vocabulary](https://www.dublincore.org/specifications/dublin-core/dcmi-terms/dcmitype/InteractiveResource/).
-4. Access (b1g_access_s): This new field is made up of key-value pairs, where an institution is the key and the value is the link. As the institution names are long, we used a set of codes that represent each institution. This allows the metadata to be more concise.
+1. Provenance (`dct_provenance_s`): The licensed data pilot demonstrated that our prior convention of using short labels for institutions (i.e. Minnesota) was confusing for users. We changed this practice to write out full institution names (i.e. University of Minnesota) in both the Provenance and Mediator fields.
+2. Date Issued (`dct_issued_`s): We removed the Date Issued field from all licensed records. Including this date was confusing as it conflicted with temporal coverages.
+3. Type (`dct_type_sm`):  The licensed databases require users to query, filter, and combine data within the application. To differentiate these databases from the rest of the BTAA collections, they are given the value “Interactive Resource” in the Type field. This aligns with the [Dublin Core controlled vocabulary](https://www.dublincore.org/specifications/dublin-core/dcmi-terms/dcmitype/InteractiveResource/).
+4. Access (`b1g_access_s`): This new field is made up of key-value pairs, where an institution is the key and the value is the link. As the institution names are long, we used a set of codes that represent each institution. This allows the metadata to be more concise.
 
-```
-Code | Institution
-
-01 | Indiana University
-02 | University of Illinois
-03 | University of Iowa
-04 | University of Maryland
-05 | University of Minnesota
-06 | Michigan State University
-07 | University of Michigan
-08 | Purdue University
-09 | Pennsylvania State University
-10 | University of Wisconsin-Madison
-11 | The Ohio State University
-12 | University of Chicago
-13 | University of Nebraska-Lincoln
-```
-
+| Code | Institution |
+|-----|---------------|
+| 01 | Indiana University |
+| 02 | University of Illinois |
+| 03 | University of Iowa |
+| 04 | University of Maryland |
+| 05 | University of Minnesota |
+| 06 | Michigan State University |
+| 07 | University of Michigan |
+| 08 | Purdue University |
+| 09 | Pennsylvania State University |
+| 10 | University of Wisconsin-Madison |
+| 11 | The Ohio State University |
+| 12 | University of Chicago |
+| 13 | University of Nebraska-Lincoln |
 
 ### New Facets/Filters
 
@@ -141,12 +129,11 @@ Code | Institution
 ### Item Show Page features
 
 1. Access Rights: This displays the values from the Access Rights field and includes clickable hyperlinks
-2. Licensed Resource widget: This widget appears in the Links box. At the top is a padlock with the term “Licensed Resource.” If a user hovers over the term, the phrase, “_This resource requires authentication through one of the following institutions. Select your institution for access_.” Beneath this heading is a list of institutions and icons. Each link will take a user to a library catalog page for the resource.		
+2. Licensed Resource widget: This widget appears in the Links box. At the top is a padlock with the term “Licensed Resource.” If a user hovers over the term, the phrase, “_This resource requires authentication through one of the following institutions. Select your institution for access_.” Beneath this heading is a list of institutions and icons. Each link will take a user to a library catalog page for the resource.
 
 ## Implementation
 
 We will be implementing the changes outlined in this document through an internal reallocation of effort, rather than increased direct costs.
-
 
 ## Outcomes
 

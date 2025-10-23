@@ -1,46 +1,46 @@
 ---
 title: A Spatial Data Infrastructure (SDI) for the BTAA
-description: Proposal to the BTAA-GDP Strategic Leadership Group 2019
+description: This document provides a description of the technology behind a Spatial Data Infrastructure (SDI). It also gives a background for the BTAA Geospatial Data Project (GDP), and some of the current challenges this project faces that could be remedied by a shared, or common, SDI.
+authors:
+   - name: BTAA-GIN Staff
 year: 2019
+date: 2019-10-31
 tags:
   - proposals
 ---
 
-Proposal to the BTAA-GDP Strategic Leadership Group 2019
+:::danger[Outcomes]
+Not all of these proposed components were implemented. This document is published only for reference.
+:::
 
-## Description and Current BTAA Capabilities
+:::note[BTAA GDP project quick facts]
 
-**Abstract**: This document provides a description of the technology behind a Spatial Data Infrastructure (SDI). It also gives a background for the BTAA Geospatial Data Project (GDP), and some of the current challenges this project faces that could be remedied by a shared, or common, SDI.
+* Number of participating institutions: 12
+* Number of project Task Force members: 22
+* Year the project began: 2015
+* Month the BTAA Geoportal went online: August 2016
+* Number of resources in the geoportal at launch: 2,300
+* Number of resources as of January 2019: 18,195
+* Number of scanned maps: 6,974
+* Number of geospatial datasets: 10,793
+* Number of geospatial web services: 5,298
+
+:::
+
+## Current BTAA Capabilities
+
 
 ### Existing collaborations across the BTAA for geospatial data
 
-In 2012, three BTAA map librarians issued a white paper, _A Collaborative Vision for Spatial Scholarship across the CIC_[^1], that described geospatial data as a long term, interdisciplinary need and proposed several collaborative possibilities for managing it.  This paper was a major impetus for the creation of the BTAA Geospatial Data Project (GDP) three years later. The BTAA GDP has accomplished several of the recommendations laid out in the paper, including creating a collective specialized tool for discovering geospatial resources, combining scanned map collections, and encouraging robust communication across the BTAA geospatial community. 
-
-
-:::note[BTAA GDP project quick facts]
-* 	Number of participating institutions: 12
-* 	Number of project Task Force members: 22
-* 	Year the project began: 2015
-* 	Month the BTAA Geoportal went online: August 2016
-* 	Number of resources in the geoportal at launch: 2,300
-* 	Number of resources as of January 2019: 18,195
-* 	Number of scanned maps: 6,974
-* 	Number of geospatial datasets: 10,793
-* 	Number of geospatial web services: 5,298
-:::
-
-
+In 2012, three BTAA map librarians issued a white paper, _A Collaborative Vision for Spatial Scholarship across the CIC_[^1], that described geospatial data as a long term, interdisciplinary need and proposed several collaborative possibilities for managing it.  This paper was a major impetus for the creation of the BTAA Geospatial Data Project (GDP) three years later. The BTAA GDP has accomplished several of the recommendations laid out in the paper, including creating a collective specialized tool for discovering geospatial resources, combining scanned map collections, and encouraging robust communication across the BTAA geospatial community.
 
 The next phase of the BTAA GDP proposes to address another of the paper’s main goals, that of building a “common infrastructure for storing, disseminating, and archiving geospatial data.” (p. 2). A common infrastructure would address two major challenges that BTAA libraries continue to face: managing geospatial data created or licensed at individual libraries and dealing with the ephemeral nature of publicly available open data.
 
-
 ### Ongoing challenges across the BTAA for geospatial data
-
 
 #### The challenge of managing licensed geospatial data in libraries
 
 Many of the BTAA map librarians are still storing licensed geospatial data purchased from vendors on physical media or local hard drives, or using a cloud service such as Google Drive or Box. As described in the 2012 white paper[^2],  this leaves the libraries in “reactive mode,” where they must develop piecemeal solutions for delivering geospatial data to patrons. As evidenced by the Summary tab of the [BTAA Spatial Data Infrastructure Details](https://docs.google.com/spreadsheets/d/10vXL3yyyWBd-V3Qr_42U1RFH_EGod9ZpYg-HP94fw2A/edit?usp=sharing)[^3], there is inconsistency across the BTAA in the institutional infrastructure for this type of geospatial data. Combining our resources and expertise into a shared SDI would fill in the gaps across the chart.
-
 
 #### The challenge of ephemeral open data
 
@@ -52,16 +52,11 @@ The BTAA Geoportal fills a gap in the geospatial data ecosystem by cataloging me
 
 The barriers that keep libraries from collecting copies of open data, rather than tracking its metadata as the BTAA Geoportal does, include lacking local technology and staff expertise to effectively curate and archive the resources. A shared SDI that utilizes a combination of existing skill sets across the BTAA and new shared technology development would allow libraries to expand their scope to include these types of important research resources.
 
-
 ## Introducing a Spatial Data Infrastructure (SDI)
 
 A Spatial Data Infrastructure (SDI) is defined in a GIS dictionary as “A framework of technologies, policies, standards, and human resources necessary to acquire, process, store, distribute, and improve the use of geospatial data across multiple public and private organizations.”[^7] The benefits of a shared SDI include reduced costs through shared technology, agreed upon standards, and improved data discovery and accessibility. The technology behind a spatial data infrastructure can be broken down into four parts:[^8]
 
-
-
 ### 1. Digital Object Preservation and Access
-
-
 
 **About:** The foundation of an SDI is the repository that stores the digital objects. These objects may be reproduced in multiple formats to ensure long term access, and the supporting technology may include preservation services, such as fixity checks and versioning. _non-BTAA example: [Hydra/Samvera at Stanford University](https://www.tandfonline.com/doi/pdf/10.1080/15420353.2015.1041630)_
 
@@ -71,19 +66,13 @@ Most BTAA libraries offer purchased, licensed geospatial data to researchers. Of
 
 For publicly available state and local data, Indiana University has a dedicated geospatial data repository, and the University of Wisconsin is systematically saving files on hard drives. 
 
-
-
 ### 2. Geospatial Metadata
-
-
 
 **About**: Geospatial data in an SDI should be fully documented with valid standards-compliant metadata. The metadata can be stored with the actual data files, but is sometimes also stored in a separate catalog. Like other digital archives, authoring metadata is typically the most labor intensive aspect of creating and maintaining an SDI. _BTAA example: GeoNetwork Metadata Catalog using ISO 19139 metadata standard for the BTAA GDP_
 
 **Across the BTAA**: Three BTAA institutions have geospatial metadata experts on staff, who regularly catalog geospatial data (Purdue, Minnesota, Wisconsin) in a geospatial standard (ISO or FGDC). The remaining libraries employ staff who regularly catalog maps using MARC and transfer this knowledge to cataloging datasets as needed.
 
-
 ### 3. Geospatial Web Services
-
 
 **About:** Geospatial web services provide an online connection to a dataset hosted on a server. These services allow users to stream and visualize geospatial data in a web browser or mapping application. Users can also load these services through a Desktop GIS without actually downloading the dataset.  Geospatial web services are widely used by researchers to build online maps quickly without needing to rehost data.[^9]
 
@@ -91,23 +80,17 @@ In order to provide these services, an organization needs to set up a server wit
 
 **Across the BTAA**: There are a few instances of locally hosted geospatial web services at BTAA institutions, and they are used for special library projects or initiatives. At most BTAA institutions, campus affiliates can log in to an organizational account for ArcGIS Online to publish their data as ArcGIS REST Services. However, this proprietary platform is generally a temporary host, and users are not always able to port the data to custom applications. Geospatial web services are not currently integrated with any of the BTAA institutional digital repositories or discovery applications.
 
-
-
 ### 4. Discovery Applications
 
-**About**: Discovery applications typically take the form of a web portal that allows users to search and filter through a normalized subsection of the full standards metadata. In the case of a geoportal, a graphical interface for searching on a map is also provided. If geospatial web services have been developed, a user can preview and query the dataset to analyze it without the need for specialized software. The BTAA Geoportal is an example of a standalone Discovery Application that relies upon repositories and geospatial web services from external data providers. _non-BTAA example: [GeoData@Tufts built with OpenGeoPortal](https://geodata.tufts.edu/). _
+**About**: Discovery applications typically take the form of a web portal that allows users to search and filter through a normalized subsection of the full standards metadata. In the case of a geoportal, a graphical interface for searching on a map is also provided. If geospatial web services have been developed, a user can preview and query the dataset to analyze it without the need for specialized software. The BTAA Geoportal is an example of a standalone Discovery Application that relies upon repositories and geospatial web services from external data providers. _non-BTAA example: [GeoData@Tufts built with OpenGeoPortal](https://geodata.tufts.edu/).
 
 **Across the BTAA**: Indiana University makes their geospatial data available via a custom interface that allows users to select data from nested lists. Two universities (Wisconsin and Purdue) have implemented geoportal applications that also allow users to search by text and via a map interface.
 
 Other universities (Minnesota and Penn State) contribute university created geospatial data to clearinghouses maintained by state agencies. Penn State provides IT assistance and web servers for the statewide clearinghouse.
 
-
----
-
 See this spreadsheet for more information: [BTAA Spatial Data Infrastructure Details](https://docs.google.com/spreadsheets/d/10vXL3yyyWBd-V3Qr_42U1RFH_EGod9ZpYg-HP94fw2A/edit?usp=sharing)
 
 
-<!-- Footnotes themselves at the bottom. -->
 ## Notes
 
 [^1]:

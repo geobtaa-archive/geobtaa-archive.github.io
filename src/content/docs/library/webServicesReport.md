@@ -1,11 +1,13 @@
 ---
 title: Web Services Report
 description: An analysis and recommendation for implementing web services in the BTAA Geoportal
+authors:
+   - name: Web Services Working Group
 year: 2019
 tags:
 - reports
 ---
-This report was created by the Web Services Working Group in 2019.
+
 
 ## Introduction
 
@@ -18,7 +20,6 @@ Understanding the basics of what web services are and how they are created bring
 A geospatial web service is a GIS resource (e.g., data, map) that allows users to preview, visualize, and repurpose data in web maps and applications without having to download or host a new copy. Geospatial web services depend on a server-side / client-side relationship. That server may be on premises or may utilize cloud-based infrastructure, and those clients can access, combine, and (in some cases) contribute information back to web services from different sources without the need for local hosting on their own infrastructure.
 
 Different types of geospatial web services exist, with two of the most common and relevant for our purposes being Web Feature Services (WFS) and Web Map Tile Services (WMTS).  
- 
 
 1. A web feature service is a dynamic, read-only service useful for directly exposing data for display and querying in a web map or web mapping application. Example: [Web Feature Service](https://gis2.metc.state.mn.us/arcgis/rest/services/bdry_metro_counties_and_ctus/FeatureServer).  
 2. A web map tile service is a dynamic, read-only service that supports fast visualization from a collection of predrawn images (tiles) but does not allow direct access to data about individual features. Example: [Web Map/Map Tile Service](https://gis2.metc.state.mn.us/arcgis/rest/services/bdry_metro_counties_and_ctus/MapServer).
@@ -35,7 +36,7 @@ Within the context of the BTAA geoportal project, providing web services would h
 
 Roughly half of our current geospatial datasets do not have an associated web service, although the percentage varies between institution:
 
-#### Geospatial Data Records in the BTAA Geoportal (Oct 2019\)
+### Geospatial Data Records in the BTAA Geoportal (Oct 2019\)
 
 | Institution | With web services | Without web services | Percent w/o web services |
 | :---: | :---: | :---: | :---: |
@@ -53,13 +54,12 @@ Roughly half of our current geospatial datasets do not have an associated web se
 | Michigan State | 450 | 0 | 0%  |
 | **Total** | **6,026** | **6,606** | **52%** |
 
- 
 
 ## Overview of web service technologies
 
 We investigated two options for hosting web services to compare both open source and proprietary solutions \- GeoServer and ArcGIS Online respectively.   
 
-### GeoServer ([http://geoserver.org/](http://geoserver.org/)) 
+### [GeoServer](http://geoserver.org/)
 
 GeoServer is an open-source Java application server that supports the development, hosting, and sharing of dynamic map and data online services. It is an Open Geospatial Consortium (OGC) compliant implementation of a number of open standards such as Web Feature Service (WFS), Web Map Service (WMS), and Web Coverage Service (WCS). Additional formats and publication options are available including Web Map Tile Service (WMTS) and extensions for Catalogue Service (CSW) and Web Processing Service (WPS).
 
@@ -68,15 +68,18 @@ GeoServer is an open-source Java application server that supports the developmen
 As an open source platform, there is abundant documentation to provide guidance in implementation, development, and customization of GeoServer. One major benefit of this option would be the ability to test new releases and features before deciding to implement them locally.  While it does require dedicated maintenance, the web API is quite simple and there is an intuitive graphical user interface (GUI) to store and manage data and create services. There is typically one dedicated “workspace” where map layers are created \-- both raster and vector data can be stored and hosted as services. There are very few (if any) file size limitations that would hinder certain datasets from being shared as a service (the limits that do exist are aimed at maintaining reliable draw performance/speed). Online documentation and an active user group within the GeoBlacklight community are available to offer guidance on automation and scripting for more efficient workflows. There is support for metadata within GeoServer \-- simple records can be added in the GeoServer workspace, and more complex metadata (if available) can be uploaded separately. Unlike ArcGIS Online, Geoserver is not itself a discovery platform, so it  would not be necessary to transform and maintain metadata records to align with an additional schema. Existing BTAA GeoBlacklight metadata could be used to populate descriptions of web services.
 
 #### Implementation \- distributed vs. centralized
+
 Although the technical requirements and maintenance of GeoServer are not especially demanding, there must be dedicated IT support and server authorization permissions. Data files are stored in a database (i.e. PostGreSQL) with a client interface for uploading content. There are some advantages and challenges with both distributed and centralized implementation of GeoServer. 
 
 #### Distributed
+
 The notion that each participating BTAA institution would stand-up separate instances of GeoServer may not be practical, but it is not impossible. Unlike ArcGIS, GeoServer is not an already widely utilized tool  at BTAA institutions. It would have to be implemented as an addition to each University Library’s existing technical infrastructure. However, a distributed model: (a) allows for local control over storage and management of the geospatial data needed to create web service layers; and (b) reduces negative performance issues by coupling the database environment with GeoServer locally.  It might also mean, though, that certain institutions may implement GeoServer and generate services for their locally-hosted data, while others simply do not have the IT infrastructure, expertise, or personnel to do so.
 
 #### Centralized
+
 It could be possible for a single institution to implement an instance of GeoServer that others could be given permission to access \-- but in a centralized model, challenges arise in the storage of data files used in the creation of the services themselves.  Geospatial data files must be stored (or archived) for a web service to be generated from them. A single GeoServer instance would struggle to function adequately when accessing data stored locally at institutions across the BTAA.  Based on an informative interview with Eliot Jordan at Princeton University (where they are actively using GeoServer and GeoBlacklight) service performance and IT security issues arise in a distributed environment. It is recommended that data files used to generate web services be stored in one location that is directly connected to GeoServer. This poses potential challenges for BTAA institutions in transferring data from one institution to another for the purpose of web service creation.
 
-### **ArcGIS Online** ([https://www.esri.com/en-us/arcgis/products/arcgis-online/overview](https://www.esri.com/en-us/arcgis/products/arcgis-online/overview))
+### [ArcGIS Online](https://www.esri.com/en-us/arcgis/products/arcgis-online/overview)
 
 ArcGIS Online is a proprietary, cloud-based, enterprise web GIS platform. Organizational accounts for teaching and research use of ArcGIS Online are supported through Esri educational site licenses, though the number of named users, analysis/storage credits, and account management roles and responsibilities may differ across institutions. Whereas GeoServer is primarily an application for hosting and sharing geospatial web services, ArcGIS Online also serves as a discovery tool and visualization platform for creating maps and analyzing data. ArcGIS Online supports OGC-compliant web feature services (WFS), web map services (WMS) and web map tile services (WMTS), among others.
 
@@ -107,36 +110,45 @@ There are differences in the approaches to creating web services for research da
 ### Research data (institutional repository)
 
 #### Curation
+
 Geospatial data within institutional repositories are available in a variety of formats and can be stored within complex research project structures. Decisions must be made item by item about how best to represent this geospatial data as a web service. It may not make sense to create web services for all spatial research data (such as water quality sampling locations for a specific study.)  
 Example: [Characterization of streams and rivers in the Minnesota River Basin Critical Observatory: water chemistry and biological field collections, 2013-2016](https://doi.org/10.13020/D6FH44)
 
 #### Multiple data layers for a single record
+
 Data repositories often store all data layers related to a project together.  These projects are currently represented in the geoportal with a single record. It would be difficult to link multiple web services to a single geoportal record, requiring a more complex representation of these resources.  
 Example:  [Access Across America: Transit 2015 Data](https://doi.org/10.13020/D63G6F)
 
 #### Licenses
+
 Licenses assigned to research datasets may impact whether they can be re-distributed as a web service. Datasets assigned public domain, CC0, or CC-By licenses may be appropriate as an initial focus, whereas CC-SA or CC-ND could be more complicated.  If the web services are being hosted from a centralized location, there are also could be questions around sharing research data between institutions.    
 Example: [White-tailed deer density estimates across the eastern United States, 2008](https://conservancy.umn.edu/handle/11299/178246)([Attribution-NonCommercial-ShareAlike 3.0 United States](http://creativecommons.org/licenses/by-nc-sa/3.0/us/))  
 
 #### Special capacities (e.g. time-enabled layers)
+
 Some data layers would be most useful (and true to their original purpose) if time-enabled, but it would take more work through more complicated workflows to create these web services.   
 Example: [Reconstruction of North American Drainage Basins and River Discharge Since the Last Glacial Maximum](https://conservancy.umn.edu/handle/11299/182076)  
 
 #### Communicating with researchers/students/original data creators
+
 Creating web services will require cartographic decision-making around the best way to display each dataset as a map or image.  Communication with the original data creator may be necessary to understand the content and how best to represent it.. 
 
 ### Public/Open Data
 
 #### Syncing web services with data records hosted by original data creators
+
 Web services created by the BTAA Geoportal project would be representations of  point-in-time copies of datasets from original data creators. This means the ability to  sync a service with the version of the dataset hosted by the original data creator will be difficult. As original data creators update, edit, or remove content from access online \- there will be challenges in tracking what content we have generated web services for and whether or not they also need updating, editing, or deletion. The BTAA project essentially becomes the steward of a particular version of a public/open dataset when creating a web service for it.
 
 #### Curation
+
 Creating web services for public/open data produced by state and local governments means a local copy of the data must be stored and hosted by the participating BTAA institution(s).  Content from original data creators would need to be reviewed item by item to determine the need for a web service.
 
 #### Licenses
+
 There are some cases where licenses are not clearly assigned by the original data producer. Navigating access and use constraints for data with ambiguous licenses means direct communication with data creators may be required.  Our current metadata schema does not include liability statements or licenses.  If we were to become stewards of this data, we may need to expand the metadata elements we keep. 
 
 #### Communicating with original data creators
+
 There may be a need for a different model of communication with data creators if the BTAA Geoportal project plans to copy and display the original data as a web service.  The current model consists of simply adding an additional discovery mechanism to the information data producers are hosting themselves. Conversations on the best way to represent the data (cartographically) as a web service may also be necessary.  Formal channels of communication regarding data stewardship and representation may need to be established in a way that has not yet been fully explored by the BTAA project.
 
 ## Metadata and workload considerations
@@ -150,7 +162,6 @@ In order to add web services to our current geoportal workflow,  more attention 
 * Adding new web service links to the related Geoblacklight metadata  
 * Tracking modifications to the original dataset and making decisions about whether to reaccession to stay in sync or to continue linking to the snapshot
 
-	  
 We estimate that these additional steps could add 30 minutes to the processing time for an average item. 
 
 ## Conclusions / Recommendations
@@ -158,6 +169,5 @@ We estimate that these additional steps could add 30 minutes to the processing t
 Creating web services would provide a more consistent and satisfying user experience for interacting with geospatial data in the Geoportal.  In particular, it allows users to preview data even if they do not have access to geospatial software and before downloading files to their local device.  It may also encourage meaningful connections with faculty and students interested in ways to visualize and promote their research data.  Expanding the scope of the project in this way would require, however, a substantial increase in work for task force members and project staff.  Beyond the current process of creating discovery metadata for each data layer, the project would need to download a copy of each dataset, gather more detailed metadata, generate and link geoportal records to web services, and track modifications to the original dataset.  We estimate this could add up to 30 minutes to the processing time for the average item. 
 
 One of the more important decisions to be made will be whether to take a more centralized or decentralized approach to creating web services.  If hosting content through Geoserver, a more centralized approach is recommended. This is because the services would need to be supported by a local database and it would be inefficient to set up servers at each partner institution.  If hosting through ArcGIS Online, a more decentralized workflow may be feasible.  This is because data and services would be stored in the cloud and any task force member would be able to upload data to the shared BTAA account.  More research needs to be done on the specifics of hosting using GeoServer before a recommendation can be made on the best technology option.  While GeoServer would take a greater infrastructure investment to set up and maintain, it would give us the greatest control over web service resources and the way they interact with the Geoportal.  ArcGIS Online would be comparatively easy to set up and administer, but we would have less control over performance and storage.  Also, since ArcGIS Online is itself a discovery platform, we would have to maintain metadata for both our Geoportal and their interface.  
-   
-Creating web services would introduce a new set of challenges regarding how to maintain and represent data in the Geoportal.  For research data, there would need to be significant curation and item-by-item decision-making about how to best represent each project.  For public data, the most formidable problem will be how to keep web services accurate and non-duplicative as original data creators update, add, and remove content.  In both cases, creating web services may require a kind of engagement and conversation with data producers that we have previously skipped.
 
+Creating web services would introduce a new set of challenges regarding how to maintain and represent data in the Geoportal.  For research data, there would need to be significant curation and item-by-item decision-making about how to best represent each project.  For public data, the most formidable problem will be how to keep web services accurate and non-duplicative as original data creators update, add, and remove content.  In both cases, creating web services may require a kind of engagement and conversation with data producers that we have previously skipped.

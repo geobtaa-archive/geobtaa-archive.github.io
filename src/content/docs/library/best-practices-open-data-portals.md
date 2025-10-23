@@ -2,13 +2,15 @@
 title: Best Practices for ArcGIS Hub Open Data Portals
 description: This guide presents publishing workflows that improve the stability of data identifiers and maximize benefits from metadata of resources on ArcGIS Hub / Open Data Portals.
 year: 2018
-author: BTAA GDP ArcGIS Working Group
+
+authors: 
+   - name: ArcGIS Portals Working Group
 tags:
 - best practices
 - reports
 ---
 
-**Last revised June 2018**
+Last revised June 2018
 
 ## Executive Summary
 
@@ -34,7 +36,7 @@ Examining every combination of settings was beyond the scope of this guide and b
 
 ------------------------------------------
 
-## Checklist 
+## Checklist
 
 To improve the stability and usefulness of resources on ArcGIS Hub:
 
@@ -45,9 +47,6 @@ To improve the stability and usefulness of resources on ArcGIS Hub:
 - [x] If you have to publish services from a desktop platform, consider **enabling metadata for your organization**. While metadata will not be automatically included with shapefile download, this setting makes it possible to manually add service-level metadata for download as a spreadsheet, PDF or other format.
 - [x] Double check that your organization’s specific publishing workflow preserves data identifiers and makes sufficient metadata available for download. It is beyond the scope of this guide to discuss every possible publishing workflow and the software frequently changes.  
 
---------------------------------
-
-
 ## Section 1: Publishing practices for stable identifiers
 
 Every item (unit of content) published to ArcGIS Online is assigned a unique identifier.   Depending on your publishing workflow, however, you may unintentionally generate new identifiers for data even though the content has not changed substantially. 
@@ -57,12 +56,11 @@ Things that may cause this behavior include:
 * stopping and restarting a server
 * deleting and republishing a dataset to update it
 
-
 ### 1.1  Overwriting existing files
 
 Overwriting existing files is one way to avoid frequent changes to identifiers and broken links for your data users.  
 
-When should you overwrite/update: 
+When should you overwrite/update:
 
 * if you are making a small revision to a dataset or correcting an error
 * if the data is frequently updated or programmed to sync with local servers at regular intervals

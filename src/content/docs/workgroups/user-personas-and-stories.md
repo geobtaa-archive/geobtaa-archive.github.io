@@ -9,13 +9,16 @@ dates_active: June 2018 – September 2018
 ---
 
 ## Purpose
+
 Captured user interviews, personas, and stories to guide Geoportal design and outreach.
 
 ## Deliverables Requested
+
 Conduct interviews with users (July 2018). Create personas and user stories. Compile real-life anecdotes from Task Force.
 
 ## Deliverables Produced
-- User Personas
+
+- [User Personas](../../library/user-personas/)
 - User Stories Form
 - Anecdotes
 
