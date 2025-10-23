@@ -2,11 +2,12 @@
 title: Continuation Proposal 2019
 description: Proposal for Funding for Years 5 & 6 (July 2019 - June 2021)
 year: 2019
+authors:
+   - name: BTAA-GIN Staff
 tags:
   - proposals
 ---
 
-Proposal for Funding for Years 5 & 6 (July 2019 - June 2021)
 
 ## Proposal
 
@@ -22,29 +23,29 @@ Geospatial data are notoriously hard to find using standard web search engines. 
 
 There are three concerns in the project as currently scoped that present opportunities for increased focus for the next two years:
 
-### 1. The Geoportal is not yet a well-known resource, because it has not been effectively promoted.
+1. The Geoportal is not yet a well-known resource, because it has not been effectively promoted.
 
-Addressing this issue would not necessitate an expansion in project scope. The Task Force members plan to focus on outreach and promotion by creating and implementing a detailed Communications Plan, and by working directly with communications professionals and subject liaisons at participating BTAA institutions. They will also gather focused input from faculty, researchers, students, and other user communities.
+   Addressing this issue would not necessitate an expansion in project scope. The Task Force members plan to focus on outreach and promotion by creating and implementing a detailed Communications Plan, and by working directly with communications professionals and subject liaisons at participating BTAA institutions. They will also gather focused input from faculty, researchers, students, and other user communities.
 
-### 2. Public geospatial data are alarmingly unstable. 
+2. Public geospatial data are alarmingly unstable. 
 
-Government data providers regularly migrate, update, delete, and re-publish data. These practices result in broken access links in the Geoportal. One solution to this problem to be explored is archiving and preserving the data in a spatial data repository to ensure stable and persistent access. Addressing this issue would necessitate an expansion in project scope (see below).
+   Government data providers regularly migrate, update, delete, and re-publish data. These practices result in broken access links in the Geoportal. One solution to this problem to be explored is archiving and preserving the data in a spatial data repository to ensure stable and persistent access. Addressing this issue would necessitate an expansion in project scope (see below).
 
-### 3. Expected changes in the technology development and support personnel for the BTAA Geoportal. 
+3. Expected changes in the technology development and support personnel for the BTAA Geoportal.
 
-The University of Minnesota expects a significant reduction in the availability of the Geoportal's lead (but part-time) developer in early 2019. This has prompted opportunity to take stock of the project's technology support needs moving into the next few years. Maintaining high technical reliability and performance alongside accelerated feature and service development are priorities. To do so, Minnesota plans to combine its current in-kind funding commitment for a part-time developer (at the 0.35FTE to 0.50FTE level) with the project's accrual of budgeted technology funds for contracted software development to appoint a 0.75FTE to 1.0FTE GeoBlacklight developer over the next two years (see Project Budget section for detailed numbers). This will increase the technology support capacities of the project without increasing costs to participating institutions.
+   The University of Minnesota expects a significant reduction in the availability of the Geoportal's lead (but part-time) developer in early 2019. This has prompted opportunity to take stock of the project's technology support needs moving into the next few years. Maintaining high technical reliability and performance alongside accelerated feature and service development are priorities. To do so, Minnesota plans to combine its current in-kind funding commitment for a part-time developer (at the 0.35FTE to 0.50FTE level) with the project's accrual of budgeted technology funds for contracted software development to appoint a 0.75FTE to 1.0FTE GeoBlacklight developer over the next two years (see Project Budget section for detailed numbers). This will increase the technology support capacities of the project without increasing costs to participating institutions.
 
 ## Continuing exploration of a strategic expansion in scope
 
-### 1. Archiving and preservation.
+### 1. Archiving and preservation
 
 Although the project has compiled information on the spatial data archiving and preservation capabilities at participating universities, it is not clear where the priority rests for developing such a capability BTAA-wide, and/or for creating it for the institutions that currently lack it. To determine this, additional conversations are needed, including with libraries administrations. This will also provide an opportunity to interface and collaborate with local, county, regional, and state government agencies who produce the geospatial data. Creating formal archiving agreements with government data providers would enhance reliability, but add complexity. 
 
-### 2. Web services.
+### 2. Web services
 
 The project’s stakeholders have expressed enthusiasm for developing a collaborative solution to provide online geospatial web services. These would allow users to access and visualize geospatial data in a web browser or mapping application without the need for specialized software. 
 
-### 3. Licensed data. 
+### 3. Licensed data
 
 Many participating institutions hold licensed geospatial data that they wish to submit to the geoportal. Incorporating these types of resources would present challenges in terms of enabling multiple institutional authentication protocols that will require specialized technical research. One possibility would be the Shared Big Data Gateway project (CADRE).
 
@@ -106,7 +107,7 @@ Note: Detailed budget documents available upon request.
 
 * 1,449 different data sets downloaded
 * Top downloads:
- * [Census Tracts: Hennepin County, Minnesota, 2010](https://geo.btaa.org/catalog/62bf3dd96fda4bd49e40574ccbaa7653_1)
+ * Census Tracts: Hennepin County, Minnesota, 2010
  * [City of Ann Arbor, Washtenaw County Michigan](https://geo.btaa.org/catalog/c0b81609-f233-4004-a5de-6e86ebdace1e)
  * [Campus Facilities - UMD Buildings: Maryland](https://geo.btaa.org/catalog/796da1bbb93e4f65a796de7dba4ba5b9_2)
  * [C-04 Geologic atlas of Hennepin County, Minnesota](https://geo.btaa.org/catalog/d1316ee8-8968-4156-9185-87a9433fe9ba)
@@ -139,11 +140,9 @@ Note: Detailed budget documents available upon request.
 
 ![growth-2016-2018](@images/growth-2016-2018.png)
 
-
 #### Survey of participating institutions indicating types of geospatial data maintained in their library
 
 ![alt_text](@images/types-of-data.png)
-
 
 ### Appendix B: Geoportal Scholarship
 

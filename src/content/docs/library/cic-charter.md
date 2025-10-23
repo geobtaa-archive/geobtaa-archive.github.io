@@ -6,6 +6,12 @@ tags:
   - charters
 ---
 
+
+Date Prepared: July 1, 2015
+
+Date Edited: May 4, 2016
+
+
 ## Goal Statement
 
 This is a collaborative pilot project to provide discoverability, facilitate access, and connect scholars across the CIC to geospatial data resources. The project will launch and populate a geoportal instance for CIC institutions and will support the creation and guide the aggregation of discovery-focused metadata describing geospatial data resources relevant to researchers at participating institutions. The project will also provide the technology project staffing and infrastructure to host the services.
@@ -15,15 +21,15 @@ This is a collaborative pilot project to provide discoverability, facilitate acc
 
 ### Project Name: CIC Geospatial Data Discovery Project
 
-Project Sponsors: For the CIC Directors: Wendy Lougee (Minnesota), Cliff Haka (Michigan State), James Hilton (Michigan) and CIC CLI Director Mark Sandler; for operations at the University of Minnesota: John Butler and Claire Stewart
+### Project Sponsors
 
-Project Manager: Kevin Dyke
+- For the CIC Directors: Wendy Lougee (Minnesota), Cliff Haka (Michigan State), James Hilton (Michigan) and CIC CLI Director Mark Sandler; for operations at the University of Minnesota: John Butler and Claire Stewart
 
-Charter Prepared by: Ryan Mattke
+- Project Manager: Kevin Dyke
 
-Date Prepared: July 1, 2015
+- Charter Prepared by: Ryan Mattke
 
-Date Edited: May 4, 2016
+
 
 
 ### Primary Resource Providers: 

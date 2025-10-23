@@ -8,42 +8,14 @@ tags:
 
 **February 2015**
 
-<table>
-  <tr>
-   <td>Mara Blake
-<p>
-Spatial & Numeric Data Librarian
-<p>
-Clark Library
-<p>
-University of Michigan
-   </td>
-   <td>Len Kne
-<p>
-Associate Director
-<p>
-U-Spatial
-<p>
-University of Minnesota
-   </td>
-   <td>Ryan Mattke
-<p>
-Head,
-<p>
-John R. Borchert Map Library
-<p>
-University of Minnesota
-   </td>
-   <td>Kathleen Weessies
-<p>
-Head,
-<p>
-Map Library
-<p>
-Michigan State University
-   </td>
-  </tr>
-</table>
+## Authors
+
+|     |     |     |
+| --- | --- | --- |
+| Mara Blake | Spatial & Numeric Data Librarian, Clark Library | University of Michigan  |
+| Len Kne | Associate Director, U-Spatial | University of Minnesota  |
+| Ryan Mattke | Head, John R. Borchert Map Library | University of Minnesota |
+| Kathleen Weessies | Head, Map Library | Michigan State University |
 
 
 

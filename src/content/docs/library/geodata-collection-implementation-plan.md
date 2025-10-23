@@ -2,15 +2,16 @@
 title: The BTAA-GIN Geodata Collection Implementation Plan (2024-2026)
 description: This document provides technical details, roadmap and staffing needs for implementing the BTAA-GIN Geodata Collection.
 year: 2024
+date: 2024-04-10
+authors:
+   - name: Geodata Archive Working Group
 tags:
 - proposals
 ---
 
 This document provides technical details, roadmap and staffing needs for implementing the BTAA-GIN Geodata Collection.
 
-
 April 2024
-
 
 ## 1. DESCRIPTION OF COLLECTION SCOPE EXPANSION
 

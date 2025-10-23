@@ -11,17 +11,22 @@ dates_active: January 2021 – August 2021
 ---
 
 ## Purpose
+
 Expanded tutorials and identified discipline-specific resources for classroom use.
 
 ## Deliverables Requested
+
 Jan–Feb 2021: Identify advanced topics; identify target disciplines and resources; create tutorials.
 
 ## Deliverables Produced
-- Five new tutorials
+
+- [Five new tutorials](../../tutorials/)
 
 ## Members
+
 **Lead:** Ryan Mattke  
 **Members:** Jay Bowen, Milan Budhathoki, Nicole Kong, Wenjie Wang
 
 ## Dates Active
+
 January 2021 – August 2021

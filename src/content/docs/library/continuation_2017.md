@@ -1,12 +1,12 @@
 ---
 title: Continuation Proposal 2017
 description: Proposal for Funding for Years 3 & 4 (July 2017 - June 2019)
+authors:
+   - name: BTAA-GIN Staff
 year: 2017
 tags:
   - proposals
 ---
-
-Proposal for Funding for Years 3 & 4 (July 2017 - June 2019)
 
 ## Proposal
 
@@ -33,7 +33,6 @@ As the project unfolds, a preservation dimension for these data is emerging. The
 Years 3 & 4 (July 2017 - June 2019)
 
 Finalization of Year 4 goals is expected to be informed by findings and deliberations in Year 3 and will be presented to BTAA Library Directors in early 2018.
-
 
 ### 1. Sustainability
 
@@ -92,14 +91,14 @@ Focus on making specific sets or collections of data discoverable to the wider r
 **Lead:** Task Force Member (Collection Development Steering Group)
 
 ### 3. Geospatial metadata outreach and education</span>
-    
+
 #### 1. Address Metadata Needs in the Broader GIS Community (Year 3)
 
 Work in this area will include outreach and training for GIS Professionals in order to showcase the need for more complete metadata, encourage the creation of more useful metadata, and show the benefits of better metadata. The outreach and training will focus on current geospatial data producers so that future metadata harvests for ingest into the geoportal would require less metadata remediation by Task Force members.
 
 **Lead:** UMN Metadata Coordinator
 
-####2\. Create a lightweight, cloud-based metadata creation tool (Year 4)
+#### 2\. Create a lightweight, cloud-based metadata creation tool (Year 4)
 
 Fund programming/development work to create a tool to facilitate low-barrier metadata entry.
 
@@ -121,10 +120,9 @@ One of the major potential expansions of scope is to add capacity to archive and
 
 #### 3. Expanded partner relationship with the network of geoportals across the country (Year 3 & Year 4)
 
-As the BTAA Geospatial Data Project grows, the need to collaborate more directly with other academic geoportals across the country will increase. By expanding partner relationships, the project will be able to utilize this broader experience and expertise in order to better inform decision making, sustainability, and strategic planning. Expanded partner relationships may also lead to direct collaboration in the areas of archiving and preservation. 
+As the BTAA Geospatial Data Project grows, the need to collaborate more directly with other academic geoportals across the country will increase. By expanding partner relationships, the project will be able to utilize this broader experience and expertise in order to better inform decision making, sustainability, and strategic planning. Expanded partner relationships may also lead to direct collaboration in the areas of archiving and preservation.
 
 **Lead:** UMN Project Lead, in consultation with Project Sponsors
-
 
 ## Project Budget
 
@@ -134,7 +132,7 @@ Note: Detailed budget documents available upon request.
 
 ### Budget Growth
 
-As presented, the budget for Year 3 represents a no-growth option based on the 10 currently participating institutions. With additional participants, the project can expand support for metadata creation (UMN Graduate Assistants); expansion to additional institutions is assumed in the Year 4 budget. Expanded functional scope (preservation, licensed data, etc.) will likely require significant budget expansion; should planning indicate these expansions are desired, they will be included in a revised Year 4 budget proposal. 
+As presented, the budget for Year 3 represents a no-growth option based on the 10 currently participating institutions. With additional participants, the project can expand support for metadata creation (UMN Graduate Assistants); expansion to additional institutions is assumed in the Year 4 budget. Expanded functional scope (preservation, licensed data, etc.) will likely require significant budget expansion; should planning indicate these expansions are desired, they will be included in a revised Year 4 budget proposal.
 
 ### Additional Institutions
 
@@ -150,12 +148,13 @@ The project continues to direct the financial contributions towards enabling the
 
 Additional in-kind contributions during new activities, such as outreach to users, strategic planning, and service scope expansion, may be critical to the project’s long term success. A call for participation bringing requisite expertise in support of these activities will likely be made.
 
-
 ### Appendix: Current Project Overview & Summary of Activities (July 2015 - January 2017)
 
 The Big Ten Academic Alliance Geospatial Data Discovery project supports the creation and aggregation of discovery-focused metadata describing geospatial data resources from participating institutions and makes those resources discoverable via the [Big Ten Academic Alliance Geoportal](https://geo.btaa.org/). The project also provides the technology project staffing and infrastructure to host the services.
 
-The project is a collaborative pilot project to provide discoverability, facilitate access, and connect researchers across the Big Ten Academic Alliance to geospatial data resources. Project scope (June 2015 - July 2017) includes:
+The project is a collaborative pilot project to provide discoverability, facilitate access, and connect researchers across the Big Ten Academic Alliance to geospatial data resources. 
+
+#### Project scope (June 2015 - July 2017)
 
 * Workflow and process documentation
 * Metadata curation, creation, and coordination
@@ -163,14 +162,14 @@ The project is a collaborative pilot project to provide discoverability, facilit
 * Promotion and outreach through conference presentations
 * Geoportal interface enhancements and maintenance
 
-Geoportal by the Numbers (as of March 2017):
+#### Geoportal by the Numbers (as of March 2017)
 
 * 5,412 metadata records in the Geoportal
 * 37,366 pageviews
 * 6,327 sessions
 * 3,995 unique users
 
-BTAA Geospatial Task Force Members (2017):
+#### BTAA Geospatial Task Force Members (2017)
 
 * James Whitacre, GIS Specialist - Illinois
 * Jennifer Liss, Monographic Image Cataloging Librarian - Indiana

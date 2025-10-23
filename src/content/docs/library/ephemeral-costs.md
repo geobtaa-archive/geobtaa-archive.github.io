@@ -2,13 +2,16 @@
 title: 'Staff Time for Ephemeral Resources'
 description: Comparing Staff Time for Maintaining Access to Ephemeral Resources vs Archived Data
 year: 2018
+date: 2018-07-03
+authors:
+   - name: BTAA-GIN Staff
 tags:
 - reports
 ---
 
 The BTAA Geoportal provides discovery of geospatial resources via a catalog of aggregated metadata. This metadata includes access to the resources via external links. If the source organization removes, replaces, or migrates the resources, our links break, and we fail to provide access. 
 
-One solution to this problem is to archive the data. This would involve depositing the resources into a university-managed spatial repository and providing stable linkages. 
+One solution to this problem is to archive the data. This would involve depositing the resources into a university-managed spatial repository and providing stable linkages.
 
 This document compares the staff time required for maintaining access to these resources as external, ephemeral links or by archiving them in a spatial repository. It does not estimate costs for building a spatial repository or additional staff or training that it might require.
 
@@ -29,13 +32,13 @@ This document compares the staff time required for maintaining access to these r
 
 ### Method 1: Batch replacement of collection
 
-**Comparison Re-accessioning (data portals with metadata APIs)**
+#### Comparison Re-accessioning (data portals with metadata APIs)
 
 * Developing & maintaining comparison query scripts (Metadata Coordinator, Spatial Analyst & Curator)
 * Running query scripts
-	* Monthly re-accession of ArcGIS Open Data Portals (Graduate RA)
-	* Quarterly re-accession of Socrata (Graduate RA)
-	* Periodic re-accession of CKAN Data Portals and custom portals (Metadata Coordinator)
+   * Monthly re-accession of ArcGIS Open Data Portals (Graduate RA)
+   * Quarterly re-accession of Socrata (Graduate RA)
+   * Periodic re-accession of CKAN Data Portals and custom portals (Metadata Coordinator)
 * Metadata cleanup and enhancement (Graduate RA, Metadata Coordinator)
 * Transformations (Metadata Coordinator)
 * Deleting orphaned records (Metadata Coordinator)
@@ -44,7 +47,7 @@ This document compares the staff time required for maintaining access to these r
 
 ### Method 2: Manually fixing broken links
 
-**Broken Link Scans (web services, maps, resources listed only on file servers)**
+#### Broken Link Scans (web services, maps, resources listed only on file servers)
 
 * Development of the URI Analysis script (App Developer)
 * Running script monthly (App Developer)
@@ -53,15 +56,10 @@ This document compares the staff time required for maintaining access to these r
 * Distributing some investigative work to Task Force (Metadata Coordinator)
 * Fixing links manually, usually one by one (Selected Task Force Members)
 
+#### Chart: Estimate of time per staff member devoted to maintaining 6085 ephemeral records (2018 staff practices)
 
-* Chart: Estimate of time per staff member devoted to maintaining 6085 ephemeral records (2018 staff practices) *
-
-| Staff                       | Batch replacement of collections
-
-Estimated Time | Manually Fixing Broken Links 
-
-Estimated Time | Annual Total Hours | 5 year forecast |
-| --------------------------- | ------------------------------------------------ | --------------------------------------------- | ------------------ | --------------- |
+| Staff  | Batch replacement of collections Estimated Time | Manually Fixing Broken Links Estimated Time | Annual Total Hours | 5 year forecast |
+| --------------------------- | --------- | ------------------------- | ------------------: | ---------------: |
 | Metadata Coordinator        | 8 hours per week                                 | 2 hours per week                              | 500                | 2500            |
 | Graduate RA                 | 12 hours per week                                | \-                                            | 600                | 3000            |
 | Spatial Analyst & Curator   |                                                  | 12 hours per year                             | 12                 | 60              |
@@ -69,11 +67,9 @@ Estimated Time | Annual Total Hours | 5 year forecast |
 | Assigned Task Force Members | 10 hours per year                                | 10 hours per year                             | 200                | 1000            |
 |                             |                                                  |                                               | Total: 1324        | Total: 6620     |
 
-
-
-
-* Calculations based on reported time
-
+:::note
+Calculations based on reported time
+:::
 
 ### Annual and 5 year Totals
 
@@ -82,27 +78,25 @@ Estimated Time | Annual Total Hours | 5 year forecast |
 * Five year forecast without growth: 6620 hours
 * Combined labor required: 12 minutes per record per year
 
-
 ## 2. Archiving Resources in a Spatial Repository
 
 ### Labor Requirements
 
-**Initial ingest**
+#### Initial ingest
 
 * Harvesting resource (Digital Preservation Analyst, Graduate RA)
 * Converting to preservation format if necessary (Digital Preservation Analyst, Spatial Analyst & Curator)
 * Writing metadata (Digital Preservation Analyst, Graduate RA, Task Force Members)
 * Depositing in spatial repository with automatic publishing to geospatial server and geoportal (Digital Preservation Analyst)
 
-**Maintenance**
+#### Maintenance
 
 * Format conversion as needed (Digital Preservation Analyst)
 * Metadata updates as needed (Digital Preservation Analyst)
 
-
 ### Considerations
 
-**Spatial Data Infrastructure**
+#### Spatial Data Infrastructure
 
 Note that this solution would necessitate the construction of an Spatial Data Infrastructure technology stack, whether homegrown or contracted out
 
@@ -125,6 +119,3 @@ Estimate of anticipated time devoted per item for 6085 archived resources*
 * Total number of staff hours devoted to maintenance (subsequent years) = 487
 * Combined number of staff hours devoted to maintenance (Years 2-5): 487*4 = 1948
 * Combined labor over five year forecast without growth: 5498 (0.52 FTE)
-
-
-

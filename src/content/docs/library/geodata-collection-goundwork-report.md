@@ -72,7 +72,6 @@ This proactive approach will allow us to document as much as possible at the out
 
 * Ensuring users have access to data dictionaries. Although few standards exist for structuring this information and it is rarely included in geodata metadata, these details are essential for evaluating the dataset’s contents. Only the legacy FGDC metadata standard provides a structured place for data dictionaries.
 
-
 ### Models and Tools
 
 Whenever possible, we built on existing models and tools to avoid reinventing the wheel, leveraging prior art to inform and streamline our work.
@@ -98,7 +97,6 @@ The workgroup considered what kind of data would be included in the pilot collec
 * Temporal coverage: Current (2024) and historical (1970s, 2000s)  
 * Formats: Vector, raster, and databases  
 * Theme: Foundational layers (such as roads, parcels, and zoning) and high value layers (land cover/land use).
-
 
 #### What to use for a staging area
 
