@@ -9,6 +9,8 @@ tags:
 - proposals
 ---
 
+import { Card, CardGrid } from '@astrojs/starlight/components';
+
 This document provides technical details, roadmap and staffing needs for implementing the BTAA-GIN Geodata Collection.
 
 April 2024
@@ -21,8 +23,7 @@ April 2024
 
 Our current collection policy covers metadata records for geodata (open data and licensed databases) and historical scanned maps.
 
-
--	{==**Collection A: DATA REGISTRY**==} 
+<Card title = "Collection A: DATA REGISTRY">
 
 **1. Open Data Registry**
 
@@ -45,10 +46,12 @@ Curation goals:
                                                     
 -   an index of all layers within the databases                                                                                 
 -   provide normalized federated search of hundreds of sites and  
-databases at once.                                          
+databases at once.                              
 
--	{==**Collection B: LIBRARY REPOSITORIES**==}                               
-                                                    
+</Card>
+
+<Card title = "Collection B: LIBRARY REPOSITORIES">
+                                                                          
 Scanned maps and geodata held at BTAA university digital libraries.   
 
 Curation goals:                                                       
@@ -57,9 +60,9 @@ Curation goals:
 bounding box errors, creator normalization, date normalization, 
 and application of linked data URIs.                                                                        
 -   provide normalized federated search of all geospatial resources held at BTAA libraries in one site
--   augment search capabilities beyond typical library catalogs, including spatial and temporal searches                       
+-   augment search capabilities beyond typical library catalogs, including spatial and temporal searches    
 
-
+</Card>
 
 #### 1.1.2 Technology Workflow (Current operations)
 
@@ -98,7 +101,7 @@ obtaining historical datasets and current datasets at regular or
 as-needed intervals.
 
 
--	{==**New Collection C: BTAA-GIN Geodata**==}
+<Card title = "New Collection C: BTAA-GIN Geodata">
 
 Free and open geodata curated and stored by the BTAA-GIN. Curation goals:                                                                
                                                     
@@ -108,6 +111,8 @@ will be overwritten
 digital era
 -   save a historical record of the changing geospatial landscape
 -   provide a consistent user experience that minimizes broken links  
+
+</Card>
 
 
 #### 1.1.2 Technology Workflow (Expanded operations)
@@ -323,35 +328,35 @@ provides a flat storage structure that simplifies management.
 
 #### 3.3.1 Manual Process
 
--   Metadata Creation:
+Metadata Creation:
 
--   A curator manually creates a metadata record using the GBL Admin
+   -   A curator manually creates a metadata record using the GBL Admin
 Toolkit's user interface, adhering to the OpenGeometadata
 Aardvark schema.
 
--   Data Upload and Storage:
+Data Upload and Storage:
 
--   The curator uploads the zipped geospatial dataset, bundled with
-a standards-compliant metadata file, through the GBL Admin
-interface.
+   -   The curator uploads the zipped geospatial dataset, bundled with
+   a standards-compliant metadata file, through the GBL Admin
+   interface.
 
--   GBL Admin then pushes this dataset to an Amazon S3 bucket for
-public access and to AWS Glacier for dark storage (future
-implementation).
+   -   GBL Admin then pushes this dataset to an Amazon S3 bucket for
+   public access and to AWS Glacier for dark storage (future
+   implementation).
 
--   Data Preview and Metadata Access:
+Data Preview and Metadata Access:
 
--   The S3 bucket integrates with serverless applications to offer
-data previews to users.
+   -   The S3 bucket integrates with serverless applications to offer
+   data previews to users.
 
--   The curator uploads a separate standards-based XML metadata file
-via the GBL Admin UI, which is also stored in S3. This allows
-users to preview the metadata independently before downloading
-the dataset.
+   -   The curator uploads a separate standards-based XML metadata file
+   via the GBL Admin UI, which is also stored in S3. This allows
+   users to preview the metadata independently before downloading
+   the dataset.
 
 #### 3.3.2 Batch Processing
 
--   Metadata Batch Processing
+Metadata Batch Processing
 
 -   Curators will prepare a spreadsheet containing metadata in the
 OpenGeoMetadata Aardvark schema.
@@ -359,7 +364,7 @@ OpenGeoMetadata Aardvark schema.
 -   They will then upload this spreadsheet to the GBL Admin Toolkit
 to create multiple metadata records simultaneously.
 
--   Data Batch Upload
+Data Batch Upload
 
 -   The method for batch uploading of datasets and associated XML
 metadata files is yet to be defined. The future system will

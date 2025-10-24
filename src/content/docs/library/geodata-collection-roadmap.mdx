@@ -3,31 +3,30 @@ title: Geodata collection roadmap
 description: 'Tracking page for the BTAA-GIN Geodata Collection'
 year: 2025
 ---
-import { LinkButton } from '@astrojs/starlight/components';
-import { Card, CardGrid } from '@astrojs/starlight/components';
+import { Card, CardGrid, LinkCard, LinkButton } from '@astrojs/starlight/components';
 import { Aside } from '@astrojs/starlight/components';
-import { LinkCard } from '@astrojs/starlight/components';
 import { Icon } from '@astrojs/starlight/components';
 import { Steps } from '@astrojs/starlight/components';
 
 
-<Card title = "Geodata Collection">
-![](@images/geodata-collection.png)
-The BTAA-GIN has launched an initiative to collect, store, and distribute open geodata. 
-[Read more about the initiative](geodata-collection.md)
-</Card>
-
-
 :::note[Geodata Collection Planning documents]
 - [Geodata Collection Strategic Plan](../../library/geodata-collection-strategic-plan/)
-- [Geodata Collection Implementation Plan](../../library/implementation-plan/)
+- [Geodata Collection Implementation Plan](../../library/geodata-collection-implementation-plan/)
+- [Urban Base Layers Curation Plan](../../library/urban-curation-plan/)
 :::
 
 ## Roadmap
 
 This page tracks our progress. **It is updated frequently as our work evolves.**
 
-We are currently in [Phase 3: Foundation](#phase-3-foundation).
+Date last updated: **October 23, 2025**
+
+We are currently in [Phase 3: Foundation](#--phase-3-foundation).
+
+<Card title = "Geodata Collection">
+![](@images/geodata-collection.png)
+The BTAA-GIN has launched an initiative to collect, store, and distribute open geodata. 
+</Card>
 
 
 ### <Icon name="approve-check-circle" class='inline-icon'/>  Phase 1: Blueprints
@@ -37,6 +36,8 @@ The Blueprints Phase represents the culmination of a lengthy period of time (beg
 [^1]: See Dyke, K. R., Mattke, R., Kne, L., & Rounds, S. (2016). Placing Data in the Land of 10,000 Lakes: Navigating the History and Future of Geospatial Data Production, Stewardship, and Archiving in Minnesota. Journal of Map & Geography Libraries, 12(1), 52–72. https://doi.org/10.1080/15420353.2015.1073655; Majewicz, K., J. Martindale, M. Kernik, and R. Mattke. 2024. Ephemeral geodata: An impending digital dark age. Journal of Map & Geography Libraries 20 (2):88–113. https://doi:10.1080/15420353.2024.2398542.
 [^2]: See the reports of the Minnesota Geospatial Advisory Committee's [Archiving Workgroup](https://www.mngeo.state.mn.us/workgroup/archiving/index.html)
 [^3]: See the partially realized proposal from 2019, [A Spatial Data Infrastructure (SDI) for the BTAA](../../library/btaa-sdi-2019/)
+
+<hr/>
 
 
 ### <Icon name="approve-check-circle" class='inline-icon'/>  Phase 2: Groundwork
@@ -80,7 +81,11 @@ _Build the pilot collection, explore technology enhancements, and document the r
 - [x] Produce a final report of the working group activities.
 - [x] Produce a report documenting the pilot collection and technology enhancements.
 
-### <Icon name="right-arrow" class='inline-icon'/>  Phase 3: Foundation
+<hr/>
+
+
+<div class="gold-highlight">
+### Phase 3: Foundation
 
 During the Foundation Phase, we begin collaborating with select data providers. This phase emphasizes building relationships, refining curation techniques, and establishing the first official collections. This work informs the development of key protocols and processes that will serve as the foundation for the project moving forward.
 
@@ -110,6 +115,9 @@ During the Foundation Phase, we begin collaborating with select data providers. 
 - [ ] [Create a Download Package](https://github.com/geobtaa/geoblacklight_admin/milestone/3) 
 - [ ] Publish a Curation Plan, Version 1 to document scope, metadata, and workflows.
 
+</div>
+<hr/>
+
 ### Phase 4: Framework (2026)
 
 In the Framework Phase, we will build up our collections with more data providers. This will require broader communication and more outreach. We will also be relying on more streamlined workflows by this phase. This phase will include gathering feedback from stakeholders, refining workflows, and assessing the long-term sustainability of the collection. Additionally, we will increase our outreach efforts, promoting the collection to a broader audience and building partnerships to ensure its growth and visibility in the geospatial and library communities.
@@ -119,6 +127,8 @@ In the Framework Phase, we will build up our collections with more data provider
 - [ ] Establish regular cycles for collection.
 - [ ] Implement additional batch processing techniques
 - [ ] Publish Curation Plan Version 2.
+
+<hr/>
 
 
 ### Phase 5: Outreach & Evaluation (2027)

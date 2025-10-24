@@ -13,6 +13,7 @@
 --btaa-blue:      #0088CE;
 --btaa-black:     #000000;
 --btaa-gray:      #939598;
+--btaa-dark-gray: #77797c;
 --btaa-light-gray: #F2F2F2;
 --btaa-light-blue: rgba(0, 137, 206, 0.045);
 --btaa-white:     #FFFFFF;   
@@ -91,7 +92,7 @@ p.title {
 --sl-color-bg:          var(--btaa-white);
 --sl-color-text:        var(--btaa-black);
 --sl-color-headings: var(--btaa-dark-blue);
---sl-color-text-muted:  var(--btaa-gray);
+--sl-color-text-muted:  var(--btaa-dark-gray);
 --sl-color-accent-muted: var(--btaa-white);
 --sl-color-accent-low:  rgba(0, 136, 206, 0.20);
 --sl-color-accent:      var(--btaa-med-blue);
@@ -482,6 +483,7 @@ input[type="checkbox"]:checked::after {
 }
 
 
+/* Monthly Highlight */
 
 .monthly-highlight {
   position: relative;
@@ -495,7 +497,7 @@ input[type="checkbox"]:checked::after {
 }
 
 .monthly-highlight::before {
-  content: '★ Monthly Highlight';
+  content: '★ Highlight';
   font-size: 1rem;
   font-weight: 600;
   letter-spacing: 0.08em;
@@ -542,4 +544,44 @@ input[type="checkbox"]:checked::after {
 
 .records-total strong {
   font-size: 1.12em;
+}
+
+
+/* Golden Highlight */
+
+.gold-highlight {
+  position: relative;
+  padding: 1.75rem 2rem;
+  border-radius: var(--radius-lg);
+  background: #fff8d6;
+  border: 1px solid #f1d487;
+  box-shadow: 0 12px 32px -18px rgba(0, 0, 0, 0.15);
+  display: grid;
+  gap: 1rem;
+}
+
+.gold-highlight::before {
+  content: '★ Highlight';
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: color-mix(in srgb, var(--sl-color-accent) 80%, white 20%);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.gold-highlight :where(p, ul, ol) {
+  margin: 0;
+}
+
+.gold-highlight :where(ul, ol) {
+  padding-left: 1.2rem;
+}
+
+.gold-highlight :where(h2)::before {
+  content: '';
+  margin-right: 0rem;
+  color: color-mix(in srgb, var(--sl-color-accent) 85%, white 15%);
 }

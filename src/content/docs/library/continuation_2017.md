@@ -1,9 +1,10 @@
 ---
-title: Continuation Proposal 2017
+title: Continuation Proposal 2017-2019
 description: Proposal for Funding for Years 3 & 4 (July 2017 - June 2019)
 authors:
    - name: BTAA-GIN Staff
 year: 2017
+date: 2017-03-26
 tags:
   - proposals
 ---

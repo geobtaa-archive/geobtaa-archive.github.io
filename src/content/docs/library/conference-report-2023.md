@@ -1,12 +1,13 @@
 ---
 title: BTAA GIS Conference 2023 Wrap-Up Report
 description: The BTAA GIS Conference is a virtual event organized by geospatial information users and educators in Big Ten institutions.
+authors:
+   - name: BTAA GIS Conference Planning Group
 year: 2023
+date: 2023-12-21
 tags:
     - reports
 ---
-
-Issued: December 21, 2023
 
 ## Summary
 
@@ -64,28 +65,31 @@ We used a planning spreadsheet to keep track of our work: [2023 BTAA GIS Confere
 ## Key Takeaways (2023)
 
 ### Plusses
-:material-plus: Reach of the conference continues beyond the day-of event via YouTube videos, viewed increasingly over time.
 
-:material-plus: The BTAA IT partners were wonderful and went above and beyond to help us: three tech rehearsals and staying online the whole time to manage the Zoom.
+➕ Reach of the conference continues beyond the day-of event via YouTube videos, viewed increasingly over time.
 
-:material-plus: The technical aspect of the conference ran very smoothly. Our new system of having a facilitator and slide-runner made transitions easier and faster.
+➕ The BTAA IT partners were wonderful and went above and beyond to help us: three tech rehearsals and staying online the whole time to manage the Zoom.
 
-:material-plus: Served as an augmentation to local GIS Days
+➕ The technical aspect of the conference ran very smoothly. Our new system of having a facilitator and slide-runner made transitions easier and faster.
 
-:material-plus:The new [Map Gallery](https://gin.btaa.org/Map-Gallery-Update/) is easy to use and links to all years.
+➕ Served as an augmentation to local GIS Days.
 
-:material-plus:The videos were processed very quickly, because of a new role for a dedicated video person.
+➕ The new [Map Gallery](https://gin.btaa.org/Map-Gallery-Update/) is easy to use and links to all years.
+
+➕ The videos were processed very quickly, because of a new role for a dedicated video person.
 
 ### Minuses
-:material-minus: We needed at least three people for each session and did not have enough volunteers to fill each slot
 
-:material-minus: The day of the event was somewhat tiring for the facilitators and moderators
+➖ We needed at least three people for each session and did not have enough volunteers to fill each slot.
 
-:material-minus: We did not feel empowered to create things like branded swag or gifts
+➖ The day of the event was somewhat tiring for the facilitators and moderators.
+
+➖ We did not feel empowered to create things like branded swag or gifts.
 
 ### Planned changes for next year
-:material-delta: Considering moving conference to spring: there are fewer conflicting events and this would give us a longer lead-up time to promote and coordinate
 
-:material-delta: Simplify communications with more batch emails and possibly implementing tools like a Contact Relations Database and/or an email marketing platform.
+Δ Considering moving conference to spring: there are fewer conflicting events and this would give us a longer lead-up time to promote and coordinate
 
-:material-delta: Present more information and highlights about the BTAA-GIN and the Geoportal in the welcoming remarks
+Δ Simplify communications with more batch emails and possibly implementing tools like a Contact Relations Database and/or an email marketing platform.
+
+Δ Present more information and highlights about the BTAA-GIN and the Geoportal in the welcoming remarks.

@@ -10,19 +10,23 @@ dates_active: March 2022 – July 2022
 ---
 
 ## Purpose
+
 Explored Indigenous perspectives and embedded contextual information into BTAA-GIN resources.
 
 ## Deliverables Requested
+
 Meet twice monthly to explore Indigenous perspectives, pilot embedding contextual info, and develop curator guide recommendations.
 
 ## Deliverables Produced
-- Digital Mapping and Indigenous America
-- BTAA-GIN Land Acknowledgement Action Plan
-- Land Acknowledgements Readings and Resource List
+
+- [BTAA-GIN Land Acknowledgement Action Plan](../../library/actionplan)
+- [Final Report](../../library/land-acknowledgement-working-group-report/)
 
 ## Members
+
 **Lead:** Karen Majewicz and Melinda Kernik  
 **Members:** Josh Sadvari, Nicole Scholtz, Cecilia Smith
 
 ## Dates Active
+
 March 2022 – July 2022

@@ -1,17 +1,30 @@
 ---
-title: Urban Base Layers Geodata Collection 
-description: 'Tracking page for the BTAA-GIN Geodata Collection'
+title: Urban Base Layers Curation Plan 
+description: 'Overview of the project to collection foundational geodata layers from major cities.'
 year: 2025
+authors:
+   - name: Geodata Curation Workgroup
 tags:
 - proposals
-
 ---
 
-This initiative aims to collect foundational geospatial datasets that document the basic structure and function of major cities in the Big Ten Academic Alliance (BTAA) region. These Core Urban Layers form a modern counterpart to historical resources like Sanborn Fire Insurance maps. The collection will be made up of temporal snapshots that can support research, planning, and preservation long into the future.
+import { Card, CardGrid, LinkCard, LinkButton, Steps } from '@astrojs/starlight/components';
+import TwoThirdsRLayout from '/src/components/TwoThirdsRLayout.astro';
+import TwoThirdsLayout from '/src/components/TwoThirdsLayout.astro';
+import CenterLayout from '/src/components/CenterLayout.astro';
+
+## Purpose
+This initiative aims to collect foundational geospatial datasets that document the basic structure and function of major cities in the Big Ten Academic Alliance (BTAA) region. These core urban layers form a modern counterpart to historical resources like Sanborn Fire Insurance maps. The collection will be made up of temporal snapshots that can support research, planning, and preservation long into the future.
 
 
-### What
 
+<br/>
+
+## The Layers
+
+<TwoThirdsRLayout>
+
+<div slot="left">
 We will collect six foundational geospatial layers:
 
 1. Address points  
@@ -20,9 +33,14 @@ We will collect six foundational geospatial layers:
 4. Parks  
 5. Streets  
 6. Zoning districts  
+</div>
 
+<div slot="right">
+![Layer icons](@images/urban-base-layers.png)
+</div>
+</TwoThirdsRLayout>
 
-### When
+## Time Periods
 
 * Primary target: 2025 datasets (to be collected and processed by end of 2025\)  
 * Secondary targets: Earlier versions in five-year increments (2020, 2015, 2010, 2005, 2000\)  
@@ -30,10 +48,12 @@ We will collect six foundational geospatial layers:
 
 
 
-### Where
+## The Cities
 
+<TwoThirdsRLayout>
+<div slot="left">
 Our initial scope includes the largest cities in each state of the BTAA region:
-
+<div class="compact-list">
 1. Baltimore  
 2. Chicago  
 3. Columbus  
@@ -46,11 +66,23 @@ Our initial scope includes the largest cities in each state of the BTAA region:
 10. Omaha  
 11. Philadelphia  
 12. Portland  
-13. Seattle  
-    This list may expand in future phases based on data availability and partner interest.
+13. Seattle
+</div>
+</div>
+<div slot="right">
+![cities map](@images/urban-base-layers-cities.png)
+</div>
+</TwoThirdsRLayout>
+
+:::caution[Disclaimer]
+This list may change or expand in based on data availability and partner interest.
+:::
 
 
-### Why
+
+
+
+## Anticipated Outcomes
 
 * Builds on the legacy of historical fire insurance maps, which are the most accessed type of resource in our geoportal by a wide margin  
 * Captures foundational layers that support research in housing, planning, transportation, and environmental change  
@@ -61,21 +93,28 @@ Our initial scope includes the largest cities in each state of the BTAA region:
 * Helps preserve ephemeral data that may be lost due to platform changes or lack of archiving  
 * Creates a reusable framework for both retrospective (e.g., 2020, 2015\) and future (e.g., 2030\) comparison
 
+<CenterLayout>
+![Sanborn map](@images/sanborn-legacy.png)
 
-### How
+</CenterLayout>
+
+## Method of Aquisition
 
 Most of these datasets are publicly available through municipal ArcGIS Hubs. However, our preferred approach is to obtain data directly from city data providers whenever possible. 
 
-Challenges with ArcGIS Hub downloads include:
+### Challenges with ArcGIS Hub downloads
 
 * Timeouts or failed downloads for large datasets  
 * Exported files often lack embedded metadata  
 * Shapefile limitations (e.g., field truncation) and reprojection may lead to data loss  
   
-Preferred approach:  
+### Preferred approach
+
+<Steps>
 1. Contact city GIS staff for original-format datasets and metadata  
 2. Review datasets for completeness and structural integrity  
 3. Clip datasets to city boundaries and normalize attributes when needed  
 4. Document using standardized metadata fields  
 5. Archive in AWS  
 6. Index in the BTAA geoportal
+</Steps>

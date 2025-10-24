@@ -3,7 +3,7 @@ title: Harmful Language Statement for the BTAA Geoportal
 description: Statement of potential harmful language in the BTAA Geoportal content
 year: 2024
 tags:
-- program-guidelines
+- program guidelines
 ---
 
 We at the BTAA Geospatial Information Network recognize that historical collections may contain harmful language and geographic place names considered representative at the time of creation. We are committed to the remediation of such terms in the metadata of our collections to eliminate oppression, bias, and marginalization. 
