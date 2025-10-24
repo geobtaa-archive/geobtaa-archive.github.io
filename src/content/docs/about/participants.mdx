@@ -6,30 +6,38 @@ sidebar:
   order: 3
 ---
 
-import InstitutionsMap from "/src/components/InstitutionsMap.astro";
+import TwoThirdsLayout from '@components/TwoThirdsLayout.astro'
+import InstitutionsMap from "@components/InstitutionsMap.astro";
 
 
 ## Participating Institutions
 
+<TwoThirdsLayout>
+<div slot="left">
+
 <InstitutionsMap height={500} dataBasePath="/member-map-data" />
-
-<div class="compact-list">
-1. Indiana University Bloomington
-2. Michigan State University
-3. Northwestern University
-4. Ohio State University
-5. Pennsylvania State University
-6. Purdue University
-7. Rutgers University-New Brunswick
-8. University of Chicago
-9. University of Illinois at Urbana-­Champaign
-10. University of Iowa
-11. University of Maryland
-12. University of Michigan
-13. University of Minnesota
-14. University of Nebraska-Lincoln
-15. University of Oregon
-16. University of Washington
-17. University of Wisconsin-­Madison
 </div>
+<div slot="right">
+<div class="compact-list-extra">
 
+1. [Indiana University](https://libraries.indiana.edu/)
+2. [Michigan State University](https://lib.msu.edu/)
+3. [Northwestern University](https://www.library.northwestern.edu/)
+4. [The Ohio State University](https://library.osu.edu/)
+5. [Pennsylvania State University](https://libraries.psu.edu/)
+6. [Purdue University](https://www.lib.purdue.edu/)
+7. [Rutgers University](https://www.libraries.rutgers.edu/)
+8. [University of Chicago](https://www.lib.uchicago.edu/)
+9. [University of Illinois](https://www.library.illinois.edu/)
+10. [University of Iowa](https://www.lib.uiowa.edu/)
+11. [University of Maryland](https://www.lib.umd.edu/)
+12. [University of Michigan](https://www.lib.umich.edu/)
+13. [University of Minnesota](https://www.lib.umn.edu/)
+14. [University of Nebraska-Lincoln](https://libraries.unl.edu/)
+15. [University of Oregon](https://library.uoregon.edu/)
+16. [University of Washington](https://lib.uw.edu/)
+17. [University of Wisconsin-Madison](https://www.library.wisc.edu/)
+
+</div>
+</div>
+</TwoThirdsLayout>

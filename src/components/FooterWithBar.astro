@@ -3,7 +3,9 @@ import Default from '@astrojs/starlight/components/Footer.astro';
 ---
 
 <!-- Keep the built-in LastUpdated / Prev–Next / Edit link -->
-<Default><slot /></Default>
+<div class="btaa-footer__default">
+  <Default><slot /></Default>
+</div>
 
 <!-- Your full-width blue footer bar -->
 <section class="btaa-footer" aria-label="BTAA-GIN Footer">
@@ -50,29 +52,58 @@ import Default from '@astrojs/starlight/components/Footer.astro';
 </section>
 
 <style>
+  :global(.content-panel:has(.btaa-footer)) {
+    padding-inline: 0;
+  }
+
+  :global(.content-panel:has(.btaa-footer) > .sl-container) {
+    max-width: none;
+    width: 100%;
+    margin-inline: 0;
+  }
+
+  .btaa-footer__default {
+    margin-inline: auto;
+    padding-inline: var(--sl-content-pad-x);
+    max-width: min(var(--sl-content-width, 72rem), 100%);
+  }
+
   .btaa-footer {
-    background: var(--btaa-dark-blue);           
+    background: var(--btaa-dark-blue);
     color: #fff;
     font-size: .75em;
-    /* width: 100vw;
-    margin-left: calc(50% - 50vw);
-    margin-right: calc(50% - 50vw); */
-    padding: 2rem 0;
+    width: 100vw;
+    max-width: 100vw;
+    margin-inline-start: calc(-1 * var(--sl-content-inline-start, 0px));
+    padding: 1.5rem 0;
+    overflow: hidden;
+    position: relative;
+    isolation: isolate;
+    z-index: calc(var(--sl-z-index-navbar, 10) + 1);
   }
   .btaa-footer a { color: #fff; text-decoration: none; }
   .btaa-footer a:focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
   .btaa-footer h3 { margin: 0 0 .5rem; font-size: 1.1rem; color:#fff !important }
   .btaa-footer ul { list-style: none; margin: 0 0 1rem; padding: 0; }
   .btaa-footer__inner {
-    /* max-width: var(--sl-content-width, 72rem); */
     margin: 0 auto;
-    padding: 0 1rem;
+    padding: 0 clamp(1rem, 3vw, 1.75rem);
+    max-width: min(var(--sl-content-width, 72rem), 100%);
     display: grid;
-    gap: 2rem;
+    gap: 1.5rem;
   }
   @media (min-width: 900px) {
     .btaa-footer__inner { grid-template-columns: 1fr 1fr; }
   }
-  .btaa-footer__cols-2 { column-count: 2; column-gap: 2rem; }
+  .btaa-footer__cols-2 {
+    column-count: 1;
+    column-gap: 1.5rem;
+  }
+  @media (min-width: 640px) {
+    .btaa-footer__cols-2 { column-count: 2; }
+  }
+  @media (min-width: 1024px) {
+    .btaa-footer__cols-2 { column-count: 3; }
+  }
   .btaa-footer__cols-2 li { break-inside: avoid; }
 </style>

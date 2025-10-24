@@ -46,7 +46,7 @@ export default defineConfig({
       },
       customCss: ['./src/styles/global.css', './src/styles/tables.css'],
       components: {
-        Footer: './src/components/FooterWithBar.astro',
+        // Footer: './src/components/FooterWithBar.astro',
         Header: './src/components/HeaderWithCompactSearch.astro',
         Sidebar: './src/components/SidebarWithFilters.astro',
         PageTitle: './src/components/PageTitleWithMeta.astro',
