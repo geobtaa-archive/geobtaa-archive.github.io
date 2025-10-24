@@ -1,7 +1,10 @@
 ---
-title: Technology Plan
-description: 'Technology Stack upgrade for 2025-2026'
+title: Technology Strategic Plan 2025-2026
+description: 'Details the rationale and vision for a Technology Stack upgrade'
 year: 2025
+authors:
+   - name: Karen Majewicz
+   - name: Eric Larson
 tags:
 - proposals
 ---

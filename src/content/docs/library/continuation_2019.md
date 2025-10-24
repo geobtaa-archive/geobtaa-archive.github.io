@@ -1,7 +1,8 @@
 ---
-title: Continuation Proposal 2019
+title: Continuation Proposal 2019-2021
 description: Proposal for Funding for Years 5 & 6 (July 2019 - June 2021)
 year: 2019
+date: 2018-11-13
 authors:
    - name: BTAA-GIN Staff
 tags:
@@ -268,7 +269,7 @@ September 2018: Geoportal record count hit 15,000
 
 ### Appendix D: Project Staffing
 
-Strategic Leadership Group:
+#### Strategic Leadership Group:
 
 * UMN BTAA:GDP Project Lead
  * Ryan Mattke - Minnesota
@@ -288,7 +289,9 @@ Strategic Leadership Group:
  * John Butler - Minnesota (division head overseeing technology for lead institution)
  * Karen Majewicz - Minnesota (Product Owner and interim for Mattke during research leave)
 
-BTAA Geospatial Task Force Members (2019):
+#### BTAA Geospatial Task Force Members (2019):
+
+<div class="compact-list">
 
 * Cecilia Smith, GIS and Maps Librarian, Chicago
 * Sam Brown, Map Collection Manager, Chicago
@@ -314,11 +317,15 @@ BTAA Geospatial Task Force Members (2019):
 * Shirley Li, GIS Analyst - Purdue
 * Jaime Martindale, Map and Geospatial Data Librarian - Wisconsin
 * Jim Lacy, Associate State Cartographer - Wisconsin
+</div>
 
-UMN Project Staff
 
+#### UMN Project Staff
+<div class="compact-list">
 * Karen Majewicz, Project Metadata Coordinator & Product Owner
 * Melinda Kernik, Spatial Data Analyst & Curator
 * Eric Larson, Lead Application Developer
 * Paul Bramscher, Linux Systems Administrator and Software Administrator
 * Michael Berkowski, Web Applications Developer
+
+</div>

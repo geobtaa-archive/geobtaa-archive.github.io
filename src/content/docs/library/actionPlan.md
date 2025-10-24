@@ -2,11 +2,13 @@
 title: Action Plan
 description: 'Land Acknowledgement Action Plan'
 year: 2022
+date: 2022-08-15
+authors:
+   - name: Land Acknowledgement Working Group
 tags:
 - program guidelines
 ---
 
-August 2022
 
 ## Statement
 

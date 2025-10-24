@@ -1,14 +1,15 @@
 ---
-title: Continuation Proposal 2021
-description: Proposal for Funding for Years 7 & 8 (July 2021- June 2023) 
+title: Continuation Proposal 2021-2024
+description: Proposal for Funding for Years 7, 8, & 9 (July 2021- June 2024) 
 year: 2021
+date: 2021-02-05
+authors:
+   - name: BTAA-GIN Staff
 tags:
   - proposals
 ---
 
-# Continuation Proposal 2021
-
-Proposal for Funding for Years 7 & 8 (July 2021- June 2023) 
+*Originally written as a 2 year proposal. Updated in June 2021 to extend to 3 years (including 2024).*
 
 
 ## Proposal 
@@ -55,7 +56,7 @@ We plan to continue working on:
 
 * Licensed Data - will be included in the Geoportal starting in early 2021
 * Additional Help Pages and Advanced Tutorials
-* [Diverse Collections Working Group](https://docs.google.com/document/d/1_lFlwsvqfs-Vtcr8OHoRGJA88MLApXkvY_sHR6bqOIQ/edit?usp=sharing) 
+* Diverse Collections Working Group
 
 
 ## Growth Potential
@@ -168,7 +169,7 @@ Organized and hosted the first BTAA GIS Conference
 Developed a custom metadata editor
 
 
-??? info "Appendix C: Geoportal Scholarship"
+### Appendix C: Geoportal Scholarship
 
 Scholarship involving the BTAA Geospatial Data Project has resulted in an initial white paper, four published articles, and 16 presentations or posters at national or international conferences. 
 
@@ -244,7 +245,7 @@ Posters presented at National and International Conferences
 “The CIC Geospatial Data Discovery Project: A Multi-Institution Project to Create an Open-Source Discovery Portal for Geospatial Data Resources.” IASSIST Annual Conference and Charleston Conference
 
 
-??? info "Appendix D: Project Staffing"
+### Appendix D: Project Staffing
 
 Executive Committee
 

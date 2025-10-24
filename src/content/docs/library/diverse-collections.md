@@ -1,6 +1,8 @@
 ---
 title: Diverse Collections Working Group Summary Report
 description: Recap of the Diverse Collections Working Group activities.
+authors:
+   - name: Diverse Collections Working Group
 year: 2021 
 tags:
   - reports
@@ -29,17 +31,6 @@ At its outset, the purpose of the DCWG was to:
 2. Make recommendations for how diversity can be more purposefully considered in our future collection development
 
 
-## Group Membership
-
-* Jay Bowen (Iowa)
-* Danny Dotson (Ohio State)
-* Cathy Hodge (Iowa)
-* Melinda Kernik (Minnesota)
-* Theresa Quill (Indiana)
-* Josh Sadvari (lead; Ohio State)
-* Cecilia Smith (Chicago)
-
-
 ## Process
 
 The DCWG conducted nine virtual meetings between January - December 2021. In our early meetings, we brainstormed questions and ideas for the group to consider and their relation to our charge. A guiding question that influenced much of the rest of our work was “what makes a collection of maps and geospatial data diverse?”.
@@ -63,8 +54,6 @@ The following section includes brief summaries for each of these short-term proj
 
 ### 1) Map Languages 
 
-(Danny Dotson)
-
 BTAA Geospatial Information Network members from each participating institution shared information about the languages represented across our cataloged print map collections. Unsurprisingly, out of approximately 1.7 million maps in this sample, over 85% are in English. However, this project can help us to identify instances in which our institutions may hold distinctive content based on the relative rarity of maps in particular languages, as well as possible collection strengths where institutions hold a relatively high number of maps in a given language. Both of these cases are worth further examination as candidates for potential local or collective scanning projects.
 
 Language is one aspect of a diverse map collection that can be a starting point for approaching other intersecting aspects, such as spatial coverage or creator identities (i.e., a non-English language map created by an individual or organization local to the area of interest). It also opens up opportunities for local collaboration (e.g., with area studies colleagues to identify shared opportunities in support of research, teaching, and learning and associated map scanning priorities) and collective collaboration (e.g., shared prioritization for multi-institution scanning projects to increase discovery and access of distinctive non-English language maps).
@@ -87,8 +76,6 @@ ISO topic categories have historically been used as a standardized vocabulary fo
 
 #### a) Content and Format Review for Esri’s Racial Equity GIS Hub 
 
-(Melinda Kernik and Cecilia Smith)
-
 Esri describes the [Racial Equity GIS Hub](https://gis-for-racialequity.hub.arcgis.com/) as “an ongoing, continuously expanding resource hub to assist organizations working to address racial inequities.” Resources on the Hub site are categorized as applications, data, and articles, and the primary audience appears to be local government and business leaders.
 
 Data layers available through the Racial Equity GIS Hub are authored by Esri or “trusted partners” (e.g. CDC) but may derive from other sources, such as the Census Bureau, philanthropic organizations (e.g., Robert Wood Johnson Foundation), university research centers (e.g., University of Richmond Digital Scholarship Lab), news organizations (e.g., Washington Post), and more. Datasets are assigned into 10 different categories (Climate and Environmental, Criminal Justice, Economic, Education, Elections, Health, Housing, Language, Demographic, and Infrastructure). At the time of review, there were also approximately 200 unique tags associated with these datasets, with examples such as policy, race, at risk, income, vulnerable populations, air quality, food environment, segregation, social justice, and many more. In addition to datasets, the Racial Equity GIS Hub includes many examples of formats not currently included in the geoportal, such as web applications and story maps. In fact, there are nearly twice as many applications found in the Hub compared to datasets, originating from a much wider variety of sources.
@@ -101,8 +88,6 @@ Potential next steps highlighted through this project include:
 
 
 #### b) Content and Format Review for Current Data Providers 
-
-(Josh Sadvari)
 
 This project built on the work described above but with a focus on practices of current data providers in terms of their use of descriptive tags and creation of content in formats not currently harvested into the geoportal.
 
@@ -118,8 +103,6 @@ Potential next steps highlighted through this project include:
 * Forego prioritizing harvesting of web applications from current data providers, though select examples could be used as part of ongoing Communications Committee and Collection Development and Education Outreach Committee activities.
 
 ### 3) Critical Cartography and Data Ethics Resources 
-
-(Jay Bowen and Theresa Quill)
 
 Critical cartography is a way of engaging with maps that asserts that maps cannot be neutral, and that traditional cartography reflects and perpetuates power structures; typically reflecting the worldview and priorities of a dominant group. Best stated by [Crampton and Krygier (2005)](https://www.acme-journal.org/index.php/acme/article/view/723), “critical cartography assumes that maps _make_ reality as much as they represent it...Maps are active; they actively construct knowledge, they exercise power and they can be a powerful means of promoting social change.”
 

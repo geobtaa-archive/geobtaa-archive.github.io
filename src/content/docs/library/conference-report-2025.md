@@ -2,11 +2,12 @@
 title: Big Ten GIS Conference 2025 Wrap-Up Report
 description: Report of the fifth annual Big Ten GIS Conference, hosted virtually on April 11, 2025.
 year: 2025
+date: 2025-05-01
+authors:
+   - name: Colleen Wilson
 tags:
 - reports
 ---
-
-Issued: May 1, 2025
 
 ## Executive Summary
 

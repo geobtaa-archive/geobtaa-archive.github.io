@@ -2,21 +2,23 @@
 title: Land Acknowledgement Working Group Final Report
 description: Review of activities by Land Acknowledgement Working Group
 year: 2022
+date: 2022-07-01
+authors:
+   - name: Land Acknowledgement Working Group
 tags:
 - reports
 ---
 
-July 2022
 
-# Overview
+## Overview
 
 The Land Acknowledgement Working Group, active from March to July 2022, explored the scholarship around the idea of land acknowledgements and investigated strategies for incorporating resources and information into the BTAA-GIN websites.
 
-# Deliverable
+## Deliverable
 
-[BTAA-GIN Land Acknowledgement Action Plan](actionPlan)
+[BTAA-GIN Land Acknowledgement Action Plan](../actionplan)
 
-# Summary of the work:
+## Summary of the work:
 
 The working group read a substantial number of articles and reports about the benefits and limitations of land acknowledgements, as well as broader issues of data sovereignty and representation. Lists of these resources and our notes are available within our working group folder:  
 [Land Acknowledgements Readings and Resource List](https://docs.google.com/document/d/1ADEF0rDSXBm2MLj6e4FTVQDa5Ny5-qah2NxwcWPZX6Q/)  
@@ -29,7 +31,7 @@ We recommend that if team members choose to give a land acknowledgement, it shou
 * Be the product of individual reflection rather than a pre-constructed script  
 * Encourage support for the contemporary, ongoing efforts and priorities of affected tribes
 
-# Next Steps
+## Next Steps
 
 The Action Plan is a public-facing document that will be reviewed and sustained by the Steering Committee. It outlines broad commitments and proposes tangible actions the Geoportal Project Team might take to move forward on these objectives. However, it does not specify which Committees should be responsible for the work. To encourage continued action around resources impacting Indigenous communities, we propose the following steps:
 
