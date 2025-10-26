@@ -6,9 +6,11 @@ authors:
   - name: "Mech Frazier"
 tags: ["Artificial Intelligence", "Machine Learning", "tutorial", "Northwestern", "deep learning"]
 cover:
-  image: "https://blogger.googleusercontent.com/img/a/AVvXsEj2yMK4ZkXFNrQQH-_V3rsTNMwnc7Fd7hc-Ilo0l_JsFLS97M1Cl16AcqPyrSDX0yZ_BPwhWG7k8EoQNE4JCysoOAzE7-ZcoJ_dLxksnnbDb-ZpS9bSkBfTZjg_jgKntyWnF3xYaCzKmwK1vZ5ip4yCCSSZiGcggAvHd70YLpc1UdAVTYkFT0jsCaTEavk=s320"
+  image: "@images/aerial_section.png"
   alt: ""
 ---
+
+import CenterLayout from "@components/CenterLayout.astro"
 
 The boom of Artificial Intelligence (AI) in recent years has made a significant impact on Geographic Information Systems (GIS), including applications of Deep Learning (DL). Applications of DL have revolutionized GIS tasks, such as detecting   sensitive mangrove environments1, identifying global building footprints2, and even locating beaver complexes in complex forest landscapes3. DL, a subset of Machine Learning (ML), uses neural networks to detect objects, classify   pixels, and perform segmentation4.
 
@@ -22,27 +24,21 @@ This blog post will focus on one aspect of DL: object detection using aerial ima
 
  
 
-For this tutorial, we’ll be using ArcGIS Pro version 3.4 (ESRI, Inc). We’ll also need to grab the web services link of our  [aerial imagery](https://geo.btaa.org/catalog/3204cb7680fc49c38eb6d325764092f7) of Carver County in 2023 from the BTAA Geoportal (Figure 1). Navigate to the item record, select “Web Services” and copy the link.
+For this tutorial, we’ll be using ArcGIS Pro version 3.4 (ESRI, Inc). We'll also need to grab the web services link of our [aerial imagery](https://geo.btaa.org/catalog/3204cb7680fc49c38eb6d325764092f7) of Carver County in 2023 from the BTAA Geoportal (Figure 1). Navigate to the item record, select “Web Services” and copy the link.
 
  
 
 Start a new project in ArcGIS Pro. From the "Add Data" button's drop-down menu, choose "From Path" and paste the copied web services link. Once the layer is added, right-click it in the Contents panel and select "Zoom to Layer." You should   now see something like this:
 
- 
+
+<CenterLayout>
+![Aerial Imagery](@images/aerial_section.png)
+*Figure 1. Aerial imagery of Carver County, Minnesota.*
+</CenterLayout>
 
  
 
-[https://blogger.googleusercontent.com/img/a/AVvXsEj2yMK4ZkXFNrQQH-_V3rsTNMwnc7Fd7hc-Ilo0l_JsFLS97M1Cl16AcqPyrSDX0yZ_BPwhWG7k8EoQNE4JCysoOAzE7-ZcoJ_dLxksnnbDb-ZpS9bSkBfTZjg_jgKntyWnF3xYaCzKmwK1vZ5ip4yCCSSZiGcggAvHd70YLpc1UdAVTYkFT0jsCaTEavk](https://blogger.googleusercontent.com/img/a/AVvXsEj2yMK4ZkXFNrQQH-_V3rsTNMwnc7Fd7hc-Ilo0l_JsFLS97M1Cl16AcqPyrSDX0yZ_BPwhWG7k8EoQNE4JCysoOAzE7-ZcoJ_dLxksnnbDb-ZpS9bSkBfTZjg_jgKntyWnF3xYaCzKmwK1vZ5ip4yCCSSZiGcggAvHd70YLpc1UdAVTYkFT0jsCaTEavk)
-
- 
-
-Figure 1. Aerial imagery of Carver County, Minnesota.
-
- 
-
- 
-
-Check out the (amazing!) detail in this image. Zooming in and out, explore where you can spot cropland, roads, houses, lakes, and other natural and artificial features. Opening the “Properties” description tells us this image is projected   into US survey feet and has a cell size of 0.5 – meaning each cell of the dataset represents a 0.5 by 0.5 square feet on the ground. This is considered high resolution imagery, which is often difficult to find for free. Save your project.
+Check out the (amazing!) detail in this image. Zooming in and out, explore where you can spot cropland, roads, houses, lakes, and other natural and artificial features. Opening the “Properties” description tells us this image is projected   into US survey feet and has a cell size of 0.5 - meaning each cell of the dataset represents a 0.5 by 0.5 square feet on the ground. This is considered high resolution imagery, which is often difficult to find for free. Save your project.
 
  
 
@@ -54,66 +50,47 @@ Next, we need to clone the Python environment in ArcGIS Pro. To do this, go to t
 
  
 
-[https://blogger.googleusercontent.com/img/a/AVvXsEjil1S8vUDjRd4ptoxBh_JD8Tao9he65_4Hzv1CHH3Wumb6KDfWU6oGp0nrW4qANJLSUHpD8_7YV3w77OVBBFtsFIkSPaTgjw2_sFTZRcJ93g8_Q_LEHq9CyrnKpvE61FtUZrwmtsD3cI-XbWw3nRKOhS5y0L-PIJn07dIu7pK-rnwOPExQIKjLwBNeB-8](https://blogger.googleusercontent.com/img/a/AVvXsEjil1S8vUDjRd4ptoxBh_JD8Tao9he65_4Hzv1CHH3Wumb6KDfWU6oGp0nrW4qANJLSUHpD8_7YV3w77OVBBFtsFIkSPaTgjw2_sFTZRcJ93g8_Q_LEHq9CyrnKpvE61FtUZrwmtsD3cI-XbWw3nRKOhS5y0L-PIJn07dIu7pK-rnwOPExQIKjLwBNeB-8)
-
- 
-
-Figure 2. Cloning the Python environment in the Environment Manager is necessary before installing the Deep Learning essentials package.
-
- 
+<CenterLayout>
+![Aerial Imagery](@images/environment_manager.png)
+*Figure 2. Cloning the Python environment in the Environment Manager is necessary before installing the Deep Learning essentials package.*
+</CenterLayout>
 
 If needed, activate the cloned environment. Once this is done, navigate to “Add Packages” and search for deep-learning-essentials (Figure 3). Select and install.
-
  
 
-[https://blogger.googleusercontent.com/img/a/AVvXsEijNei9pvtyWktFvMDqkj_t75Y5FF3TNb_dDq2GeNaI9cAomH-g-6U9qta9VY5PgaxTkVjorMWv4oaJHHe1SYTvdS-ctzf1_A2mUP3H5HgxHZB5RgElDeVSEXXXUBXPpDicPzmbgyfX8Vl6g3wQ186GTW8hM9bq1R_KZyrGmRJ1fIBHtV9TOit-9lJjeys](https://blogger.googleusercontent.com/img/a/AVvXsEijNei9pvtyWktFvMDqkj_t75Y5FF3TNb_dDq2GeNaI9cAomH-g-6U9qta9VY5PgaxTkVjorMWv4oaJHHe1SYTvdS-ctzf1_A2mUP3H5HgxHZB5RgElDeVSEXXXUBXPpDicPzmbgyfX8Vl6g3wQ186GTW8hM9bq1R_KZyrGmRJ1fIBHtV9TOit-9lJjeys)
-
+<CenterLayout>
+![Aerial Imagery](@images/package_manager.png)
+*Figure 3. After cloning the environment and running the Deep Learning Libraries installer, the next step is to install the deep-learning-essentials package before proceeding with the analysis.*
+</CenterLayout>
  
 
-Figure 3. After cloning the environment and running the Deep Learning Libraries installer, the next step is to install the deep-learning-essentials package before proceeding with the analysis.
-
- 
-
-We’re now ready to select our area of interest. This tutorial will explore a DL model used to extract building footprints. Download the .dplk file for the    [building footprint extraction](https://www.arcgis.com/home/item.html?id=a6857359a1cd44839781a4f113cd5934) from the ArcGIS Living Atlas database. Take a moment to look at the metadata on the model. A couple things here are important to consider before running our model: input requirements, applicable geographies, model accuracy,   and model architecture. While I’ve vetted this beforehand, it’s crucial to verify your imagery satisfies the requirements listed for the model you’re using. For our next step, zoom to a small area of houses. Open the Tools box under the Analysis tab and search   for “Detect Objects Using Deep Learning”.
-
- 
+We're now ready to select our area of interest. This tutorial will explore a DL model used to extract building footprints. Download the .dplk file for the    [building footprint extraction](https://www.arcgis.com/home/item.html?id=a6857359a1cd44839781a4f113cd5934) from the ArcGIS Living Atlas database. Take a moment to look at the metadata on the model. A couple things here are important to consider before running our model: input requirements, applicable geographies, model accuracy,   and model architecture. While I’ve vetted this beforehand, it's crucial to verify your imagery satisfies the requirements listed for the model you’re using. For our next step, zoom to a small area of houses. Open the Tools box under the Analysis tab and search   for “Detect Objects Using Deep Learning”.
 
 Important note: It is recommended to have a NVIDIA GPU with CUDA compute capability. While you can run this using a CPU, it is not recommended. Please consult with the    [system requirements documentation](https://pro.arcgis.com/en/pro-app/latest/help/analysis/deep-learning/deep-learning-faq.htm#anchor2) provided by ESRI.
 
- 
 
 For the input raster, select the aerial imagery from the drop-down menu. You’ll see a red X appear next to the box. Navigate to the Environments tab and under “Extent” choose the first icon that looks like a small, square world. You may   need to adjust the Zoom level if you continue to see the red X (it means the web layer extent is too large to process as is). For Model Definition, navigate to the building footprint .dplk file. Once added, a model parameter box appears. For this example,   we’ll leave everything as the default, but typically we adjust these parameters when using the tool depending on our desired outcome. Run the tool.
 
- 
 
-[https://blogger.googleusercontent.com/img/a/AVvXsEhrDBBLs4aUu_2UMYfxHucXnUtQq1qU2WFEODqdvZWYkKUwSoxmzsVJZAHCE52tTmYvQzQPxStdyVCQ-t_pOndI0XqSM6HJ54lEMg_1jByVCO04naABsIFLEX9UL0IPmJHfJkWyc9u8aLBujQsnBWsXv_yIxvoNimhWuPSITh1oLhUzCdXVfxMToMVEqDc](https://blogger.googleusercontent.com/img/a/AVvXsEhrDBBLs4aUu_2UMYfxHucXnUtQq1qU2WFEODqdvZWYkKUwSoxmzsVJZAHCE52tTmYvQzQPxStdyVCQ-t_pOndI0XqSM6HJ54lEMg_1jByVCO04naABsIFLEX9UL0IPmJHfJkWyc9u8aLBujQsnBWsXv_yIxvoNimhWuPSITh1oLhUzCdXVfxMToMVEqDc)
-
- 
-
-Figure 4. The input and output of residential units. Residential units, outlined in red, detected by the model using a 95% threshold.
-
+<CenterLayout>
+![Aerial Imagery](@images/aerial_neighborhood.jpg)
+*Figure 4. The input and output of residential units. Residential units, outlined in red, detected by the model using a 95% threshold.*
+</CenterLayout>
  
 
 The model was able to detect buildings with incredible accuracy (Figure 4)! Applying DL models is approachable in ArcGIS Pro where installers and tools are already built out for you. Try this out on other parts of Carver County, or try   another image from our collection. For fun, I tested another part of Carver County, this time using a model to    [detect cars](https://www.arcgis.com/home/item.html?id=cfc57b507f914d1593f5871bf0d52999) and ended up with great results after adjusting the confidence threshold to 0.5 (Figure 5).
 
  
-
-[https://blogger.googleusercontent.com/img/a/AVvXsEhqI6rhUjBhoSA_pvCs0ywuJkrrgWnTzDoWHkZTdiECrM4hfFjwO35gIpnVQw6WvRmguQrUAmoOziHi_MQmVjStpo0uTefiLuXL8Gf5G1GdCjFM00rz7-Ml5GOCD8_APngRJzdfIuzC2b5XNxo4b1JKh00uh3tETYfULWEJ0GPzOHJI4CBUCK8nzTNx9BU](https://blogger.googleusercontent.com/img/a/AVvXsEhqI6rhUjBhoSA_pvCs0ywuJkrrgWnTzDoWHkZTdiECrM4hfFjwO35gIpnVQw6WvRmguQrUAmoOziHi_MQmVjStpo0uTefiLuXL8Gf5G1GdCjFM00rz7-Ml5GOCD8_APngRJzdfIuzC2b5XNxo4b1JKh00uh3tETYfULWEJ0GPzOHJI4CBUCK8nzTNx9BU)
-
+<CenterLayout>
+![Digitize Building](@images/building_digitize.jpg)
+*Figure 5. A parking lot with various types of cars in eastern Carver County, Minnesota. Vehicles, outlined in red, after running the detect objects tool.*
+</CenterLayout>
  
-
-Figure 5. A parking lot with various types of cars in eastern Carver County, Minnesota. Vehicles, outlined in red, after running the detect objects tool.
-
- 
-
 The BTAA Geoportal is a useful data resource for your next research project. Check out the database for your next project. This tutorial was tested by researchers at Northwestern University, who are also available to discuss Deep Learning   approaches in more detail. Happy modeling!
 
- 
+<hr/>
 
- 
-
-Citations
-
+**Citations**
  
 1. Microsoft. (n.d.). *Microsoft/GlobalMLBuildingFootprints: Worldwide Building footprints derived from satellite imagery*. GitHub. [https://github.com/microsoft/GlobalMLBuildingFootprints](https://github.com/microsoft/GlobalMLBuildingFootprints)
 2. Ivanovic, A., Misra, A., &amp; Dong, D. (2022, June 21). *Identify mangrove forests using satellite image features using Amazon SageMaker studio and Amazon Sagemaker Autopilot – part 1 | AWS machine learning blog*. Artificial Intelligence and Machine Learning. [https://aws.amazon.com/blogs/machine-learning/part-1-identify-mangrove-forests-using-satellite-image-features-using-amazon-sagemaker-studio-and-amazon-sagemaker-autopilot/](https://aws.amazon.com/blogs/machine-learning/part-1-identify-mangrove-forests-using-satellite-image-features-using-amazon-sagemaker-studio-and-amazon-sagemaker-autopilot/)
