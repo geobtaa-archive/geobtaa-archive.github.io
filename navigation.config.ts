@@ -1,4 +1,4 @@
-export type NavGroupId = 'about' | 'work' | 'resources' | 'conference' | 'blog';
+export type NavGroupId = 'about' | 'resources' | 'conference' | 'blog';
 
 export interface NavSidebarAutogenerate {
   kind: 'autogenerate';
@@ -40,27 +40,19 @@ export const NAV_GROUPS = [
     sidebar: [
       { kind: 'autogenerate', label: 'About', directory: 'about', collapsed: false },
       { kind: 'autogenerate', label: 'Team', directory: 'team', collapsed: false },
-    ],
-  },
-  {
-    id: 'work',
-    label: 'Our Work',
-    landing: '/projects/workgroups/',
-    sidebar: [
       { kind: 'autogenerate', label: 'Projects', directory: 'projects', collapsed: false },
       { kind: 'autogenerate', label: 'Scholarship', directory: 'scholarship', collapsed: false },
       { kind: 'link', label: 'Reports', link: '/library/' },
     ],
   },
+
   {
     id: 'resources',
     label: 'Find & Use Data',
-    landing: '/discovery/geoportal/',
+    landing: '/guides/',
     sidebar: [
-      { kind: 'autogenerate', label: 'Find data', directory: 'discovery', collapsed: false },
-      { kind: 'link', label: 'Tutorials', link: '/tutorials/' },
-      // { kind: 'autogenerate', label: 'Tutorials', directory: 'tutorials', collapsed: true },
-      // { kind: 'autogenerate', label: 'Research Guides', directory: 'guides', collapsed: false },
+      { kind: 'autogenerate', label: 'Find data', directory: 'guides', collapsed: false },
+      { kind: 'autogenerate', label: 'Tutorials', directory: 'tutorials', collapsed: false },
     ],
 
   },
@@ -102,13 +94,10 @@ export const deriveGroupFromPath = (path: string): NavGroupId | undefined => {
     return undefined;
   }
 
-  if (startsWithAny(normalized, ['/about', '/team'])) {
+  if (startsWithAny(normalized, ['/about', '/team', '/projects', '/scholarship', '/workgroups', '/library'])) {
     return 'about';
   }
 
-  if (startsWithAny(normalized, ['/projects', '/scholarship', '/workgroups', '/library'])) {
-    return 'work';
-  }
 
   if (startsWithAny(normalized, ['/resources', '/tutorials', '/discovery', '/guides'])) {
     return 'resources';
@@ -118,7 +107,7 @@ export const deriveGroupFromPath = (path: string): NavGroupId | undefined => {
     return 'conference';
   }
 
-  if (startsWithAny(normalized, ['/blog', '/updates'])) {
+  if (startsWithAny(normalized, ['/posts', '/updates'])) {
     return 'blog';
   }
 

@@ -1,6 +1,8 @@
 ---
 title: Georeferencing with the Allmaps Plugin
 description: This document describes the Geoportal's Allmaps Plugin and gives instructions for using this tool to create a georeferenced map overlay in the browser.
+sidebar:
+   order: 3
 tags:
 - guides
 ---
