@@ -38,6 +38,18 @@ const formId = `${context}-filters`;
 const searchInputId = `${context}-filter-search`;
 const query = typeof props.query === 'string' ? props.query : '';
 const searchPlaceholder = props.searchPlaceholder ?? 'Search…';
+
+const slugifyForId = (value: string | number): string => {
+  return String(value)
+    .trim()
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-+|-+$/g, '') || 'option';
+};
+
+const buildOptionId = (section: 'tag' | 'author' | 'year', value: string | number, index: number): string => {
+  return `${context}-${section}-${slugifyForId(value)}-${index}`;
+};
 ---
 
 <form
@@ -68,7 +80,7 @@ const searchPlaceholder = props.searchPlaceholder ?? 'Search…';
 {authorsEnabled && authors.length > 0 && (
   <details class="filter-panel__section" data-filter-section="authors" open={selectedAuthors.length > 0}>
     <summary class="filter-panel__summary">
-      <span>Authors</span>
+      <span class="filter-panel__summary-label">Authors</span>
       <span
         class="filter-panel__summary-count"
         data-filter-count="authors"
@@ -76,19 +88,24 @@ const searchPlaceholder = props.searchPlaceholder ?? 'Search…';
       >
         {selectedAuthors.length > 0 ? selectedAuthors.length : ''}
       </span>
+      <span class="filter-panel__summary-caret" aria-hidden="true" />
     </summary>
     <div class="filter-panel__options">
-      {authors.map((author) => (
-        <label class="filter-panel__option">
-          <input
-            type="checkbox"
-            name="author"
-            value={author}
-            checked={selectedAuthors.includes(author)}
-          />
-          {author}
-        </label>
-      ))}
+      {authors.map((author, index) => {
+        const inputId = buildOptionId('author', author, index);
+        return (
+          <label class="filter-panel__option" for={inputId}>
+            <input
+              type="checkbox"
+              id={inputId}
+              name="author"
+              value={author}
+              checked={selectedAuthors.includes(author)}
+            />
+            <span>{author}</span>
+          </label>
+        );
+      })}
     </div>
   </details>
 )}
@@ -96,7 +113,7 @@ const searchPlaceholder = props.searchPlaceholder ?? 'Search…';
 {years.length > 0 && (
   <details class="filter-panel__section" data-filter-section="years" open={selectedYears.length > 0}>
     <summary class="filter-panel__summary">
-      <span>Years</span>
+      <span class="filter-panel__summary-label">Years</span>
       <span
         class="filter-panel__summary-count"
         data-filter-count="years"
@@ -104,19 +121,25 @@ const searchPlaceholder = props.searchPlaceholder ?? 'Search…';
       >
         {selectedYears.length > 0 ? selectedYears.length : ''}
       </span>
+      <span class="filter-panel__summary-caret" aria-hidden="true" />
     </summary>
     <div class="filter-panel__options filter-panel__options--inline">
-      {years.map((year) => (
-        <label class="filter-panel__option">
-          <input
-            type="checkbox"
-            name="year"
-            value={String(year)}
-            checked={selectedYears.includes(String(year))}
-          />
-          {year}
-        </label>
-      ))}
+      {years.map((year, index) => {
+        const inputId = buildOptionId('year', year, index);
+        const value = String(year);
+        return (
+          <label class="filter-panel__option" for={inputId}>
+            <input
+              type="checkbox"
+              id={inputId}
+              name="year"
+              value={value}
+              checked={selectedYears.includes(value)}
+            />
+            <span>{year}</span>
+          </label>
+        );
+      })}
     </div>
   </details>
 )}
@@ -124,7 +147,7 @@ const searchPlaceholder = props.searchPlaceholder ?? 'Search…';
 {tags.length > 0 && (
   <details class="filter-panel__section" data-filter-section="tags" open={selectedTags.length > 0}>
     <summary class="filter-panel__summary">
-      <span>{tagsLabel}</span>
+      <span class="filter-panel__summary-label">{tagsLabel}</span>
       <span
         class="filter-panel__summary-count"
         data-filter-count="tags"
@@ -132,19 +155,24 @@ const searchPlaceholder = props.searchPlaceholder ?? 'Search…';
       >
         {selectedTags.length > 0 ? selectedTags.length : ''}
       </span>
+      <span class="filter-panel__summary-caret" aria-hidden="true" />
     </summary>
     <div class="filter-panel__options">
-      {tags.map((tag) => (
-        <label class="filter-panel__option">
-          <input
-            type="checkbox"
-            name="tag"
-            value={tag}
-            checked={selectedTags.includes(tag)}
-          />
-          {tag}
-        </label>
-      ))}
+      {tags.map((tag, index) => {
+        const inputId = buildOptionId('tag', tag, index);
+        return (
+          <label class="filter-panel__option" for={inputId}>
+            <input
+              type="checkbox"
+              id={inputId}
+              name="tag"
+              value={tag}
+              checked={selectedTags.includes(tag)}
+            />
+            <span>{tag}</span>
+          </label>
+        );
+      })}
     </div>
   </details>
 )}
@@ -177,7 +205,7 @@ const searchPlaceholder = props.searchPlaceholder ?? 'Search…';
       /**
        * @param {string} value
        * @returns {string[]}
-       */
+      */
       const safeParseStringArray = (value) => {
         try {
           const parsed = JSON.parse(value);
@@ -440,21 +468,31 @@ const searchPlaceholder = props.searchPlaceholder ?? 'Search…';
 </script>
 
 <style>
+  .filter-panel {
+    display: grid;
+    gap: 0.4rem;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    padding: clamp(0.35rem, 1.2vw, 0.6rem);
+    border-radius: 0.6rem;
+    background: var(--sl-color-bg);
+  }
+
   .filter-panel__search {
     display: flex;
     flex-direction: column;
-    gap: 0.35rem;
+    gap: 0.2rem;
+    grid-column: 1 / -1;
   }
 
   .filter-panel__search-label {
     font-weight: 600;
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     color: var(--sl-color-text);
   }
 
   .filter-panel__search-input {
-    padding: 0.45rem 0.65rem;
-    border-radius: 0.5rem;
+    padding: 0.4rem 0.6rem;
+    border-radius: 0.45rem;
     border: 1px solid var(--sl-color-hairline);
     background: var(--sl-color-bg);
     font: inherit;
@@ -466,44 +504,67 @@ const searchPlaceholder = props.searchPlaceholder ?? 'Search…';
     outline-offset: 2px;
   }
 
-  .filter-panel {
-    display: flex;
-    flex-direction: column;
-    gap: 0.75rem;
-    padding: 0.75rem;
-    border-radius: 0.75rem;
-    background: var(--sl-color-bg-soft);
-  }
-
   .filter-panel__options {
     display: flex;
     flex-direction: column;
-    gap: 0.25rem;
+    gap: 0.2rem;
   }
 
   .filter-panel__options--inline {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
-    gap: 0.35rem 0.5rem;
+    grid-template-columns: repeat(auto-fit, minmax(108px, 1fr));
+    gap: 0.25rem 0.4rem;
   }
 
   .filter-panel__section {
-    padding: 0.05rem 0 0.45rem;
+    padding: 0.25rem 0.45rem 0.5rem;
+    border: 1px solid color-mix(in srgb, var(--sl-color-hairline) 70%, transparent);
+    border-radius: 0.6rem;
+    background: color-mix(in srgb, var(--sl-color-bg-soft) 70%, var(--sl-color-bg) 30%);
+    box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--sl-color-bg) 80%, transparent);
   }
 
   .filter-panel__section + .filter-panel__section {
-    margin-top: 0.4rem;
+    margin-top: 0;
   }
 
   .filter-panel__summary {
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    gap: 0.6rem;
-    padding: 0.3rem 0.15rem;
+    gap: 0.35rem;
+    padding: 0.32rem 0.45rem 0.28rem;
+    margin: 0 -0.45rem 0;
+    background: color-mix(in srgb, var(--sl-color-bg-soft) 75%, var(--sl-color-hairline) 25%);
+    border-radius: 0.55rem;
     cursor: pointer;
     font-weight: 600;
     list-style: none;
+    transition: background 150ms ease, border-radius 150ms ease;
+  }
+
+  .filter-panel__summary:hover,
+  .filter-panel__summary:focus-visible {
+    background: color-mix(in srgb, var(--sl-color-bg-soft) 85%, var(--sl-color-hairline) 15%);
+    outline: none;
+  }
+
+  .filter-panel__summary-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    font-size: 0.82rem;
+    flex: 1 1 auto;
+    text-align: left;
+  }
+
+  .filter-panel__summary-caret {
+    width: 0.6rem;
+    height: 0.6rem;
+    border-right: 2px solid currentColor;
+    border-bottom: 2px solid currentColor;
+    transform: rotate(-45deg);
+    transition: transform 150ms ease;
+    flex: 0 0 auto;
   }
 
   .filter-panel__summary::-webkit-details-marker,
@@ -511,18 +572,7 @@ const searchPlaceholder = props.searchPlaceholder ?? 'Search…';
     display: none;
   }
 
-  .filter-panel__summary::after {
-    content: '';
-    flex-shrink: 0;
-    width: 0.65rem;
-    height: 0.65rem;
-    border-right: 2px solid currentColor;
-    border-bottom: 2px solid currentColor;
-    transform: rotate(-45deg);
-    transition: transform 150ms ease;
-  }
-
-  .filter-panel__section[open] .filter-panel__summary::after {
+  .filter-panel__section[open] .filter-panel__summary-caret {
     transform: rotate(45deg);
   }
 
@@ -530,31 +580,72 @@ const searchPlaceholder = props.searchPlaceholder ?? 'Search…';
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    min-width: 1.3rem;
-    height: 1.3rem;
+    min-width: 1.05rem;
+    height: 1.05rem;
     border-radius: 999px;
-    background: var(--sl-color-bg-soft);
+    background: color-mix(in srgb, var(--sl-color-bg-soft) 80%, var(--sl-color-primary) 20%);
     color: var(--sl-color-text-muted);
-    font-size: 0.7rem;
+    font-size: 0.6rem;
     font-weight: 600;
+    flex: 0 0 auto;
+    margin-left: auto;
   }
 
   .filter-panel__section[open] .filter-panel__summary {
-    border-bottom: 1px solid var(--sl-color-hairline);
-    margin-bottom: 0.3rem;
-    padding-bottom: 0.3rem;
+    border-bottom: 1px solid color-mix(in srgb, var(--sl-color-hairline) 80%, transparent);
+    margin: 0 -0.45rem 0.25rem;
+    padding-bottom: 0.35rem;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    background: color-mix(in srgb, var(--sl-color-bg-soft) 85%, var(--sl-color-hairline) 15%);
   }
 
   .filter-panel__option {
     display: inline-flex;
     align-items: center;
-    gap: 0.3rem;
-    font-size: 0.9rem;
+    gap: 0.25rem;
+    font-size: 0.85rem;
     color: var(--sl-color-text);
+    cursor: pointer;
   }
 
   .filter-panel__option input {
     accent-color: var(--sl-color-primary);
+  }
+
+  .filter-panel__option span {
+    flex: 1 1 auto;
+  }
+
+  details[data-filter-section='tags'] .filter-panel__options,
+  details[data-filter-section='authors'] .filter-panel__options {
+    max-height: 12rem;
+    overflow: auto;
+    padding-right: 0.25rem;
+  }
+
+  details[data-filter-section='tags'] .filter-panel__options {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 0.25rem 0.45rem;
+  }
+
+  @media (max-width: 48rem) {
+    .filter-panel {
+      grid-template-columns: 1fr;
+      gap: 0.45rem;
+    }
+
+    .filter-panel__section {
+      padding-inline: 0.45rem;
+    }
+  }
+
+  @media (max-width: 32rem) {
+    details[data-filter-section='tags'] .filter-panel__options,
+    details[data-filter-section='authors'] .filter-panel__options {
+      max-height: none;
+    }
   }
 
 </style>

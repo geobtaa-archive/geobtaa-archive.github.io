@@ -4,30 +4,43 @@ import starlightFullViewMode from 'starlight-fullview-mode';
 import react from '@astrojs/react';
 import starlightImageZoom from 'starlight-image-zoom';
 import icon from 'astro-icon';
-import { NAV_GROUPS, type NavSidebarEntry } from './navigation.config';
+import { NAV_GROUPS, type NavSidebarAutogenerate, type NavSidebarEntry, type NavSidebarGroupItem, type NavSidebarLink } from './navigation.config';
 import type { StarlightUserConfig } from '@astrojs/starlight/types';
 
 type SidebarItem = NonNullable<StarlightUserConfig['sidebar']>[number];
 
+const mapAutogenerateEntry = (entry: NavSidebarAutogenerate): SidebarItem => ({
+  label: entry.label,
+  collapsed: entry.collapsed ?? true,
+  autogenerate: { directory: entry.directory },
+});
+
+const mapLinkEntry = (entry: NavSidebarLink): SidebarItem => ({
+  label: entry.label,
+  link: entry.link,
+});
+
+const mapGroupItem = (item: NavSidebarGroupItem): SidebarItem => {
+  switch (item.kind) {
+    case 'autogenerate':
+      return mapAutogenerateEntry(item);
+    case 'link':
+      return mapLinkEntry(item);
+  }
+};
+
 const mapSidebarEntry = (entry: NavSidebarEntry): SidebarItem => {
   switch (entry.kind) {
     case 'autogenerate':
-      return {
-        label: entry.label,
-        collapsed: entry.collapsed ?? true,
-        autogenerate: { directory: entry.directory },
-      };
+      return mapAutogenerateEntry(entry);
     case 'group':
       return {
         label: entry.label,
         collapsed: entry.collapsed ?? true,
-        items: Array.from(entry.items, (item) => ({ label: item.label, link: item.link })),
+        items: Array.from(entry.items, mapGroupItem),
       };
     case 'link':
-      return {
-        label: entry.label,
-        link: entry.link,
-      };
+      return mapLinkEntry(entry);
   }
 };
 
@@ -47,7 +60,7 @@ export default defineConfig({
       customCss: ['./src/styles/global.css', './src/styles/tables.css'],
       components: {
         // Footer: './src/components/FooterWithBar.astro',
-        Header: './src/components/HeaderWithCompactSearch.astro',
+        Header: './src/components/Header.astro',
         Sidebar: './src/components/SidebarWithFilters.astro',
         PageTitle: './src/components/PageTitleWithMeta.astro',
       },

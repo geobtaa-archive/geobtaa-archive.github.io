@@ -1,13 +1,21 @@
 ---
 import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro';
+import PageFilterSection from '../../components/PageFilterSection.astro';
 import { loadLibraryContent } from '../../utils/libraryContent';
+import { getFilterConfigForPath } from '../../utils/filterConfig';
 
-const { items } = await loadLibraryContent();
+const libraryContent = await loadLibraryContent();
+const { items } = libraryContent;
+const filterConfig = await getFilterConfigForPath(
+  Astro.url.pathname,
+  Astro.url.searchParams,
+  { libraryContent },
+);
 ---
 
 <StarlightPage
   frontmatter={{
-    title: 'Document Library',
+    title: 'Reports Library',
     description: 'All program documents in the library',
     tableOfContents: false,
     prev: false,
@@ -15,10 +23,14 @@ const { items } = await loadLibraryContent();
   }}
 >
   <div class="library-content">
-    <p class="library-intro">
+     <p class="library-intro">
       Browse our full library of program charters, proposals, reports, and guidelines. Use the filters to narrow by year or topic.
     </p>
 
+    {filterConfig && filterConfig.placement === 'top' && (
+      <PageFilterSection config={filterConfig} />
+    )}
+   
     <ul class="library-list" data-library-grid>
       {items.map((item) => (
         <li
@@ -64,12 +76,12 @@ const { items } = await loadLibraryContent();
   .library-content {
     display: flex;
     flex-direction: column;
-    gap: 1.5rem;
+    gap: 1.2rem;
   }
 
   .library-intro {
     margin: 0;
-    color: var(--sl-color-text-muted);
+    color: var(--sl-color-text);
     font-size: 1rem;
     line-height: 1.6;
   }
@@ -108,11 +120,11 @@ const { items } = await loadLibraryContent();
     flex-wrap: wrap;
     gap: 0.5rem;
     font-size: 0.9rem;
-    color: var(--sl-color-text-muted);
+    color: var(--sl-color-text);
   }
 
   .library-list__summary {
-    color: var(--sl-color-text-muted);
+    color: var(--sl-color-text);
     font-size: 0.95rem;
     line-height: 1.55;
   }

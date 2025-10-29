@@ -2,9 +2,6 @@
 import MobileMenuFooter from '@astrojs/starlight/components/MobileMenuFooter.astro';
 import SidebarPersister from '@astrojs/starlight/components/SidebarPersister.astro';
 import SidebarSublist from '@astrojs/starlight/components/SidebarSublist.astro';
-import FilterPanel from './FilterPanel.astro';
-import { loadBlogContent } from '../utils/blogContent';
-import { loadLibraryContent } from '../utils/libraryContent';
 import {
   deriveGroupFromPath,
   SIDEBAR_LABEL_GROUPS,
@@ -13,8 +10,6 @@ import {
 
 const { sidebar } = Astro.locals.starlightRoute;
 const pathname = Astro.url.pathname;
-const isBlogIndex = pathname === '/blog/' || pathname === '/blog';
-const isLibraryIndex = pathname === '/library/' || pathname === '/library';
 
 const activeNavGroup = deriveGroupFromPath(pathname);
 
@@ -30,68 +25,6 @@ const filteredSidebar = sidebar.filter((entry) => {
   if (!entryGroup) return true;
   return entryGroup === activeNavGroup;
 });
-
-type SidebarFilterConfig = {
-  heading: string;
-  resetLabel: string;
-  context: string;
-  props: {
-    tags: string[];
-    authors: string[];
-    years: string[];
-    selectedTags: string[];
-    selectedAuthors: string[];
-    selectedYears: string[];
-    context?: string;
-    query?: string;
-    searchLabel?: string;
-    searchPlaceholder?: string;
-    authorsEnabled?: boolean;
-    tagsLabel?: string;
-  };
-};
-
-let sidebarFilter: SidebarFilterConfig | null = null;
-
-if (isBlogIndex) {
-  const { tags, authors, years } = await loadBlogContent();
-  const params = Astro.url.searchParams;
-  sidebarFilter = {
-    heading: 'Filter posts',
-    resetLabel: 'Clear filters',
-    context: 'blog',
-    props: {
-      tags,
-      authors,
-      years: years.map((year) => String(year)),
-      selectedTags: params.getAll('tag'),
-      selectedAuthors: params.getAll('author'),
-      selectedYears: params.getAll('year'),
-      context: 'blog',
-    },
-  };
-}
-
-if (isLibraryIndex) {
-  const { tags, authors, years } = await loadLibraryContent();
-  const params = Astro.url.searchParams;
-  sidebarFilter = {
-    heading: 'Filter documents',
-    resetLabel: 'Clear filters',
-    context: 'library',
-    props: {
-      tags,
-      authors: [],
-      years: years.map((year) => String(year)),
-      selectedTags: params.getAll('tag'),
-      selectedAuthors: [],
-      selectedYears: params.getAll('year'),
-      context: 'library',
-      authorsEnabled: false,
-      tagsLabel: 'Type',
-    },
-  };
-}
 ---
 
 <SidebarPersister>
@@ -109,82 +42,8 @@ if (isLibraryIndex) {
     ))}
   </nav>
   <SidebarSublist sublist={filteredSidebar} />
-  {sidebarFilter && (
-    <div class="filter-sidebar">
-      <div class="filter-sidebar__header">
-        <h2 class="filter-sidebar__title">{sidebarFilter.heading}</h2>
-        <button
-          type="button"
-          class="filter-sidebar__reset"
-          data-filter-reset={sidebarFilter.context}
-        >
-          {sidebarFilter.resetLabel}
-        </button>
-      </div>
-      <FilterPanel {...sidebarFilter.props} />
-    </div>
-  )}
 </SidebarPersister>
 
 <div class="md:sl-hidden">
   <MobileMenuFooter />
 </div>
-
-<style>
-  .filter-sidebar {
-    display: flex;
-    flex-direction: column;
-    gap: 0.75rem;
-    padding: 0.75rem;
-    border-radius: 0.75rem;
-    border: 1px solid var(--sl-color-hairline);
-    background: rgba(255, 255, 255, 0.05);
-    margin-top: 1rem;
-  }
-
-  .filter-sidebar__title {
-    margin: 0;
-    font-size: 0.9rem;
-    font-weight: 600;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--sl-color-text-accent);
-  }
-  
-  .filter-sidebar__header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 0.5rem;
-  }
-
-  .filter-sidebar__reset {
-    border: 1px solid var(--sl-color-hairline);
-    border-radius: 999px;
-    background: var(--sl-color-bg);
-    font-size: 0.75rem;
-    font-weight: 600;
-    padding: 0.3rem 0.9rem;
-    color: var(--sl-color-link);
-    cursor: pointer;
-    transition: background 150ms ease, color 150ms ease, border-color 150ms ease;
-  }
-
-  .filter-sidebar__reset:hover,
-  .filter-sidebar__reset:focus-visible {
-    background: var(--sl-color-bg-soft);
-    border-color: var(--sl-color-primary);
-    color: var(--sl-color-primary);
-    outline: none;
-  }
-
-  @media (min-width: 960px) {
-    .filter-sidebar {
-      position: sticky;
-      top: calc(var(--sl-nav-height, 3.5rem) + 1rem);
-      max-height: calc(100vh - var(--sl-nav-height, 3.5rem) - 2rem);
-      overflow: auto;
-      margin-top: 1.5rem;
-    }
-  }
-</style>
