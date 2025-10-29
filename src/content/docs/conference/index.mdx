@@ -1,36 +1,35 @@
 ---
 title: Big Ten GIS Conference
 description: 'An overview of the Big Ten GIS Conference'
+template: splash
 sidebar:
   order: 01
 ---
 import { Card, CardGrid } from '@astrojs/starlight/components';
-import { YouTube } from 'astro-embed';
+import { LinkCard } from '@astrojs/starlight/components';
+import TwoThirdsLayout from '@components/TwoThirdsLayout.astro'
+import TwoThirdsRLayout from '@components/TwoThirdsRLayout.astro'
 
+<TwoThirdsRLayout>
+<div slot='right'>
 ![conference banner](@images/conference-banner.png)
+</div>
 
+<div slot='left'>
 ## Promoting collaborations
 
 Established in 2020, the Big Ten GIS Conference is a virtual event organized by geospatial information users and educators in Big Ten institutions to present their work, exchange information, and develop potential collaborations. It is open to all participants, including those outside of the BTAA network. 
-
-<CardGrid>
-
-<Card title = "Sharing research">
-
-![](@images/presentations-collage.png)
-
+<br />
 Our presentation and lightning talk sessions feature a range of topics and approaches related to GIS, maps, & spatial data.
-</Card>
-    
-<Card title ="Showcasing projects">
 
-![](@images/map-gallery-collage.png)
+</div>
+</TwoThirdsRLayout>
 
-Our ongoing [map gallery ↗](map-gallery) features dozens of entries and showcases both interactive maps & standalone cartography.
-
-</Card>
-
-</CardGrid>
+<LinkCard
+  title="Map Gallery"
+  href="../conference/map-gallery/"
+  description="Visit the conference map gallery featuring dozens of interactive maps & cartographic works."
+/>
 
 ## Past Conferences
 

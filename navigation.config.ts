@@ -1,4 +1,4 @@
-export type NavGroupId = 'about' | 'resources' | 'scholarship' |'conference' |'blog';
+export type NavGroupId = 'about' | 'work' | 'resources' | 'conference' | 'blog';
 
 export interface NavSidebarAutogenerate {
   kind: 'autogenerate';
@@ -7,17 +7,19 @@ export interface NavSidebarAutogenerate {
   collapsed?: boolean;
 }
 
-export interface NavSidebarGroup {
-  kind: 'group';
-  label: string;
-  collapsed?: boolean;
-  items: Array<{ label: string; link: string }>;
-}
-
 export interface NavSidebarLink {
   kind: 'link';
   label: string;
   link: string;
+}
+
+export type NavSidebarGroupItem = NavSidebarAutogenerate | NavSidebarLink;
+
+export interface NavSidebarGroup {
+  kind: 'group';
+  label: string;
+  collapsed?: boolean;
+  items: ReadonlyArray<NavSidebarGroupItem>;
 }
 
 export type NavSidebarEntry = NavSidebarAutogenerate | NavSidebarGroup | NavSidebarLink;
@@ -34,60 +36,48 @@ export const NAV_GROUPS = [
   {
     id: 'about',
     label: 'About',
-    landing: '/about/about-us/',
+    landing: '/about/overview/',
     sidebar: [
       { kind: 'autogenerate', label: 'About', directory: 'about', collapsed: false },
       { kind: 'autogenerate', label: 'Team', directory: 'team', collapsed: false },
-      
     ],
   },
-
-    {
+  {
+    id: 'work',
+    label: 'Our Work',
+    landing: '/projects/workgroups/',
+    sidebar: [
+      { kind: 'autogenerate', label: 'Projects', directory: 'projects', collapsed: false },
+      { kind: 'autogenerate', label: 'Scholarship', directory: 'scholarship', collapsed: false },
+      { kind: 'link', label: 'Reports', link: '/library/' },
+    ],
+  },
+  {
     id: 'resources',
     label: 'Find & Use Data',
-    landing: '/resources/geoportal/',
+    landing: '/discovery/geoportal/',
     sidebar: [
-      { kind: 'autogenerate', label: 'Resources', directory: 'resources', collapsed: false },
+      { kind: 'autogenerate', label: 'Find data', directory: 'discovery', collapsed: false },
+      { kind: 'link', label: 'Tutorials', link: '/tutorials/' },
+      // { kind: 'autogenerate', label: 'Tutorials', directory: 'tutorials', collapsed: true },
+      // { kind: 'autogenerate', label: 'Research Guides', directory: 'guides', collapsed: false },
     ],
-  },
 
-    {
-    id: 'scholarship',
-    label: 'Research',
-    landing: '/scholarship/publications/',
-    sidebar: [
-      { kind: 'autogenerate', label: 'Scholarship', directory: 'scholarship', collapsed: false },
-      { kind: 'link', label: 'Document Library', link: '/library/' }
-    ],
   },
-
   {
     id: 'conference',
     label: 'Conference',
     landing: '/conference/',
     sidebar: [
-            {
-        kind: 'group',
-        label: 'Big Ten GIS Conference',
-        collapsed: true,
-        items: [
-          { label: 'About', link: '/conference/' },
-          { label: 'Map Gallery', link: '/conference/map-gallery/' }
-        ],
-      },
+      // { kind: 'link', label: 'About the Conference', link: '/conference/' },
     ],
   },
-
-      {
+  {
     id: 'blog',
     label: 'News & Stories',
     landing: '/blog/',
-    sidebar: [
-      { kind: 'link', label: 'News & Stories', link: '/blog/' }
-    ],
+    sidebar: [{ kind: 'link', label: 'News & Stories', link: '/blog/' }],
   },
-
-
 ] satisfies ReadonlyArray<NavGroup>;
 
 // PRIMARY_NAV_OPTIONS feeds the header/navigation bar with label + target pairs derived from NAV_GROUPS.
@@ -103,61 +93,35 @@ export const SIDEBAR_LABEL_GROUPS = new Map<string, NavGroupId>(
 );
 
 // deriveGroupFromPath infers which nav group to activate based on the current URL path.
+const startsWithAny = (normalizedPath: string, prefixes: ReadonlyArray<string>) =>
+  prefixes.some((prefix) => normalizedPath.startsWith(prefix));
+
 export const deriveGroupFromPath = (path: string): NavGroupId | undefined => {
   const normalized = path.toLowerCase();
   if (normalized === '/' || normalized === '') {
     return undefined;
   }
 
-// 1. About
-  if (
-    normalized.startsWith('/about') ||
-    normalized.startsWith('/team') ||
-    normalized.startsWith('/technology')
-
-     
-  ) {
+  if (startsWithAny(normalized, ['/about', '/team'])) {
     return 'about';
   }
 
+  if (startsWithAny(normalized, ['/projects', '/scholarship', '/workgroups', '/library'])) {
+    return 'work';
+  }
 
-// 2. Resources
-  if (
-    normalized.startsWith('/resources') ||
-    normalized.startsWith('/tutorials') ||
-    normalized.startsWith('/guides')
-  ) {
+  if (startsWithAny(normalized, ['/resources', '/tutorials', '/discovery', '/guides'])) {
     return 'resources';
   }
 
-// 3. Scholarship
-
-    if (
-    normalized.startsWith('/library') ||
-    normalized.startsWith('/scholarship')
-  ) {
-    return 'scholarship';
-  }
-
-// 4. Conference
-
-    if (
-    normalized.startsWith('/conference')
-  ) {
+  if (normalized.startsWith('/conference')) {
     return 'conference';
   }
 
-      if (
-    normalized.startsWith('/blog') ||
-    normalized.startsWith('/updates')
-  ) {
+  if (startsWithAny(normalized, ['/blog', '/updates'])) {
     return 'blog';
   }
-
 
   // Default to the "About" collection when we cannot infer a more specific group.
   return 'about';
 };
-
-
-    
