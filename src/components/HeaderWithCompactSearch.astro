@@ -5,7 +5,7 @@ import LanguageSelect from 'virtual:starlight/components/LanguageSelect';
 import Search from 'virtual:starlight/components/Search';
 import SiteTitle from 'virtual:starlight/components/SiteTitle';
 import SocialIcons from 'virtual:starlight/components/SocialIcons';
-import ThemeSelect from 'virtual:starlight/components/ThemeSelect';
+import ThemeSelect from './ThemeSelect.astro';
 import {
   PRIMARY_NAV_OPTIONS,
   deriveGroupFromPath,
@@ -148,9 +148,12 @@ const activeNavGroup = deriveGroupFromPath(Astro.url.pathname);
 
   :global(.top-nav) {
     align-items: center;
-    gap: 1.75rem;
+    column-gap: 1.5rem;
+    row-gap: 0.35rem;
     margin: 0;
     flex-wrap: wrap;
+    align-content: center;
+    justify-content: flex-start;
     --top-nav-item-color: var(--sl-color-text);
     --top-nav-item-active: var(--sl-color-text-accent);
     --top-nav-indicator: var(--sl-color-text-accent);
@@ -160,7 +163,7 @@ const activeNavGroup = deriveGroupFromPath(Astro.url.pathname);
     border: 0;
     background: none;
     text-decoration: none;
-    padding: 0.45rem 0.25rem;
+    padding: 0.4rem 0.25rem;
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -173,6 +176,23 @@ const activeNavGroup = deriveGroupFromPath(Astro.url.pathname);
     position: relative;
     line-height: 1.1;
     transition: color 150ms ease, transform 150ms ease;
+  }
+
+  @media (max-width: 70rem) {
+    :global(.top-nav) {
+      column-gap: 1.15rem;
+    }
+
+    :global(.top-nav__item) {
+      padding: 0.35rem 0.25rem;
+      font-size: 1.1rem;
+    }
+  }
+
+  @media (max-width: 62rem) {
+    :global(.top-nav) {
+      column-gap: 0.85rem;
+    }
   }
 
   :global(.top-nav__item)::after {

@@ -1,81 +1,33 @@
 ---
-title: About the BTAA-GIN
-description: 'An overview of the Big Ten Academic Alliance Geospatial Information Network'
-tableOfContents: false
+title: Our network
+description: "An overview of the Big Ten Academic Alliance Geospatial Information Network"
+tableOfContents: true
 sidebar:
   order: 01
 ---
 
-import coverUrl from '/src/assets/images/cover.png';
-import TwoThirdsRLayout from '/src/components/TwoThirdsRLayout.astro';
+import { Card, CardGrid } from '@astrojs/starlight/components';
 
-<div class="about">
-
+## Who we are
 
 The Big Ten Geospatial Information Network (BTAA-GIN) is a collaboration of library-affiliated staff from Big Ten universities. We support geospatial research, foster connections among library professionals, and advance open-source tools and practices for discovering and preserving spatial data.
 
+## Our approach
 
-  <section class="pillars" aria-labelledby="pillars-title">
-  <h2 id="pillars-title" class="sr-only">Our focus areas</h2>
+We focus on two themes: technical infrastructure and social infrastructure, both of which support geospatial research and a collaborative community.
 
-  <p class="pillars__lede">
-    We focus on two key areas: <strong>technical infrastructure</strong> and <strong>social infrastructure</strong>, both of which support geospatial research and a collaborative community.
-  </p>
+### Technical infrastructure
 
-  <div class="pillars__grid not-content">
-    <article class="pillar">
-      <header class="pillar__head">
-        
-        <h2 class="pillar__title">Technical infrastructure</h2>
-      </header>
-      <ul class="pillar__list">
-        <li>
+Our technical infrastructure encompasses the platforms, metadata, and curation practicies that drive geospatial data discovery and stewardship.
 
-          <strong>BTAA Geoportal</strong> — improving discovery of maps, datasets, and services:
-          <a href="https://geo.btaa.org"> geo.btaa.org</a>
-        </li>
-        <li>
+**Program areas:**
+- **Library geospatial infrastructures** — development of shared systems and open-source tools, including the [BTAA Geoportal](https://geo.btaa.org), a metadata API, and metadata tools.  
+- **Digital curation & stewardship** — indexing open data and scanned maps, enhancing metadata, and collecting at-risk public data such as federal and municipal base layers.
 
-          <strong>Metadata aggregation &amp; augmentation</strong> — normalizing, enriching, and optimizing records across platforms.
-        </li>
-        <li>
+### Social infrastructure
 
-          <strong>Open-source contributions</strong> — active work in
-          <a href="https://geoblacklight.org"> GeoBlacklight</a>,
-          <a href="https://opengeometadata.org"> OpenGeoMetadata</a>, and
-          <a href="https://geo4lib.org"> Geo4Lib</a>.
-        </li>
-      </ul>
-    </article>
+Our social infrastructure strengthens the network of professionals who sustain and evolve geospatial librarianship.  
 
-    <article class="pillar">
-      <header class="pillar__head">
-
-        <h2 class="pillar__title">Social infrastructure</h2>
-      </header>
-      <ul class="pillar__list">
-        <li>
-
-          <strong>Collaboration</strong> — opportunities to share knowledge and exchange best practices among geospatial library professionals.
-        </li>
-        <li>
-
-          <strong>Annual community events</strong> — <a href="/conference/">conference + meetups</a> for students and practitioners.
-        </li>
-        <li>
-
-          <strong>Guides &amp; tutorials</strong> — <a href="/user-resources/guides/">reference guides</a> and <a href="/user-resources/tutorials/">educational resources</a> for research and instruction.
-        </li>
-      </ul>
-    </article>
-  </div>
-</section>
-</div>
-
-
-  ## Our connection to the BTAA
-  BTAA-GIN is part of the broader <a href="https://btaa.org/library/Libraries">Big Ten Academic Alliance Library Initiatives</a>, bringing together the shared expertise and resources of Big Ten libraries to support member institutions.
-
-
-
-
+**Program areas:**
+- **Professional development & community engagement** — annual conferences, graduate student support, and opportunities to exchange best practices across institutions.  
+- **Research & knowledge** — transparent documentation, publications, and presentations that share lessons learned and contribute to the field of geospatial librarianship.
