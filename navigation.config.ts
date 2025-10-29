@@ -107,10 +107,10 @@ export const deriveGroupFromPath = (path: string): NavGroupId | undefined => {
     return 'conference';
   }
 
-  if (startsWithAny(normalized, ['/posts', '/updates'])) {
+  if (startsWithAny(normalized, ['/blog', '/posts', '/updates'])) {
     return 'blog';
   }
 
   // Default to the "About" collection when we cannot infer a more specific group.
-  return 'about';
+  // return 'about';
 };
