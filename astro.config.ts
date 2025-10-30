@@ -57,6 +57,10 @@ export default defineConfig({
         alt: 'BTAA-GIN',
         replacesTitle: true,
       },
+      social: [
+        { icon: 'email', label: 'Contact', href: 'https://geo.btaa.org/feedback' },
+        { icon: 'github', label: 'GitHub', href: 'https://github.com/geobtaa' },
+      ],
       customCss: ['./src/styles/global.css', './src/styles/tables.css'],
       components: {
         // Footer: './src/components/FooterWithBar.astro',
