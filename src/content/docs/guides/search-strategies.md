@@ -3,6 +3,7 @@ title: BTAA Geoportal search strategies
 description: Start here to learn how to search for resources in the BTAA Geoportal
 sidebar:
    order: 1
+   label: Search strategies
 tags:
 - guides
 ---

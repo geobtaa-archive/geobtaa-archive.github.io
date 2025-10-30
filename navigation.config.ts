@@ -36,7 +36,7 @@ export const NAV_GROUPS = [
   {
     id: 'about',
     label: 'About',
-    landing: '/about/overview/',
+    landing: '/about/about-us/',
     sidebar: [
       { kind: 'autogenerate', label: 'About', directory: 'about', collapsed: false },
       { kind: 'autogenerate', label: 'Team', directory: 'team', collapsed: false },
