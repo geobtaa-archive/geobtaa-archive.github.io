@@ -1,11 +1,13 @@
 import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
 import starlightFullViewMode from 'starlight-fullview-mode';
+import starlightAutoSidebar from 'starlight-auto-sidebar';
 import react from '@astrojs/react';
 import starlightImageZoom from 'starlight-image-zoom';
 import icon from 'astro-icon';
 import { NAV_GROUPS, type NavSidebarAutogenerate, type NavSidebarEntry, type NavSidebarGroupItem, type NavSidebarLink } from './navigation.config';
 import type { StarlightUserConfig } from '@astrojs/starlight/types';
+import reverseDateSidebar from './src/plugins/reverseDateSidebar';
 
 type SidebarItem = NonNullable<StarlightUserConfig['sidebar']>[number];
 
@@ -71,6 +73,8 @@ export default defineConfig({
       plugins: [
         starlightImageZoom(),
         starlightFullViewMode(),
+        starlightAutoSidebar(),
+        reverseDateSidebar(),
       ],
       sidebar: starlightSidebar,
     }),

@@ -4,6 +4,7 @@ description: 'An overview of the Big Ten GIS Conference 2025'
 sidebar:
   order: 02
 ---
+import { LinkCard } from '@astrojs/starlight/components';
 
 ![2025 conference banner](@images/conference-banner-2025.png)
 
@@ -19,26 +20,35 @@ Big thanks to all the speakers, participants, and organizers who made this possi
 Below is the full playlist, including all keynotes, presentations, workshops, lightning talks, and opening and closing remarks. Following it is our Map Gallery and the full conference agenda including the names and affiliations of each presenter.
 
 ## Conference Recordings
-<iframe width="560" height="315" src="https://www.youtube.com/embed/videoseries?si=eM6h1Lc26iAgQrPx&amp;list=PLNMgmHMZCEbcLklBu6WyoVzK36lYiod6M&rel=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+
+<iframe width="80%" height="600" src="https://www.youtube.com/embed/videoseries?si=eM6h1Lc26iAgQrPx&amp;list=PLNMgmHMZCEbcLklBu6WyoVzK36lYiod6M&rel=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
 ## Map Gallery
-[:map:  Visit our conference map gallery.  :octicons-link-external-24:](https://gin.btaa.org/Map-Gallery-Update/){ .md-button }
 
-<!--
+<LinkCard title="Visit our conference map gallery" href="../map-gallery/" />
+
+
 Join the **Big Ten GIS Conference on April 11, 2025** for a day of discovery, collaboration, and innovation in GIS and geospatial research. This free virtual conference brings together leading experts, researchers, and students from across the Big Ten and beyond to explore emerging technologies, share research, and connect with peers. Presented by the Big Ten Academic Alliance (BTAA) Geospatial Information Network. 
 
- ### 🎟️ Register today (free): [Registration Link](https://btaa.zoom.us/webinar/register/WN_0JvevQx5RMO_N3BKXhToIw)
+ {/* ### 🎟️ Register today (free): [Registration Link](https://btaa.zoom.us/webinar/register/WN_0JvevQx5RMO_N3BKXhToIw) */}
 
 
 ### 📢 Keynote Speaker: Professor Emily Fairfax
 
 We are pleased to welcome **Professor Emily Fairfax** (University of Minnesota) as our keynote speaker. Professor Fairfax is an ecohydrologist and geospatial scientist whose research explores how beavers function as ecosystem engineers, creating drought- and fire-resistant landscapes in a changing climate. Using a combination of remote sensing, modeling, and fieldwork, her work has been widely recognized in _National Geographic, BBC, NPR_, and other major media outlets.
 
-Hid Map Submission Link 
-### 📝 Submit to the Map Gallery
-We are still accepting submissions for the Map Gallery, showcasing innovative geospatial projects. This is a great opportunity to share your work with peers and highlight your research in a visual format.
 
-[Submission form](https://forms.gle/v6QHb8qiTdbLCVvi7) (requires a Google account) |  [Guidelines](https://gin.btaa.org/conference/map-gallery)
+
+### 📝 Submit to the Map Gallery
+
+{/* We are still accepting submissions for the Map Gallery, showcasing innovative geospatial projects. This is a great opportunity to share your work with peers and highlight your research in a visual format. */}
+
+:::danger[Submissions closed]
+[Guidelines](../map-gallery/submission-guidelines)
+
+:::
+
     
 ⏳ Deadline: March 24, 2025, at 5 PM CST
 
@@ -115,8 +125,6 @@ The Urban Socio-Environmental Vulnerabilities dataset analyzes climate risks and
 
 ---
 
-<!-- WORKSHOP -->
-
 ### 🧰 Workshop: Getting Started with Cloud-Native Geospatial: Tools, Data, and Scalable Workflows
 
 🕚 12:30 - 1:00 pm CST
@@ -129,18 +137,17 @@ The Urban Socio-Environmental Vulnerabilities dataset analyzes climate risks and
 <li>How to scale your spatial analysis using distributed computing tools like Apache Sedona</li></ul> 
 
 **Resources Mentioned:**
-<nl>
+
 <li><a href="https://radiantearth.github.io/stac-browser/#/?.language=en">STAC Browser</a></li>
 <li><a href="https://plugins.qgis.org/plugins/qgis_plugin_gpq_downloader/">QGIS GeoParquet Downloader</a></li>
 <li><a href="https://guide.cloudnativegeo.org/">CNG Guide</a></li>
-<li><a href="https://cloud.wherobots.com/auth/register">Wherobots Community Account Sign Up</a> (specific notebook: /examples/Getting_Started folder once you sign up)</li></nl>
+<li><a href="https://cloud.wherobots.com/auth/register">Wherobots Community Account Sign Up</a> ("specific notebook: /examples/"Getting_Started folder once you sign up)</li>
 
 **Bio: Matt Forrest**
 
 Matt Forrest is a geospatial professional focused on education and scaling technology. He is Director of Customer Engineering & Product Led Growth at Wherobots, founder of the geospatial teaching community, <a href="https://moderngis.xyz/">Modern GIS</a>, and a founding editorial board member of the Cloud-Native Geospatial Forum. He holds a BA in Geography and Sociology from the University of Wisconsin–Madison.
 
 ---
-<!-- KEYNOTE -->
 
 ### 🦫 Keynote: Beavers: Architects of Climate Resilience (with Q&A)
 

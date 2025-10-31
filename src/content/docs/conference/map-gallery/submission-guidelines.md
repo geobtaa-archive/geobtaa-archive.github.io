@@ -1,8 +1,9 @@
 ---
-title: Big Ten GIS Conference Map Gallery
+title: Submission guidelines
 description: 'An overview of how to submit to the Big Ten GIS Conference çMap Gallery'
 sidebar:
   order: 02
+  hidden: true
 ---
 
 ## Guidelines for submission 
