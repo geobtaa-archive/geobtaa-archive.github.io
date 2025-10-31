@@ -6,6 +6,7 @@ import Search from 'virtual:starlight/components/Search';
 import SiteTitle from 'virtual:starlight/components/SiteTitle';
 import SocialIcons from 'virtual:starlight/components/SocialIcons';
 import ThemeSelect from './ThemeSelect.astro';
+import Matomo from './Matomo.astro';
 import {
   PRIMARY_NAV_OPTIONS,
   deriveGroupFromPath,
@@ -18,7 +19,7 @@ const navOptions = PRIMARY_NAV_OPTIONS;
 
 const activeNavGroup = deriveGroupFromPath(Astro.url.pathname);
 ---
-
+<Matomo />
 <div class="header">
   <div class="title-group">
     <div class="title-wrapper sl-flex">

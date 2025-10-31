@@ -51,6 +51,7 @@ const starlightSidebar: StarlightUserConfig['sidebar'] = NAV_GROUPS.flatMap((gro
 );
 
 export default defineConfig({
+  site: 'https://gin.btaa.org',
   redirects: {
     '/updates/': '/blog/',
   },
