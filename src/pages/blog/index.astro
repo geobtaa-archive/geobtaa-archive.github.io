@@ -27,7 +27,7 @@ const filterConfig = await getFilterConfigForPath(
 
 <StarlightPage
   frontmatter={{
-    title: 'BTAA-GIN Blog',
+    title: 'News & Stories',
     description: 'Browse recent highlights and program updates from the BTAA-GIN.',
     tableOfContents: false,
     template: 'splash',
@@ -40,9 +40,11 @@ const filterConfig = await getFilterConfigForPath(
       <PageFilterSection config={filterConfig} />
     )}
     <p class="intro">
-      Explore featured stories, collection highlights, and program updates. Use the filters to narrow by tags, authors, or publication year.
+      Explore featured stories, collection highlights, and program updates. Use the filters to narrow by tags, authors, or publication year. 
     </p>
-
+    <p>
+    Looking for older posts?  <a href = "https://geobtaa.blogspot.com">Visit our Blogspot.</a>
+    </p>
     <ContentGrid items={sortedItems} />
   </div>
 </StarlightPage>
