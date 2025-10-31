@@ -1,10 +1,13 @@
 export type NavGroupId = 'about' | 'resources' | 'conference' | 'blog';
 
+export type NavSidebarAutogenerateSort = 'reverse-date';
+
 export interface NavSidebarAutogenerate {
   kind: 'autogenerate';
   label: string;
   directory: string;
   collapsed?: boolean;
+  sort?: NavSidebarAutogenerateSort;
 }
 
 export interface NavSidebarLink {
@@ -45,6 +48,12 @@ export const NAV_GROUPS = [
       { kind: 'link', label: 'Reports', link: '/library/' },
     ],
   },
+  // {
+  //   id: 'blog',
+  //   label: 'Program updates',
+  //   landing: '/updates/',
+  //   sidebar: [{  kind: 'autogenerate', label: 'Updates', directory: 'updates', collapsed: false },],
+  // },
 
   {
     id: 'resources',
@@ -61,14 +70,31 @@ export const NAV_GROUPS = [
     label: 'Conference',
     landing: '/conference/',
     sidebar: [
-      // { kind: 'link', label: 'About the Conference', link: '/conference/' },
+      { kind: 'autogenerate', label: 'Conference', directory: 'conference', collapsed: false },
     ],
   },
+
   {
     id: 'blog',
     label: 'News & Stories',
     landing: '/blog/',
-    sidebar: [{ kind: 'link', label: 'News & Stories', link: '/blog/' }],
+    sidebar: [
+      {  kind: 'link', label: 'News & Stories', link: '/blog/' },
+      {
+        kind: 'autogenerate',
+        label: 'Program Updates',
+        directory: 'updates',
+        collapsed: true,
+        sort: 'reverse-date',
+      },
+      {
+        kind: 'autogenerate',
+        label: 'Blog Posts',
+        directory: 'posts',
+        collapsed: true,
+        sort: 'reverse-date',
+      },
+    ],
   },
 ] satisfies ReadonlyArray<NavGroup>;
 
@@ -82,6 +108,25 @@ export const PRIMARY_NAV_OPTIONS = NAV_GROUPS.map(({ id, label, landing }) => ({
 // SIDEBAR_LABEL_GROUPS links sidebar section labels back to their owning nav group for quick lookups.
 export const SIDEBAR_LABEL_GROUPS = new Map<string, NavGroupId>(
   NAV_GROUPS.flatMap(({ id, sidebar }) => sidebar.map((item) => [item.label, id] as const)),
+);
+
+const collectAutogenerateSorts = (
+  entries: ReadonlyArray<NavSidebarEntry | NavSidebarGroupItem>,
+): ReadonlyArray<readonly [string, NavSidebarAutogenerateSort]> =>
+  entries.flatMap((entry) => {
+    if (entry.kind === 'autogenerate' && entry.sort) {
+      return [[entry.label, entry.sort] as const];
+    }
+
+    if (entry.kind === 'group') {
+      return collectAutogenerateSorts(entry.items);
+    }
+
+    return [] as const;
+  });
+
+export const SIDEBAR_AUTOGENERATE_SORTS = new Map<string, NavSidebarAutogenerateSort>(
+  NAV_GROUPS.flatMap(({ sidebar }) => collectAutogenerateSorts(sidebar)),
 );
 
 // deriveGroupFromPath infers which nav group to activate based on the current URL path.
