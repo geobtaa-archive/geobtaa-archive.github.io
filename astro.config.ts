@@ -58,6 +58,7 @@ export default defineConfig({
   integrations: [
     starlight({
       title: 'BTAA-GIN',
+      favicon: 'favicon.ico',
       logo: {
         src: '/src/assets/images/btaa-gin-logo.svg',
         alt: 'BTAA-GIN Logo',
