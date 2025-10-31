@@ -18,7 +18,7 @@ Conduct interviews with users (July 2018). Create personas and user stories. Com
 
 ## Deliverables Produced
 
-- [User Personas](../../library/user-personas/)
+- [User Personas](/library/user-personas/)
 - User Stories Form
 - Anecdotes
 

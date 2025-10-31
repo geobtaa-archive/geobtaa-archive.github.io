@@ -52,5 +52,5 @@ Anyone can contribute to our collection of georeferenced map overlays.
 
 ## Other Resources
 
-[Leventhal Map Library's Allmaps Georeferencing Instructions]((https://www.leventhalmap.org/projects/digital-projects/georeferencing/))
+[Leventhal Map Library's Allmaps Georeferencing Instructions](https://www.leventhalmap.org/projects/digital-projects/georeferencing/)
 

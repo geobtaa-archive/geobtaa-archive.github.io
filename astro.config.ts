@@ -1,7 +1,7 @@
 import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
 import starlightFullViewMode from 'starlight-fullview-mode';
-import starlightAutoSidebar from 'starlight-auto-sidebar';
+import starlightLinksValidator from 'starlight-links-validator';
 import react from '@astrojs/react';
 import starlightImageZoom from 'starlight-image-zoom';
 import icon from 'astro-icon';
@@ -59,7 +59,7 @@ export default defineConfig({
       title: 'BTAA-GIN',
       logo: {
         src: '/src/assets/images/btaa-gin-logo.svg',
-        alt: 'BTAA-GIN',
+        alt: 'BTAA-GIN Logo',
         replacesTitle: true,
       },
       social: [
@@ -75,8 +75,8 @@ export default defineConfig({
       },
       plugins: [
         starlightImageZoom(),
-        starlightFullViewMode(),
-        starlightAutoSidebar(),
+        starlightFullViewMode({leftSidebarEnabled: false} ),
+        starlightLinksValidator(),
         reverseDateSidebar(),
       ],
       sidebar: starlightSidebar,

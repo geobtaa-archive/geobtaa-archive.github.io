@@ -302,7 +302,7 @@ const activeNavGroup = deriveGroupFromPath(Astro.url.pathname);
   }
 </style>
 
-<script type="module">
+<script type="module" is:inline>
   if (typeof window !== 'undefined' && !window.__BTAA_FIX_IFRAME_HEIGHT__) {
     window.__BTAA_FIX_IFRAME_HEIGHT__ = true;
 

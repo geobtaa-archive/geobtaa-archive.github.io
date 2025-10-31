@@ -20,7 +20,7 @@ Quarterly milestones for research, sample datasets, workflow testing, and final 
 
 ## Deliverables Produced
 
-- [Final report](../../library/geodata-collection-goundwork-report/)
+- [Final report](/library/geodata-collection-goundwork-report/)
 
 ## Members
 

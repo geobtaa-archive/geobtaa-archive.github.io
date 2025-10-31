@@ -19,8 +19,8 @@ Meet twice monthly to explore Indigenous perspectives, pilot embedding contextua
 
 ## Deliverables Produced
 
-- [BTAA-GIN Land Acknowledgement Action Plan](../../library/actionplan)
-- [Final Report](../../library/land-acknowledgement-working-group-report/)
+- [BTAA-GIN Land Acknowledgement Action Plan](/library/actionplan)
+- [Final Report](/library/land-acknowledgement-working-group-report/)
 
 ## Members
 

@@ -20,7 +20,7 @@ Jan–Feb 2021: Identify advanced topics; identify target disciplines and resour
 
 ## Deliverables Produced
 
-- [Five new tutorials](../../tutorials/)
+- [Five new tutorials](/tutorials/)
 
 ## Members
 

@@ -20,7 +20,7 @@ Fall 2020: Develop tutorial for instructors and students on finding, reading met
 
 ## Deliverables Produced
 
-- [Six tutorials](../../tutorials/)
+- [Six tutorials](/tutorials/)
 
 ## Members
 

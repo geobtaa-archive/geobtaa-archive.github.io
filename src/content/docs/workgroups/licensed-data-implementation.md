@@ -19,7 +19,7 @@ Prioritize resources (Feb 2020); analyze complex cases (Feb–Apr 2020); recomme
 
 ## Deliverables Produced
 
-- [Final Report](../../library/licensed-data-implementation)
+- [Final Report](/library/licensed-data-implementation)
 - [Licensed data in the Geoportal](https://geo.btaa.org/?f%5Bdct_accessRights_s%5D%5B%5D=Restricted)
 
 ## Members

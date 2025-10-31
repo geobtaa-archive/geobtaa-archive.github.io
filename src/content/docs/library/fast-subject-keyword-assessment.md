@@ -24,7 +24,7 @@ For just the subject field, members assigned 154 unique headings. These headings
 
 A significant number of records contain headings for people and organizations that could potentially be converted into personal name or corporate name FAST headings. Due to the amount of time involved in looking up these terms in FAST and overall low success rate in finding matching personal and corporate name headings, the workgroup did not perform a full review.  
 
-The list of FAST headings assigned by BTAA-GIN members and the number of appearance in the geoportal is available at: [**https://docs.google.com/spreadsheets/d/13aFyvtGcvthnMdALvz2eghKKPpKjDSzi/edit?usp=drive\_link\&ouid=106182567550693215185\&rtpof=true\&sd=true**](https://docs.google.com/spreadsheets/d/13aFyvtGcvthnMdALvz2eghKKPpKjDSzi/edit?usp=drive_link&ouid=106182567550693215185&rtpof=true&sd=true) 
+The list of FAST headings assigned by BTAA-GIN members and the number of appearance in the geoportal is available via a: [Google Spreadsheet](https://docs.google.com/spreadsheets/d/13aFyvtGcvthnMdALvz2eghKKPpKjDSzi/edit?usp=drive_link&ouid=106182567550693215185&rtpof=true&sd=true) 
 
 ## Impact
 

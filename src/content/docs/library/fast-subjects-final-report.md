@@ -25,7 +25,7 @@ FAST (Faceted Application of Subject Terminology) is derived from the Library of
 
 * Created [MARC to GeoBTAA Metadata Profile](https://docs.google.com/spreadsheets/d/11VoZrqKlLWa6KaQwm09fB2m-sCTXKgxN3zeuPbsGEHo/edit?usp=sharing).  
 * Performed initial review of headings in subject field and generated list of nearest [FAST equivalent headings](https://docs.google.com/document/d/1KMVplNnNWovI7RQD0AHupsRVpUYXPfos/edit?usp=sharing&ouid=106182567550693215185&rtpof=true&sd=true).  
-* [Performed fuller review of both subject headings and keywords assigned by BTAA-GIN participants.](../fast-subject-keyword-assessment)
+* [Performed fuller review of both subject headings and keywords assigned by BTAA-GIN participants.](/library/fast-subject-keyword-assessment)
 * Created list of FAST headings currently assigned by BTAA-GIN participants to aid in extraction of authorized headings from the keyword field.
 
 ### Local Profile Updates
