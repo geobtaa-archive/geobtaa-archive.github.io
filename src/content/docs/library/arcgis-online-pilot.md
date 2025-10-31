@@ -12,7 +12,7 @@ tags:
 
 ## Introduction
 
-The ArcGIS Enterprise Organization Working Group (a.k.a the Web Services Working Group) has continued to explore the implementation of web services technology for geospatial datasets within the BTAA Geoportal. This document serves as a follow-up to [our initial report](../webservicesreport) issued in October 2019 and outlines additional details surrounding the deployment of web services for data files stored in institutional repositories across the BTAA Geoportal task force institutions. For this work we focused on geospatial data (not scanned maps) and used the Esri ArcGIS platform for our testing environment.
+The ArcGIS Enterprise Organization Working Group (a.k.a the Web Services Working Group) has continued to explore the implementation of web services technology for geospatial datasets within the BTAA Geoportal. This document serves as a follow-up to [our initial report](/library/webservicesreport) issued in October 2019 and outlines additional details surrounding the deployment of web services for data files stored in institutional repositories across the BTAA Geoportal task force institutions. For this work we focused on geospatial data (not scanned maps) and used the Esri ArcGIS platform for our testing environment.
 
 ### Centralized vs. Distributed Models
 

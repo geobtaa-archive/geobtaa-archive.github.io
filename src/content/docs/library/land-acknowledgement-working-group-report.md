@@ -16,7 +16,7 @@ The Land Acknowledgement Working Group, active from March to July 2022, explored
 
 ## Deliverable
 
-[BTAA-GIN Land Acknowledgement Action Plan](../actionplan)
+[BTAA-GIN Land Acknowledgement Action Plan](/library/actionplan)
 
 ## Summary of the work:
 

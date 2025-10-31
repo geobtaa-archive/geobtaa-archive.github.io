@@ -20,7 +20,7 @@ Develop recommendations addressing findability, accessibility, and persistence; 
 
 ## Deliverables Produced
 
-- [Final Report](../../library/original-content-report)
+- [Final Report](/library/original-content-report)
 
 ## Members
 

@@ -19,9 +19,9 @@ Create guidelines for ongoing and retrospective application of FAST subject term
 
 ## Deliverables Produced
 
-- [Subject Headings and Keywords Assigned by BTAA-GIN Participants](../../library/fast-subject-keyword-assessment)
+- [Subject Headings and Keywords Assigned by BTAA-GIN Participants](/library/fast-subject-keyword-assessment)
 
-- [Final Report](../../library/fast-subjects-final-report)
+- [Final Report](/library/fast-subjects-final-report)
 
 ## Members
 

@@ -18,7 +18,7 @@ Research impact report types (Jan 2020); gather qualitative data (Jan–Feb 2020
 
 ## Deliverables Produced
 
-- [Impact Report](../../library/impactreport_2020-05/)
+- [Impact Report](/library/impactreport_2020-05/)
 
 ## Members
 

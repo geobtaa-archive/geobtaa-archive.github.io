@@ -1,8 +1,12 @@
 import { defineRouteMiddleware } from '@astrojs/starlight/route-data';
-import type { SidebarEntry, SidebarGroup, SidebarLink } from '@astrojs/starlight/utils/routing/types';
+import type { StarlightRouteData } from '@astrojs/starlight/route-data';
 import { getEntry } from 'astro:content';
 
 import { SIDEBAR_AUTOGENERATE_SORTS } from '../../navigation.config';
+
+type SidebarEntry = StarlightRouteData['sidebar'][number];
+type SidebarLink = Extract<SidebarEntry, { type: 'link' }>;
+type SidebarGroup = Extract<SidebarEntry, { type: 'group' }>;
 
 const dateCache = new Map<string, Promise<Date | undefined>>();
 

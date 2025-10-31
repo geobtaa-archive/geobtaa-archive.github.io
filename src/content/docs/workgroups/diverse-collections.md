@@ -22,7 +22,7 @@ One-year project: assess diversity, produce report, recommend future strategies,
 
 ## Deliverables Produced
 
-- [Summary Report](../../library/diverse-collections/)
+- [Summary Report](/library/diverse-collections/)
 
 ## Members
 

@@ -22,7 +22,7 @@ Generate recommendations to committees (Interface, Collection Development, Commu
 ## Deliverables Produced
 
 - [Analytics Matrix](https://docs.google.com/spreadsheets/d/e/2PACX-1vRFcLegLpxCqat3vlDO68DugMWz7DlJU9RIJxog99ft61nvv6JE-6U056Br0eEqYwizTd7vtJ-Qv73Q/pubhtml)
-- [Analytics Working Group Final Report](../../library/analytics-working-group-report/)
+- [Analytics Working Group Final Report](/library/analytics-working-group-report/)
 
 ## Members
 

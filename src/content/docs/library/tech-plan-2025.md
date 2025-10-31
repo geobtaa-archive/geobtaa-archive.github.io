@@ -12,7 +12,7 @@ tags:
 
 As our program grows, so do our technological needs. The Big Ten itself has expanded, welcoming four new institutional partners in the past year. As we incorporate new geospatial resources from Washington, Oregon, and California into the BTAA Geoportal, our collection (already over 100,000 records) will continue to increase. At the same time, the BTAA-GIN Geodata Collection has introduced new demands for asset storage and metadata management. 
 
-To keep pace, we have taken a step back to assess what is working, what needs improvement, and how we can continue to build and maintain a resilient, future-compatible technology framework. To guide this process, we articulated a set of [**Technical Values**](../about/technical-values.md) that embrace resilience, growth, community, and interoperability. 
+To keep pace, we have taken a step back to assess what is working, what needs improvement, and how we can continue to build and maintain a resilient, future-compatible technology framework. To guide this process, we articulated a set of [**Technical Values**](/about/guiding-principles/#technical-values) that embrace resilience, growth, community, and interoperability. 
 
 With these principles in mind, we turned to identifying our core technology requirements, approaching the task as if we were starting from the ground up. At the top of our list is stable storage for both metadata and datasets that remains reliable regardless of changes to platforms or applications. In addition, we identified two essential tools: an administrative workflow system and a public-facing discovery interface. Our current technology stack meets these needs.
 

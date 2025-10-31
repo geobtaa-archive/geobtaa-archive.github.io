@@ -21,8 +21,8 @@ Complete report by end of 2023: outline options, geographic scope, provenance, a
 ## Deliverables Produced
 
 - Tech Stack matrix
-- [Geodata Collection Strategic Plan](../../library/geodata-collection-strategic-plan/)
-- [Geodata Collection Implementation Plan](../../library/geodata-collection-implementation-plan/)
+- [Geodata Collection Strategic Plan](/library/geodata-collection-strategic-plan/)
+- [Geodata Collection Implementation Plan](/library/geodata-collection-implementation-plan/)
 
 ## Members
 

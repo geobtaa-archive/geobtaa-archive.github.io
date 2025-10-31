@@ -21,7 +21,7 @@ June–Dec 2025: Establish data provider partnerships; develop metadata workflow
 
 ## Deliverables Produced
 
-- [Urban Base Layers Curation Plan](../../library/urban-curation-plan/)
+- [Urban Base Layers Curation Plan](/library/urban-curation-plan/)
 - Curation Plan v1 (planned)
 - Foundation Phase Final Report & Updated Roadmap (planned)
 

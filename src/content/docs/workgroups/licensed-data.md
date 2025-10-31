@@ -20,7 +20,7 @@ Inventory licensed data holdings and authentication/authorization protocols acro
 ## Deliverables Produced
 
 - [Licensed Data Inventory](https://docs.google.com/spreadsheets/d/1miDNGR11wJWjCOpT8cLCaozdw-RHkB4deYSnTHxQhco/edit?usp=sharing)
-- [Licensed Data - SLG Oct 2019 meeting](../../library/licensed-data-slg)
+- [Licensed Data - SLG Oct 2019 meeting](/library/licensed-data-slg)
 
 ## Members
 

@@ -19,8 +19,8 @@ Create written recommendations on storage, publishing, access levels, benefits, 
 
 ## Deliverables Produced
 
-- [Web Services Report](../../library/webservicesreport)
-- [ArcGIS Online Pilot Report](../../library/arcgis-online-pilot)
+- [Web Services Report](/library/webservicesreport)
+- [ArcGIS Online Pilot Report](/library/arcgis-online-pilot)
 
 ## Members
 

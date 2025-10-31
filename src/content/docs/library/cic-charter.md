@@ -211,4 +211,4 @@ Pilot evaluation would include an assessment of satisfaction with pilot particip
 ## Additional and supporting documents:
 
 * CIC Geospatial Data Discovery Project Memorandum of Understanding [in development]
-* [Proposal for a Geospatial Data Discovery Project Across the CIC]() (February 2015)
+* [Proposal for a Geospatial Data Discovery Project Across the CIC](/library/cic-proposal) (February 2015)

@@ -12,7 +12,7 @@ tags:
 
 ## Executive Summary
 
-The [Analytics Working Group](../../workgroups/analytics) was initially charged with determining which analytics would be most useful to collect and visualize, examining baseline usage analytics and determining what would count as “success” for the Geoportal (in terms of analytics), as well as generating ideas for promotion in order to increase use of the site. The goal would be to generate recommendations to hand off to committees (Interface, Collection Development, and Communications).
+The [Analytics Working Group](/workgroups/analytics) was initially charged with determining which analytics would be most useful to collect and visualize, examining baseline usage analytics and determining what would count as “success” for the Geoportal (in terms of analytics), as well as generating ideas for promotion in order to increase use of the site. The goal would be to generate recommendations to hand off to committees (Interface, Collection Development, and Communications).
 
 The group brainstormed ideas for what analytics to collect and connected those analytics to specific project goals, strategic directions, and needs from specific committees. Once a list was generated, the group met with the project Application Developer and Tableau experts at UMN to determine what was possible and how difficult specific analytics would be to collect and visualize.
 

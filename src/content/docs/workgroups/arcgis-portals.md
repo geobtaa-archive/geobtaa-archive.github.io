@@ -24,8 +24,8 @@ Phase 1: Analyze problems and report for Task Force and Esri (Nov 2017). Phase 2
 ## Deliverables Produced
 
 - *Preliminary Report*
-- [BTAA GDP Accession Guidelines for ArcGIS Open Data Portals](../../library/accession-guidelines-arcgis-portals/)
-- [Best Practices for ArcGIS Hub/Open Data Portals](../../library/best-practices-open-data-portals/)
+- [BTAA GDP Accession Guidelines for ArcGIS Open Data Portals](/library/accession-guidelines-arcgis-portals/)
+- [Best Practices for ArcGIS Hub/Open Data Portals](/library/best-practices-open-data-portals/)
 
 ## Members
 
